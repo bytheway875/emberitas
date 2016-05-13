@@ -64,14 +64,14 @@ body{
 
 form.email {
   position: relative;
-  width: 40%;
+  width: 500px;
   @media(max-width: 600px){
     width: 95%;
   }
   margin: 30px auto;
   .email-ask {
     padding-top: 5px;
-    height: 90px;
+    height: 100px;
     background-color: white;
     opacity: 0.5;
     border-radius: 3px;
@@ -85,7 +85,7 @@ form.email {
     border-radius: 3px;
     position: absolute;
     left: 5%;
-    bottom: 10px;
+    bottom: 20px;
     width: 90%;
     border: none;
     &.sent {
@@ -99,7 +99,7 @@ form.email {
     font-family: 'Mila Script Sans Light';
     cursor: pointer;
     position: absolute;
-    bottom: 11px;
+    bottom: 21px;
     margin-top: 2px;
     right: 5.1%;
     font-size: .8em;
