@@ -1,3 +1,16 @@
-<h2 id="title">Welcome to Ember</h2>
+<div class="header">
+  <div class="emberitas"> Emberitas </div>
 
-{{outlet}}
+  <div class="coming-soon"> July 16, 2016 </div>
+  <div class="location"> Austin, Texas </div>
+  <div class="about">
+    A <span class="strong">FREE</span> one-day event to teach women to code
+    ambitious web applications with Ember.js.
+  </div>
+
+  <form class="email" {{action 'submitEmail' email on="submit"}}>
+    <div class="email-ask">I Want More Info!</div>
+    {{input class="email" type="text" value=email }}
+    <button class="email-button" type="submit"></button>
+  </form>
+</div>

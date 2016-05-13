@@ -11,6 +11,7 @@
 
     <link rel="stylesheet" href="assets/vendor.css">
     <link rel="stylesheet" href="assets/emberitas.css">
+    <script src='https://cdn.firebase.com/js/client/2.2.1/firebase.js'></script>
 
     {{content-for "head-footer"}}
   </head>
@@ -19,6 +20,18 @@
 
     <script src="assets/vendor.js"></script>
     <script src="assets/emberitas.js"></script>
+    <script type="text/javascript">
+      (function() {
+          var path = '//easy.myfonts.net/v2/js?sid=278457(font-family=Mila+Script+Sans+Light)&sid=278458(font-family=Mila+Script+Sans+Bold)&sid=278459(font-family=Mila+Script+Sans+Regular)&sid=278462(font-family=Mila+Script+Pro)&key=ZIgstQyLJJ',
+              protocol = ('https:' == document.location.protocol ? 'https:' : 'http:'),
+              trial = document.createElement('script');
+          trial.type = 'text/javascript';
+          trial.async = true;
+          trial.src = protocol + path;
+          var head = document.getElementsByTagName("head")[0];
+          head.appendChild(trial);
+      })();
+    </script>
 
     {{content-for "body-footer"}}
   </body>
