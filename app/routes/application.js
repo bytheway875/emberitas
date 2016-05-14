@@ -1,11 +1,15 @@
 import Ember from 'ember';
 
 export default Ember.Route.extend({
+  model(){
+    return this.store.createRecord('interest');
+  },
   actions: {
-    submitEmail(email){
+    showInterest(model){
       Ember.$('.email-button').addClass('sent');
       Ember.$('input.email').addClass('sent');
-      // alert(email);
+      model.save();
+      model.set('email', '');
     }
   }
 })

@@ -1,5 +1,5 @@
 <div class="header">
-  <div class="emberitas"> Emberitas </div>
+  <img class="emberitas" src="../images/emberitas_white.png">
 
   <div class="coming-soon"> July 16, 2016 </div>
   <div class="location"> Austin, Texas </div>
@@ -8,9 +8,9 @@
     ambitious web applications with Ember.js.
   </div>
 
-  <form class="email" {{action 'submitEmail' email on="submit"}}>
+  <form class="email" {{action 'showInterest' model on="submit"}}>
     <div class="email-ask">I Want More Info!</div>
-    {{input class="email" type="text" value=email }}
+    {{input class="email" type="text" value=model.email }}
     <button class="email-button" type="submit"></button>
   </form>
 </div>
