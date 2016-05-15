@@ -169,9 +169,11 @@ form.email {
 }
 
 .more-info {
-  min-height: 50vh;
+  min-height: 100vh;
   background-color: #FDA100;
-  padding-bottom:100px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .nav-bar {
@@ -182,8 +184,15 @@ form.email {
   width: 100%;
   height: $nav-height;
   background-color: #00a087;
+  visibility: visible;
+  opacity: 1;
+
+  -webkit-transition: visibility .5s, opacity 0.25s linear;
+  transition: visibility .5s, opacity 0.25s linear;
+
   &.hidden {
     visibility:hidden;
+    opacity: 0
   }
 }
 
