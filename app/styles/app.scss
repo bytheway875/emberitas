@@ -250,3 +250,16 @@ form.email {
     }
   }
 }
+
+.button {
+  background-color: #00a087;
+  padding: 10px;
+  margin: 20px auto;
+  width: 300px;
+  border: 2px solid white;
+  border-radius: 8px;
+  &:hover {
+    background-color: darken(#00a087, 5%);
+    text-decoration: none;
+  }
+}
