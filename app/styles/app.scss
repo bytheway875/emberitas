@@ -263,3 +263,40 @@ form.email {
     text-decoration: none;
   }
 }
+
+.sponsors img {
+  width: 45%;
+  /* text-align: center; */
+  line-height: 2em;
+  margin: 0 auto;
+  padding-top: .75em;
+  margin-bottom: 1.5em;
+  margin-right: 2em;
+  @media(min-width: 768px){
+    width: 20%
+  }
+}
+.happyhr img {
+  width: 35%;
+  /* text-align: center; */
+  line-height: 2em;
+  margin: 0 auto;
+  padding-top: .75em;
+  margin-bottom: 1.5em;
+  margin-right: 2em;
+  @media(min-width: 768px){
+    width: 11%
+  }
+}
+.contributing img {
+  width: 25%;
+  /* text-align: center; */
+  line-height: 2em;
+  margin: 0 auto;
+  padding-top: 1.25em;
+  margin-bottom: 1.5em;
+  margin-right: 2em;
+  @media(min-width: 768px){
+    width: 10%
+  }
+}
