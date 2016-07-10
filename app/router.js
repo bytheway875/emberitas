@@ -7,7 +7,11 @@ const Router = Ember.Router.extend({
 
 Router.map(function() {
   this.route('resources', function(){
-    this.route('mac-installation');
+    this.route('installation', function(){
+      this.route('mac');
+      this.route('ubuntu');
+      this.route('windows');
+    });
   });
 });
 

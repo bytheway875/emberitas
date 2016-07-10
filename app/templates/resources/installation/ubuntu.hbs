@@ -1,0 +1,197 @@
+<h1> Installing Ember for Ubuntu </h1>
+
+<p>
+  Disclaimer: I’m sorry, Emberita! I don’t know much about installing Ember on
+   Ubuntu Installations. I modified these installation instructions from a blog
+   post created by
+   <a href="https://mayank4net.wordpress.com/2015/04/27/install-ember-js-on-ubuntu/">
+     Maynak Jani
+   </a> in 2015.
+ </p>
+
+
+
+<h4 id="1-open-a-terminal-instance-on-your-computer">1.  Open a Terminal Instance on Your Computer</h4>
+
+<hr>
+
+
+
+<h4 id="2-uninstall-outdated-versions-of-node-and-npm">2. Uninstall Outdated versions of Node and NPM</h4>
+
+<p>If you have or may have outdated versions of node or npm installed on your
+  computer, nuke them first:</p>
+
+<p><code>sudo apt-get purge nodejs npm</code></p>
+
+<p>
+  If you're confident that your versions of node or npm are up to date, skip
+  to step 4.
+</p>
+
+
+
+<h4 id="3-setup-nodesource-to-get-nodejs-binaries-or-use-nvm-to-install-node">3. Setup Nodesource to get Node.js binaries OR use NVM to install Node</h4>
+
+<p>To use Nodesource, see if your installation is supported <a href="https://github.com/nodesource/distributions">here</a>. Then:</p>
+
+<p><code>curl -sL https://deb.nodesource.com/setup | sudo bash –</code></p>
+
+<p><code>sudo apt-get install -y nodejs</code></p>
+
+<p>If you use <a href="https://github.com/creationix/nvm">NVM (Node Version Manager)</a> or want to install it:</p>
+
+
+
+<pre class="prettyprint"><code class=" hljs avrasm">curl https://raw<span class="hljs-preprocessor">.githubusercontent</span><span class="hljs-preprocessor">.com</span>/creationix/nvm/v0<span class="hljs-number">.12</span><span class="hljs-number">.1</span>/install<span class="hljs-preprocessor">.sh</span> | bash</code></pre>
+
+<p>List available node versions in nvm:</p>
+
+<p><code>nvm ls-remote</code></p>
+
+<p>Choose a version of node to install: </p>
+
+<p><code>nvm install 0.12.2</code></p>
+
+
+
+<h4 id="4-install-ember-cli">4. Install Ember-CLI</h4>
+
+<p><code>sudo npm install -g ember-cli@2.6.2</code></p>
+
+<p>
+  The -g means that we’re installing ember-cli <strong>globally</strong>.
+  That means that after you install ember-cli, you’ll be able to instantiate
+  new ember-cli projects in almost any folder on your computer, and
+  they’ll all use this latest version of ember-cli.
+</p>
+
+<p>This will take a bit of time because ember-cli has a number of
+  <strong>dependencies</strong>
+  (other packages that the ember-cli package needs to install to
+  make ember-cli whole).
+</p>
+
+<p>
+  After your Terminal stops logging the installation process,
+  we can check that ember installed properly.
+</p>
+
+<p><code>ember -v</code></p>
+
+<p>
+  (-v is a shortcut for —version that we saw above.
+  Both of these <strong>flags</strong> do the same exact thing,
+  but using -v saves you seven characters. Try it!)
+</p>
+
+<hr>
+
+<h4 id="5-install-bower">5. Install Bower</h4>
+
+<p>
+  What’s Bower? It’s a package manager (kind of like NPM)
+  but for <strong>front-end</strong> packages.
+</p>
+
+<p>
+  Front-end, back-end — what’s the difference? To simplify it,
+  let’s just say that the front-end is everything you can see when you go
+  to www.facebook.com (ex. the logo, the font size and color, the way the
+  ‘like’ number increments instantly when you click on the thumbs up button),
+  while the back-end is everything you AREN’T seeing (ex. when Facebook checks
+  to see if your password is correct or incorrect, the algorithm Facebook
+  uses to decide what’s ‘Trending’ or ‘People You May Know).
+</p>
+
+<p>
+  We install all of these things using npm because the internet is a
+  beautiful and scary place where we simultaneously trust and
+  do-not-trust everyone. (But we can talk about that some other time…)
+</p>
+
+<p><code>npm install -g bower</code></p>
+
+
+
+<h4 id="6-install-phantomjs">6. Install Phantom.js</h4>
+
+<p>
+  To complete you ember-cli install, let’s install phantom.js.
+</p>
+
+<p>
+  Phantom.js helps us run the <strong>automated tests</strong> in Ember.
+</p>
+
+<p>
+  Testing our code is really important because - as mentioned earlier -
+  the internet is a scary and beautiful place where anyone can write code
+  and let dozens, hundreds, or millions of other people use it as an
+  application. So we want it to work, and work well.
+</p>
+
+<p>
+  Automated tests are thebomb.com because it means that,
+  as developers, product managers, marketers, and sales people,
+  we can spend more time doing our job and less time making sure
+  that our websites work the way we built them.
+</p>
+
+<p><code>sudo npm install -g phantomjs</code></p>
+
+
+
+<h4 id="7-create-your-first-ember-cli-project">7. Create Your First ember-cli Project</h4>
+
+<p>
+  If you installed with Nodesource, you might need to sudo to create your
+  projects:
+</p>
+
+<p><code>sudo ember new my-first-ember-project</code></p>
+
+<p>If you installed with NVM, you don’t need to sudo:</p>
+
+<p><code>ember new my-first-ember-project</code></p>
+
+<p>
+  When you copy and paste this into your Terminal window,
+  you’re <em>initializing</em> your very first Ember application into existence.
+   Congratulations!</p>
+
+<h4 id="8-start-your-first-ember-server">8. Start your first ember server</h4>
+
+<p>Change directories (cd) into the newly created ember project:</p>
+
+<p><code>cd my-first-ember-project</code></p>
+
+<p>then start your server:</p>
+
+<p><code>ember s</code> or <code>sudo ember s</code></p>
+
+<h4 id="9-install-the-ember-inspector">9. Install the Ember Inspector</h4>
+
+<p>
+  The last thing we need to install is the <strong>Ember Inspector</strong>.
+  The Ember inspector is a powerful browser addon that helps us <em>debug</em>
+  (developer speak for ‘finding and fixing problems’) our Ember application.
+</p>
+
+<p>
+ This requires that you’ve installed  Google Chrome or Firefox.
+ The instructors will be using Chrome at the workshop,
+ so that’s the recommended install:
+</p>
+
+<ul>
+<li>Google Chrome: <a href="https://chrome.google.com/webstore/detail/ember-inspector/bmdblncegkenkacieihfhpjfppoconhi">Install Ember Inspector</a>. (RECOMMENDED)</li>
+<li>For Firefox: <a href="https://addons.mozilla.org/en-US/firefox/addon/ember-inspector/">Install Ember Inspector</a>.</li>
+</ul>
+
+<p>If you have any questions, comments or revisions to make to these
+  installation instructions, please email
+  <a href="installations@emberitas.com">
+    installations@emberitas.com
+  </a>
+</p>

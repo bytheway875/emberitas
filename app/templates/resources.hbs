@@ -1,9 +1,11 @@
 <div class="container resources">
-  <div class="resource-nav"> <img src="../images/emberitas_white.png" height=48>
-    <div class="learning">
-      Learning Center
+  {{#link-to 'resources'}}
+    <div class="resource-nav"> <img src="../images/emberitas_white.png" height=48>
+      <div class="learning">
+        Learning Center
+      </div>
     </div>
-    </div>
+  {{/link-to}}
   <br>
   <br>
   {{outlet}}
