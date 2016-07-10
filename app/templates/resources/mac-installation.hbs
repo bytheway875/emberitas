@@ -1,0 +1,358 @@
+
+<h1 id="installing-ember-for-macosx">Installing Ember for MacOSX</h1>
+
+<p>There are a just couple of steps you’ll need to take to install
+  Ember-CLI on your computer so that you can create your own applications
+  using Ember.js. Your workshop experience will be much smoother if you
+  install Ember before arriving on Saturday morning!
+</p>
+
+<ul>
+  <li>
+    <p>
+      If, at any point during this installation, you encounter an issue,
+      please email
+      <a href="mailto:installations@emberitas.com">installations@emberitas.com</a>
+      and we’ll attempt to work you through it! Computers are finnicky, so don't
+      get discouraged.
+    </p>
+  </li>
+  
+  <li>
+    <p>We’ll also have a volunteer posted up at
+      <strong>Opa’s on South Lamar</strong>
+      on
+      <strong>Thursday night</strong>
+      from 5pm - 8pm-ish to help any interested attendees with their
+      installation. Please email <a href="mailto:installations@emberitas.com">installations@emberitas.com</a> to let
+      us know you’ll be stopping by.
+    </p>
+  </li>
+  <li>
+    <p>Additional assistance will be available on Saturday morning at
+      the workshop from 8:30am to 9:45am. As there are limited volunteer
+      resources available, please attempt to leave this option as a last
+      resort!
+    </p>
+  </li>
+</ul>
+
+<h3 id="but-first-what-is-ember-cli">But first: What is Ember-CLI?</h3>
+
+<p>
+  Ember provides developers like you with tools and resources that make
+  creating and deploying “ambitious web applications” quite simple.
+</p>
+
+<p>
+  <strong>CLI</strong> stands for “Command Line Interface.”
+  If you’ve ever created a new file by typing something like
+  “touch new_file.txt” in your Terminal, then you’ve used a command
+  line interface. If you haven’t, that’s cool - we’ll teach you a
+  little bit about the power of controlling your computer by the
+  command line at our workshop. You’ll also get a bit of experience
+  by following this tutorial. If you want to learn more about the
+  Command Line now, check out
+  <a href="https://www.codecademy.com/learn/learn-the-command-line">
+    this Code Academy course
+  </a>.
+</p>
+
+<p>From the Ember.js documentation:</p>
+
+<blockquote>
+  <p>Ember.js makes it downright simple to create sophisticated, multi-page
+    JavaScript applications with great URL support, in a fraction of the code
+    you’d write in other frameworks.
+    (<a href="http://emberjs.com/">http://emberjs.com/</a>)
+  </p>
+</blockquote>
+
+<h3 id="ember-installation-instructions">Ember Installation Instructions</h3>
+
+
+
+<h4 id="1-open-a-terminal-instance-on-your-computer">1. Open a Terminal Instance on Your Computer</h4>
+
+<p>
+  On Mac, this application is simply called “Terminal.”
+  Hit “Command” and “Space at the same time to Spotlight search
+  for Terminal, then select it to open the application.
+</p>
+
+<hr>
+
+<h4 id="2-install-xcode">2. Install XCode</h4>
+
+<p>
+  On Mac computers, you’ll need to stop right now (thank you very much)
+  and
+  <a href="https://itunes.apple.com/us/app/xcode/id497799835?mt=12">
+    install Xcode from the Apple App store
+  </a>.
+</p>
+
+<p>
+  It’s absolutely essential that you install XCode or none of the rest
+  of this process will work! For those of you who already have it
+  installed, this is a great time to make sure that it’s updated.
+  While no less annoying than iTunes updates (what are they even
+  updating, for real?!?), XCode updates should actually be done from
+  time to time.  :)
+</p>
+
+<hr>
+
+<h4 id="3-install-homebrew">3. Install Homebrew</h4>
+
+<p>
+  <a href="http://brew.sh/">
+    <strong>Homebrew</strong>
+  </a>
+  is a <strong>package manager</strong> for Mac.
+  <strong>Packages</strong> are reusable code modules - big or small -
+  that developers can create, share, and use to make their lives easier.
+  We’ll install several packages using Homebrew in this tutorial,
+  including <strong>Node.js</strong>, <strong>npm</strong>, and
+  <strong>ember-cli</strong>.
+</p>
+
+<p>
+  To install Homebrew on your computer, copy and paste this into your
+  terminal:
+</p>
+
+<p>
+  <code>/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"</code>
+</p>
+
+<p>This tells your computer to use Ruby (already installed on your
+  computer - yay!) to execute (-e) the download of Homebrew, located at the
+  https:// address shown above.
+</p>
+
+<p>It will take several minutes, so take a quick break.</p>
+
+<hr>
+
+<h4 id="4-install-nodejs">4. Install Node.js</h4>
+
+<p>
+  <a href="https://nodejs.org/en/">
+    <strong>Node.js</strong>
+  </a> is an open-source project for developing server-side Web applications
+  using Javascript. Node also maintains a project called
+  <strong>npm</strong>, which stands for
+  <strong>node package manager</strong>.
+</p>
+
+<p>
+  Ember-cli is an npm package, which is why we need to make sure we have node
+  installed before we do anything else.
+</p>
+
+<p>
+  If you’re not sure whether you have node installed, you can type this into
+  your terminal prompt:
+</p>
+
+<p>
+  <code>node --version</code>
+</p>
+
+<p>
+  If you get something like v0.0.10 back, feel free to continue to the next
+  step. Otherwise, let’s take a moment to install Node.js.
+  In your terminal window:
+</p>
+
+<p>
+  <code>brew install node</code>
+</p>
+
+<p>and wait.</p>
+
+<hr>
+
+<h4 id="5-install-npm">5. Install npm</h4>
+
+<p>In your terminal window:</p>
+
+<p>
+  <code>brew install npm</code>
+</p>
+
+<p>and wait.</p>
+
+<hr>
+
+<h4 id="6-install-ember-cli">6. Install ember-cli</h4>
+
+<p>Now you’re ready to install ember-cli.</p>
+
+<p>In your terminal window: </p>
+
+<p>
+  <code>npm install -g ember-cli@2.6.2</code>
+</p>
+
+<p>The -g means that we’re installing ember-cli
+  <strong>globally</strong>.
+  That means that after you install ember-cli, you’ll be able to instantiate
+  new ember-cli projects in almost any folder on your computer, and they’ll
+  all use this latest version of ember-cli.
+</p>
+
+<p>This will take a bit of time because ember-cli has a number of
+  <strong>dependencies</strong>
+  (other packages that the ember-cli package needs to install to make
+  ember-cli whole).
+</p>
+
+<p>After your Terminal stops logging the installation process, we can check
+  that ember installed properly.
+</p>
+
+<p>
+  <code>ember -v</code>
+</p>
+
+<p>(-v is a shortcut for —version that we saw above. Both of these
+  <strong>flags</strong>
+  do the same exact thing, but using -v saves you seven characters. Try it!)
+</p>
+
+<hr>
+
+<h4 id="7-install-bower">7. Install Bower</h4>
+
+<p><code>npm install -g bower</code></p>
+
+<p>
+  You’re getting good at this, so I bet you know what to do with that command
+  above. (Copy and paste it into your terminal!)
+</p>
+
+<p>What’s Bower? It’s a package manager (kind of like NPM) but for
+  <strong>front-end</strong> packages.
+</p>
+
+<p>Front-end, back-end — what’s the difference? To simplify it,
+  let’s just say that the front-end is everything you can see when you go
+  to www.facebook.com (ex. the logo, the font size and color, the way the
+  ‘like’ number increments instantly when you click on the thumbs up button),
+  while the back-end is everything you AREN’T seeing
+  (ex. when Facebook checks to see if your password is correct or incorrect,
+  the algorithm Facebook uses to decide what’s ‘Trending’ or
+  ‘People You May Know).
+</p>
+
+<p>We install all of these things using npm because the internet is a
+  beautiful and scary place where we simultaneously trust and do-not-trust
+  everyone. (But we can talk about that some other time…)
+</p>
+
+<p>
+  You can <code>bower -v</code> or <code>`bower —version</code> to make sure
+  bower is installed on your computer.
+</p>
+
+<hr>
+
+<h4 id="8-install-phantomjs">8. Install Phantom.js</h4>
+
+<p>To complete you ember-cli install, let’s install phantom.js.</p>
+
+<p>Phantom.js helps us run the <strong>automated tests</strong> in Ember.</p>
+
+<p>Testing our code is really important because - as mentioned earlier -
+  the internet is a scary and beautiful place where anyone can write code and
+  let dozens, hundreds, or millions of other people use it as an application.
+  So we want it to work, and work well.
+</p>
+
+<p>Automated tests are <a href="http://thebomb.com">thebomb.com</a> (well done, Chive. well done.)
+  because it means that, as developers, product managers, marketers,
+  and sales people, we can spend more time doing our job and less time
+  making sure that our websites work the way we built them.
+</p>
+
+<p>
+  See if it all works:
+</p>
+
+<p>
+  <code>ember new the-greatest-app-ever-built</code>
+</p>
+
+<p>
+  When you copy and paste this into your Terminal window, you’re
+  <em>initializing</em> your very first Ember application into existence.
+  Congratulations!
+</p>
+
+<p>
+  This creates a new folder inside of the folder you are currently in,
+  aptly named ‘the-greatest-app-ever-built’. But, like, how do you get to it?
+</p>
+
+<p>
+  Now, let’s “change directories” (cd) into our new application folder. In your terminal:
+</p>
+
+<p>
+  <code>cd the-greatest-app-ever-built</code>
+</p>
+
+<p>and now you are officially inside of your application!</p>
+
+<p>In your terminal:</p>
+
+<p>
+  <code>ember s</code>
+</p>
+
+<p>and you should see your computer working hard to start up a
+  <strong>local server</strong> running your application.
+</p>
+
+<p>Open up a web browser, and go to</p>
+
+<p>
+  <code>localhost:4200</code>
+</p>
+
+<p>
+  You should see a nice “Welcome to Ember” page. Success!
+</p>
+
+<hr>
+
+<h4 id="9-install-the-ember-inspector">9. Install The Ember Inspector</h4>
+
+<p>The last thing we need to install is the
+  <strong>Ember Inspector</strong>.
+  The Ember inspector is a powerful browser addon that helps us <em>debug</em>
+  (developer speak for ‘finding and fixing problems’) our Ember application. <br>
+ This requires that you’ve installed  Google Chrome or Firefox. The instructors
+ will be using Chrome at the workshop, so that’s the recommended install:
+</p>
+
+<ul>
+<li>Google Chrome: <a href="https://chrome.google.com/webstore/detail/ember-inspector/bmdblncegkenkacieihfhpjfppoconhi">Install Ember Inspector</a>. (RECOMMENDED)</li>
+<li>For Firefox: <a href="https://addons.mozilla.org/en-US/firefox/addon/ember-inspector/">Install Ember Inspector</a>.</li>
+</ul>
+
+
+<hr>
+
+<h2 id="youre-good-to-go-welcome-to-ember-emberita">You’re good to go. Welcome to Ember, Emberita!</h2>
+
+<h2 id="see-you-on-the-16th">See you on the 16th!</h2>
+
+
+
+<h4 id="questions-comments-issues-email-installationsemberitascom-for-assistance">
+  Questions? Comments? Issues? Email
+  <a href="mailto:installations@emberitas.com">installations@emberitas.com</a>
+  for assistance.</h4>

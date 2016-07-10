@@ -6,6 +6,9 @@ const Router = Ember.Router.extend({
 });
 
 Router.map(function() {
+  this.route('resources', function(){
+    this.route('mac-installation');
+  });
 });
 
 export default Router;
