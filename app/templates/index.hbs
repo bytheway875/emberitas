@@ -8,15 +8,19 @@
       A <span class="strong">FREE</span> one-day event to teach women to code
       ambitious web applications with Ember.js.
     </div>
+    <div class="about">
+      <span class="strong">Sold out!</span>
+    </div>
 
     <!-- <form class="email" {{action 'showInterest' model on="submit"}}>
          <div class="email-ask">I Want More Info!</div>
          {{input class="email" type="text" value=model.email }}
          <button class="email-button" type="submit"></button>
          </form> -->
-    <a class="button" href="http://emberitas.eventbrite.com" target="_blank">Sign Up Now</a>
+    <a class="button" style="width:350px" href="http://emberitas-happy-hour.eventbrite.com" target="_blank">RSVP For Happy Hour</a>
   </div>
-  <div class="more-info nav-margined">
+
+  <div class="nav-margined" style="background-color:#d2356b">
     <h1>Sponsors</h1>
     <div class="sponsors" flex layout-align="center center">
       <h2>Featured</h2>
@@ -40,7 +44,24 @@
     <br>
   </div>
 
-  <div class="header nav-margined">
+  <div class="more-info nav-margined">
+    <h1> Location and Schedule </h1>
+    <div class="about">
+      <img src="../images/ironyard.png" alt="iron yard logo" style="height:150px">
+
+      <p>
+        The Iron Yard
+        <br>
+        <a href="https://www.google.com/maps/place/The+Iron+Yard+-+Austin/@30.2268505,-97.7581945,15z/data=!4m2!3m1!1s0x0:0x9f5425cc1c06676?sa=X&ved=0ahUKEwjX1KDx_enNAhXL6SYKHZsdCw8Q_BIImAEwEg">
+          3601 S Congress Ave C304, Austin, TX 78704
+        </a>
+      </p>
+    </div>
+    {{#link-to 'schedule' class="button" }}View The Schedule{{/link-to}}
+
+  </div>
+
+  <div class="header nav-margined" style="background-color:#4A284F">
     <h1>Coaches and Volunteers</h1>
     <div class="about">
       We're looking for volunteers who are familiar with Ember.js to coach during
@@ -68,8 +89,9 @@
       Socialize, network, and mingle with attendees to share your love for Ember!
       <br>
       <br>
-      <a class="button" href="http://emberitas-happy-hour.eventbrite.com" target="_blank">RSVP for Happy Hour</a>
     </div>
+    <a class="button" href="http://emberitas-happy-hour.eventbrite.com" target="_blank">RSVP</a>
+
   </div>
 
   <div class="about-us nav-margined">

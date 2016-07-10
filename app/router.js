@@ -6,6 +6,7 @@ const Router = Ember.Router.extend({
 });
 
 Router.map(function() {
+  this.route('schedule')
   this.route('resources', function(){
     this.route('installation', function(){
       this.route('mac');
