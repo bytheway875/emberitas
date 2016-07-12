@@ -125,6 +125,12 @@
   <code>npm install -g ember-cli@2.6.2</code>
 </p>
 
+<p>OR (if the above command fails):</p>
+
+<p>
+  <code>sudo npm install -g ember-cli@2.6.2</code>
+</p>
+
 <p>The -g means that we’re installing ember-cli
   <strong>globally</strong>.
   That means that after you install ember-cli, you’ll be able to instantiate
@@ -132,7 +138,24 @@
   all use this latest version of ember-cli.
 </p>
 
-<p>This will take a bit of time because ember-cli has a number of
+<p> Sometimes (especially when we attempt to install something globally)
+  we might an error that our computer wants us to install something
+  as the root or administrator user. That's what
+  <code>
+    sudo
+  </code> is for:
+</p>
+
+<q>
+  sudo (/ˈsuːduː/ or /ˈsuːdoʊ/) is a program for Unix-like computer operating
+  systems that allows users to run programs with the security privileges of
+  another user, by default the superuser. It originally stood for "superuser do"
+  as the older versions of sudo were designed to run commands only as the
+  superuser.
+</q>
+
+<p>Be patient: The installation will take a bit of time because ember-cli
+  has a number of
   <strong>dependencies</strong>
   (other packages that the ember-cli package needs to install to make
   ember-cli whole).
@@ -191,6 +214,8 @@
 <h4 id="8-install-phantomjs">8. Install Phantom.js</h4>
 
 <p>To complete you ember-cli install, let’s install phantom.js.</p>
+
+<code>brew install phantomjs</code>
 
 <p>Phantom.js helps us run the <strong>automated tests</strong> in Ember.</p>
 
@@ -278,8 +303,6 @@
 <h2 id="youre-good-to-go-welcome-to-ember-emberita">You’re good to go. Welcome to Ember, Emberita!</h2>
 
 <h2 id="see-you-on-the-16th">See you on the 16th!</h2>
-
-
 
 <h4 id="questions-comments-issues-email-installationsemberitascom-for-assistance">
   Questions? Comments? Issues? Email
