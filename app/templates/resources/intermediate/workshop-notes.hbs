@@ -1,15 +1,11 @@
-<div class="container"><h1 id="emberitas-intermediate">Emberitas Intermediate</h1>
 
 <hr>
-
-
 
 <h4 id="create-a-new-ember-project">Create a New Ember Project</h4>
 
 <p><strong>ember new emberitas-intermediate</strong></p>
 
 <hr>
-
 
 
 <h4 id="navigate-to-your-project-folder">Navigate to Your Project Folder</h4>
@@ -2392,4 +2388,51 @@ export <span class="hljs-keyword">default</span> Ember.Component.extend({
 <blockquote>
   <p><strong>ACTIVITY: Add a name change input to your edit friend page</strong> <br>
   Okay, maybe we do want to edit our friends’ names. Give it a try using existing components. (Hint: this should only take one line of code!)</p>
-</blockquote></div>
+</blockquote>
+
+<hr>
+<h2 id="part-11">Part 11</h2>
+
+
+
+<h4 id="deploying-your-application">Deploying Your Application</h4>
+
+<p>Now that we’ve got our (albeit limited) feature set completed, it’s time to deploy our application. </p>
+
+<p>This might seem difficult because we still don’t actually have an API to create and persist records. But we can actually use ember-cli-mirage to serve demo data to a production deployment as well with just some mild configuration in your environment file.</p>
+
+<p>By default, mirage is turned on in development and turned off in production. We just have to override that default:</p>
+
+
+
+<pre class="prettyprint"><code class="language-js hljs "><span class="hljs-comment">//config/environment.js</span>
+...
+<span class="hljs-keyword">if</span> (environment === <span class="hljs-string">'production'</span>) {
+    ENV[<span class="hljs-string">'ember-cli-mirage'</span>] = {
+      enabled: <span class="hljs-literal">true</span>
+    }
+  }
+... </code></pre>
+
+<p>Now, we can leverage an awesome addon called pagefront to deploy our application! </p>
+
+<p>First, create an account at <a href="https://www.pagefronthq.com/">https://www.pagefronthq.com/</a>.</p>
+
+<p>Pagefront is kind of like Heroku, but just hosting Ember apps.  </p>
+
+<p>Once you’ve quickly created an account, and followed the instructions to initialize your first app, you can simply copy and paste the addon install command provided by Pagefront:</p>
+
+<p><code>ember install ember-pagefront --app=[YOUR-APP-NAME --key=[YOUR-APP-KEY]</code></p>
+
+<p>Then run</p>
+
+<p><code>ember deploy production</code></p>
+
+<p>which should return a url to your newly deployed Ember application!</p>
+
+
+
+<h2>
+  Et, Voila! You’ve successfully deployed your first Ember application to
+  Production. What a day!
+</h2>
