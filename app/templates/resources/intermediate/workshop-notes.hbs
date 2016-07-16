@@ -1,0 +1,2395 @@
+<div class="container"><h1 id="emberitas-intermediate">Emberitas Intermediate</h1>
+
+<hr>
+
+
+
+<h4 id="create-a-new-ember-project">Create a New Ember Project</h4>
+
+<p><strong>ember new emberitas-intermediate</strong></p>
+
+<hr>
+
+
+
+<h4 id="navigate-to-your-project-folder">Navigate to Your Project Folder</h4>
+
+<p>“Change directory” into your new ember project.</p>
+
+<p><strong>cd emberitas-intermediate</strong></p>
+
+<hr>
+
+
+
+<h4 id="open-your-project">Open Your Project</h4>
+
+<p><strong>Open application in code editor</strong></p>
+
+<p>You can see that Ember-CLI generated a good number of files for us. We won’t go through what each of these files are for right now, but you can see how quick it could be to get up and running when you’re given the bones of the application.</p>
+
+<p>Let’s do take a second, though, to look in the app folder. You can see that there is an index.html file that sets up all the basics for you, imports a css file and imports a couple javascript files. You have the ability to change anything here that you’d need to, but right now and for our purposes this looks pretty good.</p>
+
+<hr>
+
+
+
+<h4 id="start-the-ember-server">Start The Ember Server</h4>
+
+<p><strong>ember serve</strong></p>
+
+<p>Keep the server running and open a new instance of your terminal and cd to the location of your ember application so that we still have access to the command line to use all of Ember-CLI’s command line tools.</p>
+
+<hr>
+
+
+
+<h4 id="generate-the-application-controller">Generate the Application Controller</h4>
+
+<p><strong>ember generate template application</strong></p>
+
+<p>Now when we navigate to app =&gt; templates, we can see that there is a file named “application.hbs”</p>
+
+<p>Let’s put something in it. How about:</p>
+
+<p><code>&lt;h1&gt; Welcome to Ember!&lt;/h1&gt;</code></p>
+
+<p>Now, look at localhost:4200. Welcome to Ember!</p>
+
+<p>It’s super simple to make changes to our css as well. Let’s try it.</p>
+
+<p><em>Navigate to app =&gt; styles =&gt; app.css.</em></p>
+
+<p>We saw before that app.css was already imported into our index.html, so anything we put in here will automatically be loaded into our application. So let’s go ahead and style our welcome text. <br>
+ <code>h1 { color: red }</code></p>
+
+<p>And now when you look back at your browser, you can see that your changes have automatically reloaded into the browser. Your message should be red now.</p>
+
+<p><em>So the ability to generate new files and put them in the right folders on the CLI is pretty cool, and the ability to make changes that show up in our browser automatically is convenient, and you can continue to add to this application.hbs file, style it as you’d like, and you could push this up as a static site. I actually do most of my static site development in Ember now because it’s super easy to deploy and its what I’m most comfortable with. But we’re here to build applications, not just static web pages, so let’s see what else we can do.</em></p>
+
+<hr>
+
+
+
+<h4 id="generate-the-application-controller-1">Generate The Application Controller</h4>
+
+<p><strong>ember generate controller application</strong></p>
+
+<p>On a super low level, ember controllers allow us to write functions and define attributes that we can access in our template. </p>
+
+<p>Now, in app =&gt; controllers, we’ll now see a file named application.js.</p>
+
+<p>Open that up, and you can see that, this time, Ember didn’t just generate the file but also generated some code for us. </p>
+
+<p>This import/export syntax is part of the new ES6 Javascript spec that significantly changes - and most say - improves JavaScript syntax and usability.</p>
+
+<p>The gist of it is, you ‘import’ modules that you need to use in this file, then you ‘export’ modules, functions, or variables that you want to be able to use in other files. </p>
+
+<p>So when we say</p>
+
+<p><code>import Ember from 'ember'</code></p>
+
+<p>We are importing the ember module as capitalized “Ember” so that we can access it here in application.js.</p>
+
+<p>This code here,</p>
+
+<p><code>export default Ember.Controller.extend({});</code></p>
+
+<p>looks a bit daunting at first and, I have to be honest - I used Ember for probably a year before I understood what this actually meant. Because you can get by pretty well without knowing the whys and whats of using a framework. </p>
+
+<p>But when you unravel things word by word, we can move forward with a better understanding of what we’re actually doing.</p>
+
+<p>As we said before</p>
+
+<p><code>export</code></p>
+
+<p>means that this chunk of code is something that we want to export from this file.</p>
+
+<p><code>default</code> </p>
+
+<p>is a special syntax for declaring the most important export in the file. In most of the Ember files we create, we’ll only be using export default, and we’ll be exporting the Ember Object we’ve created.</p>
+
+<p><code>Ember</code></p>
+
+<p>is the class that we’ve import using our import syntax. By convention, we call this import Ember because we’re literally importing all of what is available in Ember into this file, but if you really wanted to, you could actually rename it to be whatever you want! (change to import Angular from ‘ember’, then change to</p>
+
+<p><code>export default Angular.Controller.extend({})</code></p>
+
+<p>and everything still works!</p>
+
+<p>So what does </p>
+
+<p><code>Ember.Controller</code></p>
+
+<p>mean?</p>
+
+<p>Everything in Ember is an extension of Ember.Object, a class that contains all of the secret sauce that makes Ember Ember. Most notably, Ember.Objects have the ability to observe property changes and bind those changes between your data layer and your template layer really easily, which Plain Old Javascript Objects (POJOs) can’t do.</p>
+
+<p>Ember.Controller is a specific type of Ember.Object for, you guessed it! - Ember Controllers. When we </p>
+
+<blockquote>
+  <p><code>extend({})</code></p>
+</blockquote>
+
+<p>Ember.Controller, we’re actually creating a new subclass of Ember.Controller that’s specific to this application controller.</p>
+
+<hr>
+
+
+
+<h4 id="create-a-custom-greeting-with-property-binding">Create a Custom Greeting With Property Binding</h4>
+
+<p>Next, let’s see how binding from your controller to your template works.</p>
+
+<p><strong>Update our template to expect a name attribute</strong></p>
+
+<p><code>&lt;h1&gt;Welcome to Ember, \{{name}}!&lt;/h1&gt;</code></p>
+
+<p>So now we’re telling our template that we should expect an attribute from our controller called “name”, but our controller isn’t defining anything called name. So let’s do that.</p>
+
+<p><strong>Define a Controller Property</strong></p>
+
+<p>Inside the Ember.Controller object in  controllers/application.js, add:</p>
+
+<p><code>name: 'Shannon'</code></p>
+
+<p>Now, when we go to localhost:4200, we should see </p>
+
+<p><code>Welcome to Ember, Shannon!</code></p>
+
+<p>in the browser! Awesome.</p>
+
+<p>Well, it WOULD be awesome if everyone we wanted to greet was named Shannon. But what are the chances of that?</p>
+
+<p>Instead, maybe we can provide a way for our visitors to give us their name so we can greet them.</p>
+
+<p><strong>Create a Name Input</strong></p>
+
+<p>You might be familiar with html’s input element. It looks a little like this:</p>
+
+<p><code>&lt;input value="Shannon"&gt;</code></p>
+
+<p>If we implement this, we definitely have an input that says Shannon, and our header still says Shannon, but you can see that those values aren’t bound to each other. When you change the input value, the header doesn’t change.</p>
+
+<p>So let’s try: </p>
+
+<p><code>&lt;input value=\{{name}}&gt;</code></p>
+
+<p>Hmm… that doesn’t work either. </p>
+
+<p>If we use the <strong>Ember inspector</strong>, we can grab the controller for the route that we’re on (application), and we can actually check to see that no matter what we change on our input, name is always Shannon.</p>
+
+<p>However, if we change our syntax to:</p>
+
+<p><code>\{{input value=name}}</code></p>
+
+<p>We can see the name value changing visually on our screen, and we can also check in our <strong>Ember inspector</strong> that </p>
+
+<p><code>$E.get('name')</code></p>
+
+<p>changes based on what we’ve entered into our input box. </p>
+
+<p><strong>The input value is bound to our controller property.</strong></p>
+
+<hr>
+
+
+
+<h4 id="binding-property-changes-to-actions">Binding Property Changes to Actions</h4>
+
+<p>Our Product Manager comes back to us and says “Hey it’s super cool how this changes automatically, but we actually want to wait until the user is SURE they’ve typed their name correctly before we make any changes.</p>
+
+<p>And it’s true, sometimes it makes sense for our data to change immediately, but sometimes it doesn’t. </p>
+
+<p>So how might we alter this so that our name value doesn’t change until we’re ready for it to?</p>
+
+<p><strong>Create a new property</strong></p>
+
+<p>First, let’s make sure that our input value ISN’T bound to our name property. Instead, we’ll call the property on our input “newName”.</p>
+
+<p><code>\{{input value=newName}}</code></p>
+
+<p>So now if we check the <strong>Ember Inspector</strong>, we can see that</p>
+
+<p><code>$E.get('name')</code> </p>
+
+<p>is what you defined in your controller, and </p>
+
+<p><code>$E.get('newName')</code></p>
+
+<p>is a defined property on your controller, equal to what you have in your input field. Now we just need an action to set ‘name’ to ‘newName’.</p>
+
+<p><strong>Create a Controller Action</strong></p>
+
+<p>Defining properties (which we’ve been doing) and defining actions that manipulate those properties (which we’re about to do) are the two major purposes of your Ember Controller. So maybe we can implement an <strong>action</strong> that can change name to our newName.</p>
+
+<p>Define a property in your Ember Controller called ‘actions’ where the value is an empty object:</p>
+
+<p><code>actions: {}</code></p>
+
+<p>Within your action object, let’s define a function called updateName:</p>
+
+
+
+<pre class="prettyprint"><code class="language-js hljs ">actions: {
+  updateName(newName){
+    <span class="hljs-keyword">this</span>.set(<span class="hljs-string">'name'</span>, newName);
+  }
+}</code></pre>
+
+<p>You can see that Ember actions are really just regular old javascript functions. This function is a property of our Controller’s action object, which is a property of the controller. <em>It’s all just Javascript</em>!</p>
+
+<hr>
+
+
+
+<h4 id="javascript-dive-whats-this">Javascript Dive: What’s ‘This’?</h4>
+
+<p>We’ll see <code>this</code> all over the place today, so let’s take a minute to define what <code>this</code> means.</p>
+
+<blockquote>
+  <p><strong>QUESTION: Can anyone help us understand what ‘this’ means in our function?</strong></p>
+
+  <p>ANSWER: If you’ve already worked in Javascript, you’re probably used to working with the elusive <code>this</code>.</p>
+
+  <p>It can be a hard concept to wrap your head around (“who’s on first? what’s on second”), but basically it is usually the object that “owns” your function. In this case, we are within a subclass of  Ember.Controller, so - simplistically - <code>this</code> is your current controller object.</p>
+
+  <p>Remember when we grabbed the controller from the <strong>Ember Inspector</strong> and it was available to us in the console as $E? <code>`$E.get('name')</code></p>
+
+  <p>Simplistically, <code>this</code> is our $E while we’re in the controller action .</p>
+
+  <p>(<a href="https://www.sitepoint.com/what-is-this-in-javascript/">https://www.sitepoint.com/what-is-this-in-javascript/</a>)</p>
+</blockquote>
+
+<hr>
+
+
+
+<h4 id="getters-and-setters-in-ember">Getters and Setters in Ember</h4>
+
+<p>We’ve seen $E.get(‘name’) and this.set(‘name’, newName), but we haven’t dug in to why we use those.</p>
+
+<p>If you’re familiar with Javascript, you know that you can usually get and set methods on an object using dot-notation:</p>
+
+<p><code>this.name</code></p>
+
+<p>or like this:</p>
+
+<p><code>this['name']</code></p>
+
+<p>When we are working with Ember.Object and Ember classes, we’ll use the methods Ember provides - .get() and .set() - to update values on our objects. This way, we can access all of the binding and computational magic of Ember Objects. </p>
+
+<p>If you get confused, don’t worry - Ember won’t let you use the traditional object syntax in places where its not allowed. :)</p>
+
+<hr>
+
+
+
+<h4 id="triggering-our-new-action">Triggering Our New Action</h4>
+
+<p>So we’ve defined our first action. Now we just need to trigger it. To do that, we just need to alter our handlebars input helper to take advantage of the action property.</p>
+
+<p><code>\{{input value=newName action="updateName" on="enter"}}</code></p>
+
+<p>Now, when we reload the page and enter a new value into our input, we’ll see that the values change, but only when you press “enter”.</p>
+
+<p>You can pass any jQuery event to ‘on’, but your mileage may vary. Check out your options here. </p>
+
+<blockquote>
+  <p><a href="http://www.w3schools.com/jquery/jquery_ref_events.asp">http://www.w3schools.com/jquery/jquery_ref_events.asp</a> </p>
+</blockquote>
+
+<p>NOTE: If you use a multi-word event that would be camelCased in jQuery, you’ll instead need to dasherize it. (keyPress becomes ‘key-press’).</p>
+
+<blockquote>
+  <p><strong>QUESTION: Why do you think you must use dasherized names for the jQuery events?</strong></p>
+
+  <p>ANSWER: This is so these actions don’t conflict with your Ember actions, which must be camelCased!</p>
+</blockquote>
+
+<hr>
+
+
+
+<h4 id="binding-an-action-to-a-button">Binding an Action to A Button</h4>
+
+<p>While its kind of cool that we can just use the keyboard to submit our form, the Product Manager doesn’t love this implementation. So let’s be old school and add a submit button instead.</p>
+
+<p>First, we’ll remove the action from our input:</p>
+
+<p><code>\{{input value=newName}}</code></p>
+
+<p>Next, let’s add a button:</p>
+
+<p><code>&lt;button&gt;Submit&lt;/button&gt;</code></p>
+
+<p>Hmm, we’ve regressed. Now it doesn’t work!</p>
+
+<blockquote>
+  <p><strong>QUESTION: Why can’t we use Enter key to trigger our action?</strong></p>
+
+  <p>ANSWER: Well, we removed our action from the input and added a button, and, as a result, nothing on our page is tied to an action. </p>
+</blockquote>
+
+<p>No action is actually being triggered when we click submit!</p>
+
+<p>So let’s take the action we had above and use it here. At first, we might want to try something like this:</p>
+
+<p><code>&lt;button \{{action="updateName"}}&gt;Submit&lt;/button&gt;</code></p>
+
+<p>but that won’t work. That’s because in</p>
+
+<p><code>\{{input value=someValue action="someAction"}}</code></p>
+
+<p>\{{input}} is an <strong>ember component</strong> and action is a <strong>property</strong> on that component. Properties can be set on components in two ways: <strong>named properties</strong> are set using the equals sign and can come in any order. Components with <strong>ordered properties</strong> expect properties in a certain order to make them work.</p>
+
+<p>In this case \{{action}} is a component that expects ordered properties, and the first property is the name of the action.</p>
+
+<p><code>&lt;button \{{action "updateName"}}&gt;Submit&lt;/button&gt;</code></p>
+
+<p>Yet, this won’t work either! If we take a look back at our controllers/application.js file you’ll see that our action expects an argument.</p>
+
+
+
+<pre class="prettyprint"><code class="language-js hljs ">actions: {
+  updateName(newName){
+    <span class="hljs-keyword">this</span>.set(<span class="hljs-string">'name'</span>, newName);
+  }
+}</code></pre>
+
+<p>You can also see that we are not passing an argument. When we do:</p>
+
+<p><code>&lt;button \{{action "updateName" newName}}&gt;Submit&lt;/button&gt;</code></p>
+
+<p>clicking our submit button does, indeed, update ‘name’ to ‘newName’.</p>
+
+<blockquote>
+  <p><strong>QUESTION: Do you have any ideas as to why we didn’t have to explicitly define the argument for our function in our \{{input}} component, but we did in the \{{action}} component?</strong></p>
+
+  <p>ANSWER: Behind the scenes, the Ember \{{input}} component expects that you’ll want to pass the value as an argument to the defined action. The \{{action}} component, on the other hand, isn’t tied to the input at all. So we have to tell it which arguments to give to the action. </p>
+</blockquote>
+
+<p>If our action had multiple arguments, we could alter the action component in our template to accept multiple parameters:</p>
+
+<p><code>&lt;button \{{action "updateName" newName param2}}&gt;Submit&lt;/button&gt;</code></p>
+
+<hr>
+
+
+
+<h4 id="binding-an-action-to-the-form-element">Binding An Action to The Form Element</h4>
+
+<p>We’ll come back to components in a couple of minutes, because our Product Manager still isn’t quite satisfied with our implementation. While we now have a button to make the interaction more straightforward, we lost the ability to submit using enter. And the PM wants both.</p>
+
+<p>So let’s try this instead:</p>
+
+
+
+<pre class="prettyprint"><code class="language-html hljs "><span class="hljs-tag">&lt;<span class="hljs-title">form</span> \{{<span class="hljs-attribute">action</span> "<span class="hljs-attribute">setName</span>" <span class="hljs-attribute">newName</span> <span class="hljs-attribute">on</span>=<span class="hljs-value">"submit"</span><span class="hljs-value">}}</span>&gt;</span>
+  \{{input value=newName}}
+  <span class="hljs-tag">&lt;<span class="hljs-title">button</span> <span class="hljs-attribute">type</span>=<span class="hljs-value">"submit"</span>&gt;</span>Submit<span class="hljs-tag">&lt;/<span class="hljs-title">button</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-title">form</span>&gt;</span></code></pre>
+
+<p>Yes! Now we can submit our form using enter OR pressing the button.</p>
+
+<hr>
+
+<blockquote>
+  <p><strong>ACTIVITY: Create a color input!</strong></p>
+
+  <p>I’m getting a little bored of looking at our “Welcome to Ember” header. It’s always the same color! </p>
+
+  <p>I think I’m going to change it the color to green…</p>
+
+  <p><code>&lt;h1 style="color: green;"&gt; Welcome to Ember, Shannon!</code></p>
+
+  <p>LOVE IT! Green is my favorite color. Purple and pink look good, too. I can’t decide what color we should make it! Maybe we should let our users decide.</p>
+
+  <p><em>Using what we just learned about property binding and controller actions, create an input that allows users to enter their favorite color, then change the color of the header based on the value they provide.</em></p>
+</blockquote>
+
+<p><strong>Here’s one solution:</strong></p>
+
+
+
+<pre class="prettyprint"><code class="language-js hljs "><span class="hljs-comment">//templates/application.hbs</span>
+
+&lt;h1 style=<span class="hljs-string">"color:\{{color}};"</span>&gt;Welcome To Ember, \{{name}}!<span class="xml"><span class="hljs-tag">&lt;/<span class="hljs-title">h1</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">form</span> \{{<span class="hljs-attribute">action</span> "<span class="hljs-attribute">setColor</span>" <span class="hljs-attribute">newColor</span> <span class="hljs-attribute">on</span>=<span class="hljs-value">"submit"</span><span class="hljs-value">}}</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-title">label</span> <span class="hljs-attribute">for</span>=<span class="hljs-value">"new-color"</span>&gt;</span>What's your favorite color?<span class="hljs-tag">&lt;/<span class="hljs-title">label</span>&gt;</span>
+  \{{input id="new-color" value=newColor}}
+  <span class="hljs-tag">&lt;<span class="hljs-title">button</span> <span class="hljs-attribute">type</span>=<span class="hljs-value">"submit"</span>&gt;</span>Submit<span class="hljs-tag">&lt;/<span class="hljs-title">button</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-title">form</span>&gt;</span></span></code></pre>
+
+
+
+<pre class="prettyprint"><code class="language-js hljs "><span class="hljs-comment">//controllers/application.js</span>
+
+export <span class="hljs-keyword">default</span> Ember.Controller.extend({
+  color: <span class="hljs-string">'green'</span>,
+  actions: {
+    ...
+    setColor(newColor){
+      <span class="hljs-keyword">this</span>.set(<span class="hljs-string">'color'</span>, newColor);
+    }
+    ...
+  },
+});</code></pre>
+
+<hr>
+
+
+
+<h4 id="creating-a-computed-property">Creating a Computed Property</h4>
+
+<p>Uh oh! When we’ve finished the color-changing exercise using the code above and check the javascript console, we’ll see that we’ve got a warning. </p>
+
+<blockquote>
+  <p><code>WARNING: Binding style attributes may introduce cross-site scripting vulnerabilities; please ensure that values being bound are properly escaped.</code></p>
+</blockquote>
+
+<p>So Ember is trying to protect us from users who might enter malicious code into our input that could like, drop our database or something crazy like that. You never know. </p>
+
+<p>Does this mean we shouldn’t bind style attributes? No! It just means that every time we change the color, we’ll want to escape the string to prevent the vulnerability.</p>
+
+<p>Luckily, Ember’s computed properties are a perfect fit to do this!</p>
+
+<p>What are computed properties? Straight from the ember docs:</p>
+
+<blockquote>
+  <p>In a nutshell, computed properties let you declare functions as properties. It’s super handy for taking one or more normal properties and transforming or manipulating their data to create a new value. <strong>ADD LINK</strong></p>
+</blockquote>
+
+<p>That sounds like exactly what we need, doesn’t it?</p>
+
+<p>Say we want to show users some information we’ve collected about them. We could create a computed property like this:</p>
+
+
+
+<pre class="prettyprint"><code class="language-js hljs ">import Ember from <span class="hljs-string">'ember'</span>;
+
+export <span class="hljs-keyword">default</span> Ember.Controller.extend({
+  name: <span class="hljs-string">'Emberita'</span>,
+  color: <span class="hljs-string">'green'</span>,
+  someInformation: Ember.computed(<span class="hljs-string">'name'</span>, <span class="hljs-string">'color'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span>{</span>
+    <span class="hljs-keyword">return</span> <span class="hljs-string">'Your name is '</span> + <span class="hljs-keyword">this</span>.get(<span class="hljs-string">'name'</span>) + <span class="hljs-string">' and your favorite color is '</span> + <span class="hljs-keyword">this</span>.get(<span class="hljs-string">'color'</span>);
+  })
+});</code></pre>
+
+<p>We simply define a property - just as we’ve done before - but instead of setting the value to a string or to null, we’ll use the Ember.computed function. The first arguments of our function are the properties that we want our computed property to depend on. When any of these properties change, our computed property will recompute. The last argument of Ember.computed is always a function that includes the return value of your computed property.</p>
+
+<p>So in this example, we’re saying that any time either ‘name’ or ‘color’ change, the ‘someInformation’ property should recompute!</p>
+
+<p>A couple of things to note:</p>
+
+<ul>
+<li><p>You can see that if you change the value of our first input from newName back to name for a moment, you’ll see that your computed property actually updates each time you type or delete a new character from name! For those of you who come from server-rendered UI programming, this probably seems really magical. In fact, this was one of the first things that just BLEW MY MIND when I started working with Ember.</p></li>
+<li><p>The properties that you depend on in your computed property (here, ‘name’ and ‘color’) do not limit the properties that you can access inside of your function. For example, if we remove ‘name’ from our list of dependent properties on our computed property, we’ll see that when we change the ‘name’, ‘someInformation’ does not update. But, when you change ‘color’ - which still is defined as a dependent property - both the name and the color update!</p></li>
+</ul>
+
+<p><strong>So back to our Cross-Scripting Vulnerability…</strong></p>
+
+<p>To prevent this warning from haunting us, we’ll just need to create a computed property that looks for changes on the ‘color’ property, and escapes the string.</p>
+
+
+
+<pre class="prettyprint"><code class="language-js hljs ">colorStyle: Ember.computed(<span class="hljs-string">'color'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span> {</span>
+    <span class="hljs-keyword">var</span> color = CSS.escape(<span class="hljs-keyword">this</span>.get(<span class="hljs-string">'color'</span>));
+    <span class="hljs-keyword">return</span> Ember.String.htmlSafe(<span class="hljs-string">"color: "</span> + color);
+  }),</code></pre>
+
+<hr>
+
+
+
+<h2 id="part-2">Part 2</h2>
+
+
+
+<h4 id="our-first-route">Our First Route</h4>
+
+<p>Right now, our “app” doesn’t look much like an “app.” Maybe adding a nav bar will help. Go to “some url” to grab some styling I’ve done for our nav bar and copy and paste it into app.css. Then grab the code from “some other url” and copy and paste it at the top of your navbar. </p>
+
+<p>You can grab our emberitas logo from “some url” and create a folder called “images” and put the logo into it so that everything works.</p>
+
+<p>There! That looks nice. And since it’s in the application template, it will render on every valid route of our application! </p>
+
+<p>Right now, you’ll notice that when you navigate away from our root path, our app goes blank. Try it:</p>
+
+<p><code>localhost:4200/profile</code></p>
+
+<p>Hmm… Nothing. Because the route isn’t defined, Ember doesn’t know what to render.</p>
+
+<p>However, Ember provides us with a file called router.js that allows us to define routes in our application.</p>
+
+<p>Let’s create a route and see how that works.</p>
+
+<p><code>ember g route profile</code></p>
+
+<p>You’ll see that this created several files, including a route file, a template, and some test files. If we navigate to app/router.js, we also see that it added our route declaration.</p>
+
+<p>Let’s add something to our profile.hbs template to celebrate the occasion!</p>
+
+<p><code>&lt;h1&gt; Welcome to my first route! &lt;/h1&gt;</code></p>
+
+<p>Now when we navigate to</p>
+
+<p><code>localhost:4200/profile</code></p>
+
+<p>you can see that we see SOMETHING, but it isn’t our new <code>&lt;h1&gt;</code>. In fact, it looks a lot like our application template! Well, that’s because it is!</p>
+
+<p>Ember routes and templates nest into each other, based on how we define our routes. By default, everything renders into our application template, and looks for an <code>\{{outlet}}</code> to render our next tier route into.</p>
+
+<p>Do you see that <code>\{{outlet}}</code> in our profile.hbs file? That would render anything nested below profile in our routing hierarchy to render into this outlet. So maybe we need one of those <code>\{{outlet}}</code>s in our application template…</p>
+
+
+
+<pre class="prettyprint"><code class=" hljs handlebars"><span class="xml"><span class="hljs-comment">&lt;!--template/application.hbs--&gt;</span>
+
+</span><span class="hljs-expression">\{{<span class="hljs-variable"><span class="hljs-keyword">outlet</span></span>}}</span><span class="xml"></span></code></pre>
+
+<p>So that’s more like what we’re looking for. You can see when you look at the <strong>ember inspector</strong> and click on <em>View Tree</em>, you can see visually how our routes are nested. And when you click on the magnifying glass, you can scroll over the rendered templates in the browser and see details about which template it rendering where!</p>
+
+<hr>
+
+
+
+<h4 id="a-controller-for-our-new-route">A Controller For Our New Route</h4>
+
+<p>We talk again to our PM and he’s like “Why is all this stuff about my name and my favorite color on every page of the application. That really doesn’t make much sense.” And you agree, so let’s take a moment to move our hard work to a different route.</p>
+
+<p>So, let’s move it over to profile. That seems as good a place as any. We can copy and paste our template code from the application.hbs file into the profile.hbs file.</p>
+
+<p>Reload the page, and now we see TWO copies of our form. One copy of our form - the one on the application template that is backed by our application controller - still works. But the other one - which isn’t backed by a controller - doesn’t work at all. So lets make a controller for our new route:</p>
+
+<p><code>$ ember g controller profile</code></p>
+
+<p>So let’s take all that stuff from our application controller and put it in the profile controller, and now we’ve got the behavior we expect again!</p>
+
+<hr>
+
+
+
+<h4 id="so-what-is-an-ember-route">So, What IS an Ember Route?</h4>
+
+<p>Remember when we did <code>ember g route profile</code> and it created a file called <code>app/routes/profile.js</code>? <br>
+What are we supposed to put in there? Let’s go to the Ember docs for the answer: </p>
+
+<blockquote>
+  <p>Regardless of how the URL becomes set, the Ember router then maps the current URL to one or more route handlers. A route handler can do several things: </p>
+
+  <ol>
+  <li>It can render a template.</li>
+  <li>It can redirect to a new route, such as if the user isn’t allowed to visit that part  of the app.</li>
+  <li>It can handle actions that involve transitioning to a new route.</li>
+  <li>It can load a model that is then available to the template.</li>
+  <li>It can handle actions that involve changing a model.</li>
+  </ol>
+</blockquote>
+
+
+
+<hr>
+
+
+
+<h2 id="part-3">Part 3</h2>
+
+
+
+<h4 id="and-whats-a-model">And What’s A Model?</h4>
+
+<p>Some of these things look familiar - we’ve seen how our implied application route can render a template. We see that every time we go to “/”, the application template is rendered. And when we go to “/profile”, the “profile” template is rendered into the outlet on the application template.</p>
+
+<p>But some of the route’s responsibilities include dealing with Ember Models, which we haven’t yet explored. </p>
+
+<p>To learn more about the role of models in our application, let’s take to the Ember docs:</p>
+
+<blockquote>
+  <p>Models are objects that represent the underlying data that your application presents to the user. Different apps will have very different models, depending on what problems they’re trying to solve. <br>
+  Models tend to be persistent. That means the user does not expect model data to be lost when they close their browser window. To make sure no data is lost, if the user makes changes to a model, you need to store the model data somewhere that it will not be lost.  <br>
+  <a href="https://guides.emberjs.com/v2.6.0/models/">https://guides.emberjs.com/v2.6.0/models/</a></p>
+</blockquote>
+
+<p><em>So what problem are we trying to solve?</em></p>
+
+<p>Let’s assume that, instead of waiting for a user to add their name and favorite color, we want to retrieve this data from a server so that we’ll know to greet the right person when they arrive at our site. That means we’ll want to have a model - lets call it ‘profile’ - that provides us with the user’s name and favorite color.</p>
+
+<p><em>How can we achieve this?</em></p>
+
+<p>If we check out our application’s file tree, we’ll notice that our app folder has a folder called “models”. Unsurprisingly, that’s where our models will live. Also unsurprisingly, Ember-CLI provides a generator for models to make our lives easier.</p>
+
+<p>Let’s generate a model called <em>profile</em>. In the terminal, execute:</p>
+
+<p><code>$ ember g model profile</code></p>
+
+<p>When we take a look at our newly generated file in app/models/profile.js, we can see that this file looks a bit different than our other files. For one thing, we’re not importing ‘ember’ here. Instead, we’re importing something called ‘ember-data’.</p>
+
+<p>So what is Ember Data? Again, from the ember docs:</p>
+
+<blockquote>
+  <p>Ember Data, included by default when you create a new application, is a library that integrates tightly with Ember to make it easy to retrieve models from your server as JSON, save updates back to the server, and create new models in the browser. <br>
+  <a href="https://guides.emberjs.com/v2.6.0/models/">https://guides.emberjs.com/v2.6.0/models/</a></p>
+</blockquote>
+
+<p>You can see that, in addition to importing ember-data, there are a couple of commented lines of code. One gives us access to something called ‘attr’, short for ‘attributes’, which we can use to designate that a property is an attribute on our Model. </p>
+
+<p>Since we know that we want some attributes on our model, let’s go ahead and define them. Uncomment the `import attr from ‘ember-data/attr’ line, and add two properties named ‘name’ and ‘favoriteColor’, and designate both as ‘attrs’.</p>
+
+
+
+<pre class="prettyprint"><code class="language-js hljs ">import Model from <span class="hljs-string">'ember-data/model'</span>;
+import attr from <span class="hljs-string">'ember-data/attr'</span>;
+<span class="hljs-comment">// import { belongsTo, hasMany } from 'ember-data/relationships';</span>
+
+export <span class="hljs-keyword">default</span> Model.extend({
+  name: attr(),
+  favoriteColor: attr()
+});</code></pre>
+
+<blockquote>
+  <p><strong>QUESTION: Why do we use attr() instead of attr?</strong></p>
+
+  <blockquote>
+    <p>Answer: In Javascript, attr without the parentheses would return the function definition, which looks something like this: <br>
+    <code>function attr(type, options) { <br>
+                if (typeof type === 'object') { <br>
+                  options = type; <br>
+                  type = undefined; <br>
+            } else { <br>
+             ...</code> <br>
+             What we want is attr(), which executes the function and returns the return result of the function.</p>
+  </blockquote>
+</blockquote>
+
+
+
+<hr>
+
+
+
+<h4 id="fetching-model-data">Fetching Model Data</h4>
+
+<p>Now all we need to do is load the model in the appropriate place. As we read before, Ember routes are responsible for loading models.</p>
+
+<p>The Ember docs, on routes:</p>
+
+<blockquote>
+  <p>4 . It can load a model that is then available to the template.</p>
+</blockquote>
+
+<p>We want to load a profile record into routes/profile.js file so that we have access to the profile within the profile.hbs template:</p>
+
+
+
+<pre class="prettyprint"><code class="language-js hljs ">import Ember from <span class="hljs-string">'ember'</span>;
+
+export <span class="hljs-keyword">default</span> Ember.Route.extend({
+  model(){
+    <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>.store.findRecord(<span class="hljs-string">'profile'</span>, <span class="hljs-number">1</span>);
+  }
+});</code></pre>
+
+<p>So what does this mean?</p>
+
+<p>Without even knowing that ‘store’ is how we access Ember-Data methods in our Ember Objects, just reading this method like a sentence gives us some hints about what’s happening, right?</p>
+
+<blockquote>
+  <p><strong>ACTIVITY: Translate these model functions into simple English.</strong></p>
+
+  <ol>
+  <li><code>model() { return this.store.findRecord('profile', 34) }</code></li>
+  <li><code>model() { return this.store.findAll('cat') }</code></li>
+  <li><code>model() { return this.store.createRecord('dog', { name: 'Hudson' } ) }</code></li>
+  </ol>
+</blockquote>
+
+<p>Answers:  <br>
+1) Find profile 34 from the store and assign it as the model for this route.  <br>
+2) Find all cats and return it as the model for this route.  <br>
+3) Create a new dog and return it as the model for this route.</p>
+
+<p>Notice that, when you’re fetching data - either one record or many records - you always use the name of the model. So it’s <code>findAll('cat')</code>, NOT <code>findAll('cats')</code>.</p>
+
+<hr>
+
+
+
+<h4 id="but-wheres-the-data-coming-from">But Where’s The Data Coming From?</h4>
+
+<p>If we attempt to load our route, however, we’ll see that our console displays an error:</p>
+
+
+
+<pre class="prettyprint"><code class=" hljs livecodeserver">GET <span class="hljs-keyword">http</span>://localhost:<span class="hljs-number">4200</span>/profiles/<span class="hljs-number">1</span> <span class="hljs-number">404</span> (Not Found)
+Error <span class="hljs-keyword">while</span> processing route: index Ember Data Request GET /profiles/<span class="hljs-number">1</span> returned <span class="hljs-operator">a</span> <span class="hljs-number">404</span>
+Payload (<span class="hljs-keyword">text</span>/html; charset=utf-<span class="hljs-number">8</span>)
+Cannot GET /profiles/<span class="hljs-number">1</span></code></pre>
+
+<p>We can also see in the <strong>ember inspector</strong>’s data tab that our Profile model has no records in it.</p>
+
+<p>Our Ember app is attempting to make a GET request to our server to fetch some data, but there’s nothing there - we don’t have an API from which to retrieve data.</p>
+
+<p>Building a robust API is outside of the scope of this workshop (it could be a whole workshop on its own!), so instead we’ll do something that’s quite popular in the Ember World - we’ll <em>mock</em> an API using a popular Ember addon called Ember CLI mirage.</p>
+
+<p><a href="http://www.ember-cli-mirage.com/">http://www.ember-cli-mirage.com/</a></p>
+
+<p>Ember addons are simply ember modules that are shared for the community to use. Most are open-source projects that call on the community’s knowledge to create and maintain. If you’re familiar with npm packages, bower packages, or Ruby gems, you get the gist. There are addons for all sorts of things. At <a href="https://www.emberaddons.com/">https://www.emberaddons.com/</a>, you can find over 2000 addons that do all sorts of things!</p>
+
+<p>ember-cli-mirage, specifically, provides “a client-side server to develop, test and prototype your Ember CLI app.” It’s become pretty popular in the Ember community to use ember-cli-mirage to mock a real API, even before a backend developer writes a line of server-side code. This allows you, as an Ember developer, to create a proof-of-concept or <em>prototype</em> without interacting with a real API.</p>
+
+
+
+<h4 id="installing-ember-cli-mirage-addon">Installing ember-cli-mirage Addon</h4>
+
+<p>So let’s try it.</p>
+
+<p>Install ember-cli-mirage by typing this into your Terminal:</p>
+
+<p><code>ember install ember-cli-mirage</code></p>
+
+<p>When we execute this command, we can see that we’re installing several packages:</p>
+
+
+
+<pre class="prettyprint"><code class=" hljs avrasm">not-cached https://github<span class="hljs-preprocessor">.com</span>/Marak/Faker<span class="hljs-preprocessor">.js</span><span class="hljs-preprocessor">.git</span><span class="hljs-preprocessor">#~3.1.0</span>
+not-cached https://github<span class="hljs-preprocessor">.com</span>/trek/pretender<span class="hljs-preprocessor">.git</span><span class="hljs-preprocessor">#~1.1.0</span>
+resolved https://github<span class="hljs-preprocessor">.com</span>/trek/pretender<span class="hljs-preprocessor">.git</span><span class="hljs-preprocessor">#1.1.0</span>
+cached https://github<span class="hljs-preprocessor">.com</span>/tildeio/route-recognizer<span class="hljs-preprocessor">.git</span><span class="hljs-preprocessor">#0.1.11</span>
+cached https://github<span class="hljs-preprocessor">.com</span>/trek/FakeXMLHttpRequest<span class="hljs-preprocessor">.git</span><span class="hljs-preprocessor">#1.4.0</span></code></pre>
+
+<p>With names like “Faker” and “Pretender,” its quite clear that we’re <em>not dealing with real data</em>.  That’s because mirage <em>simulates a real server, but doesn’t persist real data</em>. That’s why it is aptly named ‘mirage’.</p>
+
+<p>In our app, we see an entirely new folder was created called “mirage”, with several folders and files within it:</p>
+
+<ul>
+<li>In our scenarios folder, we’ll find a place to designate the fake data we want to load into our app.</li>
+<li>In our serializers folder, we’re able to designate rules for serializing and deserializing or data.</li>
+<li>The config.js file allows us to specify fake API routes that we’ll need to retrieve our data when we need to access it.</li>
+</ul>
+
+<p>What we <em>don’t</em> see here is any reference to models. But - like ember-cli - ember-cli-mirage provides a number of generator commands that we can use to make our lives easier. </p>
+
+<p><strong>Create a Mirage Model</strong></p>
+
+<p>To create an ember-cli-mirage model that mocks the schema of our server-side data, run:</p>
+
+<blockquote>
+  <p>$ ember g mirage-model profile</p>
+</blockquote>
+
+<p>This simply creates a Mirage Model that creates an in-memory database table called ‘profile’.</p>
+
+<p><strong>Create a Mirage Factory</strong></p>
+
+<p>Next, we’ll need to create a profile <strong>factory</strong>.  Similar to a real factory, our profile factory will pump out profiles. We can use these profiles that our factory creates to simulate real user profiles.</p>
+
+<blockquote>
+  <p>$ ember g mirage-factory profile</p>
+</blockquote>
+
+<p>It’s in this Profile Factory that we’ll designate fake values for our attributes on our Profile Ember Model.</p>
+
+
+
+<pre class="prettyprint"><code class="language-js hljs "><span class="hljs-comment">// mirage/factories/profile.js</span>
+
+import { Factory } from <span class="hljs-string">'ember-cli-mirage'</span>;
+
+export <span class="hljs-keyword">default</span> Factory.extend({
+  name: <span class="hljs-string">'Shannon'</span>,
+  favoriteColor: <span class="hljs-string">'green'</span>
+});</code></pre>
+
+<p>Now we can create any number of user profiles where the name is Shannon and the color is green!</p>
+
+<p>But wait - that’s kind of problematic. What are the chances that every user we have will be a person named Shannon whose favorite color is green? Approximately 0%, I’d say!</p>
+
+<p>If we want to create fake data, we should do it right. And faking things is something that Mirage does well.</p>
+
+<p>Remember when we installed ember-cli-mirage? We saw in the log output that Mirage installed a bower package called faker.js.</p>
+
+
+
+<pre class="prettyprint"><code class="language-js hljs "><span class="hljs-comment">// log output from the install of ember-cli-mirage, to jog your memory</span>
+
+install bower packages pretender, Faker</code></pre>
+
+<p>Faker.js is a package that generates fake names, fake emails, fake company names, fake phone numbers, and more to help your fake data feel more real.</p>
+
+<p>We can use Faker to replace our static name with something a little more interesting. We just need to import faker from ember-cli-mirage, and then use our imported faker object to generate a fake name and a random favorite color.</p>
+
+
+
+<pre class="prettyprint"><code class="language-js hljs "><span class="hljs-comment">// mirage/factories/profile.js</span>
+
+import { Factory, faker } from <span class="hljs-string">'ember-cli-mirage'</span>;
+
+export <span class="hljs-keyword">default</span> Factory.extend({
+  name() {
+    <span class="hljs-keyword">return</span> faker.name.firstName();
+  },
+  favoriteColor(i) {
+    <span class="hljs-keyword">return</span> faker.list.random(<span class="hljs-string">'red'</span>, <span class="hljs-string">'yellow'</span>, <span class="hljs-string">'blue'</span>, <span class="hljs-string">'green'</span>, <span class="hljs-string">'purple'</span>, <span class="hljs-string">'pink'</span>)(i);
+  }
+});</code></pre>
+
+<p>You can see here that we needed to alter the attributes on the Factory to be functions, and we needed to return the value of an executed faker function in order for this to work correctly. We won’t dig into the specifics too much here, but you can learn more about faker.js at <a href="https://github.com/marak/Faker.js/">https://github.com/marak/Faker.js/</a>, and learn more about how you can use faker with mirage at <a href="http://www.ember-cli-mirage.com/docs/v0.2.x/factories/">http://www.ember-cli-mirage.com/docs/v0.2.x/factories/</a>.</p>
+
+<p>Now that we’ve altered our code, when we ask for a profile we’ll get an object with a fake name generated by faker, and a color picked at random from our list of designated colors.</p>
+
+<p>To retrieve these fake profiles, we’ll create fake API endpoints in our config.js file. In order to create these fake endpoints, we will need to know a bit about how a RESTful HTTP API works. </p>
+
+<p>Earlier, I promised that we wouldn’t get to far into API development in this workshop, but I guess I fibbed! The truth is, when you work as a front end developer in 2016, you need to understand the basics of API development, too, so let’s practice:</p>
+
+<blockquote>
+  <p><strong>ACTIVITY: HTTP verbs and RESTful actions</strong> <br>
+  Match these HTTP Verbs to their RESTful action and its description of what it does. (Feel free to use Google if you’re not sure)</p>
+
+  <p><em>Actions</em> <br>
+  A. <em>Update</em> an existing record. <br>
+  B. <em>Destroy</em> an existing record. <br>
+  C. Return <em>all</em> existing records (<em>index</em>). <br>
+  D. Return <em>one</em> existing record (<em>show</em>). <br>
+  E. <em>Create</em> a new record.</p>
+
+  <p><em>Verbs</em> <br>
+  1. PUT/PATCH <br>
+  2. POST <br>
+  3. DELETE <br>
+  4. GET </p>
+
+  <p>Note that there are FOUR verbs and FIVE actions. </p>
+</blockquote>
+
+<p>Answers: A1, B3, C4, D4, E2</p>
+
+<blockquote>
+  <p><strong>QUESTION: How can we tell the difference between a request to fetch ALL records and a request to fetch ONE record? How do we know which record to update or delete?</strong></p>
+
+  <blockquote>
+    <p>Answer: To find, update, or delete specific records, we’ll provide a unique id for that record. The syntax for indicating an id in mirage is <code>/endpoint/:id</code>.</p>
+  </blockquote>
+</blockquote>
+
+<p>-</p>
+
+<blockquote>
+  <p><strong>QUESTION: What’s the difference between PUT and PATCH?</strong></p>
+
+  <blockquote>
+    <p>Answer: PUT and PATCH are often used interchangably when we talk about the Update endpoint. The difference is in the semantics - if you intend to <em>replace an existing object with an entirely new copy of that object</em>, PUT is the appropriate verb. If you are sending <em>only the changed attributes</em>, PATCH is more appropriate. Think of it like the difference between putting up an entirely new wall vs. putting patches on an existing wall.</p>
+  </blockquote>
+</blockquote>
+
+<p><br>
+With a perfectly RESTful API in mind (we can dream, right?), all we have to do is update our config.js to specify our API routes:</p>
+
+<p><strong>Update mirage/config.js</strong></p>
+
+
+
+<pre class="prettyprint"><code class="language-js hljs "><span class="hljs-comment">//mirage/config.js</span>
+
+export <span class="hljs-keyword">default</span> <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span> {</span>
+  <span class="hljs-comment">//index - get all profile records</span>
+  <span class="hljs-keyword">this</span>.get(<span class="hljs-string">'/profiles'</span>);
+
+  <span class="hljs-comment">//create - make a new profile record</span>
+  <span class="hljs-keyword">this</span>.post(<span class="hljs-string">'/profiles'</span>);
+
+  <span class="hljs-comment">//show - find a specific profile record</span>
+  <span class="hljs-keyword">this</span>.get(<span class="hljs-string">'/profiles/:id'</span>);
+
+  <span class="hljs-comment">//update - make changes to an existing profile record</span>
+  <span class="hljs-keyword">this</span>.patch(<span class="hljs-string">'/profiles/:id'</span>);
+
+  <span class="hljs-comment">//destroy - nix a profile record you don't want anymore</span>
+  <span class="hljs-keyword">this</span>.del(<span class="hljs-string">'/profiles/:id'</span>);
+}</code></pre>
+
+<p><strong>Seeding Our In-Memory Database in mirage/scenarios/default.js</strong> <br>
+Now that we’ve got a model and factory to define the data we need and mock endpoints that allow us to fetch the data, we just need to seed our database with a couple of profiles.</p>
+
+<p>To do this, we just need to alter our mirage/scenarios/default.js file to look like this:</p>
+
+
+
+<pre class="prettyprint"><code class="language-js hljs ">export <span class="hljs-keyword">default</span> <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(server)</span> {</span>
+  server.create(<span class="hljs-string">'profile'</span>);
+}</code></pre>
+
+<p>This will create a fake profile for us so that we can retrieve a profile in our model!</p>
+
+<hr>
+
+
+
+<h2 id="part-4">Part 4</h2>
+
+
+
+<h4 id="using-model-data-in-templates">Using Model Data In Templates</h4>
+
+<p>Now, when we navigate to /profile, and check out the data tab in the <strong>ember inspector</strong> that we see one profile! Ember Data is now successfully loading data from our Mirage API!</p>
+
+<p>But while our data is loading properly, we don’t see our model data reflected in our template. That’s because we’re still using our controller properties in our template.</p>
+
+<p>To start loading in data from our model, let’s make a few tweaks to our /profile.hbs template:</p>
+
+
+
+<pre class="prettyprint"><code class="language-html hljs "><span class="hljs-comment">&lt;!-- old --&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">h1</span> <span class="hljs-attribute">style</span>=<span class="hljs-value">\{{colorStyle}}</span>&gt;</span>Welcome To Ember, \{{name}}!<span class="hljs-tag">&lt;/<span class="hljs-title">h1</span>&gt;</span>
+
+<span class="hljs-comment">&lt;!-- new --&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">h1</span> <span class="hljs-attribute">style</span>=<span class="hljs-value">\{{colorStyle}}</span>&gt;</span>Welcome To Ember, \{{model.name}}!<span class="hljs-tag">&lt;/<span class="hljs-title">h1</span>&gt;</span></code></pre>
+
+<p>Now, when we reload our template, the name on Profile 1 in our <strong>ember inspector</strong> should match the name in our “Welcome To Ember!” message.</p>
+
+<blockquote>
+  <p><strong>Troubleshooting</strong>:</p>
+
+  <p>If you can see that your model is loading into the Ember inspector but you’re NOT seeing the name show up in your template, a good place to start is back in your model function on the route. Do you have an explicit return value in your function? If not, the code will execute but nothing will be returned from the model. Therefore, the value of the model is null.</p>
+
+  <p>You can even see this if you attempt to inspect the value of your model from the controller in the <strong>ember inspector</strong>. When you remove the explicit return from your model function, $E.get(‘model’) (where is is your profile controller) returns null.</p>
+
+  <p>Usually, in Javascript, attempting to retrieve a property from a null object would raise an error: </p>
+
+  <blockquote>
+    <p>=&gt; var something = null <br>
+     =&gt; something.name <br>
+     <strong><em>Uncaught TypeError: Cannot read property ‘name’ of null(…)</em></strong></p>
+  </blockquote>
+
+  <p>However, in Ember, if you attempt to retrieve a property from a null object using Ember getters, you’ll see a different result:</p>
+
+  <blockquote>
+    <p>=&gt; <span>$</span>E.get(‘model’) <br>
+    null <br>
+    =&gt;$E.get(‘model.name’) <br>
+    undefined</p>
+  </blockquote>
+
+  <p>This failsafe is built in to Ember so that your templates conceal some of the data issues that cause a lot of little errors in other templating engines. However, it can be harder to notice when your data gets screwy, because missing data won’t raise an error. This is just one reason why testing is important!! </p>
+</blockquote>
+
+<p>This first part of the template is quite simple, but when we start getting into the form elements and computed properties, we’ve got a bit more work to do.</p>
+
+
+
+<h4 id="updating-the-computed-properties">Updating The Computed Properties</h4>
+
+<p>Now, we want to compute someInformation using model data instead. Make sure you update the information in the dependant property attributes as well as in the function definition.</p>
+
+
+
+<pre class="prettyprint"><code class="language-js hljs "><span class="hljs-comment">// old</span>
+someInformation: Ember.computed(<span class="hljs-string">'name'</span>, <span class="hljs-string">'favoriteColor'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span> {</span>
+    <span class="hljs-keyword">return</span> <span class="hljs-string">'Your name is '</span> + <span class="hljs-keyword">this</span>.get(<span class="hljs-string">'name'</span>) + <span class="hljs-string">' and your favorite color is '</span> + <span class="hljs-keyword">this</span>.get(<span class="hljs-string">'color'</span>);
+
+<span class="hljs-comment">// new </span>
+someInformation: Ember.computed(<span class="hljs-string">'model.name'</span>, <span class="hljs-string">'model.favoriteColor'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span>{</span>
+    <span class="hljs-keyword">return</span> <span class="hljs-string">'Your name is '</span> + <span class="hljs-keyword">this</span>.get(<span class="hljs-string">'model.name'</span>) + <span class="hljs-string">' and your favorite color is '</span> + <span class="hljs-keyword">this</span>.get(<span class="hljs-string">'model.favoriteColor'</span>);
+  }),</code></pre>
+
+<p><strong>Brace Expanded Properties</strong> <br>
+You can see how we might have computed properties that might track more than two properties, and how that could make your Ember.computed function really unwieldy. There’s some Ember syntactic sugar - called “brace expanded properties” - that’ll will allow us to shorten things a bit:</p>
+
+
+
+<pre class="prettyprint"><code class="language-js hljs ">someInformation: Ember.computed(<span class="hljs-string">'model.{name,favoriteColor}'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span>{</span>
+    <span class="hljs-keyword">return</span> <span class="hljs-string">'Your name is '</span> + <span class="hljs-keyword">this</span>.get(<span class="hljs-string">'model.name'</span>) + <span class="hljs-string">' and your favorite color is '</span> + <span class="hljs-keyword">this</span>.get(<span class="hljs-string">'model.favoriteColor'</span>);
+  }),</code></pre>
+
+<p><strong>Computed Macros</strong></p>
+
+<p>We’ve also got our colorStyle computed property to deal with. We could do this:</p>
+
+
+
+<pre class="prettyprint"><code class=" hljs actionscript">colorStyle: Ember.computed(<span class="hljs-string">'model.favoriteColor'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span> {</span>
+    <span class="hljs-keyword">var</span> color = CSS.escape(<span class="hljs-keyword">this</span>.<span class="hljs-keyword">get</span>(<span class="hljs-string">'model.favoriteColor'</span>));
+    <span class="hljs-keyword">return</span> Ember.String.htmlSafe(<span class="hljs-string">"color: "</span> + color);
+  }),</code></pre>
+
+<p>And that’s perfectly valid. However, in this case, it’s a little strange that we’re tying data right from our data store to inform something that is purely display logic. Instead, let’s leave a color property on our controller to deal with this display logic. The color property will be a computed, read-only property that depends on our model’s favoriteColor property:</p>
+
+
+
+<pre class="prettyprint"><code class=" hljs rsl"><span class="hljs-keyword">color</span>: Ember.computed.readOnly(<span class="hljs-string">'model.favoriteColor'</span>),</code></pre>
+
+<p>Now we don’t have to update our colorStyle computed property at all - it will continue to track the controller’s color property that detects changes on ‘model.favoriteColor’.</p>
+
+<p>Ember.computed.readOnly() is an example of a computed macro. Computed Macros are some additional syntactic sugar that Ember provides to make common computed property functions a bit simpler.</p>
+
+<p>There are over a dozen computed macros that you can explore in more detail <a href="http://emberjs.com/api/classes/Ember.computed.html">here</a>.</p>
+
+
+
+<h4 id="updating-the-controller-actions">Updating The Controller Actions</h4>
+
+<p>We’re a step closer to getting our model working in our template - our someInformation computedProperty now reflects the information in our model - but it’s not updating our model when we click submit. </p>
+
+
+
+<pre class="prettyprint"><code class="language-js hljs "><span class="hljs-comment">//old</span>
+actions: {
+  setName(newName){
+    <span class="hljs-keyword">this</span>.set(<span class="hljs-string">'name'</span>, newName);
+  },
+  setColor(newColor){
+    <span class="hljs-keyword">this</span>.set(<span class="hljs-string">'color'</span>, newColor);
+  }
+}
+
+<span class="hljs-comment">//new</span>
+actions: {
+  setName(newName){
+    <span class="hljs-keyword">this</span>.set(<span class="hljs-string">'model.name'</span>, newName);
+  },
+  setColor(newColor){
+    <span class="hljs-keyword">this</span>.set(<span class="hljs-string">'model.favoriteColor'</span>, newColor);
+  }
+}</code></pre>
+
+<p>Now our actions are updating the model properties instead. Notice that you can set specific properties on model using this.set() and dot notation, which is pretty cool.</p>
+
+<p>We can see in the <strong>ember inspector</strong> that now the name and favoriteColor are updating on Profile 1 when we hit submit. We’re successfully setting attributes on the model!</p>
+
+
+
+<h4 id="saving-your-model">Saving Your Model</h4>
+
+<p>While we’ve set these new properties on our model, we’ve actually only made the changes locally. </p>
+
+<p>Given our current set up with Ember-CLI-mirage, our profile model is loaded from a new Factory each time we reload the page. So we’ll see “Miranda”, then “Jackson”, then “Katie”, then “Miranda” again. But if we were using an actual api, our request for profile #1 would fetch the same record each time.  When we requested profile #1 from the server, however, we’d notice that - while we’re setting new data on the model we’re never <em>saving</em> the model. </p>
+
+<p>The <strong>ember inspector</strong> can elucidate this for us a bit. Notice that there are multiple states on our <strong>ember inspector</strong> Data tab - New, Modified, and Clean.</p>
+
+<p>When we load profile, we our profile is in the “Clean” tab. But as soon as we make changes, it disappears! Now, we’ll find it in the “Modified” tab. “Modified” data has changes that are out of sync with the object we retrieved from the server. When we mock a save on the server, we should be able to see that our record moves from “Modified” back to “Clean.”</p>
+
+<p>Let’s start with the simplest implementation:</p>
+
+
+
+<pre class="prettyprint"><code class=" hljs cs">setName(newName){
+  <span class="hljs-keyword">this</span>.<span class="hljs-keyword">set</span>(<span class="hljs-string">'model.name'</span>, newName);
+  <span class="hljs-keyword">this</span>.<span class="hljs-keyword">get</span>(<span class="hljs-string">'model'</span>).save();
+},
+setColor(newColor){
+  <span class="hljs-keyword">this</span>.<span class="hljs-keyword">set</span>(<span class="hljs-string">'model.favoriteColor'</span>, newColor);
+  <span class="hljs-keyword">this</span>.<span class="hljs-keyword">get</span>(<span class="hljs-string">'model'</span>).save();
+}</code></pre>
+
+<p>Now, let’s say we want to alert our users that we’ve saved the model. </p>
+
+<p>We can do this:</p>
+
+
+
+<pre class="prettyprint"><code class="language-js hljs ">setColor(newColor){
+  <span class="hljs-keyword">this</span>.set(<span class="hljs-string">'model.favoriteColor'</span>, newColor);
+  <span class="hljs-keyword">this</span>.get(<span class="hljs-string">'model'</span>).save();
+  <span class="hljs-keyword">this</span>.alert(<span class="hljs-string">'The model was saved'</span>);
+}</code></pre>
+
+<p>Now, every time we hit the submit button, we see the message “The model was saved”.</p>
+
+<p>But what if our model DOESN’T save?</p>
+
+<p>To test this, we can force a failed save by updating our faux-endpoint in mirage/config.js:</p>
+
+
+
+<pre class="prettyprint"><code class=" hljs cs"><span class="hljs-comment">//old</span>
+<span class="hljs-keyword">this</span>.patch(<span class="hljs-string">'/profiles/:id'</span>)
+
+<span class="hljs-comment">//new</span>
+<span class="hljs-keyword">this</span>.patch(<span class="hljs-string">'/profiles/:id'</span>, {}, <span class="hljs-number">401</span>);</code></pre>
+
+<p>This will return a 401 failure response instead of a 204 updated response.</p>
+
+<p>Now, when we save a record, we <em>still</em> get an alert appear even though our console provides an angry error message:</p>
+
+
+
+<pre class="prettyprint"><code class="language-Error: Ember Data Request PATCH /profiles/1 returned a 401 hljs applescript">Payload (<span class="hljs-type">application</span>/json)</code></pre>
+
+<p>What we need to do is wait for our server to respond, <em>then</em> show the appropriate message.</p>
+
+<p>Luckily, we can achieve this using <strong>promises</strong>.</p>
+
+<hr>
+
+
+
+<h2 id="part-5">Part 5</h2>
+
+
+
+<h3 id="introduction-to-promises">Introduction To Promises</h3>
+
+<p>So what are promises?</p>
+
+<p>To reference the Ember Docs:</p>
+
+<blockquote>
+  <p>Promise objects represent the eventual result of an asynchronous operation. The primary way of interacting with a promise is through its then method, which registers callbacks to receive either a promise’s eventual value or the reason why the promise cannot be fulfilled. <br>
+  (<a href="http://emberjs.com/api/classes/RSVP.Promise.html">http://emberjs.com/api/classes/RSVP.Promise.html</a>)</p>
+</blockquote>
+
+<p>If we want to wait for the response of one function in order to determine which action we want to take next, there’s a good chance that promises are a good fit!</p>
+
+<p>Promises certainly aren’t unique to Ember - they’ve been part of the official Javascript spec since 2013, and there were various projects that implemented the concept of promises even before that.</p>
+
+<p>What’s great about Ember, though, is that when it’s logical for a function to return a Promise (because the result of the function dictates the action that follows), there’s a pretty good chance that that function will return a Promise. Our .save() method returns a promise that remains <em>pending</em> until:</p>
+
+<ul>
+<li>The request is successful and the model is updated or created. The promise is <em>fulfilled</em>.</li>
+<li>The request is unsuccessful and the model changes are not persisted. The promise is <em>rejected</em>.</li>
+</ul>
+
+<p>A promise responds to a method called .then(), which takes two functions as its parameters. The first function is executed if the promise fulfills. The second function is executed if the promise does not fulfill. </p>
+
+
+
+<pre class="prettyprint"><code class="language-js hljs ">setColor(newColor){
+  <span class="hljs-keyword">this</span>.set(<span class="hljs-string">'model.favoriteColor'</span>, newColor);
+  <span class="hljs-keyword">this</span>.get(<span class="hljs-string">'model'</span>).save().then(
+    <span class="hljs-comment">// fulfilled</span>
+    <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span> {</span>
+      alert(<span class="hljs-string">'Promise Fulfilled - The model was saved.'</span>);
+    },
+    <span class="hljs-comment">// rejected </span>
+    <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span> {</span>
+      alert(<span class="hljs-string">'Promise Rejected - The model was not saved.'</span>);
+    }
+  )
+}
+</code></pre>
+
+<p>Since our mirage/config.js defines an error response:</p>
+
+
+
+<pre class="prettyprint"><code class=" hljs cs"><span class="hljs-keyword">this</span>.patch(<span class="hljs-string">'/profiles/:id'</span>, {}, <span class="hljs-number">401</span>);</code></pre>
+
+<p>we see our promise rejected alert!</p>
+
+<p>But when we change our mirage endpoint back to responding with a success response:</p>
+
+
+
+<pre class="prettyprint"><code class=" hljs cs"><span class="hljs-keyword">this</span>.patch(<span class="hljs-string">'/profiles/:id'</span>)</code></pre>
+
+<p>we see our promise fulfilled alert!</p>
+
+<p>There’s an alternative syntax for dealing with promises that’s both much more readable, and will not only deal with unfulfilled promises but also straight up errors. Since every argument that a promise takes is optional, we can refactor our code to use the then/catch syntax like this:</p>
+
+
+
+<pre class="prettyprint"><code class=" hljs coffeescript">setColor(newColor){
+  <span class="hljs-keyword">this</span>.set(<span class="hljs-string">'model.favoriteColor'</span>, newColor);
+  setColor(newColor){
+    <span class="hljs-keyword">this</span>.set(<span class="hljs-string">'model.favoriteColor'</span>, newColor);
+    <span class="hljs-keyword">this</span>.get<span class="hljs-function"><span class="hljs-params">(<span class="hljs-string">'model'</span>)</span>.<span class="hljs-title">save</span><span class="hljs-params">()</span>.<span class="hljs-title">then</span><span class="hljs-params">(()=&gt; {
+      <span class="hljs-regexp">//</span>fulfilled
+      alert(<span class="hljs-string">'The model was saved'</span>);
+    })</span>.<span class="hljs-title">catch</span><span class="hljs-params">(()=&gt; {
+      <span class="hljs-regexp">//</span>rejected <span class="hljs-keyword">or</span> error
+      alert(<span class="hljs-string">'The model was not saved'</span>);
+    })</span>;
+   }
+ }
+</span></code></pre>
+
+<p>Here, we take advantage of ES6’s new <strong>arrow function</strong> syntax for anonymous functions ( <code>()=&gt;</code>) and the then/catch syntax, which both make our code a bit more simple to read and understand.</p>
+
+<p>Perhaps there’s some shared behavior that we want to happen whether our promise is fulfills or rejects. In this case, we can take advantage of the promise function called <code>finally()</code>. As the name suggests, whatever is passed to <code>finally()</code> will execute when the rest of our promise is dealt with. Let’s use finally to track the state of our model to the console:</p>
+
+
+
+<pre class="prettyprint"><code class="language-js hljs ">setColor(newColor){
+  console.log(<span class="hljs-keyword">this</span>.get(<span class="hljs-string">'model.currentState.stateName'</span>);
+  <span class="hljs-keyword">this</span>.set(<span class="hljs-string">'model.favoriteColor'</span>, newColor);
+  console.log(<span class="hljs-keyword">this</span>.get(<span class="hljs-string">'model.currentState.stateName'</span>);
+  setColor(newColor){
+    <span class="hljs-keyword">this</span>.set(<span class="hljs-string">'model.favoriteColor'</span>, newColor);
+    <span class="hljs-keyword">this</span>.get(<span class="hljs-string">'model'</span>).save().then(()=&gt; {
+      <span class="hljs-comment">//fulfilled </span>
+      alert(<span class="hljs-string">'The model was saved'</span>);
+    }).catch(()=&gt; {
+      <span class="hljs-comment">//rejected or error</span>
+      alert(<span class="hljs-string">'The model was not saved'</span>);
+    }).finally(()=&gt; {
+      console.log(<span class="hljs-keyword">this</span>.get(<span class="hljs-string">'model.currentState.stateName'</span>));
+    });
+   }
+ }
+</code></pre>
+
+<p>Now, when we run execute the setColor action, we can see multiple console.log messages: <br>
+    * Before we set a new value to the model, we see that the model’s state is <code>root.loaded.saved</code>. <br>
+    * Once we set a new value to the model, the state is <code>root.loaded.updated.uncommited</code>, meaning we have changes on the model that are not yet persisted. <br>
+    * When our promise fulfills successfully and the model persists, we see that the model’s state has transitioned back to <code>root.loaded.saved</code>. <br>
+    * However, if our promise was rejected, we’ll see that the model’s state is still dirty - the state is still <code>root.loaded.updated.uncommitted</code>.</p>
+
+<blockquote>
+  <p><strong>More on ES6 Arrow Functions</strong></p>
+
+  <p>If you’re getting some unexpected errors here, make sure you are using the new ES6 syntax for anonymous functions (<code>()=&gt;</code>) called <strong>arrow functions</strong>. This syntax will automatically bind the appropriate context for ‘this’. However, using the old syntax (<code>function()</code>) results in an error that looks like this:</p>
+
+  <blockquote>
+    <p>TypeError: Cannot read property ‘get’ of undefined.</p>
+  </blockquote>
+
+  <p>That’s because ‘this’ is not bound to the parent function’s ‘this’ context when you use the old style anonymous function definition. From the <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Arrow_functions">Mozilla developer documentation</a>:</p>
+
+  <blockquote>
+    <p>An arrow function expression has a shorter syntax compared to function expressions and lexically binds the this value (does not bind its own this, arguments, super, or new.target). Arrow functions are always anonymous.</p>
+  </blockquote>
+</blockquote>
+
+<p>Now our newColor action provides us with some excellent feedback when we update the model. But our newName action does no such thing. It will resolve or fail silently without any accurate feedback to the user.</p>
+
+
+
+<h2 id="part-6">Part 6</h2>
+
+
+
+<h4 id="refactoring-our-save-function">Refactoring our Save Function</h4>
+
+<p>We could certainly replicate this same promise functionality on the newName action, but that seems a bit repetitive, doesn’t it? Instead, we can extract this shared functionality to a new action.</p>
+
+
+
+<pre class="prettyprint"><code class="language-js hljs "><span class="hljs-comment">//app/controllers/profile.js</span>
+actions: {
+  ...
+  saveModel(){
+      <span class="hljs-keyword">this</span>.get(<span class="hljs-string">'model'</span>).save().then(() =&gt; {
+        alert(<span class="hljs-string">'The model was saved'</span>);
+      }).catch(() =&gt; {
+        alert(<span class="hljs-string">'The model was not saved'</span>);
+      }).finally(() =&gt; {
+        console.log(<span class="hljs-keyword">this</span>.get(<span class="hljs-string">'model.currentState.stateName'</span>));
+      });
+    }
+}
+</code></pre>
+
+<p>Now we can update our actions to call our saveModel action instead:</p>
+
+
+
+<pre class="prettyprint"><code class=" hljs cs">setName(newName){
+  <span class="hljs-keyword">this</span>.<span class="hljs-keyword">set</span>(<span class="hljs-string">'model.name'</span>, newName);
+  <span class="hljs-keyword">this</span>.send(<span class="hljs-string">'saveModel'</span>);
+},
+setColor(newColor){
+  <span class="hljs-keyword">this</span>.<span class="hljs-keyword">set</span>(<span class="hljs-string">'model.favoriteColor'</span>, newColor);
+  <span class="hljs-keyword">this</span>.send(<span class="hljs-string">'saveModel'</span>);
+}</code></pre>
+
+<blockquote>
+  <p><strong>QUESTION: Why this.send(‘action’) NOT this.action() ?</strong></p>
+
+  <p>Answer: When you first start using Ember, it’s tempting to try to call your actions directy on ‘this’. But if you attempt to execute <code>this.saveModel()</code>, you’ll notice that we get an error. </p>
+
+  <p>From a practical standpoint, this makes sense - the function isn’t defined on our Controller (‘this’), but rather it is defined as a property inside the actions object.</p>
+</blockquote>
+
+
+
+<h2 id="part-7">Part 7</h2>
+
+
+
+<h4 id="linking-to-your-profile">Linking to Your Profile</h4>
+
+<p>Now that we’ve got an AMAZING profile page that allows us to edit our name and favoriteColor, let’s make it easier to view from the root of our application. To do this, we can take advantage of another Ember component - the <strong>\{{link-to}}</strong> helper. To our application.hbs, simply add:</p>
+
+
+
+<pre class="prettyprint"><code class=" hljs handlebars"><span class="xml"><span class="hljs-comment">&lt;!-- templates/application.hbs --&gt;</span>
+
+</span><span class="hljs-expression">\{{<span class="hljs-begin-block">#link-to </span>'<span class="hljs-variable">profile</span>'}}</span><span class="xml">
+  View Your Profile
+</span><span class="hljs-expression">\{{<span class="hljs-end-block">/link-to</span>}}</span><span class="xml"></span></code></pre>
+
+<p>Unlike the <code>\{{action}}</code> and <code>\{{input}}</code> components we used before, you can see that we’re using a bit of a different syntax here. We open our component with <code>\{{#component-name}}</code> and we close it with <code>\{{/component-name}}</code>. </p>
+
+<p>Anything that comes between these two blocks is wrapped in our component’s logic. We’ll explore this in a bit more detail later. </p>
+
+<p>Swell! Now when we go to localhost:4200, we see a link to “View Your Profile”! However, when we click that link to get to our profile we STILL see a link to View Your Profile. </p>
+
+<blockquote>
+  <p><strong>QUESTION: Based on what you’ve learned about Ember so far, why do you think we can see the View Your Profile Link on our profile route?</strong> <br>
+  ANSWER: Every route in our application is nested underneath the application route! The profile template is rendering into the outlet on application.hbs, which means that things OUTSIDE of the outlet on application.hbs are shared by all pages. That works great for things like shared application navigation, but it’s not so handy for when you want to create custom content on your root url page that ISN’T shared with other templates.</p>
+</blockquote>
+
+
+
+<h3 id="index-routes">Index Routes</h3>
+
+<p>You can see how this is probably a common need for Ember developers - while the nesting and outlet functionality is nice, there are certain times when we want to be able to have information that is unique to our current location in the app. To deal with this, at each level of nesting Ember provides built in support for an “index” route that renders at ‘/’ at that level of nesting. For example:</p>
+
+<ul>
+<li>If we create an index route at the very top level, the index.hbs template will render into the \{{outlet}} in application.hbs when we navigate to <code>localhost:4200/</code>. If we create a profiles index route, the index route will load.</li>
+<li>If we create an index route for profile, the profile/index.hbs template will render into the \{{outlet}} in profile.hbs when we navigate to <code>localhost:4200/profile.</code></li>
+</ul>
+
+<p>Let’s try it out. Use your command line to generate a top-level index route:</p>
+
+<p><code>ember g route index</code></p>
+
+<p>and a profile index route:</p>
+
+<p><code>ember g route profile/index</code></p>
+
+<p>If we check the router.js file, we don’t see new definitions of routes in our router the way we did when we generated the profile route. That’s because of those special Ember-magic rules surrounding the behavior of index routes that make them automatically render at the ‘/’ path for its parent route.</p>
+
+<p>However, we can see that our file structure has changed - we now have new folders called ‘templates/profile’ and ‘route/profile’ with new files index.hbs and profile.hbs, respectively. </p>
+
+<p>Let’s move our View Your Profile Link to our new index template and see what happens:</p>
+
+
+
+<pre class="prettyprint"><code class=" hljs handlebars"><span class="xml">    <span class="hljs-comment">&lt;!-- templates/index.hbs --&gt;</span>
+
+    </span><span class="hljs-expression">\{{<span class="hljs-begin-block">#link-to </span>'<span class="hljs-variable">profile</span>'}}</span><span class="xml">
+      View Your Profile
+    </span><span class="hljs-expression">\{{<span class="hljs-end-block">/link-to</span>}}</span><span class="xml"></span></code></pre>
+
+<p>As expected, we now see the View Your Profile link at localhost:4200, but when we transition to localhost:4200/profile, we just see our profile information!</p>
+
+
+
+<h3 id="more-nested-routes">More Nested Routes</h3>
+
+<p>Now that we’ve dealt with our own profile and learned a little bit about index routes and the nesting heirarchy, let’s extend on this concept by adding some company to our profile. </p>
+
+<p>Our product manager tells us that - in addition to viewing information about ourselves on our profile page, we also want the option to view information about our “squad”, which is 2016 terminology for “friend group” or something. :D</p>
+
+<p>Each member of our squad has a profile with a name and a favorite color, and we want to show it!</p>
+
+<p>So we want the ability to see our own data, but also have the ability to see our friends’ data. We could put our friends on their own /friends route, but for the sake of this example, let’s collectively decide that it’s a good idea to view our friends underneath our own profile. We can accomplish this using <strong>nested routes</strong>. </p>
+
+<p><strong>Nested routes</strong> allow you to create a sensical hierarchy in your application. You can generate a nested route for your friend’s profile similar to the way we created our index route for profile:</p>
+
+<p><code>ember g route profile/friends</code></p>
+
+<p>This time, when we check our file tree we notice that our profile folder in templates and routes have a new file called ‘friends’ alongside ‘index’. And when we check the router.js file, we can see that there is a profile route nested beneath our friends route, indicating that <code>localhost:4200/profile/friends</code> is now a route in our application. (When well organized, our router.js file can give us an excellent visual hierarchy of our application.)</p>
+
+<p>We can confirm this by adding some text to our <code>profile/friends.hbs</code> template and navigating to <code>localhost:4200/profile/friends</code>.</p>
+
+
+
+<pre class="prettyprint"><code class=" hljs handlebars"><span class="xml"><span class="hljs-comment">&lt;!-- templates/profile/friends.hbs --&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"squad"</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-title">h3</span>&gt;</span>Here is your squad:<span class="hljs-tag">&lt;/<span class="hljs-title">h3</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+
+</span><span class="hljs-expression">\{{<span class="hljs-variable"><span class="hljs-keyword">outlet</span></span>}}</span><span class="xml"></span></code></pre>
+
+<p>Yay! We can see our <code>&lt;h3&gt;</code> but now that we’re expecting friends, I’m feeling kind of lonely. Let’s see what we can do here. </p>
+
+<p>Instead of creating ONE profile, let’s update our Mirage Factory to create a list of 5 profiles:</p>
+
+
+
+<pre class="prettyprint"><code class="language-js hljs "><span class="hljs-comment">// mirage/scenarios/default.js</span>
+
+<span class="hljs-comment">//before</span>
+
+export <span class="hljs-keyword">default</span> <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(server)</span> {</span>
+    server.create(<span class="hljs-string">'profile'</span>);
+}
+
+<span class="hljs-comment">//after</span>
+
+export <span class="hljs-keyword">default</span> <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(server)</span> {</span>
+    server.createList(<span class="hljs-string">'profile'</span>, <span class="hljs-number">5</span>);
+}
+</code></pre>
+
+<p>Don’t you love when code is semantic? It’s pretty clear here that now we’re creating five profiles!</p>
+
+<p>Now we have more data and we simply need to tell our application what to do with it. </p>
+
+<blockquote>
+  <p><strong>QUESTION: If our goal is to display our entire squad (all five profiles) on our new profile/friends route, can you explain what our next steps are in 1) plain English and 2) in Ember terms? </strong> <br>
+  ANSWER: In plain English, we need to get access to our profiles so that we can display them to our users. </p>
+
+  <p>To translate that into Ember terminology, we need to load our profiles into our <code>model()</code> on our <code>profiles/friends</code> route so that we can access them from our <code>profiles/friends</code> template.</p>
+</blockquote>
+
+<p>To load data into our model, we simply define a model function on our route and use Ember Data’s findAll() method to retrieve all five profiles from the store:</p>
+
+
+
+<pre class="prettyprint"><code class=" hljs coffeescript"><span class="hljs-reserved">import</span> Ember from <span class="hljs-string">'ember'</span>;
+
+<span class="hljs-reserved">export</span> <span class="hljs-reserved">default</span> Ember.Route.extend({
+  model(){
+    <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>.store.findAll(<span class="hljs-string">'profile'</span>);
+  }
+});</code></pre>
+
+<p>Now, we can display our data in our template.</p>
+
+
+
+<h3 id="handlebars-templates-looping">Handlebars Templates: Looping</h3>
+
+<p>If we hit our <code>profile/friends.hbs</code> template with something like this: </p>
+
+<p><code>&lt;p&gt; My best friend's name is \{{model.name}}. &lt;/p&gt;</code></p>
+
+<p>what do you think will happen?</p>
+
+<p>Well, you’re going to look like you have an imaginary friend. We don’t see any errors (as we talked about earlier, null and undefined properties in your template’s will fail gracefully), but we’re not seeing a name either.</p>
+
+<blockquote>
+  <p><strong>QUESTION: Why isn’t \{{model.name}} returning anything in our friends template? Don’t our profiles still have a name attribute?</strong> <br>
+  ANSWER: Now that we’re loading five records into our model, our model contains a <strong>collection</strong> instead of just one object. Each object in the the collection has a name, but the collection itself does not.</p>
+</blockquote>
+
+<p>Since we need to access each <em>element</em> in our model instead of calling properties on the model directly, we’ll need a mechanism to loop through our objects. Luckily, there is a handlebars \{{each}} component that helps us do this. The syntax is:</p>
+
+
+
+<pre class="prettyprint"><code class=" hljs handlebars"><span class="xml"><span class="hljs-comment">&lt;!--templates/profile/friends.hbs--&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">ul</span>&gt;</span>
+  </span><span class="hljs-expression">\{{<span class="hljs-begin-block">#<span class="hljs-keyword">each</span> model as </span>|<span class="hljs-variable">friend</span>|}}</span><span class="xml">
+    <span class="hljs-tag">&lt;<span class="hljs-title">li</span>&gt;</span></span><span class="hljs-expression">\{{<span class="hljs-variable">friend.name</span>}}</span><span class="xml"> likes </span><span class="hljs-expression">\{{<span class="hljs-variable">friend.favoriteColor</span>}}</span><span class="xml">.<span class="hljs-tag">&lt;/<span class="hljs-title">li</span>&gt;</span>
+  </span><span class="hljs-expression">\{{<span class="hljs-end-block">/<span class="hljs-keyword">each</span></span>}}</span><span class="xml">
+<span class="hljs-tag">&lt;/<span class="hljs-title">ul</span>&gt;</span>   </span></code></pre>
+
+<p>Whether you have much experience working with loops or not, the syntax makes our intentions simple to decipher.</p>
+
+<blockquote>
+  <p><strong>QUESTION: ELI5 (Explain Like I’m Five) -  what’s happening in the code above?</strong></p>
+
+  <p>ANSWER: For each of the objects in the model (we’ll call each a friend), we want to print out the name and the favorite color of that friend.</p>
+</blockquote>
+
+<p><em>Troubleshooting: Not working? Note the pipes around the name we’re giving our loop element: <code>|friend|</code>. If you don’t include the pipes, your object won’t be available inside the loop.</em></p>
+
+<p>Now we can see our whole squad!</p>
+
+<blockquote>
+  <p><strong>ACTIVITY: Create a Link from your Profile to Your Friends Page</strong></p>
+
+  <p>We can see our squad when we navigate directly to “profile/friends<code>and get to our</code>profile.friends“` route, but it would be easier if there were a link on our profile to view our friends! See if you can implement a link!</p>
+
+  <p><strong>Extensions</strong> <br>
+  2. Can you see the link once you’ve navigated to ‘profile.friends’? If you can, try moving the link to a template that won’t display the link on that page. <br>
+  3. On ‘profile.friends’ template,  add a link back to your ‘profile’ route.</p>
+</blockquote>
+
+<p><strong>Sample Implementation:</strong></p>
+
+
+
+<pre class="prettyprint"><code class="language-html hljs "><span class="hljs-comment">&lt;!-- profile/index.hbs --&gt;</span>
+
+\{{#link-to 'profile.friends'}}
+  View Squad
+\{{/link-to}}
+
+<span class="hljs-comment">&lt;!-- friends/profile.hbs --&gt;</span>
+\{{#link-to 'profile'}}
+  Hide Squad
+\{{/link-to}}</code></pre>
+
+
+
+<h3 id="one-object-two-places">One Object, Two Places</h3>
+
+<p>When we’re on ‘profile.friends’ we still have access to our forms to update our profile. Since we’re also displayed as the first member of our own squad, what do you think will happen to our profile object on ‘profile.friends’ when we make a change?</p>
+
+<p>When we try it out, we notice that our entry on our friends list updates when we set a new attribute on the object! That’s awesome!</p>
+
+
+
+<h2 id="part-8">Part 8</h2>
+
+
+
+<h4 id="our-first-component">Our First Component</h4>
+
+<p>We’re displaying our squad, but where’s the pizazz? Our friends have more personality than some black Arial 12px text! What would really be cool is if we could use their favorite color to inform the color of their text, just like we do for our <code>&lt;h1&gt;</code>!</p>
+
+<p>We know we’ll need to bind our friends’ favorite color to the style attribute on our <code>&lt;li&gt;</code> tag, but if we do it directly:</p>
+
+<p><code>&lt;li style=\{{friend.favoriteColor}}&gt;\{{friend.name}}...&lt;/li&gt;</code></p>
+
+<p>We’re going to run into that same Cross-Scripting Vulnerability warning we were able to prevent when we used a computed property on our profile controller.</p>
+
+<p>We could try copy and pasting and modifying our  <code>colorStyle</code> computed property into our <code>profile.friends</code> controller, but we can immediately see that this computed property won’t work on a collection of objects - its made to work only on a controller that has <em>one</em> color attribute. </p>
+
+<p>But we need to reuse this code for each of our friends, for our profile H1, and who knows how many other purposes in the future! In Ember, whenever we start talking about potentially reusable code we should start to consider whether a component would be a good fit. </p>
+
+<p>Components look very similar to the \{{input}} and \{{link-to}} helpers we’ve already used. A component has a name and takes an arbitrary number of arguments, then uses the arguments of the data you pass to manipulate or display those attributes. </p>
+
+<p>Just like routes, controllers, and templates, we can generate components using Ember-CLI generators:</p>
+
+<p><code>ember g component color-changer</code></p>
+
+<p>The name of the component should describe what the component does, and ours is going to help us change the font colors of html elements. </p>
+
+<p>When you run the generator, you’ll notice that your app now has a file in the components folder called <code>color-changer.js</code>, and your templates/components folder has a file named <code>color-changer.hbs</code> </p>
+
+<p>Like other templates we’ve generated, our <code>color-changer.hbs</code> file includes just one line of code. But this time, it says <code>\{{yield}}}</code> instead of <code>\{{output}}</code>. <code>\{{yield}}</code> allows us to specify block of html that is sent into our component. </p>
+
+<p>If we think of \{{link-to}} as a component, in the following block, </p>
+
+
+
+<pre class="prettyprint"><code class=" hljs handlebars"><span class="xml"></span><span class="hljs-expression">\{{<span class="hljs-begin-block">#link-to </span>'<span class="hljs-variable">profile.friends</span>' <span class="hljs-variable">friend.id</span>}}</span><span class="xml">
+    Go To </span><span class="hljs-expression">\{{<span class="hljs-variable">friend.name</span>}}</span><span class="xml">'s Page
+</span><span class="hljs-expression">\{{<span class="hljs-end-block">/link-to</span>}}</span><span class="xml"></span></code></pre>
+
+<p>we might say that link-to is an Ember component that takes at least two ordered params (we can’t tell from this code whether it might take additional parameters that aren’t used) and that any code you yield to the component will become an <code>&lt;a&gt;</code> link tag. Somewhere, behind the scenes \{{link-to}} is using the parameters passed in (here, the route and an object to attempt to create a valid <code>href</code> attribute for our <code>&lt;a&gt;</code> tag, to create rendered html that might look something like this.</p>
+
+<p><code>&lt;a href="localhost:4200/profile/friends/1"&gt;Go To Your Friend's Name's Page &lt;/a&gt;</code></p>
+
+<p>When we’re thinking about creating our own component that will change the color of any html element, what kind of data do you think we’d need to pass into that component?</p>
+
+<p>We definitely need to send a color, and we probably need to send the html tag name (<code>&lt;p&gt;</code>, <code>&lt;a&gt;</code>, <code>&lt;h1&gt;</code>, etc), too, if we want our tag to work for both of our implementations.</p>
+
+<p>We can start by wrapping our current implementation into our component:</p>
+
+
+
+<pre class="prettyprint"><code class=" hljs handlebars"><span class="xml"></span><span class="hljs-expression">\{{<span class="hljs-begin-block">#color-changer</span>}}</span><span class="xml">
+    <span class="hljs-tag">&lt;<span class="hljs-title">h1</span> <span class="hljs-attribute">style</span>=</span></span><span class="hljs-expression">\{{<span class="hljs-variable">colorStyle</span>}}</span><span class="xml"><span class="hljs-tag">&gt;</span>Welcome To Ember, </span><span class="hljs-expression">\{{<span class="hljs-variable">model.name</span>}}</span><span class="xml">!<span class="hljs-tag">&lt;/<span class="hljs-title">h1</span>&gt;</span>
+</span><span class="hljs-expression">\{{<span class="hljs-end-block">/color-changer</span>}}</span><span class="xml"></span></code></pre>
+
+<p>When we try out our inputs, we notice that nothing breaks! </p>
+
+<p>Now let’s see what happens if we move the colorStyle computed property from our controller into our component:</p>
+
+
+
+<pre class="prettyprint"><code class=" hljs actionscript"><span class="hljs-preprocessor"><span class="hljs-keyword">import</span> Ember from 'ember';</span>
+
+export <span class="hljs-keyword">default</span> Ember.Component.extend({
+  colorStyle: Ember.computed(<span class="hljs-string">'color'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span> {</span>
+    <span class="hljs-keyword">var</span> color = CSS.escape(<span class="hljs-keyword">this</span>.<span class="hljs-keyword">get</span>(<span class="hljs-string">'color'</span>));
+    <span class="hljs-keyword">return</span> Ember.String.htmlSafe(<span class="hljs-string">"color: "</span> + color);
+  }),
+});</code></pre>
+
+<p>Hmm… our model continues to update, but we’re not seeing any color changing. </p>
+
+<p>That’s because our component is looking for a ‘color’ property so that it can make its colorStyle computation, but we’re not giving it anything! Let’s try sending it an argument so that we can grab the color.</p>
+
+<blockquote>
+  <p><strong>QUESTION: What attribute should we send to our model to give it the color?</strong> <br>
+  Answer: While it’s tempting to send the  component our entire profile object and grab the color attribute from the profile, (we could even access the name property to create our message!),  we need to think about the goal of our \{{color-changer}} component. Will we only ever be changing colors based on a profile’s favorite color? Or might we want to - for example - allow someone to change the color of their background by entering a color?  So, instead, let’s simply limit our component’s knowledge to a color-related property (in this case, model.favoriteColor).</p>
+</blockquote>
+
+
+
+<pre class="prettyprint"><code class=" hljs handlebars"><span class="xml"></span><span class="hljs-expression">\{{<span class="hljs-begin-block">#color-changer color</span>=<span class="hljs-variable">model.favoriteColor</span>}}</span><span class="xml">
+    <span class="hljs-tag">&lt;<span class="hljs-title">h1</span> <span class="hljs-attribute">style</span>=</span></span><span class="hljs-expression">\{{<span class="hljs-variable">colorStyle</span>}}</span><span class="xml"><span class="hljs-tag">&gt;</span>Welcome To Ember, </span><span class="hljs-expression">\{{<span class="hljs-variable">model.name</span>}}</span><span class="xml">!<span class="hljs-tag">&lt;/<span class="hljs-title">h1</span>&gt;</span>
+</span><span class="hljs-expression">\{{<span class="hljs-end-block">/color-changer</span>}}</span><span class="xml"></span></code></pre>
+
+<p>Hmm… still doesnt work. We’ve got a color property on the controller, and we’re binding the \{{colorStyle}} property to our h1, so what’s going on here?</p>
+
+<p>The problem is that the context of the code inside of our <code>\{{yield}}</code>ed block is still our controller. That means that the code inside of our block is looking to our controller to tell it about who it is and what properties and methods it should respond to. </p>
+
+<p>To demonstrate what I mean here, let’s go ahead and add a property to our component named whatever you want, containing a string:</p>
+
+
+
+<pre class="prettyprint"><code class=" hljs actionscript"><span class="hljs-preprocessor"><span class="hljs-keyword">import</span> Ember from 'ember';</span>
+
+export <span class="hljs-keyword">default</span> Ember.Component.extend({
+  whateverYouWant: <span class="hljs-string">'whateverYouNeed'</span>,
+  colorStyle: Ember.computed(<span class="hljs-string">'color'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span> {</span>
+    <span class="hljs-keyword">var</span> color = CSS.escape(<span class="hljs-keyword">this</span>.<span class="hljs-keyword">get</span>(<span class="hljs-string">'color'</span>));
+    <span class="hljs-keyword">return</span> Ember.String.htmlSafe(<span class="hljs-string">"color: "</span> + color);
+  }),
+});</code></pre>
+
+<p>When we swap out our <code>\{{model.name}}</code> property for <code>\{{whateverYouWant}}</code> you might expect it to show “Welcome to Ember, whateverYouNeed!” But it doesn’t! </p>
+
+<p>That’s because the yielded code belongs to it’s existing context. While it can be affected by component elements that wrap it, it does not have access to the component’s actions and properties.</p>
+
+<p>That means that leaving <code>\{{colorStyle}}</code> in our yielded block is a no-go: our color won’t change this way. </p>
+
+<p>It’s clear that we need to call <code>\{{colorStyle}}</code> inside of our component’s template if we’re going to get this to work. We can try: </p>
+
+
+
+<pre class="prettyprint"><code class=" hljs handlebars"><span class="xml"><span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">style</span>=</span></span><span class="hljs-expression">\{{<span class="hljs-variable">colorStyle</span>}}</span><span class="xml"><span class="hljs-tag">&gt;</span>
+    </span><span class="hljs-expression">\{{<span class="hljs-variable"><span class="hljs-keyword">yield</span></span>}}</span><span class="xml">
+<span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span></span></code></pre>
+
+<p>to wrap our <code>\{{yield}}</code>ed content in a div with our style attributes, but that’s a little messy. If we use the console to inspect our element, we notice that our h1 is wrapped in the div that defines our color style, and then wrapped in another div created by the component. Messy, messy, messy!!!</p>
+
+<p>All is not lost - we can fix this issue by learning a little bit more about some of the properties we can pass to a component. </p>
+
+<p>One property that can help us here is <code>tagName</code>. By default, the tagName is <code>div</code>, but we can change this to take any tagName. Let’s try it.</p>
+
+
+
+<pre class="prettyprint"><code class=" hljs actionscript"><span class="hljs-preprocessor"><span class="hljs-keyword">import</span> Ember from 'ember';</span>
+
+export <span class="hljs-keyword">default</span> Ember.Component.extend({
+  tagName: <span class="hljs-string">'h1'</span>,
+  colorStyle: Ember.computed(<span class="hljs-string">'color'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span> {</span>
+    <span class="hljs-keyword">var</span> color = CSS.escape(<span class="hljs-keyword">this</span>.<span class="hljs-keyword">get</span>(<span class="hljs-string">'color'</span>));
+    <span class="hljs-keyword">return</span> Ember.String.htmlSafe(<span class="hljs-string">"color: "</span> + color);
+  }),
+});</code></pre>
+
+<p>Now when we take a look at our header: Wow! That’s big. When we inspect the dom element, we can see that we now see that it looks something like this:</p>
+
+
+
+<pre class="prettyprint"><code class=" hljs xml"><span class="hljs-tag">&lt;<span class="hljs-title">h1</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">div</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-title">h1</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-title">h1</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-title">h1</span>&gt;</span>   </code></pre>
+
+<p>Apparently, nesting a div with an <code>&lt;h1&gt;</code> and then putting another <code>&lt;h1&gt;</code> within that div creates a super <code>&lt;h1&gt;</code>. Good to know! But it can also indicate why we need to be really careful about how we nest our DOM elements in components - html and css are difficult enough to debug without creating Super <code>&lt;h1&gt;</code>s that throw off our styleguide!</p>
+
+<p>Now that our entire component element is an <code>&lt;h1&gt;</code>, we can remove those extra html elements from our <code>&lt;div&gt;</code> and from our <code>\{{yield}}</code>ed block. </p>
+
+
+
+<pre class="prettyprint"><code class=" hljs handlebars"><span class="xml"><span class="hljs-comment">&lt;!-- templates/profile.hbs --&gt;</span>
+
+</span><span class="hljs-expression">\{{<span class="hljs-begin-block">#color-changer color</span>=<span class="hljs-variable">model.favoriteColor</span>}}</span><span class="xml">
+  Welcome To Ember, </span><span class="hljs-expression">\{{<span class="hljs-variable">model.name</span>}}</span><span class="xml">!
+</span><span class="hljs-expression">\{{<span class="hljs-end-block">/color-changer</span>}}</span><span class="xml">
+
+<span class="hljs-comment">&lt;!-- templates/components/color-changer.hbs --&gt;</span>
+
+</span><span class="hljs-expression">\{{<span class="hljs-variable"><span class="hljs-keyword">yield</span></span>}}</span><span class="xml">
+
+</span></code></pre>
+
+
+
+<pre class="prettyprint"><code class="language-js hljs "><span class="hljs-comment">//components/color-changer.js</span>
+
+import Ember from <span class="hljs-string">'ember'</span>;
+
+export <span class="hljs-keyword">default</span> Ember.Component.extend({
+  tagName: <span class="hljs-string">'h1'</span>,
+  colorStyle: Ember.computed(<span class="hljs-string">'color'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span> {</span>
+    <span class="hljs-keyword">var</span> color = CSS.escape(<span class="hljs-keyword">this</span>.get(<span class="hljs-string">'color'</span>));
+    <span class="hljs-keyword">return</span> Ember.String.htmlSafe(<span class="hljs-string">"color: "</span> + color);
+  })
+});</code></pre>
+
+<p>Now when we inspect the DOM, we can see that our component renders just one  <code>&lt;h1&gt;</code> - nothing nested - and, as a result, we no longer have a Super <code>&lt;h1&gt;</code>. But we also are back to a boring, non-color-changing <code>&lt;h1&gt;</code>. And when your component is named <code>\{{color-changer}}</code>, you can’t exactly deem that a success.</p>
+
+<p>Luckily, there is another property that we can define on our component called <code>attributeBindings</code>. This property expects an array with properties bound to a html attribute. In our case, we want to bind the html <code>style</code> attribute to our <code>colorStyle</code> computed property, so we add this to our component:</p>
+
+
+
+<pre class="prettyprint"><code class=" hljs r">import Ember from <span class="hljs-string">'ember'</span>;
+
+export default Ember.Component.extend({
+  <span class="hljs-keyword">...</span>
+  attributeBindings: [<span class="hljs-string">'colorStyle:color'</span>],
+  <span class="hljs-keyword">...</span>
+});</code></pre>
+
+<p>And now we’re back in business! When we inspect the html rendered by our component in the DOM, we see something like:</p>
+
+
+
+<pre class="prettyprint"><code class="language-html hljs "><span class="hljs-tag">&lt;<span class="hljs-title">h1</span> <span class="hljs-attribute">id</span>=<span class="hljs-value">"ember445"</span> <span class="hljs-attribute">style</span>=<span class="hljs-value">"color: red"</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"ember-view"</span>&gt;</span>  Welcome To Ember, Chandler!<span class="hljs-tag">&lt;/<span class="hljs-title">h1</span>&gt;</span></code></pre>
+
+<p>We can see that there’s a style attribute on our html element, and it contains an escaped string! That’s exactly what we want.</p>
+
+<p>So now let’s try reusing our component for our friends:</p>
+
+
+
+<pre class="prettyprint"><code class="language-html hljs "><span class="hljs-comment">&lt;!-- templates/profile/friends.hbs --&gt;</span>
+
+\{{#each model as |friend|}}
+  \{{#color-changer color=friend.favoriteColor}}
+    \{{friend.name}}'s favorite color is \{{friend.favoriteColor}}.
+  \{{/color-changer}}
+\{{/each}}</code></pre>
+
+<p>Nice! Our friends’ descriptions are now displaying using their favoriteColor! But… it is a little <em>big</em>, don’t you think? We don’t really need each of our friends’ descriptions to display as <code>&lt;h1&gt;</code>s! </p>
+
+<p>Instead, let’s pass in a custom <code>tagName</code> to our component:</p>
+
+
+
+<pre class="prettyprint"><code class="language-html hljs "><span class="hljs-comment">&lt;!-- templates/profile/friends.hbs --&gt;</span>
+
+\{{#each model as |friend|}}
+  \{{#color-changer tagName='p' color=friend.favoriteColor}}
+    \{{friend.name}}'s favorite color is \{{friend.favoriteColor}}.
+  \{{/color-changer}}
+\{{/each}}</code></pre>
+
+<p>Nice! Now we’ve got colored <code>&lt;p&gt;</code> tags indicating our friends’ favorite colors. That’s because, even if there is a default set on a property in our component, we can change it by passing that property in as an argument on our component declaration.</p>
+
+<p>Now, for the sake of example, let’s try implementing our component completely outside the context of our profiles and friends. </p>
+
+
+
+<pre class="prettyprint"><code class="language-html hljs "><span class="hljs-comment">&lt;!-- templates/profile/friends.hbs --&gt;</span>
+\{{#color-changer tagName='h3' color='brown'}}
+    Here is your squad:
+\{{/color-changer}}  </code></pre>
+
+<p>Our color changer component can take any tag name and any color and change the color of our text! Awesome!</p>
+
+
+
+<h2 id="part-9">Part 9</h2>
+
+
+
+<h3 id="editing-the-squad">Editing the Squad</h3>
+
+<p>Friends change. Personalities evolve. Life happens. What if we want to change a member of our squad? We can do this by creating a nested edit route for our friends.</p>
+
+<p><code>ember g route profile/friends/edit</code></p>
+
+<p>As we’ve come to expect by now, creating a nested route on the command line: <br>
+    1. Adds a new nested route to our router. This time, edit is nested below friends. <br>
+    2. Adds new edit.hbs and edit.js templates nested below profile in our routes and tempaltes folders.</p>
+
+<p>If we add something to our profile/friends/edit.hbs template, maybe:</p>
+
+<p><code>&lt;h4&gt; This is where we edit our friends &lt;/h4&gt;</code></p>
+
+<p>and navigate to <code>localhost:4200/profile/friends/edit</code>, </p>
+
+<p>we see exactly what we expect to! Our profile template is rendered into the outlet on our application template, friends is rendered into the outlet on profile, and edit is rendered into the outlet in friends.</p>
+
+<p>Now, we need the ability to have our edit template load a specific friend so that we can edit them.</p>
+
+<p>Let’s add a link to the edit page on each of our friends:</p>
+
+
+
+<pre class="prettyprint"><code class="language-html hljs "><span class="hljs-comment">&lt;!-- templates/profile/friends.hbs --&gt;</span>
+
+\{{#each model as |friend|}}
+  \{{#color-changer tagName='p' color=friend.favoriteColor}}
+    \{{friend.name}}'s favorite color is \{{friend.favoriteColor}}.
+  \{{/color-changer}}
+  \{{#link-to 'profile.friends.edit' friend}}
+    Edit
+  \{{/link-to}}
+\{{/each}}</code></pre>
+
+<p>When we reload our page at ‘profile.friends’, we can see that we’ve got an error in the console:</p>
+
+<p><code>Uncaught Error: More context objects were passed than there are dynamic segments for the route: profile.friends.edit</code></p>
+
+<p><code>friend</code> is the context object that we’re passing into our \{{link-to}} because we want to see the edit page for that specific friend. But we haven’t told our route how to deal with this context object because we haven’t defined a “dynamic segment” for our route. A dynamic segment maps to an attribute of the object we’re trying to load on that route. We can define one on our route like this:</p>
+
+
+
+<pre class="prettyprint"><code class=" hljs javascript">Router.map(<span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span> {</span>
+  <span class="hljs-keyword">this</span>.route(<span class="hljs-string">'profile'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span> {</span>
+    <span class="hljs-keyword">this</span>.route(<span class="hljs-string">'friends'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span> {</span>
+      <span class="hljs-keyword">this</span>.route(<span class="hljs-string">'edit'</span>, { path: <span class="hljs-string">'/edit/:friend_id'</span> });
+    });
+  });
+});</code></pre>
+
+<p>When we pass an object containing a path property as the second argument in route, we’re overriding the default behavior of our route with a custom path.</p>
+
+<p>Prefacing an element in our path with <code>:</code> means that it’s a <code>dynamic route</code> - that we’ll be looking to something in this segment to define which data should be loaded on the route.</p>
+
+<blockquote>
+  <p><strong>Sidenote: More on custom paths</strong> <br>
+  We can do this on any of our routes, actually. For example, if <em>remove our custom path on the ‘edit’ route</em> (that causes an error that we’ll address in a moment), then we change:</p>
+
+  <p><code>this.route('profile', function() {</code>…</p>
+
+  <p>to </p>
+
+  <p><code>this.route('profile', { path: '/my_profile' }, function() {</code>…</p>
+
+  <p>Your <code>Router.map()</code> should now look like this:</p>
+</blockquote>
+
+
+
+<pre class="prettyprint"><code class=" hljs javascript">    Router.map(<span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span> {</span>
+      <span class="hljs-keyword">this</span>.route(<span class="hljs-string">'profile'</span>, { path: <span class="hljs-string">'/my_profile'</span> }, <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span> {</span>
+        <span class="hljs-keyword">this</span>.route(<span class="hljs-string">'friends'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span> {</span>
+          <span class="hljs-keyword">this</span>.route(<span class="hljs-string">'edit'</span>);
+        });
+      });
+    });</code></pre>
+
+<blockquote>
+  <p>and we’ll see that our url <code>localhost:4200/profile/friends</code> no longer renders our template, but <code>localhost:4200/my_profile/friends</code> does! Our route is still named ‘profile’, so all of our links will continue to work properly.</p>
+
+  <p>(You can remove the custom path for your profile route or leave it – just keep in mind that the rest of this tutorial assumes that you remove it, and we’ll continue to use /profile in the rest of our examples.)</p>
+</blockquote>
+
+<p>This dynamic segment indicates that we’re looking for a friend id to load the appropriate friend into our edit route. When we navigate to:</p>
+
+<p><code>localhost:4200/profile/friends/edit</code></p>
+
+<p>we notice that we have an error in the console:</p>
+
+<p><code>Uncaught UnrecognizedURLError: /profile/friends/edit</code></p>
+
+<p>That’s because plain old <code>profile/friends/edit</code> is no longer a defined route. We now expect a route that passes an id:</p>
+
+<p><code>localhost:4200/profile/friends/edit/2</code></p>
+
+<p>Now we’ve gotten rid of our UnrecognizedURLError, but produced a new one:</p>
+
+<p><code>Error while processing route: profile.friends.edit No model was found for 'friend' Error: No model was found for 'friend'</code></p>
+
+<p>We’re encountering this error because Ember’s trying to help us out, but we’re not helping Ember.</p>
+
+<p>When we define a <strong>dynamic segment</strong> on a route, Ember attempts to load the appropriate model based on the name of that segment. When our __dynamic segment is named <code>:friend_id</code>, Ember attempts to look for an instance of a model named <code>friend</code> with the id that we’ve passed in. Without adding any data to our <code>edit</code> route file, Ember’s internals thinks that we want our <code>model()</code> method to look like this:</p>
+
+
+
+<pre class="prettyprint"><code class=" hljs coffeescript"><span class="hljs-reserved">import</span> Ember from <span class="hljs-string">'ember'</span>;
+
+<span class="hljs-reserved">export</span> <span class="hljs-reserved">default</span> Ember.Route.extend({
+  model(){
+    <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>.store.findRecord(<span class="hljs-string">'friend'</span>, :friend_id);
+  }
+});</code></pre>
+
+<p>But we don’t <em>have</em> a model named friend, so we’re getting an error.</p>
+
+<p>There are a couple ways to solve this problem. We could override the default behavior of our Ember Route to look up a profile record with our :friend_id like this:</p>
+
+
+
+<pre class="prettyprint"><code class=" hljs coffeescript"><span class="hljs-reserved">import</span> Ember from <span class="hljs-string">'ember'</span>;
+
+<span class="hljs-reserved">export</span> <span class="hljs-reserved">default</span> Ember.Route.extend({
+  model(){
+    <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>.store.findRecord(<span class="hljs-string">'profile'</span>, :friend_id);
+  }
+});</code></pre>
+
+<p>OR, we can use the Ember.js dynamic segment conventions to save us a couple lines of code by changing our :friend_id to :profile_id</p>
+
+<p><code>this.route('edit', { path: '/edit/:profile_id' }</code>,</p>
+
+<p>indicating to Ember that we need to load the correct profile object based on the id that we pass.</p>
+
+<blockquote>
+  <p><strong>Sidenote: The power of the Ember Router</strong> <br>
+  In this example, we see multiple examples of the power of the Ember router. We see how easy it is to write fewer lines of boiler plate code by following Ember conventions for dynamic segments. </p>
+
+  <p>We also see how simple it is to override those conventions for the specific needs of our application. For example, in Ember it is much more common to see a pattern like this in our router:</p>
+
+  <pre class="prettyprint"><code class=" hljs javascript">Router.map(<span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span> {</span>
+  <span class="hljs-keyword">this</span>.route(<span class="hljs-string">'profile'</span>, { path: <span class="hljs-string">'/my_profile'</span> }, <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span> {</span>
+    <span class="hljs-keyword">this</span>.route(<span class="hljs-string">'friends'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span> {</span>
+      <span class="hljs-keyword">this</span>.route(<span class="hljs-string">'friend'</span>, { path: <span class="hljs-string">'friends/:profile_id'</span> }, <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span> {</span>
+      <span class="hljs-keyword">this</span>.route(<span class="hljs-string">'edit'</span>);
+      }
+    });
+  });
+});</code></pre>
+
+  <p>This would change our file structure slightly, and also edit our urls to look something like this: <br>
+  <code>localhost:4200/profile/friends/2/edit</code></p>
+
+  <p>The Ember router is flexible enough that we can easily accomplish similar goals while still defining an application-specific routing system. We leverage convention when it works, and break it when it’s necessary.</p>
+</blockquote>
+
+<p>Now let’s see if we’ve actually got access to our profile in the edit route. If it’s working as we expect, we should be able to access our profile as the <code>\{{model}}</code> in our template:</p>
+
+
+
+<pre class="prettyprint"><code class=" hljs handlebars"><span class="xml"><span class="hljs-comment">&lt;!-- templates/profile/friends/edit --&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">h4</span>&gt;</span>Here is where we will edit a friend:<span class="hljs-tag">&lt;/<span class="hljs-title">h4</span>&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-title">p</span>&gt;</span>Current Name: </span><span class="hljs-expression">\{{<span class="hljs-variable">model.name</span>}}</span><span class="xml"><span class="hljs-tag">&lt;/<span class="hljs-title">p</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">p</span>&gt;</span>Current Color: </span><span class="hljs-expression">\{{<span class="hljs-variable">model.favoriteColor</span>}}</span><span class="xml"><span class="hljs-tag">&lt;/<span class="hljs-title">p</span>&gt;</span>
+</span><span class="hljs-expression">\{{<span class="hljs-variable"><span class="hljs-keyword">outlet</span></span>}}</span><span class="xml"></span></code></pre>
+
+<p>Success!</p>
+
+<p>Now we can click on each of our friends’ edit buttons, and we’ll see their information!</p>
+
+<blockquote>
+  <p><strong>STLYE BREAK: Let’s make it look pretty!</strong></p>
+
+  <p>Before we go any farther, let’s make our app look a little bit prettier. If you’re using the css file from LINK TO CSS FILE HERE, simply change your friends.hbs route to look like this:</p>
+</blockquote>
+
+
+
+<pre class="prettyprint"><code class=" hljs handlebars"><span class="xml"><span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"squad"</span>&gt;</span>
+  </span><span class="hljs-expression">\{{<span class="hljs-begin-block">#link-to </span>'<span class="hljs-variable">profile</span>'}}</span><span class="xml">
+    Hide Squad
+  </span><span class="hljs-expression">\{{<span class="hljs-end-block">/link-to</span>}}</span><span class="xml">
+
+  </span><span class="hljs-expression">\{{<span class="hljs-begin-block">#color-changer tagName</span>='<span class="hljs-variable">h</span>3' <span class="hljs-variable">color</span>='<span class="hljs-variable">brown</span>'}}</span><span class="xml">
+    Here is your squad:
+  </span><span class="hljs-expression">\{{<span class="hljs-end-block">/color-changer</span>}}</span><span class="xml">
+
+  <span class="hljs-tag">&lt;<span class="hljs-title">ul</span>&gt;</span>
+    </span><span class="hljs-expression">\{{<span class="hljs-begin-block">#<span class="hljs-keyword">each</span> model as </span>|<span class="hljs-variable">friend</span>|}}</span><span class="xml">
+      </span><span class="hljs-expression">\{{<span class="hljs-begin-block">#color-changer tagName</span>='<span class="hljs-variable">li</span>' <span class="hljs-variable">color</span>=<span class="hljs-variable">friend.favoriteColor</span>}}</span><span class="xml">
+        </span><span class="hljs-expression">\{{<span class="hljs-variable">friend.name</span>}}</span><span class="xml">'s favorite color is </span><span class="hljs-expression">\{{<span class="hljs-variable">friend.favoriteColor</span>}}</span><span class="xml">.
+        </span><span class="hljs-expression">\{{<span class="hljs-begin-block">#link-to </span>'<span class="hljs-variable">profile.friends.edit</span>' <span class="hljs-variable">friend</span>}}</span><span class="xml">
+          Edit
+        </span><span class="hljs-expression">\{{<span class="hljs-end-block">/link-to</span>}}</span><span class="xml">
+      </span><span class="hljs-expression">\{{<span class="hljs-end-block">/color-changer</span>}}</span><span class="xml">
+
+    </span><span class="hljs-expression">\{{<span class="hljs-end-block">/<span class="hljs-keyword">each</span></span>}}</span><span class="xml">
+  <span class="hljs-tag">&lt;/<span class="hljs-title">ul</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"squad-member"</span>&gt;</span>
+  </span><span class="hljs-expression">\{{<span class="hljs-variable"><span class="hljs-keyword">outlet</span></span>}}</span><span class="xml">
+<span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span></span></code></pre>
+
+<blockquote>
+  <p>(We’ve just wrapped our friend’s template code in a class called squad and our outlet in a class called div. Instant beauty!)</p>
+</blockquote>
+
+<p>-</p>
+
+<blockquote>
+  <p><strong>ACTIVITY: Change the font color of our friends’ favorite color declaration on the edit page</strong> <br>
+  Using what we’ve learned so far, change the font color of one or more of the elements on our profile.friends.edit page.</p>
+</blockquote>
+
+
+
+<h2 id="part-10">Part 10</h2>
+
+
+
+<h3 id="editing-a-friend">Editing a Friend</h3>
+
+<p>While it’s nice to see that we can view our friend’s information, we did call our route ‘edit’, indicating that we’d be able to <em>change</em> some of their information.</p>
+
+<p>Since we don’t want to be flaky and just change our friends’ names, let’s keep it simple and simply add the functionality to change their favorite color: that’ll give us enough to work with.</p>
+
+<p>There’s another spot in our app where we’re already changing a profile’s color, so I wonder if we can start with that. Let’s copy and paste our setColor form from our profile template onto our profile/friends/edit template. With a little tweaking, it works just as well for our profile as it does for our friends’</p>
+
+
+
+<pre class="prettyprint"><code class="language-html hljs "><span class="hljs-comment">&lt;!-- templates/profile/friends/edit --&gt;</span>
+...
+<span class="hljs-tag">&lt;<span class="hljs-title">form</span> \{{<span class="hljs-attribute">action</span> "<span class="hljs-attribute">setColor</span>" <span class="hljs-attribute">newColor</span> <span class="hljs-attribute">on</span>=<span class="hljs-value">"submit"</span><span class="hljs-value">}}</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-title">label</span> <span class="hljs-attribute">for</span>=<span class="hljs-value">"new-color"</span>&gt;</span>What's \{{model.name}}'s favorite color?<span class="hljs-tag">&lt;/<span class="hljs-title">label</span>&gt;</span>
+  \{{input id="new-color" value=newColor}}
+  <span class="hljs-tag">&lt;<span class="hljs-title">button</span> <span class="hljs-attribute">type</span>=<span class="hljs-value">"submit"</span>&gt;</span>Submit<span class="hljs-tag">&lt;/<span class="hljs-title">button</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-title">form</span>&gt;</span>
+...</code></pre>
+
+<p>Our input looks really nice now, but it’s not exactly functional. In fact, we see this error:</p>
+
+<p><code>Uncaught Error: Nothing handled the action 'setColor'. If you did handle the action, this error can be caused by returning true from an action handler in a controller, causing the action to bubble.</code></p>
+
+<p>Let’s focus on just the first part of this error: ‘Nothing handled the action ‘setColor’.</p>
+
+<p>Of course! Our profile controller has an action named setColor, but our profile.friends.edit route doesn’t! We <em>could</em> create a new controller and copy and paste our setColor action into that file, but that’s starting to seem like a <em>lot</em> of duplicated code to achieve the same purpose. And anytime we start thinking about parts of our code that looks or acts similarly, our minds should start to wonder whether that code wouldn’t be better off in an Ember Component.</p>
+
+
+
+<h4 id="creating-a-new-input-component">Creating a new input component</h4>
+
+<p>Our <code>\{{color-changer}}</code> component was fairly simple, but this one will be a bit more complicated because we’re actually going to have to trigger some actions from within our component. So let’s get started.</p>
+
+<p>First, we need to generate our component. </p>
+
+<p>The only rule for creating component names are that they are at least two words, joined by a hypen, so a component name like ‘editor’ won’t suffice (you’ll see an error if you try). Instead, let’s call our component somthing like ‘submit-edit’:</p>
+
+<p><code>ember g component submit-edit</code></p>
+
+<p>Let’s start by moving our form code into our component:</p>
+
+
+
+<pre class="prettyprint"><code class="language-html hljs "><span class="hljs-comment">&lt;!-- templates/components/submit-edit --&gt;</span>
+
+ <span class="hljs-tag">&lt;<span class="hljs-title">form</span> \{{<span class="hljs-attribute">action</span> "<span class="hljs-attribute">setColor</span>" <span class="hljs-attribute">newColor</span> <span class="hljs-attribute">on</span>=<span class="hljs-value">"submit"</span><span class="hljs-value">}}</span>&gt;</span>
+   <span class="hljs-tag">&lt;<span class="hljs-title">label</span> <span class="hljs-attribute">for</span>=<span class="hljs-value">"new-color"</span>&gt;</span>Favorite color:<span class="hljs-tag">&lt;/<span class="hljs-title">label</span>&gt;</span>
+   \{{input id="new-color" value=newColor}}
+   <span class="hljs-tag">&lt;<span class="hljs-title">button</span> <span class="hljs-attribute">type</span>=<span class="hljs-value">"submit"</span>&gt;</span>Submit<span class="hljs-tag">&lt;/<span class="hljs-title">button</span>&gt;</span>
+ <span class="hljs-tag">&lt;/<span class="hljs-title">form</span>&gt;</span></code></pre>
+
+<p>and make just a couple of changes:</p>
+
+<ul>
+<li>To prevent some namespacing errors, we also want to remove the <code>id</code> from our <code>input</code> and the <code>for</code> tag from our <code>label</code>.</li>
+<li>We also want to change our <code>newColor</code> property to something more generic, like <code>newValue</code>.</li>
+<li>And let’s go ahead and change the name of our <code>"setColor"</code> action to <code>setValue</code> code.</li>
+</ul>
+
+<p>Your component should end up looking like this:</p>
+
+
+
+<pre class="prettyprint"><code class="language-html hljs "><span class="hljs-comment">&lt;!-- templates/components/submit-edit --&gt;</span>
+
+ <span class="hljs-tag">&lt;<span class="hljs-title">form</span> \{{<span class="hljs-attribute">action</span> "<span class="hljs-attribute">setColor</span>" <span class="hljs-attribute">newValue</span> <span class="hljs-attribute">on</span>=<span class="hljs-value">"submit"</span><span class="hljs-value">}}</span>&gt;</span>
+   <span class="hljs-tag">&lt;<span class="hljs-title">label</span>&gt;</span>Favorite color:<span class="hljs-tag">&lt;/<span class="hljs-title">label</span>&gt;</span>
+   \{{input value=newValue}}
+   <span class="hljs-tag">&lt;<span class="hljs-title">button</span> <span class="hljs-attribute">type</span>=<span class="hljs-value">"submit"</span>&gt;</span>Submit<span class="hljs-tag">&lt;/<span class="hljs-title">button</span>&gt;</span>
+ <span class="hljs-tag">&lt;/<span class="hljs-title">form</span>&gt;</span></code></pre>
+
+<p>then adding our component to our template:</p>
+
+
+
+<pre class="prettyprint"><code class="language-html hljs ">\{{submit-edit}}</code></pre>
+
+<p>Since we’re not <code>\{{yield}}</code>ing a block of code into our component, we don’t need to open and close our component using the <code>\{{#component-name}}</code> <code>\{{/component-name}}</code> syntax.</p>
+
+
+
+<h4 id="passing-properties-to-the-component">Passing Properties to The Component</h4>
+
+<p>When our page reloads, we can see our input rendering but nothing works. That’s because we haven’t passed and properties to our component.</p>
+
+<p>To determine which attributes we need to send to our component, let’s think about the things that are common to each of our component instances. We know that we’re going to have:</p>
+
+<ul>
+<li>A custom label for our input</li>
+<li>A property that we want to change</li>
+<li>An object that we want to change that property on</li>
+<li>An action that allows us to persist our changed element on our object</li>
+</ul>
+
+<p>Let’s start simple by passing in our label text to our component instead of hardcoding it into the label element:</p>
+
+
+
+<pre class="prettyprint"><code class="language-html hljs "><span class="hljs-comment">&lt;!-- template/profiles/edit.hbs --&gt;</span>
+
+\{{#submit-edit labelText="New Favorite Color:"}}</code></pre>
+
+
+
+<pre class="prettyprint"><code class="language-html hljs "><span class="hljs-comment">&lt;!-- template/components/submit-edit.hbs --&gt;</span>
+
+...
+<span class="hljs-tag">&lt;<span class="hljs-title">label</span>&gt;</span>\{{labelText}}<span class="hljs-tag">&lt;/<span class="hljs-title">label</span>&gt;</span>
+...</code></pre>
+
+<p>Now we can pass some data about the object and the attribute we want to change. If we simply pass in the value of the attribute (like <code>\{{model.favoriteColor}}</code>), we’re simply passing a string to our template. But if we want the component to set the value of an attribute that we’ve changed onto an object, we need to do more than pass the currentValue as a string: we need to pass the object and the attribute that we’re changing.</p>
+
+
+
+<pre class="prettyprint"><code class="language-html hljs "><span class="hljs-comment">&lt;!-- template/profiles/edit.hbs --&gt;</span>
+
+\{{#submit-edit
+    labelText="New Favorite Color:"
+    object=model
+    property='favoriteColor'
+}}</code></pre>
+
+<p>To help other ourselves remember which attributes we can pass in to our component, its good practice to define default values for those attributes in our component file:</p>
+
+
+
+<pre class="prettyprint"><code class="language-js hljs "><span class="hljs-comment">// app/components/submit-edit.js</span>
+
+import Ember from <span class="hljs-string">'ember'</span>;
+
+export <span class="hljs-keyword">default</span> Ember.Component.extend({
+  item: <span class="hljs-literal">null</span>,
+  attribute: <span class="hljs-string">''</span>
+});</code></pre>
+
+<p>Here, we’re indicating that attribute should be a string and that object should be an object.</p>
+
+<p>Let’s also add a computed property that will show us the current value of our item’s attribute, which will be helpful for debugging:</p>
+
+
+
+<pre class="prettyprint"><code class="language-js hljs "><span class="hljs-comment">// app/components/submit-edit.js</span>
+
+import Ember from <span class="hljs-string">'ember'</span>;
+
+export <span class="hljs-keyword">default</span> Ember.Component.extend({
+  ...
+  currentValue: Ember.computed(<span class="hljs-string">'object'</span>, <span class="hljs-string">'property'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span> {</span>
+    <span class="hljs-keyword">let</span> object = <span class="hljs-keyword">this</span>.get(<span class="hljs-string">'object'</span>);
+    <span class="hljs-keyword">let</span> property = <span class="hljs-keyword">this</span>.get(<span class="hljs-string">'property'</span>);
+    <span class="hljs-keyword">return</span> object.get(property);
+});
+  ...
+})</code></pre>
+
+<blockquote>
+  <p><strong>ACTIVITY: More computed properties</strong> <br>
+  There are a couple more computed properties that might come in handy right about now. Can you implement them?</p>
+
+  <ul>
+  <li>Add a property that returns a string that we can pass in to get our currentValue. (HINT: The return value of the computed property should be a concatenated string of object and the property name.</li>
+  <li>Refactor the currentValue computed property to utilize the property you just created.</li>
+  </ul>
+</blockquote>
+
+<p>Answer: </p>
+
+
+
+<pre class="prettyprint"><code class="language-js hljs ">currentValue: Ember.computed(<span class="hljs-string">'object'</span>, <span class="hljs-string">'property'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span>{</span>
+  <span class="hljs-keyword">let</span> propertyString = <span class="hljs-keyword">this</span>.get(<span class="hljs-string">'objectProperty'</span>);
+  <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>.get(propertyString);
+}),
+objectProperty: Ember.computed(<span class="hljs-string">'property'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span>{</span>
+  <span class="hljs-keyword">return</span> `object.${<span class="hljs-keyword">this</span>.get(<span class="hljs-string">'property'</span>)}`
+})
+
+<span class="hljs-comment">// `object.${this.get('property')}` </span>
+<span class="hljs-comment">// is the equivalent of </span>
+<span class="hljs-comment">// 'object.' + this.get('property')</span>
+<span class="hljs-comment">// using string interpolation</span></code></pre>
+
+<p>If we pass in the model object as ‘object’ and ‘favoriteColor’ as the attribute, we’re effectively returning <code>this.get('model').get('favoriteColor')</code>, which displays the currentValue of the model’s favorite color.</p>
+
+<p>To see if our computedProperty does what we expect and to help us debug our component, let’s add <code>\{{currentValue}}</code> to our component template:</p>
+
+
+
+<pre class="prettyprint"><code class=" hljs handlebars"><span class="xml">
+<span class="hljs-comment">&lt;!-- templates/components/submit-edit.hbs --&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-title">p</span>&gt;</span>Current Value: </span><span class="hljs-expression">\{{<span class="hljs-variable">currentValue</span>}}</span><span class="xml"><span class="hljs-tag">&lt;/<span class="hljs-title">p</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">p</span>&gt;</span>New Value: </span><span class="hljs-expression">\{{<span class="hljs-variable">newValue</span>}}</span><span class="xml"><span class="hljs-tag">&lt;/<span class="hljs-title">p</span>&gt;</span></span></code></pre>
+
+<p>If the current value displays and the new value updates when you type into the input, you’re doing something right!</p>
+
+
+
+<h5 id="creating-a-component-action">Creating A Component Action</h5>
+
+<p>However, we’re not doing <em>everything</em> right quite yet. When we attempt to submit our changes, we see this error in the console:</p>
+
+<p><code>Uncaught Error: &lt;emberitas-intermediate@component:submit-edit::ember513&gt; had no action handler for: setValue</code></p>
+
+<p>Looks like we need to implement some actions on our component, doesn’t it?</p>
+
+<p>Components, like controllers and routes, can include action properties that define functions that will be executed as the user interacts with your component. As you continue to learn more about Ember, you can do a lot of reading to learn more about which types of actions should be handled by which types of objects, how action bubbling works, and more. </p>
+
+<p>For now, let’s start simple: we’ll just copy the set and save actions from our profile controller into our component so that we can save the change to our object.</p>
+
+
+
+<pre class="prettyprint"><code class=" hljs coffeescript">
+<span class="hljs-attribute">actions</span>: {
+  setColor(newColor){
+    <span class="hljs-keyword">this</span>.set(<span class="hljs-string">'model'</span>, newColor);
+    <span class="hljs-keyword">this</span>.send(<span class="hljs-string">'saveModel'</span>);
+  },
+  saveModel(){
+    <span class="hljs-keyword">this</span>.get<span class="hljs-function"><span class="hljs-params">(<span class="hljs-string">'model'</span>)</span>.<span class="hljs-title">save</span><span class="hljs-params">()</span>.<span class="hljs-title">then</span><span class="hljs-params">(() =&gt; {
+      <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'The model was saved'</span>);
+    })</span>.<span class="hljs-title">catch</span><span class="hljs-params">(() =&gt; {
+      <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'The model was not saved'</span>);
+    })</span>.<span class="hljs-title">finally</span><span class="hljs-params">(() =&gt; {
+      <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'Our model is '</span> + <span class="hljs-keyword">this</span>.get(<span class="hljs-string">'model.currentState.stateName'</span>));
+  })</span>;
+}
+}</span></code></pre>
+
+<p>Let’s just make a couple of changes to make these actions work with the naming conventions we’ve established for our component:</p>
+
+<ul>
+<li>Change all references of ‘model’ to ‘object’</li>
+<li>Change all references of ‘color’ to ‘value’</li>
+<li>Change our setter to set the value onto the object we passed into our component.</li>
+</ul>
+
+
+
+<pre class="prettyprint"><code class="language-js hljs ">actions: {
+  setValue(newValue){
+    <span class="hljs-keyword">let</span> objectProperty = <span class="hljs-keyword">this</span>.get(<span class="hljs-string">'objectProperty'</span>)
+    <span class="hljs-keyword">this</span>.set(objectProperty, newColor);
+    <span class="hljs-keyword">this</span>.send(<span class="hljs-string">'saveObject'</span>);
+  },
+  saveObject(){
+    <span class="hljs-keyword">this</span>.get(<span class="hljs-string">'object'</span>).save().then(() =&gt; {
+      console.log(<span class="hljs-string">'The object was saved'</span>);
+    }).catch(() =&gt; {
+      console.log(<span class="hljs-string">'The object was not saved'</span>);
+    }).finally(() =&gt; {
+      console.log(<span class="hljs-string">'Our object is '</span> + <span class="hljs-keyword">this</span>.get(<span class="hljs-string">'object.currentState.stateName'</span>));
+  });
+}
+}</code></pre>
+
+<blockquote>
+  <p>If you skipped the computed Property activity above where we defined the property named objectProperty, scroll back up to implement it before you continue!</p>
+</blockquote>
+
+<p>When we click the submit button: success! Well, success-ish. We do notice that our profile updates with a new favorite color, which is reflected on our friend’s entry on the friend index. However, we notice that the currentValue property on our component hasn’t changed.</p>
+
+<blockquote>
+  <p><strong>QUESTION: Given what we know about the dependent properties on computed properties, why do you think our currentValue property hasn’t changed?</strong> <br>
+  Answer: Our currentValue property is looking for a change of the property ‘object’ (which does not change here - it’s still the same profile object) or the property ‘property’ (which is still ‘favoriteColor’). Neither of these properties change, so our computed property doesn’t recompute.</p>
+</blockquote>
+
+<p>To fix this, we could pass in currentValue as an attribute on our component instead of computing it inside the component and that might be the simplest solution. </p>
+
+<p>Instead, let’s take a look at how we can use the <code>get()</code> and <code>set()</code> functions in our component to set a computed property to a new value.</p>
+
+
+
+<pre class="prettyprint"><code class="language-js hljs "><span class="hljs-comment">// app/components/submit-edit.js</span>
+
+import Ember from <span class="hljs-string">'ember'</span>;
+
+export <span class="hljs-keyword">default</span> Ember.Component.extend({
+  ...
+  currentValue: Ember.computed(<span class="hljs-string">'object'</span>, <span class="hljs-string">'property'</span>, {
+    get() {
+      <span class="hljs-keyword">let</span> objectProperty = <span class="hljs-keyword">this</span>.get(<span class="hljs-string">'objectProperty'</span>);
+      <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>.get(objectProperty);
+    },
+    set(key, value) {
+      <span class="hljs-keyword">return</span> value;
+    }
+});
+  ...
+  actions: {
+    setValue(newValue){
+      <span class="hljs-keyword">let</span> property = <span class="hljs-keyword">this</span>.get(<span class="hljs-string">'property'</span>);
+      <span class="hljs-keyword">this</span>.get(<span class="hljs-string">'object'</span>).set(property, newValue);
+      <span class="hljs-keyword">this</span>.send(<span class="hljs-string">'saveObject'</span>);
+      <span class="hljs-keyword">this</span>.set(<span class="hljs-string">'currentValue'</span>, newValue);
+    },
+})</code></pre>
+
+<p>Instead of passing a function as our last argument to our computed property, we can instead pass an object with two functions: <code>get()</code> and <code>set()</code>. (When we just pass in one function, our computedProperty infers that it is a getter.)</p>
+
+
+
+<h5 id="why-do-we-need-an-explicit-set-on-our-computed-property">Why do we need an explicit  set() on our computed property?</h5>
+
+<p>You can see that our <code>set()</code> function is very simple - it simply returns the value that we set. Therefore, you might be wondering why you can’t forego the <code>set()</code> function in your computed property. In fact, if you were just to set this.set(‘currentValue’, newValue), you’d see currentValue update in your template. </p>
+
+<p>But then you’d spend a <strong>ton</strong> of time debugging currentValue because the value would never recompute!</p>
+
+<p><em>Using <code>.set()</code> on a computedProperty without defining a <code>set()</code> function on your computedProperty will result in unexpected behavior, because your computedProperty is redefined as a regular property and loses all of its magic.</em></p>
+
+
+
+<h5 id="resetting-component-properties">Resetting component properties</h5>
+
+<p>Our component is 90% there on usability, but there is still one deficiency. When we move between edit pages, our newValue property retains it’s value!</p>
+
+<p>This is because Ember actually inserts our component into the DOM just once, then rerenders the component template with updated data when we change routes. </p>
+
+<p>Ember offers us some <strong>lifecycle hooks</strong> on the component that allow us “hook” onto specific events on the component when conditions change.</p>
+
+<blockquote>
+  <p><strong>Component Lifecycle Hooks</strong></p>
+
+  <ul>
+  <li>On Initial Render <br>
+  <ul><li>init</li>
+  <li>didReceiveAttrs</li>
+  <li>willRender</li>
+  <li>didInsertElement</li>
+  <li>didRender</li></ul></li>
+  <li><p>On Re-Render</p>
+
+  <ul><li>didUpdateAttrs</li>
+  <li>didReceiveAttrs</li>
+  <li>willUpdate</li>
+  <li>willRender</li>
+  <li>didUpdate</li>
+  <li>didRender</li></ul></li>
+  <li><p>On Component Destroy</p>
+
+  <ul><li>willDestroyElement</li>
+  <li>willClearRender</li>
+  <li>didDestroyElement</li></ul></li>
+  </ul>
+</blockquote>
+
+<p>We won’t have time to get into the functionality of each of these hooks, but you can <a href="https://guides.emberjs.com/v2.6.0/components/the-component-lifecycle/">read more about them here</a>.It’s just a good thing to know that there are hooks like this available on the component to help you customize these behavior, and that other types of Ember objects have their own hooks ( routes, for example include methods like  <code>beforeModel</code>, <code>afterModel</code>, <code>setupController</code>, and <code>deactivate</code> to help us customize behavior.</p>
+
+<p>Right now, we’ll just focus on a couple to see the behavior of our component. Inside of your component, define the following methods:</p>
+
+
+
+<pre class="prettyprint"><code class="language-js hljs ">
+<span class="hljs-comment">// app/components/submit-edit.js</span>
+
+import Ember from <span class="hljs-string">'ember'</span>;
+
+export <span class="hljs-keyword">default</span> Ember.Component.extend({
+  ...
+  didInsertElement(){
+    <span class="hljs-keyword">this</span>._super(...arguments);
+    console.log(<span class="hljs-string">'did insert element'</span>);
+  },
+  didUpdateAttrs() {
+    <span class="hljs-keyword">this</span>._super(...arguments);
+    console.log(<span class="hljs-string">'did update attributes'</span>);
+  },
+  willDestroyElement(){
+    <span class="hljs-keyword">this</span>._super(...arguments);
+    console.log(<span class="hljs-string">'will destroy element'</span>);
+  },
+  ...</code></pre>
+
+<p>Notice that before each of these, we make a call to “super”. Just like “super” methods in other languages, this “super” method executes all of the code defined on that function already, then extends it with whatever we put after the call to super.</p>
+
+<p>Here, we just want to add some console logs so that we can more easily understand when the component renders, re-renders, and gets destroyed.</p>
+
+<ul>
+<li>When we go to <code>localhost:4200/profiles/friends/</code>, we don’t see any messages in the console. That makes sense, because we haven’t loaded any routes that contain our component yet.</li>
+<li>When we click on an edit link on our profile, we see <code>'did insert element'</code> in the console, indicating that the component has been inserted into the DOM.</li>
+<li>As we click into other profiles, we see <code>'did update attributes'</code> in the console, meaning that our <code>didInsertAttrs</code> rerender hook was executed. </li>
+<li>No matter how many times we click into different profiles, we continue to see <code>'did update attributes'</code>!</li>
+<li>It isn’t until we navigate away from the profile.friends.edit route (Click <code>Hide Squad</code>) that we notice our <code>'will destroy element'</code> message in the console.</li>
+</ul>
+
+<blockquote>
+  <p><strong>QUESTION: If we’re going to extend the behavior of one of these model hooks to clear out the ‘newValue’ every time we change profiles, which one would it be?</strong> <br>
+  ANSWER: You’re right!  <code>didUpdateAttrs</code>, because we want to trigger the change on every rerender when attributes passed into the component have changed.</p>
+</blockquote>
+
+<p>Now let’s update our didUpdateAttrs method to clear out the value of newValue on reRender:</p>
+
+
+
+<pre class="prettyprint"><code class="language-js hljs "><span class="hljs-comment">// app/components/submit-edit.js</span>
+
+import Ember from <span class="hljs-string">'ember'</span>;
+
+export <span class="hljs-keyword">default</span> Ember.Component.extend({
+  ...
+  didUpdateAttrs() {
+    <span class="hljs-keyword">this</span>._super(...arguments);
+    <span class="hljs-keyword">this</span>.set(<span class="hljs-string">'newValue'</span>, <span class="hljs-string">''</span>);
+  },
+  ...</code></pre>
+
+<p>And now, we see that each time we change routes we’re also clearing out the data in the newValue attribute of our component!</p>
+
+<blockquote>
+  <p><strong>ACTIVITY: Add a name change input to your edit friend page</strong> <br>
+  Okay, maybe we do want to edit our friends’ names. Give it a try using existing components. (Hint: this should only take one line of code!)</p>
+</blockquote></div>

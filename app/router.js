@@ -13,6 +13,12 @@ Router.map(function() {
       this.route('ubuntu');
       this.route('windows');
     });
+    this.route('intermediate', function() {
+      this.route('css');
+      this.route('images');
+      this.route('application-hbs');
+      this.route('workshop-notes');
+    });
   });
 });
 
