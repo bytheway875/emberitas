@@ -19,6 +19,11 @@ Router.map(function() {
       this.route('application-hbs');
       this.route('workshop-notes');
     });
+
+    this.route('beginner', function() {
+      this.route('part-one');
+      this.route('part-two');
+    });
   });
 });
 
