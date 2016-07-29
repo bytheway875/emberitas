@@ -141,6 +141,7 @@
 
 <p><strong>Update our template to expect a name attribute</strong></p>
 
+<pre class="prettyprint"><code class="language-js hljs "><span class="hljs-comment">//templates/application.hbs</span>
 <p><code>&lt;h1&gt;Welcome to Ember, \{{name}}!&lt;/h1&gt;</code></p>
 
 <p>So now we’re telling our template that we should expect an attribute from our controller called “name”, but our controller isn’t defining anything called name. So let’s do that.</p>
@@ -149,6 +150,7 @@
 
 <p>Inside the Ember.Controller object in  controllers/application.js, add:</p>
 
+<pre class="prettyprint"><code class="language-js hljs "><span class="hljs-comment">//controllers/application.js</span>
 <p><code>name: 'Shannon'</code></p>
 
 <p>Now, when we go to localhost:4200, we should see </p>
@@ -205,6 +207,7 @@
 
 <p>First, let’s make sure that our input value ISN’T bound to our name property. Instead, we’ll call the property on our input “newName”.</p>
 
+<pre class="prettyprint"><code class="language-js hljs "><span class="hljs-comment">//controllers/application.js</span>
 <p><code>\{{input value=newName}}</code></p>
 
 <p>So now if we check the <strong>Ember Inspector</strong>, we can see that</p>
@@ -228,7 +231,7 @@
 <p>Within your action object, let’s define a function called updateName:</p>
 
 
-
+<pre class="prettyprint"><code class="language-js hljs "><span class="hljs-comment">//controllers/application.js</span>
 <pre class="prettyprint"><code class="language-js hljs ">actions: {
   updateName(newName){
     <span class="hljs-keyword">this</span>.set(<span class="hljs-string">'name'</span>, newName);
