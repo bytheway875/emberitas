@@ -1865,6 +1865,7 @@ export default Ember.Component.extend({
 <p>When we define a <strong>dynamic segment</strong> on a route, Ember attempts to load the appropriate model based on the name of that segment. When our __dynamic segment is named <code>:friend_id</code>, Ember attempts to look for an instance of a model named <code>friend</code> with the id that we’ve passed in. Without adding any data to our <code>edit</code> route file, Ember’s internals thinks that we want our <code>model()</code> method to look like this:</p>
 
 
+<pre class="prettyprint"><code class="language-html hljs "><span class="hljs-comment">// app/routes/profile/friends/edit.js</span>
 
 <pre class="prettyprint"><code class=" hljs coffeescript"><span class="hljs-reserved">import</span> Ember from <span class="hljs-string">'ember'</span>;
 
