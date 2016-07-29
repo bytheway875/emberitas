@@ -944,7 +944,7 @@ Now that we’ve got a model and factory to define the data we need and mock end
 
 <p>But while our data is loading properly, we don’t see our model data reflected in our template. That’s because we’re still using our controller properties in our template.</p>
 
-<p>To start loading in data from our model, let’s make a few tweaks to our /profile.hbs template:</p>
+<p>To start loading in data from our model, let’s make a few tweaks to our templates/profile.hbs :</p>
 
 
 
@@ -989,7 +989,7 @@ Now that we’ve got a model and factory to define the data we need and mock end
 
 <h4 id="updating-the-computed-properties">Updating The Computed Properties</h4>
 
-<p>Now, we want to compute someInformation using model data instead. Make sure you update the information in the dependant property attributes as well as in the function definition.</p>
+<p>Now, we want to compute someInformation using model data instead. Make sure you update the information in the dependant property attributes as well as in the function definition in controllers/profile.js.</p>
 
 
 
@@ -1007,7 +1007,7 @@ You can see how we might have computed properties that might track more than two
 
 
 
-<pre class="prettyprint"><code class="language-js hljs ">someInformation: Ember.computed(<span class="hljs-string">'model.{name,favoriteColor}'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span>{</span>
+<pre class="prettyprint"><code class="language-js hljs "> <span class="hljs-comment">//controllers/profile.js </span> someInformation: Ember.computed(<span class="hljs-string">'model.{name,favoriteColor}'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span>{</span>
     <span class="hljs-keyword">return</span> <span class="hljs-string">'Your name is '</span> + <span class="hljs-keyword">this</span>.get(<span class="hljs-string">'model.name'</span>) + <span class="hljs-string">' and your favorite color is '</span> + <span class="hljs-keyword">this</span>.get(<span class="hljs-string">'model.favoriteColor'</span>);
   }),</code></pre>
 
@@ -1017,7 +1017,7 @@ You can see how we might have computed properties that might track more than two
 
 
 
-<pre class="prettyprint"><code class=" hljs actionscript">colorStyle: Ember.computed(<span class="hljs-string">'model.favoriteColor'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span> {</span>
+<pre class="prettyprint"><code class=" hljs actionscript"><span class="hljs-comment">//controllers/profile.js </span> colorStyle: Ember.computed(<span class="hljs-string">'model.favoriteColor'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span> {</span>
     <span class="hljs-keyword">var</span> color = CSS.escape(<span class="hljs-keyword">this</span>.<span class="hljs-keyword">get</span>(<span class="hljs-string">'model.favoriteColor'</span>));
     <span class="hljs-keyword">return</span> Ember.String.htmlSafe(<span class="hljs-string">"color: "</span> + color);
   }),</code></pre>
@@ -1026,7 +1026,7 @@ You can see how we might have computed properties that might track more than two
 
 
 
-<pre class="prettyprint"><code class=" hljs rsl"><span class="hljs-keyword">color</span>: Ember.computed.readOnly(<span class="hljs-string">'model.favoriteColor'</span>),</code></pre>
+<pre class="prettyprint"><code class=" hljs rsl"><span class="hljs-keyword"><span>//controllers/profile.js </span> color</span>: Ember.computed.readOnly(<span class="hljs-string">'model.favoriteColor'</span>),</code></pre>
 
 <p>Now we don’t have to update our colorStyle computed property at all - it will continue to track the controller’s color property that detects changes on ‘model.favoriteColor’.</p>
 
@@ -1042,7 +1042,7 @@ You can see how we might have computed properties that might track more than two
 
 
 
-<pre class="prettyprint"><code class="language-js hljs "><span class="hljs-comment">//old</span>
+<pre class="prettyprint"><code class="language-js hljs "><span class="hljs-comment">//controllers/profile.js <br /> //old</span>
 actions: {
   setName(newName){
     <span class="hljs-keyword">this</span>.set(<span class="hljs-string">'name'</span>, newName);
@@ -1052,7 +1052,7 @@ actions: {
   }
 }
 
-<span class="hljs-comment">//new</span>
+<span class="hljs-comment">//controllers/profile.js <br /> //new</span>
 actions: {
   setName(newName){
     <span class="hljs-keyword">this</span>.set(<span class="hljs-string">'model.name'</span>, newName);
@@ -1082,7 +1082,7 @@ actions: {
 
 
 
-<pre class="prettyprint"><code class=" hljs cs">setName(newName){
+<pre class="prettyprint"><code class=" hljs cs"> <span class="hljs-comment">//controllers/profile.js </span> setName(newName){
   <span class="hljs-keyword">this</span>.<span class="hljs-keyword">set</span>(<span class="hljs-string">'model.name'</span>, newName);
   <span class="hljs-keyword">this</span>.<span class="hljs-keyword">get</span>(<span class="hljs-string">'model'</span>).save();
 },
@@ -1097,7 +1097,7 @@ setColor(newColor){
 
 
 
-<pre class="prettyprint"><code class="language-js hljs ">setColor(newColor){
+<pre class="prettyprint"><code class="language-js hljs "><span class="hljs-comment">//controllers/profile.js </span> setColor(newColor){
   <span class="hljs-keyword">this</span>.set(<span class="hljs-string">'model.favoriteColor'</span>, newColor);
   <span class="hljs-keyword">this</span>.get(<span class="hljs-string">'model'</span>).save();
   <span class="hljs-keyword">this</span>.alert(<span class="hljs-string">'The model was saved'</span>);
@@ -1300,9 +1300,11 @@ actions: {
 
 
 
+
 <pre class="prettyprint"><code class=" hljs cs"><span class="hljs-comment">// app/controllers/profile.js</span>
 
 setName(newName){
+
   <span class="hljs-keyword">this</span>.<span class="hljs-keyword">set</span>(<span class="hljs-string">'model.name'</span>, newName);
   <span class="hljs-keyword">this</span>.send(<span class="hljs-string">'saveModel'</span>);
 },
