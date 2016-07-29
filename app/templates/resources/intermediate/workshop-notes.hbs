@@ -48,6 +48,7 @@
 
 <p>Let’s put something in it. How about:</p>
 
+<pre class="prettyprint"><code class="language-js hljs "><span class="hljs-comment">//templates/application.hbs</span>
 <p><code>&lt;h1&gt; Welcome to Ember!&lt;/h1&gt;</code></p>
 
 <p>Now, look at localhost:4200. Welcome to Ember!</p>
@@ -57,6 +58,7 @@
 <p><em>Navigate to app =&gt; styles =&gt; app.css.</em></p>
 
 <p>We saw before that app.css was already imported into our index.html, so anything we put in here will automatically be loaded into our application. So let’s go ahead and style our welcome text. <br>
+<pre class="prettyprint"><code class="language-js hljs "><span class="hljs-comment">//app/styles/app.css</span>
  <code>h1 { color: red }</code></p>
 
 <p>And now when you look back at your browser, you can see that your changes have automatically reloaded into the browser. Your message should be red now.</p>
@@ -139,6 +141,7 @@
 
 <p><strong>Update our template to expect a name attribute</strong></p>
 
+<pre class="prettyprint"><code class="language-js hljs "><span class="hljs-comment">//templates/application.hbs</span>
 <p><code>&lt;h1&gt;Welcome to Ember, \{{name}}!&lt;/h1&gt;</code></p>
 
 <p>So now we’re telling our template that we should expect an attribute from our controller called “name”, but our controller isn’t defining anything called name. So let’s do that.</p>
@@ -147,6 +150,7 @@
 
 <p>Inside the Ember.Controller object in  controllers/application.js, add:</p>
 
+<pre class="prettyprint"><code class="language-js hljs "><span class="hljs-comment">//controllers/application.js</span>
 <p><code>name: 'Shannon'</code></p>
 
 <p>Now, when we go to localhost:4200, we should see </p>
@@ -203,6 +207,7 @@
 
 <p>First, let’s make sure that our input value ISN’T bound to our name property. Instead, we’ll call the property on our input “newName”.</p>
 
+<pre class="prettyprint"><code class="language-js hljs "><span class="hljs-comment">//controllers/application.js</span>
 <p><code>\{{input value=newName}}</code></p>
 
 <p>So now if we check the <strong>Ember Inspector</strong>, we can see that</p>
@@ -226,7 +231,7 @@
 <p>Within your action object, let’s define a function called updateName:</p>
 
 
-
+<pre class="prettyprint"><code class="language-js hljs "><span class="hljs-comment">//controllers/application.js</span>
 <pre class="prettyprint"><code class="language-js hljs ">actions: {
   updateName(newName){
     <span class="hljs-keyword">this</span>.set(<span class="hljs-string">'name'</span>, newName);
@@ -285,6 +290,7 @@
 
 <p>So we’ve defined our first action. Now we just need to trigger it. To do that, we just need to alter our handlebars input helper to take advantage of the action property.</p>
 
+<pre class="prettyprint"><code class="language-js hljs "><span class="hljs-comment">//templates/application.hbs</span>
 <p><code>\{{input value=newName action="updateName" on="enter"}}</code></p>
 
 <p>Now, when we reload the page and enter a new value into our input, we’ll see that the values change, but only when you press “enter”.</p>
@@ -347,6 +353,7 @@
 
 
 
+<pre class="prettyprint"><code class="language-js hljs "><span class="hljs-comment">//controllers/application.js</span>
 <pre class="prettyprint"><code class="language-js hljs ">actions: {
   updateName(newName){
     <span class="hljs-keyword">this</span>.set(<span class="hljs-string">'name'</span>, newName);
@@ -381,6 +388,7 @@
 
 
 
+<pre class="prettyprint"><code class="language-js hljs "><span class="hljs-comment">//templates/application.hbs</span>
 <pre class="prettyprint"><code class="language-html hljs "><span class="hljs-tag">&lt;<span class="hljs-title">form</span> \{{<span class="hljs-attribute">action</span> "<span class="hljs-attribute">setName</span>" <span class="hljs-attribute">newName</span> <span class="hljs-attribute">on</span>=<span class="hljs-value">"submit"</span><span class="hljs-value">}}</span>&gt;</span>
   \{{input value=newName}}
   <span class="hljs-tag">&lt;<span class="hljs-title">button</span> <span class="hljs-attribute">type</span>=<span class="hljs-value">"submit"</span>&gt;</span>Submit<span class="hljs-tag">&lt;/<span class="hljs-title">button</span>&gt;</span>
@@ -397,6 +405,7 @@
 
   <p>I think I’m going to change it the color to green…</p>
 
+  <pre class="prettyprint"><code class="language-js hljs "><span class="hljs-comment">//templates/application.hbs</span>
   <p><code>&lt;h1 style="color: green;"&gt; Welcome to Ember, Shannon!</code></p>
 
   <p>LOVE IT! Green is my favorite color. Purple and pink look good, too. I can’t decide what color we should make it! Maybe we should let our users decide.</p>
@@ -461,7 +470,7 @@ export <span class="hljs-keyword">default</span> Ember.Controller.extend({
 <p>Say we want to show users some information we’ve collected about them. We could create a computed property like this:</p>
 
 
-
+<pre class="prettyprint"><code class="language-js hljs "><span class="hljs-comment">//controllers/application.js</span>
 <pre class="prettyprint"><code class="language-js hljs ">import Ember from <span class="hljs-string">'ember'</span>;
 
 export <span class="hljs-keyword">default</span> Ember.Controller.extend({
@@ -489,6 +498,7 @@ export <span class="hljs-keyword">default</span> Ember.Controller.extend({
 
 
 
+<pre class="prettyprint"><code class="language-js hljs "><span class="hljs-comment">//controllers/application.js</span>
 <pre class="prettyprint"><code class="language-js hljs ">colorStyle: Ember.computed(<span class="hljs-string">'color'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span> {</span>
     <span class="hljs-keyword">var</span> color = CSS.escape(<span class="hljs-keyword">this</span>.get(<span class="hljs-string">'color'</span>));
     <span class="hljs-keyword">return</span> Ember.String.htmlSafe(<span class="hljs-string">"color: "</span> + color);
