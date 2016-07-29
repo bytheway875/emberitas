@@ -1800,6 +1800,7 @@ export default Ember.Component.extend({
 <p><code>friend</code> is the context object that we’re passing into our \{{link-to}} because we want to see the edit page for that specific friend. But we haven’t told our route how to deal with this context object because we haven’t defined a “dynamic segment” for our route. A dynamic segment maps to an attribute of the object we’re trying to load on that route. We can define one on our route like this:</p>
 
 
+<pre class="prettyprint"><code class="language-html hljs "><span class="hljs-comment">// app/router.js</span>
 
 <pre class="prettyprint"><code class=" hljs javascript">Router.map(<span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span> {</span>
   <span class="hljs-keyword">this</span>.route(<span class="hljs-string">'profile'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span> {</span>
