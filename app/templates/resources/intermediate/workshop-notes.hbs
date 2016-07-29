@@ -1902,6 +1902,8 @@ export default Ember.Component.extend({
 
   <p>We also see how simple it is to override those conventions for the specific needs of our application. For example, in Ember it is much more common to see a pattern like this in our router:</p>
 
+  <pre class="prettyprint"><code class="language-html hljs "><span class="hljs-comment">// app/routes.js</span>
+
   <pre class="prettyprint"><code class=" hljs javascript">Router.map(<span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span> {</span>
   <span class="hljs-keyword">this</span>.route(<span class="hljs-string">'profile'</span>, { path: <span class="hljs-string">'/my_profile'</span> }, <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span> {</span>
     <span class="hljs-keyword">this</span>.route(<span class="hljs-string">'friends'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span> {</span>
