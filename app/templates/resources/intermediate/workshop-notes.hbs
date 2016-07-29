@@ -50,6 +50,7 @@
 
 <p>Let’s put something in it. How about:</p>
 
+<pre class="prettyprint"><code class="language-js hljs "><span class="hljs-comment">//templates/application.hbs</span>
 <p><code>&lt;h1&gt; Welcome to Ember!&lt;/h1&gt;</code></p>
 
 <p>Now, look at localhost:4200. Welcome to Ember!</p>
@@ -59,6 +60,7 @@
 <p><em>Navigate to app =&gt; styles =&gt; app.css.</em></p>
 
 <p>We saw before that app.css was already imported into our index.html, so anything we put in here will automatically be loaded into our application. So let’s go ahead and style our welcome text. <br>
+<pre class="prettyprint"><code class="language-js hljs "><span class="hljs-comment">//app/styles/app.css</span></code>
  <code>h1 { color: red }</code></p>
 
 <p>And now when you look back at your browser, you can see that your changes have automatically reloaded into the browser. Your message should be red now.</p>
@@ -141,6 +143,7 @@
 
 <p><strong>Update our template to expect a name attribute</strong></p>
 
+<pre class="prettyprint"><code class="language-js hljs "><span class="hljs-comment">//templates/application.hbs</span>
 <p><code>&lt;h1&gt;Welcome to Ember, \{{name}}!&lt;/h1&gt;</code></p>
 
 <p>So now we’re telling our template that we should expect an attribute from our controller called “name”, but our controller isn’t defining anything called name. So let’s do that.</p>
@@ -149,6 +152,7 @@
 
 <p>Inside the Ember.Controller object in  controllers/application.js, add:</p>
 
+<pre class="prettyprint"><code class="language-js hljs "><span class="hljs-comment">//controllers/application.js</span>
 <p><code>name: 'Shannon'</code></p>
 
 <p>Now, when we go to localhost:4200, we should see </p>
@@ -205,6 +209,7 @@
 
 <p>First, let’s make sure that our input value ISN’T bound to our name property. Instead, we’ll call the property on our input “newName”.</p>
 
+<pre class="prettyprint"><code class="language-js hljs "><span class="hljs-comment">//controllers/application.js</span>
 <p><code>\{{input value=newName}}</code></p>
 
 <p>So now if we check the <strong>Ember Inspector</strong>, we can see that</p>
@@ -228,7 +233,7 @@
 <p>Within your action object, let’s define a function called setName:</p>
 
 
-
+<pre class="prettyprint"><code class="language-js hljs "><span class="hljs-comment">//controllers/application.js</span>
 <pre class="prettyprint"><code class="language-js hljs ">actions: {
   setName(newName){
     <span class="hljs-keyword">this</span>.set(<span class="hljs-string">'name'</span>, newName);
@@ -287,7 +292,8 @@
 
 <p>So we’ve defined our first action. Now we just need to trigger it. To do that, we just need to alter our handlebars input helper to take advantage of the action property.</p>
 
-<p><code>\{{input value=newName action="setName" on="enter"}}</code></p>
+<pre class="prettyprint"><code class="language-js hljs "><span class="hljs-comment">//templates/application.hbs</span>
+<p><code>\{{input value=newName action="updateName" on="enter"}}</code></p>
 
 <p>Now, when we reload the page and enter a new value into our input, we’ll see that the values change, but only when you press “enter”.</p>
 
@@ -349,6 +355,7 @@
 
 
 
+<pre class="prettyprint"><code class="language-js hljs "><span class="hljs-comment">//controllers/application.js</span>
 <pre class="prettyprint"><code class="language-js hljs ">actions: {
   setName(newName){
     <span class="hljs-keyword">this</span>.set(<span class="hljs-string">'name'</span>, newName);
@@ -383,6 +390,7 @@
 
 
 
+<pre class="prettyprint"><code class="language-js hljs "><span class="hljs-comment">//templates/application.hbs</span>
 <pre class="prettyprint"><code class="language-html hljs "><span class="hljs-tag">&lt;<span class="hljs-title">form</span> \{{<span class="hljs-attribute">action</span> "<span class="hljs-attribute">setName</span>" <span class="hljs-attribute">newName</span> <span class="hljs-attribute">on</span>=<span class="hljs-value">"submit"</span><span class="hljs-value">}}</span>&gt;</span>
   \{{input value=newName}}
   <span class="hljs-tag">&lt;<span class="hljs-title">button</span> <span class="hljs-attribute">type</span>=<span class="hljs-value">"submit"</span>&gt;</span>Submit<span class="hljs-tag">&lt;/<span class="hljs-title">button</span>&gt;</span>
@@ -399,6 +407,7 @@
 
   <p>I think I’m going to change it the color to green…</p>
 
+  <pre class="prettyprint"><code class="language-js hljs "><span class="hljs-comment">//templates/application.hbs</span>
   <p><code>&lt;h1 style="color: green;"&gt; Welcome to Ember, Shannon!</code></p>
 
   <p>LOVE IT! Green is my favorite color. Purple and pink look good, too. I can’t decide what color we should make it! Maybe we should let our users decide.</p>
@@ -463,7 +472,7 @@ export <span class="hljs-keyword">default</span> Ember.Controller.extend({
 <p>Say we want to show users some information we’ve collected about them. We could create a computed property like this:</p>
 
 
-
+<pre class="prettyprint"><code class="language-js hljs "><span class="hljs-comment">//controllers/application.js</span>
 <pre class="prettyprint"><code class="language-js hljs ">import Ember from <span class="hljs-string">'ember'</span>;
 
 export <span class="hljs-keyword">default</span> Ember.Controller.extend({
@@ -491,6 +500,7 @@ export <span class="hljs-keyword">default</span> Ember.Controller.extend({
 
 
 
+<pre class="prettyprint"><code class="language-js hljs "><span class="hljs-comment">//controllers/application.js</span>
 <pre class="prettyprint"><code class="language-js hljs ">colorStyle: Ember.computed(<span class="hljs-string">'color'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span> {</span>
     <span class="hljs-keyword">var</span> color = CSS.escape(<span class="hljs-keyword">this</span>.get(<span class="hljs-string">'color'</span>));
     <span class="hljs-keyword">return</span> Ember.String.htmlSafe(<span class="hljs-string">"color: "</span> + color);
@@ -519,7 +529,7 @@ export <span class="hljs-keyword">default</span> Ember.Controller.extend({
 
 <blockquote>
   (<a href="https://github.com/cotarg/emberitas/tree/master/public/images" alt="a link to github" title="logo images">https://github.com/cotarg/emberitas/tree/master/public/images</a>)
-</blockquote> 
+</blockquote>
 
 <p>and create a folder called “images” and put the logo into it so that everything works.</p>
 
@@ -648,6 +658,7 @@ What are we supposed to put in there? Let’s go to the Ember docs for the answe
 <p>Since we know that we want some attributes on our model, let’s go ahead and define them. Uncomment the `import attr from ‘ember-data/attr’ line, and add two properties named ‘name’ and ‘favoriteColor’, and designate both as ‘attrs’.</p>
 
 
+<pre class="prettyprint"><code class="language-js hljs "><span class="hljs-comment">// app/models/profile.js</span>
 
 <pre class="prettyprint"><code class="language-js hljs ">import Model from <span class="hljs-string">'ember-data/model'</span>;
 import attr from <span class="hljs-string">'ember-data/attr'</span>;
@@ -692,6 +703,7 @@ export <span class="hljs-keyword">default</span> Model.extend({
 <p>We want to load a profile record into routes/profile.js file so that we have access to the profile within the profile.hbs template:</p>
 
 
+<pre class="prettyprint"><code class="language-js hljs "><span class="hljs-comment">// app/routes/profile.js</span>
 
 <pre class="prettyprint"><code class="language-js hljs ">import Ember from <span class="hljs-string">'ember'</span>;
 
@@ -925,6 +937,7 @@ Now that we’ve got a model and factory to define the data we need and mock end
 <p>To do this, we just need to alter our mirage/scenarios/default.js file to look like this:</p>
 
 
+<pre class="prettyprint"><code class="language-js hljs "><span class="hljs-comment">// mirage/scenarios/default.js</span>
 
 <pre class="prettyprint"><code class="language-js hljs ">export <span class="hljs-keyword">default</span> <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(server)</span> {</span>
   server.create(<span class="hljs-string">'profile'</span>);
@@ -946,7 +959,7 @@ Now that we’ve got a model and factory to define the data we need and mock end
 
 <p>But while our data is loading properly, we don’t see our model data reflected in our template. That’s because we’re still using our controller properties in our template.</p>
 
-<p>To start loading in data from our model, let’s make a few tweaks to our /profile.hbs template:</p>
+<p>To start loading in data from our model, let’s make a few tweaks to our templates/profile.hbs :</p>
 
 
 
@@ -991,7 +1004,7 @@ Now that we’ve got a model and factory to define the data we need and mock end
 
 <h4 id="updating-the-computed-properties">Updating The Computed Properties</h4>
 
-<p>Now, we want to compute someInformation using model data instead. Make sure you update the information in the dependant property attributes as well as in the function definition.</p>
+<p>Now, we want to compute someInformation using model data instead. Make sure you update the information in the dependant property attributes as well as in the function definition in controllers/profile.js.</p>
 
 
 
@@ -1009,7 +1022,7 @@ You can see how we might have computed properties that might track more than two
 
 
 
-<pre class="prettyprint"><code class="language-js hljs ">someInformation: Ember.computed(<span class="hljs-string">'model.{name,favoriteColor}'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span>{</span>
+<pre class="prettyprint"><code class="language-js hljs "> <span class="hljs-comment">//controllers/profile.js </span> someInformation: Ember.computed(<span class="hljs-string">'model.{name,favoriteColor}'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span>{</span>
     <span class="hljs-keyword">return</span> <span class="hljs-string">'Your name is '</span> + <span class="hljs-keyword">this</span>.get(<span class="hljs-string">'model.name'</span>) + <span class="hljs-string">' and your favorite color is '</span> + <span class="hljs-keyword">this</span>.get(<span class="hljs-string">'model.favoriteColor'</span>);
   }),</code></pre>
 
@@ -1019,7 +1032,7 @@ You can see how we might have computed properties that might track more than two
 
 
 
-<pre class="prettyprint"><code class=" hljs actionscript">colorStyle: Ember.computed(<span class="hljs-string">'model.favoriteColor'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span> {</span>
+<pre class="prettyprint"><code class=" hljs actionscript"><span class="hljs-comment">//controllers/profile.js </span> colorStyle: Ember.computed(<span class="hljs-string">'model.favoriteColor'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span> {</span>
     <span class="hljs-keyword">var</span> color = CSS.escape(<span class="hljs-keyword">this</span>.<span class="hljs-keyword">get</span>(<span class="hljs-string">'model.favoriteColor'</span>));
     <span class="hljs-keyword">return</span> Ember.String.htmlSafe(<span class="hljs-string">"color: "</span> + color);
   }),</code></pre>
@@ -1028,7 +1041,7 @@ You can see how we might have computed properties that might track more than two
 
 
 
-<pre class="prettyprint"><code class=" hljs rsl"><span class="hljs-keyword">color</span>: Ember.computed.readOnly(<span class="hljs-string">'model.favoriteColor'</span>),</code></pre>
+<pre class="prettyprint"><code class=" hljs rsl"><span class="hljs-keyword"><span>//controllers/profile.js </span> color</span>: Ember.computed.readOnly(<span class="hljs-string">'model.favoriteColor'</span>),</code></pre>
 
 <p>Now we don’t have to update our colorStyle computed property at all - it will continue to track the controller’s color property that detects changes on ‘model.favoriteColor’.</p>
 
@@ -1044,7 +1057,7 @@ You can see how we might have computed properties that might track more than two
 
 
 
-<pre class="prettyprint"><code class="language-js hljs "><span class="hljs-comment">//old</span>
+<pre class="prettyprint"><code class="language-js hljs "><span class="hljs-comment">//controllers/profile.js <br /> //old</span>
 actions: {
   setName(newName){
     <span class="hljs-keyword">this</span>.set(<span class="hljs-string">'name'</span>, newName);
@@ -1054,7 +1067,7 @@ actions: {
   }
 }
 
-<span class="hljs-comment">//new</span>
+<span class="hljs-comment">//controllers/profile.js <br /> //new</span>
 actions: {
   setName(newName){
     <span class="hljs-keyword">this</span>.set(<span class="hljs-string">'model.name'</span>, newName);
@@ -1084,7 +1097,7 @@ actions: {
 
 
 
-<pre class="prettyprint"><code class=" hljs cs">setName(newName){
+<pre class="prettyprint"><code class=" hljs cs"> <span class="hljs-comment">//controllers/profile.js </span> setName(newName){
   <span class="hljs-keyword">this</span>.<span class="hljs-keyword">set</span>(<span class="hljs-string">'model.name'</span>, newName);
   <span class="hljs-keyword">this</span>.<span class="hljs-keyword">get</span>(<span class="hljs-string">'model'</span>).save();
 },
@@ -1099,7 +1112,7 @@ setColor(newColor){
 
 
 
-<pre class="prettyprint"><code class="language-js hljs ">setColor(newColor){
+<pre class="prettyprint"><code class="language-js hljs "><span class="hljs-comment">//controllers/profile.js </span> setColor(newColor){
   <span class="hljs-keyword">this</span>.set(<span class="hljs-string">'model.favoriteColor'</span>, newColor);
   <span class="hljs-keyword">this</span>.get(<span class="hljs-string">'model'</span>).save();
   alert(<span class="hljs-string">'The model was saved'</span>);
@@ -1165,7 +1178,9 @@ setColor(newColor){
 
 
 
-<pre class="prettyprint"><code class="language-js hljs ">setColor(newColor){
+<pre class="prettyprint"><code class="language-js hljs "><span class="hljs-comment">// app/controllers/profile.js</span>
+
+setColor(newColor){
   <span class="hljs-keyword">this</span>.set(<span class="hljs-string">'model.favoriteColor'</span>, newColor);
   <span class="hljs-keyword">this</span>.get(<span class="hljs-string">'model'</span>).save().then(
     <span class="hljs-comment">// fulfilled</span>
@@ -1200,7 +1215,9 @@ setColor(newColor){
 
 
 
-<pre class="prettyprint"><code class=" hljs coffeescript">setColor(newColor){
+<pre class="prettyprint"><code class=" hljs coffeescript"><span class="hljs-comment">// app/controllers/profile.js</span>
+
+setColor(newColor){
   <span class="hljs-keyword">this</span>.set(<span class="hljs-string">'model.favoriteColor'</span>, newColor);
   setColor(newColor){
     <span class="hljs-keyword">this</span>.set(<span class="hljs-string">'model.favoriteColor'</span>, newColor);
@@ -1221,7 +1238,9 @@ setColor(newColor){
 
 
 
-<pre class="prettyprint"><code class="language-js hljs ">setColor(newColor){
+<pre class="prettyprint"><code class="language-js hljs "><span class="hljs-comment">// app/controllers/profile.js</span>
+
+setColor(newColor){
   console.log(<span class="hljs-keyword">this</span>.get(<span class="hljs-string">'model.currentState.stateName'</span>);
   <span class="hljs-keyword">this</span>.set(<span class="hljs-string">'model.favoriteColor'</span>, newColor);
   console.log(<span class="hljs-keyword">this</span>.get(<span class="hljs-string">'model.currentState.stateName'</span>);
@@ -1276,7 +1295,8 @@ setColor(newColor){
 
 
 
-<pre class="prettyprint"><code class="language-js hljs "><span class="hljs-comment">//app/controllers/profile.js</span>
+<pre class="prettyprint"><code class="language-js hljs "><span class="hljs-comment">// app/controllers/profile.js</span>
+
 actions: {
   ...
   saveModel(){
@@ -1295,7 +1315,11 @@ actions: {
 
 
 
-<pre class="prettyprint"><code class=" hljs cs">setName(newName){
+
+<pre class="prettyprint"><code class=" hljs cs"><span class="hljs-comment">// app/controllers/profile.js</span>
+
+setName(newName){
+
   <span class="hljs-keyword">this</span>.<span class="hljs-keyword">set</span>(<span class="hljs-string">'model.name'</span>, newName);
   <span class="hljs-keyword">this</span>.send(<span class="hljs-string">'saveModel'</span>);
 },
@@ -1324,7 +1348,7 @@ setColor(newColor){
 
 
 
-<pre class="prettyprint"><code class=" hljs handlebars"><span class="xml"><span class="hljs-comment">&lt;!-- templates/application.hbs --&gt;</span>
+<pre class="prettyprint"><code class=" hljs handlebars"><span class="xml"><span class="hljs-comment">&lt;!-- app/templates/application.hbs --&gt;</span>
 
 </span><span class="hljs-expression">\{{<span class="hljs-begin-block">#link-to </span>'<span class="hljs-variable">profile</span>'}}</span><span class="xml">
   View Your Profile
@@ -1368,11 +1392,11 @@ setColor(newColor){
 
 
 
-<pre class="prettyprint"><code class=" hljs handlebars"><span class="xml">    <span class="hljs-comment">&lt;!-- templates/index.hbs --&gt;</span>
+<pre class="prettyprint"><code class=" hljs handlebars"><span class="xml"><span class="hljs-comment">&lt;!-- app/templates/index.hbs --&gt;</span>
 
-    </span><span class="hljs-expression">\{{<span class="hljs-begin-block">#link-to </span>'<span class="hljs-variable">profile</span>'}}</span><span class="xml">
-      View Your Profile
-    </span><span class="hljs-expression">\{{<span class="hljs-end-block">/link-to</span>}}</span><span class="xml"></span></code></pre>
+</span><span class="hljs-expression">\{{<span class="hljs-begin-block">#link-to </span>'<span class="hljs-variable">profile</span>'}}</span><span class="xml">
+View Your Profile
+</span><span class="hljs-expression">\{{<span class="hljs-end-block">/link-to</span>}}</span><span class="xml"></span></code></pre>
 
 <p>As expected, we now see the View Your Profile link at localhost:4200, but when we transition to localhost:4200/profile, we just see our profile information!</p>
 
@@ -1398,8 +1422,9 @@ setColor(newColor){
 
 
 
-<pre class="prettyprint"><code class=" hljs handlebars"><span class="xml"><span class="hljs-comment">&lt;!-- templates/profile/friends.hbs --&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"squad"</span>&gt;</span>
+<pre class="prettyprint"><code class=" hljs handlebars"><span class="xml"><span class="hljs-comment">&lt;!-- app/templates/profile/friends.hbs --&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-title">div</span><span class="hljs-attribute">class</span>=<span class="hljs-value">"squad"</span>&gt;</span>
   <span class="hljs-tag">&lt;<span class="hljs-title">h3</span>&gt;</span>Here is your squad:<span class="hljs-tag">&lt;/<span class="hljs-title">h3</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
 
@@ -1472,7 +1497,8 @@ export <span class="hljs-keyword">default</span> <span class="hljs-function"><sp
 
 
 
-<pre class="prettyprint"><code class=" hljs handlebars"><span class="xml"><span class="hljs-comment">&lt;!--templates/profile/friends.hbs--&gt;</span>
+<pre class="prettyprint"><code class=" hljs handlebars"><span class="xml"><span class="hljs-comment">&lt;!-- app/templates/profile/friends.hbs --&gt;</span>
+
 <span class="hljs-tag">&lt;<span class="hljs-title">ul</span>&gt;</span>
   </span><span class="hljs-expression">\{{<span class="hljs-begin-block">#<span class="hljs-keyword">each</span> model as </span>|<span class="hljs-variable">friend</span>|}}</span><span class="xml">
     <span class="hljs-tag">&lt;<span class="hljs-title">li</span>&gt;</span></span><span class="hljs-expression">\{{<span class="hljs-variable">friend.name</span>}}</span><span class="xml"> likes </span><span class="hljs-expression">\{{<span class="hljs-variable">friend.favoriteColor</span>}}</span><span class="xml">.<span class="hljs-tag">&lt;/<span class="hljs-title">li</span>&gt;</span>
@@ -1512,6 +1538,7 @@ export <span class="hljs-keyword">default</span> <span class="hljs-function"><sp
 \{{/link-to}}
 
 <span class="hljs-comment">&lt;!-- friends/profile.hbs --&gt;</span>
+
 \{{#link-to 'profile'}}
   Hide Squad
 \{{/link-to}}</code></pre>
@@ -1794,7 +1821,7 @@ export default Ember.Component.extend({
 
 
 
-<pre class="prettyprint"><code class="language-html hljs "><span class="hljs-comment">&lt;!-- templates/profile/friends.hbs --&gt;</span>
+<pre class="prettyprint"><code class="language-html hljs "><span class="hljs-comment">&lt;!-- app/templates/profile/friends.hbs --&gt;</span>
 
 \{{#each model as |friend|}}
   \{{#color-changer tagName='p' color=friend.favoriteColor}}
@@ -1812,6 +1839,7 @@ export default Ember.Component.extend({
 <p><code>friend</code> is the context object that we’re passing into our \{{link-to}} because we want to see the edit page for that specific friend. But we haven’t told our route how to deal with this context object because we haven’t defined a “dynamic segment” for our route. A dynamic segment maps to an attribute of the object we’re trying to load on that route. We can define one on our route like this:</p>
 
 
+<pre class="prettyprint"><code class="language-html hljs "><span class="hljs-comment">// app/router.js</span>
 
 <pre class="prettyprint"><code class=" hljs javascript">Router.map(<span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span> {</span>
   <span class="hljs-keyword">this</span>.route(<span class="hljs-string">'profile'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span> {</span>
@@ -1839,6 +1867,7 @@ export default Ember.Component.extend({
 </blockquote>
 
 
+<pre class="prettyprint"><code class="language-html hljs "><span class="hljs-comment">// app/router.js</span>
 
 <pre class="prettyprint"><code class=" hljs javascript">    Router.map(<span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span> {</span>
       <span class="hljs-keyword">this</span>.route(<span class="hljs-string">'profile'</span>, { path: <span class="hljs-string">'/my_profile'</span> }, <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span> {</span>
@@ -1875,6 +1904,7 @@ export default Ember.Component.extend({
 <p>When we define a <strong>dynamic segment</strong> on a route, Ember attempts to load the appropriate model based on the name of that segment. When our __dynamic segment is named <code>:friend_id</code>, Ember attempts to look for an instance of a model named <code>friend</code> with the id that we’ve passed in. Without adding any data to our <code>edit</code> route file, Ember’s internals thinks that we want our <code>model()</code> method to look like this:</p>
 
 
+<pre class="prettyprint"><code class="language-html hljs "><span class="hljs-comment">// app/routes/profile/friends/edit.js</span>
 
 <pre class="prettyprint"><code class=" hljs coffeescript"><span class="hljs-reserved">import</span> Ember from <span class="hljs-string">'ember'</span>;
 
@@ -1889,6 +1919,7 @@ export default Ember.Component.extend({
 <p>There are a couple ways to solve this problem. We could override the default behavior of our Ember Route to look up a profile record with our :friend_id like this:</p>
 
 
+<pre class="prettyprint"><code class="language-html hljs "><span class="hljs-comment">// app/routes/profile/friends/edit.js</span>
 
 <pre class="prettyprint"><code class=" hljs coffeescript"><span class="hljs-reserved">import</span> Ember from <span class="hljs-string">'ember'</span>;
 
@@ -1910,6 +1941,8 @@ export default Ember.Component.extend({
 
   <p>We also see how simple it is to override those conventions for the specific needs of our application. For example, in Ember it is much more common to see a pattern like this in our router:</p>
 
+  <pre class="prettyprint"><code class="language-html hljs "><span class="hljs-comment">// app/routes.js</span>
+
   <pre class="prettyprint"><code class=" hljs javascript">Router.map(<span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span> {</span>
   <span class="hljs-keyword">this</span>.route(<span class="hljs-string">'profile'</span>, { path: <span class="hljs-string">'/my_profile'</span> }, <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span> {</span>
     <span class="hljs-keyword">this</span>.route(<span class="hljs-string">'friends'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span> {</span>
@@ -1930,7 +1963,7 @@ export default Ember.Component.extend({
 
 
 
-<pre class="prettyprint"><code class=" hljs handlebars"><span class="xml"><span class="hljs-comment">&lt;!-- templates/profile/friends/edit --&gt;</span>
+<pre class="prettyprint"><code class=" hljs handlebars"><span class="xml"><span class="hljs-comment">// app/templates/profile/friends/edit.js</span>
 <span class="hljs-tag">&lt;<span class="hljs-title">h4</span>&gt;</span>Here is where we will edit a friend:<span class="hljs-tag">&lt;/<span class="hljs-title">h4</span>&gt;</span>
 
 <span class="hljs-tag">&lt;<span class="hljs-title">p</span>&gt;</span>Current Name: </span><span class="hljs-expression">\{{<span class="hljs-variable">model.name</span>}}</span><span class="xml"><span class="hljs-tag">&lt;/<span class="hljs-title">p</span>&gt;</span>
@@ -1948,6 +1981,7 @@ export default Ember.Component.extend({
 </blockquote>
 
 
+<pre class="prettyprint"><code class="language-html hljs "><span class="hljs-comment">&lt;!-- app/templates/profile/friends.hbs --&gt;</span>
 
 <pre class="prettyprint"><code class=" hljs handlebars"><span class="xml"><span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"squad"</span>&gt;</span>
   </span><span class="hljs-expression">\{{<span class="hljs-begin-block">#link-to </span>'<span class="hljs-variable">profile</span>'}}</span><span class="xml">
@@ -2002,7 +2036,7 @@ export default Ember.Component.extend({
 
 
 
-<pre class="prettyprint"><code class="language-html hljs "><span class="hljs-comment">&lt;!-- templates/profile/friends/edit --&gt;</span>
+<pre class="prettyprint"><code class="language-html hljs "><span class="hljs-comment">&lt;!-- app/templates/profile/friends/edit.hbs --&gt;</span>
 ...
 <span class="hljs-tag">&lt;<span class="hljs-title">form</span> \{{<span class="hljs-attribute">action</span> "<span class="hljs-attribute">setColor</span>" <span class="hljs-attribute">newColor</span> <span class="hljs-attribute">on</span>=<span class="hljs-value">"submit"</span><span class="hljs-value">}}</span>&gt;</span>
   <span class="hljs-tag">&lt;<span class="hljs-title">label</span> <span class="hljs-attribute">for</span>=<span class="hljs-value">"new-color"</span>&gt;</span>What's \{{model.name}}'s favorite color?<span class="hljs-tag">&lt;/<span class="hljs-title">label</span>&gt;</span>
@@ -2035,7 +2069,7 @@ export default Ember.Component.extend({
 
 
 
-<pre class="prettyprint"><code class="language-html hljs "><span class="hljs-comment">&lt;!-- templates/components/submit-edit --&gt;</span>
+<pre class="prettyprint"><code class="language-html hljs "><span class="hljs-comment">&lt;!-- templates/components/submit-edit.hbs --&gt;</span>
 
  <span class="hljs-tag">&lt;<span class="hljs-title">form</span> \{{<span class="hljs-attribute">action</span> "<span class="hljs-attribute">setColor</span>" <span class="hljs-attribute">newColor</span> <span class="hljs-attribute">on</span>=<span class="hljs-value">"submit"</span><span class="hljs-value">}}</span>&gt;</span>
    <span class="hljs-tag">&lt;<span class="hljs-title">label</span> <span class="hljs-attribute">for</span>=<span class="hljs-value">"new-color"</span>&gt;</span>Favorite color:<span class="hljs-tag">&lt;/<span class="hljs-title">label</span>&gt;</span>
@@ -2055,7 +2089,7 @@ export default Ember.Component.extend({
 
 
 
-<pre class="prettyprint"><code class="language-html hljs "><span class="hljs-comment">&lt;!-- templates/components/submit-edit --&gt;</span>
+<pre class="prettyprint"><code class="language-html hljs "><span class="hljs-comment">&lt;!-- app/templates/components/submit-edit.hbs --&gt;</span>
 
  <span class="hljs-tag">&lt;<span class="hljs-title">form</span> \{{<span class="hljs-attribute">action</span> "<span class="hljs-attribute">setColor</span>" <span class="hljs-attribute">newValue</span> <span class="hljs-attribute">on</span>=<span class="hljs-value">"submit"</span><span class="hljs-value">}}</span>&gt;</span>
    <span class="hljs-tag">&lt;<span class="hljs-title">label</span>&gt;</span>Favorite color:<span class="hljs-tag">&lt;/<span class="hljs-title">label</span>&gt;</span>
@@ -2066,7 +2100,7 @@ export default Ember.Component.extend({
 <p>then adding our component to our template:</p>
 
 
-
+<pre class="prettyprint"><code class="language-html hljs "><span class="hljs-comment">&lt;!-- app/templates/profile/edit.hbs --&gt;</span>
 <pre class="prettyprint"><code class="language-html hljs ">\{{submit-edit}}</code></pre>
 
 <p>Since we’re not <code>\{{yield}}</code>ing a block of code into our component, we don’t need to open and close our component using the <code>\{{#component-name}}</code> <code>\{{/component-name}}</code> syntax.</p>
@@ -2090,13 +2124,13 @@ export default Ember.Component.extend({
 
 
 
-<pre class="prettyprint"><code class="language-html hljs "><span class="hljs-comment">&lt;!-- template/profiles/edit.hbs --&gt;</span>
+<pre class="prettyprint"><code class="language-html hljs "><span class="hljs-comment">&lt;!-- app/templates/profile/edit.hbs --></span>
 
 \{{#submit-edit labelText="New Favorite Color:"}}</code></pre>
 
 
 
-<pre class="prettyprint"><code class="language-html hljs "><span class="hljs-comment">&lt;!-- template/components/submit-edit.hbs --&gt;</span>
+<pre class="prettyprint"><code class="language-html hljs "><span class="hljs-comment">&lt;!-- app/template/components/submit-edit.hbs --&gt;</span>
 
 ...
 <span class="hljs-tag">&lt;<span class="hljs-title">label</span>&gt;</span>\{{labelText}}<span class="hljs-tag">&lt;/<span class="hljs-title">label</span>&gt;</span>
@@ -2106,7 +2140,7 @@ export default Ember.Component.extend({
 
 
 
-<pre class="prettyprint"><code class="language-html hljs "><span class="hljs-comment">&lt;!-- template/profiles/edit.hbs --&gt;</span>
+<pre class="prettyprint"><code class="language-html hljs "><span class="hljs-comment">&lt;!-- app/template/profiles/edit.hbs --&gt;</span>
 
 \{{#submit-edit
     labelText="New Favorite Color:"
@@ -2181,7 +2215,7 @@ objectProperty: Ember.computed(<span class="hljs-string">'property'</span>, <spa
 
 
 <pre class="prettyprint"><code class=" hljs handlebars"><span class="xml">
-<span class="hljs-comment">&lt;!-- templates/components/submit-edit.hbs --&gt;</span>
+<span class="hljs-comment">&lt;!-- app/templates/components/submit-edit.hbs --&gt;</span>
 
 <span class="hljs-tag">&lt;<span class="hljs-title">p</span>&gt;</span>Current Value: </span><span class="hljs-expression">\{{<span class="hljs-variable">currentValue</span>}}</span><span class="xml"><span class="hljs-tag">&lt;/<span class="hljs-title">p</span>&gt;</span>
 <span class="hljs-tag">&lt;<span class="hljs-title">p</span>&gt;</span>New Value: </span><span class="hljs-expression">\{{<span class="hljs-variable">newValue</span>}}</span><span class="xml"><span class="hljs-tag">&lt;/<span class="hljs-title">p</span>&gt;</span></span></code></pre>
@@ -2203,6 +2237,7 @@ objectProperty: Ember.computed(<span class="hljs-string">'property'</span>, <spa
 <p>For now, let’s start simple: we’ll just copy the set and save actions from our profile controller into our component so that we can save the change to our object.</p>
 
 
+<pre class="prettyprint"><code class="language-js hljs "><span class="hljs-comment">// app/controller/profile.js</span>
 
 <pre class="prettyprint"><code class=" hljs coffeescript">
 <span class="hljs-attribute">actions</span>: {
@@ -2230,6 +2265,7 @@ objectProperty: Ember.computed(<span class="hljs-string">'property'</span>, <spa
 </ul>
 
 
+<pre class="prettyprint"><code class="language-js hljs "><span class="hljs-comment">// app/controller/profile.js</span>
 
 <pre class="prettyprint"><code class="language-js hljs ">actions: {
   setValue(newValue){
