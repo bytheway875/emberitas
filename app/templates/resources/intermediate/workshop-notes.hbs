@@ -1318,7 +1318,7 @@ setColor(newColor){
 
 
 
-<pre class="prettyprint"><code class=" hljs handlebars"><span class="xml"><span class="hljs-comment">&lt;!-- templates/application.hbs --&gt;</span>
+<pre class="prettyprint"><code class=" hljs handlebars"><span class="xml"><span class="hljs-comment">&lt;!-- app/templates/application.hbs --&gt;</span>
 
 </span><span class="hljs-expression">\{{<span class="hljs-begin-block">#link-to </span>'<span class="hljs-variable">profile</span>'}}</span><span class="xml">
   View Your Profile
@@ -1362,11 +1362,11 @@ setColor(newColor){
 
 
 
-<pre class="prettyprint"><code class=" hljs handlebars"><span class="xml">    <span class="hljs-comment">&lt;!-- templates/index.hbs --&gt;</span>
+<pre class="prettyprint"><code class=" hljs handlebars"><span class="xml"><span class="hljs-comment">&lt;!-- app/templates/index.hbs --&gt;</span>
 
-    </span><span class="hljs-expression">\{{<span class="hljs-begin-block">#link-to </span>'<span class="hljs-variable">profile</span>'}}</span><span class="xml">
-      View Your Profile
-    </span><span class="hljs-expression">\{{<span class="hljs-end-block">/link-to</span>}}</span><span class="xml"></span></code></pre>
+</span><span class="hljs-expression">\{{<span class="hljs-begin-block">#link-to </span>'<span class="hljs-variable">profile</span>'}}</span><span class="xml">
+View Your Profile
+</span><span class="hljs-expression">\{{<span class="hljs-end-block">/link-to</span>}}</span><span class="xml"></span></code></pre>
 
 <p>As expected, we now see the View Your Profile link at localhost:4200, but when we transition to localhost:4200/profile, we just see our profile information!</p>
 
