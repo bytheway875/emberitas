@@ -633,6 +633,7 @@ What are we supposed to put in there? Let’s go to the Ember docs for the answe
 <p>Since we know that we want some attributes on our model, let’s go ahead and define them. Uncomment the `import attr from ‘ember-data/attr’ line, and add two properties named ‘name’ and ‘favoriteColor’, and designate both as ‘attrs’.</p>
 
 
+<pre class="prettyprint"><code class="language-js hljs "><span class="hljs-comment">// app/models/profile.js</span>
 
 <pre class="prettyprint"><code class="language-js hljs ">import Model from <span class="hljs-string">'ember-data/model'</span>;
 import attr from <span class="hljs-string">'ember-data/attr'</span>;
@@ -677,6 +678,7 @@ export <span class="hljs-keyword">default</span> Model.extend({
 <p>We want to load a profile record into routes/profile.js file so that we have access to the profile within the profile.hbs template:</p>
 
 
+<pre class="prettyprint"><code class="language-js hljs "><span class="hljs-comment">// app/routes/profile.js</span>
 
 <pre class="prettyprint"><code class="language-js hljs ">import Ember from <span class="hljs-string">'ember'</span>;
 
@@ -910,6 +912,7 @@ Now that we’ve got a model and factory to define the data we need and mock end
 <p>To do this, we just need to alter our mirage/scenarios/default.js file to look like this:</p>
 
 
+<pre class="prettyprint"><code class="language-js hljs "><span class="hljs-comment">// mirage/scenarios/default.js</span>
 
 <pre class="prettyprint"><code class="language-js hljs ">export <span class="hljs-keyword">default</span> <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(server)</span> {</span>
   server.create(<span class="hljs-string">'profile'</span>);
@@ -1779,7 +1782,7 @@ export default Ember.Component.extend({
 
 
 
-<pre class="prettyprint"><code class="language-html hljs "><span class="hljs-comment">&lt;!-- templates/profile/friends.hbs --&gt;</span>
+<pre class="prettyprint"><code class="language-html hljs "><span class="hljs-comment">app/templates/profile/friends.hbs</span>
 
 \{{#each model as |friend|}}
   \{{#color-changer tagName='p' color=friend.favoriteColor}}
@@ -1797,6 +1800,7 @@ export default Ember.Component.extend({
 <p><code>friend</code> is the context object that we’re passing into our \{{link-to}} because we want to see the edit page for that specific friend. But we haven’t told our route how to deal with this context object because we haven’t defined a “dynamic segment” for our route. A dynamic segment maps to an attribute of the object we’re trying to load on that route. We can define one on our route like this:</p>
 
 
+<pre class="prettyprint"><code class="language-html hljs "><span class="hljs-comment">// app/router.js</span>
 
 <pre class="prettyprint"><code class=" hljs javascript">Router.map(<span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span> {</span>
   <span class="hljs-keyword">this</span>.route(<span class="hljs-string">'profile'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span> {</span>
@@ -1824,6 +1828,7 @@ export default Ember.Component.extend({
 </blockquote>
 
 
+<pre class="prettyprint"><code class="language-html hljs "><span class="hljs-comment">// app/router.js</span>
 
 <pre class="prettyprint"><code class=" hljs javascript">    Router.map(<span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span> {</span>
       <span class="hljs-keyword">this</span>.route(<span class="hljs-string">'profile'</span>, { path: <span class="hljs-string">'/my_profile'</span> }, <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span> {</span>
@@ -1860,6 +1865,7 @@ export default Ember.Component.extend({
 <p>When we define a <strong>dynamic segment</strong> on a route, Ember attempts to load the appropriate model based on the name of that segment. When our __dynamic segment is named <code>:friend_id</code>, Ember attempts to look for an instance of a model named <code>friend</code> with the id that we’ve passed in. Without adding any data to our <code>edit</code> route file, Ember’s internals thinks that we want our <code>model()</code> method to look like this:</p>
 
 
+<pre class="prettyprint"><code class="language-html hljs "><span class="hljs-comment">// app/routes/profile/friends/edit.js</span>
 
 <pre class="prettyprint"><code class=" hljs coffeescript"><span class="hljs-reserved">import</span> Ember from <span class="hljs-string">'ember'</span>;
 
@@ -1874,6 +1880,7 @@ export default Ember.Component.extend({
 <p>There are a couple ways to solve this problem. We could override the default behavior of our Ember Route to look up a profile record with our :friend_id like this:</p>
 
 
+<pre class="prettyprint"><code class="language-html hljs "><span class="hljs-comment">// app/routes/profile/friends/edit.js</span>
 
 <pre class="prettyprint"><code class=" hljs coffeescript"><span class="hljs-reserved">import</span> Ember from <span class="hljs-string">'ember'</span>;
 
@@ -1895,6 +1902,8 @@ export default Ember.Component.extend({
 
   <p>We also see how simple it is to override those conventions for the specific needs of our application. For example, in Ember it is much more common to see a pattern like this in our router:</p>
 
+  <pre class="prettyprint"><code class="language-html hljs "><span class="hljs-comment">// app/routes.js</span>
+
   <pre class="prettyprint"><code class=" hljs javascript">Router.map(<span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span> {</span>
   <span class="hljs-keyword">this</span>.route(<span class="hljs-string">'profile'</span>, { path: <span class="hljs-string">'/my_profile'</span> }, <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span> {</span>
     <span class="hljs-keyword">this</span>.route(<span class="hljs-string">'friends'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span> {</span>
@@ -1915,7 +1924,7 @@ export default Ember.Component.extend({
 
 
 
-<pre class="prettyprint"><code class=" hljs handlebars"><span class="xml"><span class="hljs-comment">&lt;!-- templates/profile/friends/edit --&gt;</span>
+<pre class="prettyprint"><code class=" hljs handlebars"><span class="xml"><span class="hljs-comment">// app/templates/profile/friends/edit.js</span>
 <span class="hljs-tag">&lt;<span class="hljs-title">h4</span>&gt;</span>Here is where we will edit a friend:<span class="hljs-tag">&lt;/<span class="hljs-title">h4</span>&gt;</span>
 
 <span class="hljs-tag">&lt;<span class="hljs-title">p</span>&gt;</span>Current Name: </span><span class="hljs-expression">\{{<span class="hljs-variable">model.name</span>}}</span><span class="xml"><span class="hljs-tag">&lt;/<span class="hljs-title">p</span>&gt;</span>
@@ -1933,6 +1942,7 @@ export default Ember.Component.extend({
 </blockquote>
 
 
+<pre class="prettyprint"><code class="language-html hljs "><span class="hljs-comment">// app/templates/profile/friends.hbs</span>
 
 <pre class="prettyprint"><code class=" hljs handlebars"><span class="xml"><span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"squad"</span>&gt;</span>
   </span><span class="hljs-expression">\{{<span class="hljs-begin-block">#link-to </span>'<span class="hljs-variable">profile</span>'}}</span><span class="xml">
@@ -1987,7 +1997,7 @@ export default Ember.Component.extend({
 
 
 
-<pre class="prettyprint"><code class="language-html hljs "><span class="hljs-comment">&lt;!-- templates/profile/friends/edit --&gt;</span>
+<pre class="prettyprint"><code class="language-html hljs "><span class="hljs-comment">// app/templates/profile/friends/edit.hbs</span>
 ...
 <span class="hljs-tag">&lt;<span class="hljs-title">form</span> \{{<span class="hljs-attribute">action</span> "<span class="hljs-attribute">setColor</span>" <span class="hljs-attribute">newColor</span> <span class="hljs-attribute">on</span>=<span class="hljs-value">"submit"</span><span class="hljs-value">}}</span>&gt;</span>
   <span class="hljs-tag">&lt;<span class="hljs-title">label</span> <span class="hljs-attribute">for</span>=<span class="hljs-value">"new-color"</span>&gt;</span>What's \{{model.name}}'s favorite color?<span class="hljs-tag">&lt;/<span class="hljs-title">label</span>&gt;</span>
@@ -2020,7 +2030,7 @@ export default Ember.Component.extend({
 
 
 
-<pre class="prettyprint"><code class="language-html hljs "><span class="hljs-comment">&lt;!-- templates/components/submit-edit --&gt;</span>
+<pre class="prettyprint"><code class="language-html hljs "><span class="hljs-comment">// app/templates/components/submit-edit.hbs</span>
 
  <span class="hljs-tag">&lt;<span class="hljs-title">form</span> \{{<span class="hljs-attribute">action</span> "<span class="hljs-attribute">setColor</span>" <span class="hljs-attribute">newColor</span> <span class="hljs-attribute">on</span>=<span class="hljs-value">"submit"</span><span class="hljs-value">}}</span>&gt;</span>
    <span class="hljs-tag">&lt;<span class="hljs-title">label</span> <span class="hljs-attribute">for</span>=<span class="hljs-value">"new-color"</span>&gt;</span>Favorite color:<span class="hljs-tag">&lt;/<span class="hljs-title">label</span>&gt;</span>
@@ -2040,7 +2050,7 @@ export default Ember.Component.extend({
 
 
 
-<pre class="prettyprint"><code class="language-html hljs "><span class="hljs-comment">&lt;!-- templates/components/submit-edit --&gt;</span>
+<pre class="prettyprint"><code class="language-html hljs "><span class="hljs-comment">// app/templates/components/submit-edit.hbs</span>
 
  <span class="hljs-tag">&lt;<span class="hljs-title">form</span> \{{<span class="hljs-attribute">action</span> "<span class="hljs-attribute">setColor</span>" <span class="hljs-attribute">newValue</span> <span class="hljs-attribute">on</span>=<span class="hljs-value">"submit"</span><span class="hljs-value">}}</span>&gt;</span>
    <span class="hljs-tag">&lt;<span class="hljs-title">label</span>&gt;</span>Favorite color:<span class="hljs-tag">&lt;/<span class="hljs-title">label</span>&gt;</span>
@@ -2051,7 +2061,7 @@ export default Ember.Component.extend({
 <p>then adding our component to our template:</p>
 
 
-
+<pre class="prettyprint"><code class="language-html hljs "><span class="hljs-comment">// app/templates/profile/edit.hbs</span>
 <pre class="prettyprint"><code class="language-html hljs ">\{{submit-edit}}</code></pre>
 
 <p>Since we’re not <code>\{{yield}}</code>ing a block of code into our component, we don’t need to open and close our component using the <code>\{{#component-name}}</code> <code>\{{/component-name}}</code> syntax.</p>
@@ -2075,13 +2085,13 @@ export default Ember.Component.extend({
 
 
 
-<pre class="prettyprint"><code class="language-html hljs "><span class="hljs-comment">&lt;!-- template/profiles/edit.hbs --&gt;</span>
+<pre class="prettyprint"><code class="language-html hljs "><span class="hljs-comment">// app/templates/profile/edit.hbs</span>
 
 \{{#submit-edit labelText="New Favorite Color:"}}</code></pre>
 
 
 
-<pre class="prettyprint"><code class="language-html hljs "><span class="hljs-comment">&lt;!-- template/components/submit-edit.hbs --&gt;</span>
+<pre class="prettyprint"><code class="language-html hljs "><span class="hljs-comment">// app/template/components/submit-edit.hbs</span>
 
 ...
 <span class="hljs-tag">&lt;<span class="hljs-title">label</span>&gt;</span>\{{labelText}}<span class="hljs-tag">&lt;/<span class="hljs-title">label</span>&gt;</span>
@@ -2091,7 +2101,7 @@ export default Ember.Component.extend({
 
 
 
-<pre class="prettyprint"><code class="language-html hljs "><span class="hljs-comment">&lt;!-- template/profiles/edit.hbs --&gt;</span>
+<pre class="prettyprint"><code class="language-html hljs "><span class="hljs-comment">// app/template/profiles/edit.hbs</span>
 
 \{{#submit-edit
     labelText="New Favorite Color:"
