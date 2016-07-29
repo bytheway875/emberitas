@@ -223,12 +223,12 @@
 
 <p><code>actions: {}</code></p>
 
-<p>Within your action object, let’s define a function called updateName:</p>
+<p>Within your action object, let’s define a function called setName:</p>
 
 
 
 <pre class="prettyprint"><code class="language-js hljs ">actions: {
-  updateName(newName){
+  setName(newName){
     <span class="hljs-keyword">this</span>.set(<span class="hljs-string">'name'</span>, newName);
   }
 }</code></pre>
@@ -285,7 +285,7 @@
 
 <p>So we’ve defined our first action. Now we just need to trigger it. To do that, we just need to alter our handlebars input helper to take advantage of the action property.</p>
 
-<p><code>\{{input value=newName action="updateName" on="enter"}}</code></p>
+<p><code>\{{input value=newName action="setName" on="enter"}}</code></p>
 
 <p>Now, when we reload the page and enter a new value into our input, we’ll see that the values change, but only when you press “enter”.</p>
 
@@ -331,7 +331,7 @@
 
 <p>So let’s take the action we had above and use it here. At first, we might want to try something like this:</p>
 
-<p><code>&lt;button \{{action="updateName"}}&gt;Submit&lt;/button&gt;</code></p>
+<p><code>&lt;button \{{action="setName"}}&gt;Submit&lt;/button&gt;</code></p>
 
 <p>but that won’t work. That’s because in</p>
 
@@ -341,21 +341,21 @@
 
 <p>In this case \{{action}} is a component that expects ordered properties, and the first property is the name of the action.</p>
 
-<p><code>&lt;button \{{action "updateName"}}&gt;Submit&lt;/button&gt;</code></p>
+<p><code>&lt;button \{{action "setName"}}&gt;Submit&lt;/button&gt;</code></p>
 
 <p>Yet, this won’t work either! If we take a look back at our controllers/application.js file you’ll see that our action expects an argument.</p>
 
 
 
 <pre class="prettyprint"><code class="language-js hljs ">actions: {
-  updateName(newName){
+  setName(newName){
     <span class="hljs-keyword">this</span>.set(<span class="hljs-string">'name'</span>, newName);
   }
 }</code></pre>
 
 <p>You can also see that we are not passing an argument. When we do:</p>
 
-<p><code>&lt;button \{{action "updateName" newName}}&gt;Submit&lt;/button&gt;</code></p>
+<p><code>&lt;button \{{action "setName" newName}}&gt;Submit&lt;/button&gt;</code></p>
 
 <p>clicking our submit button does, indeed, update ‘name’ to ‘newName’.</p>
 
@@ -367,7 +367,7 @@
 
 <p>If our action had multiple arguments, we could alter the action component in our template to accept multiple parameters:</p>
 
-<p><code>&lt;button \{{action "updateName" newName param2}}&gt;Submit&lt;/button&gt;</code></p>
+<p><code>&lt;button \{{action "setName" newName param2}}&gt;Submit&lt;/button&gt;</code></p>
 
 <hr>
 
@@ -381,7 +381,7 @@
 
 
 
-<pre class="prettyprint"><code class="language-html hljs "><span class="hljs-tag">&lt;<span class="hljs-title">form</span> \{{<span class="hljs-attribute">action</span> "<span class="hljs-attribute">updateName</span>" <span class="hljs-attribute">newName</span> <span class="hljs-attribute">on</span>=<span class="hljs-value">"submit"</span><span class="hljs-value">}}</span>&gt;</span>
+<pre class="prettyprint"><code class="language-html hljs "><span class="hljs-tag">&lt;<span class="hljs-title">form</span> \{{<span class="hljs-attribute">action</span> "<span class="hljs-attribute">setName</span>" <span class="hljs-attribute">newName</span> <span class="hljs-attribute">on</span>=<span class="hljs-value">"submit"</span><span class="hljs-value">}}</span>&gt;</span>
   \{{input value=newName}}
   <span class="hljs-tag">&lt;<span class="hljs-title">button</span> <span class="hljs-attribute">type</span>=<span class="hljs-value">"submit"</span>&gt;</span>Submit<span class="hljs-tag">&lt;/<span class="hljs-title">button</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-title">form</span>&gt;</span></code></pre>
