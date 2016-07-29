@@ -1782,7 +1782,7 @@ export default Ember.Component.extend({
 
 
 
-<pre class="prettyprint"><code class="language-html hljs "><span class="hljs-comment">&lt;!-- app/templates/profile/friends.hbs --&gt;</span>
+<pre class="prettyprint"><code class="language-html hljs "><span class="hljs-comment">app/templates/profile/friends.hbs</span>
 
 \{{#each model as |friend|}}
   \{{#color-changer tagName='p' color=friend.favoriteColor}}
@@ -1924,7 +1924,7 @@ export default Ember.Component.extend({
 
 
 
-<pre class="prettyprint"><code class=" hljs handlebars"><span class="xml"><span class="hljs-comment">&lt;!-- templates/profile/friends/edit --&gt;</span>
+<pre class="prettyprint"><code class=" hljs handlebars"><span class="xml"><span class="hljs-comment">// app/templates/profile/friends/edit.js</span>
 <span class="hljs-tag">&lt;<span class="hljs-title">h4</span>&gt;</span>Here is where we will edit a friend:<span class="hljs-tag">&lt;/<span class="hljs-title">h4</span>&gt;</span>
 
 <span class="hljs-tag">&lt;<span class="hljs-title">p</span>&gt;</span>Current Name: </span><span class="hljs-expression">\{{<span class="hljs-variable">model.name</span>}}</span><span class="xml"><span class="hljs-tag">&lt;/<span class="hljs-title">p</span>&gt;</span>
@@ -1942,6 +1942,7 @@ export default Ember.Component.extend({
 </blockquote>
 
 
+<pre class="prettyprint"><code class="language-html hljs "><span class="hljs-comment">// app/templates/profile/friends.hbs</span>
 
 <pre class="prettyprint"><code class=" hljs handlebars"><span class="xml"><span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"squad"</span>&gt;</span>
   </span><span class="hljs-expression">\{{<span class="hljs-begin-block">#link-to </span>'<span class="hljs-variable">profile</span>'}}</span><span class="xml">
