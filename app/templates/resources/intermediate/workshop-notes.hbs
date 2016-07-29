@@ -290,6 +290,7 @@
 
 <p>So we’ve defined our first action. Now we just need to trigger it. To do that, we just need to alter our handlebars input helper to take advantage of the action property.</p>
 
+<pre class="prettyprint"><code class="language-js hljs "><span class="hljs-comment">//templates/application.hbs</span>
 <p><code>\{{input value=newName action="updateName" on="enter"}}</code></p>
 
 <p>Now, when we reload the page and enter a new value into our input, we’ll see that the values change, but only when you press “enter”.</p>
@@ -352,6 +353,7 @@
 
 
 
+<pre class="prettyprint"><code class="language-js hljs "><span class="hljs-comment">//controllers/application.js</span>
 <pre class="prettyprint"><code class="language-js hljs ">actions: {
   updateName(newName){
     <span class="hljs-keyword">this</span>.set(<span class="hljs-string">'name'</span>, newName);
