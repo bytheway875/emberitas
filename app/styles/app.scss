@@ -265,6 +265,14 @@ $nav-height: 50px;
     padding-top: $nav-height + 20px;
   }
 
+  .sponsors-section {
+    min-height: 100vh;
+    background-color:#d2356b;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
   .left-aligned {
     text-align: left;
     padding-left: 100px;
