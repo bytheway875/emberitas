@@ -1,0 +1,55 @@
+<pre class="prettyprint"><code class="language-html hljs "><span class="hljs-doctype">&lt;!DOCTYPE html&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">html</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-title">head</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">meta</span> <span class="hljs-attribute">charset</span>=<span class="hljs-value">"UTF-8"</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">meta</span> <span class="hljs-attribute">name</span>=<span class="hljs-value">"description"</span> <span class="hljs-attribute">content</span>=<span class="hljs-value">"Emberitas Practice Application"</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">meta</span> <span class="hljs-attribute">name</span>=<span class="hljs-value">"author"</span> <span class="hljs-attribute">content</span>=<span class="hljs-value">"Shannon Byrne"</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">meta</span> <span class="hljs-attribute">name</span>=<span class="hljs-value">"viewport"</span> <span class="hljs-attribute">content</span>=<span class="hljs-value">"width=device-width, initial-scale=1.0"</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">title</span>&gt;</span>Emberitas Practice<span class="hljs-tag">&lt;/<span class="hljs-title">title</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">link</span> <span class="hljs-attribute">href</span>=<span class="hljs-value">"https://fonts.googleapis.com/css?family=Pacifico"</span> <span class="hljs-attribute">rel</span>=<span class="hljs-value">"stylesheet"</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">link</span> <span class="hljs-attribute">rel</span>=<span class="hljs-value">"stylesheet"</span> <span class="hljs-attribute">href</span>=<span class="hljs-value">"https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"</span> <span class="hljs-attribute">integrity</span>=<span class="hljs-value">"sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"</span> <span class="hljs-attribute">crossorigin</span>=<span class="hljs-value">"anonymous"</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">link</span> <span class="hljs-attribute">rel</span>=<span class="hljs-value">"stylesheet"</span> <span class="hljs-attribute">href</span>=<span class="hljs-value">"style.css"</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-title">head</span>&gt;</span>
+
+  <span class="hljs-tag">&lt;<span class="hljs-title">body</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"container"</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-title">h1</span>&gt;</span> New Palette <span class="hljs-tag">&lt;/<span class="hljs-title">h1</span>&gt;</span>
+
+      <span class="hljs-tag">&lt;<span class="hljs-title">h2</span>&gt;</span> Palette Name <span class="hljs-tag">&lt;/<span class="hljs-title">h2</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-title">input</span> <span class="hljs-attribute">type</span>=<span class="hljs-value">"text"</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"full-width"</span>&gt;</span>
+
+      <span class="hljs-tag">&lt;<span class="hljs-title">h2</span>&gt;</span> Palette Preview <span class="hljs-tag">&lt;/<span class="hljs-title">h2</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"btn-group"</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-title">button</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"btn palette-btn"</span> <span class="hljs-attribute">style</span>=<span class="hljs-value">"background-color: rgb(217,33,32)"</span>&gt;</span> rgb(217,33,32)<span class="hljs-tag">&lt;/<span class="hljs-title">button</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-title">button</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"btn palette-btn"</span> <span class="hljs-attribute">style</span>=<span class="hljs-value">"background-color: rgb(231,116,47)"</span>&gt;</span> rgb(231,116,47)<span class="hljs-tag">&lt;/<span class="hljs-title">button</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-title">button</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"btn palette-btn"</span> <span class="hljs-attribute">style</span>=<span class="hljs-value">"background-color: rgb(223,165,58)"</span>&gt;</span> rgb(223,165,58) <span class="hljs-tag">&lt;/<span class="hljs-title">button</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-title">button</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"btn palette-btn"</span> <span class="hljs-attribute">style</span>=<span class="hljs-value">"background-color: rgb(177,190,78)"</span>&gt;</span> rgb(177,190,78) <span class="hljs-tag">&lt;/<span class="hljs-title">button</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-title">button</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"btn palette-btn"</span> <span class="hljs-attribute">style</span>=<span class="hljs-value">"background-color: rgb(109,179,136)"</span>&gt;</span> rgb(109,179,136) <span class="hljs-tag">&lt;/<span class="hljs-title">button</span>&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+
+      <span class="hljs-tag">&lt;<span class="hljs-title">h2</span>&gt;</span> Edit Color <span class="hljs-tag">&lt;/<span class="hljs-title">h2</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"btn-group"</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-title">button</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"btn palette-btn full-width"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-title">button</span>&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+
+      <span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"color-picker"</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"color-letter"</span>&gt;</span>R<span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-title">input</span> <span class="hljs-attribute">type</span>=<span class="hljs-value">"text"</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"color-number"</span> <span class="hljs-attribute">maxlength</span>=<span class="hljs-value">"3"</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-title">input</span> <span class="hljs-attribute">type</span>=<span class="hljs-value">"range"</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"color-slider"</span> <span class="hljs-attribute">min</span>=<span class="hljs-value">"0"</span> <span class="hljs-attribute">max</span>=<span class="hljs-value">"255"</span> <span class="hljs-attribute">step</span>=<span class="hljs-value">"1"</span>&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+
+      <span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"color-picker"</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"color-letter"</span>&gt;</span>G<span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-title">input</span> <span class="hljs-attribute">type</span>=<span class="hljs-value">"text"</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"color-number"</span> <span class="hljs-attribute">maxlength</span>=<span class="hljs-value">"3"</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-title">input</span> <span class="hljs-attribute">type</span>=<span class="hljs-value">"range"</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"color-slider"</span>  <span class="hljs-attribute">min</span>=<span class="hljs-value">"0"</span> <span class="hljs-attribute">max</span>=<span class="hljs-value">"255"</span> <span class="hljs-attribute">step</span>=<span class="hljs-value">"1"</span>&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+
+      <span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"color-picker"</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"color-letter"</span>&gt;</span>B<span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-title">input</span> <span class="hljs-attribute">type</span>=<span class="hljs-value">"text"</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"color-number"</span> <span class="hljs-attribute">maxlength</span>=<span class="hljs-value">"3"</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-title">input</span> <span class="hljs-attribute">type</span>=<span class="hljs-value">"range"</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"color-slider"</span>  <span class="hljs-attribute">min</span>=<span class="hljs-value">"0"</span> <span class="hljs-attribute">max</span>=<span class="hljs-value">"255"</span> <span class="hljs-attribute">step</span>=<span class="hljs-value">"1"</span>&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+
+    <span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-title">body</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-title">html</span>&gt;</span></code></pre>

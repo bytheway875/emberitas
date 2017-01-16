@@ -1,686 +1,1160 @@
+<h1 style="text-align:center">Emberitas Beginner Workshop - Color Palettes: Part 1</h1>
+
+<p style="text-align:center"><img  src="https://github.com/lydiaguarino/emberitas-images/blob/master/Ember-Austin-Zoey-Half-sm.png?raw=true" alt="zoey-austin" title=""></p>
+
+<hr>
 <div style="text-align:center">
-  <h1 id="color-palette-tutorial" style="text-align:center">Color Palette Tutorial</h1>
-  <p>Emberitas Track One | July 16th, 2016 | Lydia Guarino, Instructor | {{link-to
-    'Back to Beginner Home'
-    'resources.beginner'
-  }}<br>
-  <img src="https://github.com/lydiaguarino/emberitas-images/blob/master/Ember-Austin-Zoey-Half-sm.png?raw=true" alt="enter image description here" title=""></p>
+  <p >Today we’ll be playing the role of Front End Web Developer. We’ll learn about how developers turn ideas and designs into fully functioning applications.</p>
+
+  <p>We’ll be following a typical developer workflow to turn a static image into a <em>real</em>, <em>live</em> application that our friends can play with on the web.</p>
 </div>
 <hr>
 
-<p>Today we’ll be playing the role of Front End Web Developer. We’ll learn about how developers turn ideas and designs into fully functioning applications.</p>
 
-<p>We’ll be following a typical developer workflow to turn a static image into a <em>real</em>, <em>live</em> application that our friends can play with on the web.</p>
-
-<hr>
-<p><div class="toc">
-<ul>
-
-</ul>
-</div>
-</p>
-
-<h3 id="phase-1-requirements-gathering">Phase 1 - <em>Requirements Gathering</em></h3>
+<h2>Phase 1 - <em>Requirements Gathering</em></h2>
 
 <p>The first phase of any new project is to <strong>understand the problem you are trying to solve</strong>. This process is called <strong>requirements gathering</strong>. This process generally starts with understanding who <strong>your users</strong> will be and what they expect the application to do. Once you understand the needs of your users, you can start to make educated decisions about the <strong>tech</strong> and the <strong>visual design</strong> you want to use.</p>
 
+<hr>
 
+<h3>Step 1: User Stories</h3>
 
-<h4 id="user-stories">User Stories</h4>
-
-<p>User personas and user stories are cognitive tools designers and developers use to explore application needs from the perspective of the people who will be using the product.</p>
-
-<blockquote class="row" style="padding-bottom:70px">
-  <div class="col-md-4"><h5 id="Chloes-user-persona"><strong>Chloe’s User Persona</strong></h5>
-  <p>
-  <em>Name</em>: Chloe Tomster <br>
-  <em>Profession</em>: Web Designer <br>
-  <em>Traits</em>: <strong>Values visual aesthetics</strong>, Knows some HTML and CSS, Often uses software on <strong>mobile devices</strong> as well as her desktop computer when discussing projects with clients.</p>
-</div>
-<div class="col-md-4" style="text-align:center">
-  <img src="https://github.com/lydiaguarino/emberitas-images/blob/master/Ember-Austin-Zoey-Full-sm.png?raw=true" alt="enter image description here" title="" style="width:200px;margin-top:70px;">
-</div>
-<div class="col-md-4">
-  <h5 id="Chloes-user-story"><strong>Chloe’s User Story</strong></h5>
-
-  <p>Chloe spends a lot of time as a visual designer experimenting with <strong>color palettes</strong>. She is frustrated that she doesn’t have a good reference tool to help her store and share the color palettes she creates. <strong>She needs a tool that will allow her to create, refrence, edit, delete and share color palettes with her teammates and clients.</strong> Since she values visual aesthetics, it is important to her that the tool be easy to use as well as pleasing to look at.</p>
-</div>
-</blockquote>
-
-
-
-<h4 id="application-specs">Application Specs</h4>
-
-<p>Now that we are familiar with our user and her needs, we can start to make assumptions and decisions about what we should build. </p>
+<p>User personas and user stories are tools designers and developers use to explore application needs from the perspective of the people who will be using the product.</p>
 
 <blockquote>
-  <h5 id="exercise-1"><i class="icon-pencil"></i> Exercise 1</h5>
+  <p style="text-align: center"><img src="https://github.com/lydiaguarino/emberitas-images/blob/master/Ember-Austin-Zoey-Full-sm.png?raw=true" alt="zoey-full" title=""></p>
 
-  <p>Review Chloe’s user persona and user story. As a group, make some lists and sketches to brainstorm how Chloe might use an application to help her manage her color palettes. Here are some ideas to get you started:</p>
+  <h4 id="chloes-user-persona"><strong>Chloe’s User Persona</strong></h4>
+
+  <p><em>Name</em>: Chloe Tomster  <br>
+  <em>Profession</em>: Web Designer  <br>
+  <em>Traits</em>: <strong>Values visual aesthetics</strong>, Knows some HTML and CSS, Often uses software on <strong>mobile devices</strong> as well as her desktop computer when discussing projects with clients.</p>
+
+
+
+  <h4><strong>Chloe’s User Story</strong></h4>
+
+  <p>Chloe spends a lot of time as a visual designer experimenting with <strong>color palettes</strong>. She is frustrated that she doesn’t have a good reference tool to help her store and share the color palettes she creates. <strong>She needs a tool that will allow her to view and reference color palettes she creates.</strong> Since she values visual aesthetics, it is important to her that the tool be easy to use as well as pleasing to look at.</p>
+</blockquote>
+
+<hr>
+
+<h3>Step 2: Application Specifications</h3>
+
+<p>Now that we are familiar with our user and her needs, we can start to make assumptions and decisions about what we should build.</p>
+
+<blockquote>
+  <h5><strong>ACTIVITY: Brainstorming</strong></h5>
+
+  <p>Review Chloe’s <em>user persona</em> and <em>user story</em>. Make some lists and sketches to brainstorm how Chloe might use an application to help her manage her color palettes. Here are some ideas to get you started:</p>
 
   <ol>
-  <li>What types of screens or user interfaces might we need to build?</li>
+  <li>What might our screen look like?</li>
   <li>How will Chloe navigate between different screens?</li>
   <li>Do we need to display groups of things? If so, what types of things?</li>
   <li>What types of actions should Chloe be able to perform with the application?</li>
   <li>What types of forms and buttons might we need to accommodate those actions?</li>
   </ol>
 
-  <p>Time Box It: 10min</p>
+</blockquote>
+
+<hr>
+
+<h3 id="wireframes">Step 3: Wireframes</h3>
+
+<p>After speaking with the various <strong>stakeholders</strong> (perhaps the development team and our User Experience designer), we create our first <strong>wireframe</strong> - a simple sketch that outlines the major features of our project.</p>
+
+<blockquote>
+  <h4><strong>Wireframe: Color Palette </strong></h4>
+
+  <p>There are three basic requirements for this project:</p>
+
+  <blockquote>
+    <ol>
+    <li>Users should see a page header (Color Palettes) that welcomes them to the page.</li>
+    <li>Each color palette has a title</li>
+    <li>Each color palette includes five colors</li>
+    </ol>
+  </blockquote>
+
+  <h5><strong>Our wireframe</strong></h5>
+
+  <h2 id="title">    <img src="https://github.com/bytheway875/emberitas-images/blob/master/initial-wireframe.JPG?raw=true" alt="lydia-wireframe" title=""></h2>
+</blockquote>
+
+<hr>
+
+<h3 id="reviewing-our-wireframes">Step 4: Reviewing our Wireframes</h3>
+
+<p>We think this is perfection, so we share our wireframes with Chloe and other stakeholders and ask for frank feedback. We hear:</p>
+
+<ol>
+<li>“It would be great to see the colors right up next to each other so that I can compare them easier. Can you do that?”</li>
+<li>“I’d love to be able to see the color code I’m looking at so that I can use the color in my own projects.”</li>
+<li>“Is there a way for me to experiment with creating my own color palettes?”</li>
+<li>“Can I add patterns instead of colors to a palette?”</li>
+</ol>
+
+<p>While getting feedback can be scary, it’s also very important to make sure that we’re creating software that truly fulfills the needs of the users. This is <em>wonderful</em> feedback, because it helps us learn that there are additional requirements for our project. </p>
+
+<ol>
+<li><p>“It would be great to see the colors right up next to each other so that I can compare them easier. Can you do that?”</p>
+
+<ul><li>This is totally doable - SOLUTION: we’ll alter our wireframe to connect our colors for better visual comparison.</li></ul></li>
+<li><p>“I’d love to be able to see the color code I’m looking at so that I can use the color in my own projects.”</p>
+
+<ul><li>This makes loads of sense - if our color palettes are to be useful, our designers needs to get the color code to use in their projects! SOLUTION: we’ll show the color code when the user hovers over a color.</li></ul></li>
+<li><p>“Is there a way for me to experiment with creating my own color palettes?”</p>
+
+<ul><li>A great idea!  However, we need to inform the stakeholders that we’ll now be dealing with <strong>dynamic</strong> (i.e <em>changable</em>) information on our site – now we’re getting more complicated, and our developers will need more time to complete the project. SOLUTION: We’ll need a second wireframe for the new palette page.</li></ul></li>
+<li><p>“Can I add patterns instead of colors to a palette?”</p>
+
+<ul><li>It’s an interesting idea, but it’s outside of the <strong>scope</strong> of the problem we’re trying to solve. We respectfully inform our stakeholders that for our <strong>MVP</strong> (minimum viable product), we’ll only be focusing on color codes.</li></ul></li>
+</ol>
+
+<p>The requirements are no longer just to <strong>view and reference</strong> color palettes - now we want to <strong>create and save new color palettes</strong> as well. That means we’ll need to take a second pass at our wireframes.</p>
+
+<blockquote>
+  <h4 id="wireframes-color-palettes-list-view-and-new-color-palette-page"><strong>Wireframes: Color Palettes List View and New Color Palette Page</strong></h4>
+
+  <p>First, we update our color palette list page to include two new features:</p>
+
+  <blockquote>
+    <ol>
+    <li>Users should see a page header (Color Palettes) that welcomes them to the page.</li>
+    <li>Each color palette has a title</li>
+    <li>Each color palette includes five colors</li>
+    <li><strong>We should see a button that links to a page to make your own color palette</strong></li>
+    <li><strong>When we hover over a color, we should see the color code</strong> </li>
+    </ol>
+  </blockquote>
+
+  <p><strong>List View  Wireframe:</strong></p>
+
+  <h2 id="title-1">    <img src="https://raw.githubusercontent.com/bytheway875/emberitas-images/master/palette-list-view-wireframe.JPG?raw=true" alt="enter image description here" title=""></h2>
+
+  <p>Next, we create a new wireframe for the new color palette page:</p>
+
+  <blockquote>
+    <ol>
+    <li>The page should have a title (“New Palette”).</li>
+    <li>There should be an input box for our new palette name (perhaps we can update the header once the palette has a name?)</li>
+    <li>We should display the colors in the palette were creating, using the design on the palettes list view.</li>
+    <li>When a user clicks on a palette color, we’ll populate that color into the edit area.</li>
+    <li>The user can use input sliders OR a text input to input red(r), green(g), and blue(b) values between 0 and 255 for each color.</li>
+    </ol>
+  </blockquote>
+
+  <p><strong>New Palette Wireframe:</strong></p>
+
+  <h2 id="title-2">    <img src="https://raw.githubusercontent.com/bytheway875/emberitas-images/master/form-page-wireframe.JPG" alt="enter image description here" title=""></h2>
 </blockquote>
 
 
 
-<h4 id="wireframes">Wireframes</h4>
+<h3 id="high-resolution-mockups">Step 5: High-Resolution Mockups</h3>
 
-<p>After discussing as a development team and consulting our UX designer, we’ve decided to build an application that uses two types of screens - a list view and a form. We gathered all of our decisions into some simple reference sketches and notes called “wireframes”.</p>
-
-<p>We came up with the following specifications for each screen:</p>
+<p>We return to the stakeholders with our new wireframes, and they’re all satisfied and impressed with our revisions. Our wireframes our approved, so we give them to our talented designer, Chloe, to create <em>high-resolution mockups</em> to guide our code implementation.</p>
 
 <blockquote>
-  <h5 id="exercise-2"><i class="icon-pencil"></i> Exercise 2</h5>
+  <h4><strong>Final comps for our application</strong></h4>
 
-  <p>As a group, review and discuss the specs and wireframes outlined below.</p>
+  <p><img src="https://raw.githubusercontent.com/bytheway875/emberitas-images/master/final-comps.png" alt="enter image description here" title=""></p>
+</blockquote>
 
-  <p>Time Box It: 10min</p>
+<p>She also provides us with some specifications for colors, fonts, and tools to use in our application:</p>
 
-  <h5 id="list-view-specs"><strong>List View Specs</strong></h5>
+<blockquote>
+  <h4 id="application-colors-fonts-and-tools"><strong>Application Colors, Fonts, and Tools</strong></h4>
+
+  <p><strong>Background color:</strong></p>
+
+  <blockquote>
+    <p>dark grayish-blue <code>#1E2229</code><em>- this is called a color hexcode</em></p>
+  </blockquote>
+
+  <p><strong>Font color:</strong></p>
+
+  <blockquote>
+    <p>light gray <code>#586073</code></p>
+  </blockquote>
+
+  <p><strong>Tropical Color Palette:</strong></p>
+
+  <blockquote>
+    <p>red <code>rgb(217,33,32)</code> <br>
+    orange <code>rgb(231,116,47)</code> <br>
+      yellow <code>rgb(223,165,58)</code> <br>
+      lime <code>rgb(177,190,78)</code> <br>
+      green <code>rgb(109,179,136)</code></p>
+  </blockquote>
+
+  <p><strong>Cool Color Palette:</strong></p>
+
+  <blockquote>
+    <p>light blue <code>rgb(70,131,193)</code> <br>
+      dark blue <code>rgb(63,78,161)</code> <br>
+      purple <code>rgb(120,28,129)</code> <br>
+      black <code>rgb(0,0,0)</code> <br>
+      white <code>rgb(255,255,255)</code></p>
+  </blockquote>
+
+  <h4><strong>Special Fonts</strong></h4>
+
+  <blockquote>
+    <p>Google Fonts - <a href="https://www.google.com/fonts#UsePlace:use/Collection:Pacifico">Pacifico</a></p>
+  </blockquote>
+
+  <h4><strong>Special Elements</strong></h4>
+
+  <blockquote>
+    <p><a href="http://getbootstrap.com/2.3.2/scaffolding.html#gridSystem">Twitter Bootstrap Responsive Grid System</a> <br>
+    <a href="http://getbootstrap.com/2.3.2/components.html#buttonGroups">Twitter Bootstrap Button Groups</a></p>
+  </blockquote>
+</blockquote>
+
+<p>–</p>
+
+<blockquote>
+  <h5><strong>A Little Bit of Color Theory</strong></h5>
+
+  <p>You’ll notice that Chloe provides us two different types of color codes. </p>
+
+  <p>For our application colors (the background and font color), we’ll be using <strong>hex codes</strong> - a character code with  that starts with a hashtag, like <code>#ffffff</code>.</p>
+
+  <p>For our color palette colors, she provides <strong>rgb color codes</strong> - a three part code that includes values for the red(r), green(g), and blue(b) values of our colors, like <code>rgb(123, 23, 42)</code></p>
+
+  <p>Every color is a mix of our three primary colors (red, blue, and green). The higher the value for each value, the more of that color we’ll see in our resulting color.</p>
+
+  <p>Every color we can use on the web has a unique hex code AND rgb color code that applies to that color, and we can use them interchangeably. For example:</p>
+
+  <blockquote>
+    <p><strong>Black</strong> <br>
+    Pure black is the <em>absence</em> of all color - zero values for red, blue, and green.</p>
+
+    <p>hexcode: <code>#000000</code> <br>
+    rgb code: <code>rgb(0,0,0)</code></p>
+
+    <p><strong>White</strong> <br>
+    Pure white is the <em>max value</em> of all colors - 255 for red, blue, and green. <br>
+    hexcode: <code>#ffffff</code> <br>
+    rgb code: <code>rgb(255,255, 255)</code></p>
+
+    <p><strong>All other colors</strong> <br>
+    All other colors are <em>some combination</em> of red, blue and green. Let’s take some examples from Chloe’s tropical color palette:</p>
+
+    <p><em>Tropical Red</em> <br>
+    hexcode: <code>#d92120</code> <br>
+    rgb code: <code>rgb(217, 33, 32)</code></p>
+
+    <p><em>Tropical Orange</em> <br>
+    hexcode: <code>#e7742f</code> <br>
+    rgb code: <code>rgb(231, 116, 47)</code></p>
+  </blockquote>
+
+  <p>You can use hexcodes and rgb code interchangeably in your color palette. We’ll use <code>rgb</code> colors for our palette colors because it’ll make it easy to change the red, blue, and green colors individually to create new palette colors!</p>
+
+  <p>How are you expected to know them all? You aren’t! There are <strong>16,777,216</strong> colors that can be used on the web – you can’t memorize all that! You can <strong>Google the term <code>color picker</code></strong> and find countless applications to convert hex codes into rgb colors and vice versa!</p>
+</blockquote>
+
+<hr>
+
+<h2>Let’s Take a Break</h2>
+
+<p>You’ve learned a lot so far! Take a quick break to reset before we move on.</p>
+
+<p style="text-align: center"><img src="https://github.com/lydiaguarino/emberitas-images/blob/master/Ember-Austin-Zoey-Half-sm.png?raw=true" alt="zoey-half" title=""></p>
+
+<hr>
+
+
+<h2>Phase 2 - <em>Getting Started with HTML, CSS and The Web</em></h2>
+
+<p>Now that we’ve got Chloe’s excellent mockups to work off of, we need to turn her visuals into code that our <em>browser</em> understands.</p>
+
+<hr>
+
+<h4><strong>What’s a Browser?</strong></h4>
+
+<p>You use a web browser every day! Safari, Chrome, Firefox, and Internet Explorers are all examples of web browsers. Browsers follow a set of <strong>protocols</strong> (aka <em>rules</em>) to communicate with <strong>servers</strong> (like <em>storage areas</em>) that <em>serve</em> data and information to the web.</p>
+
+<hr>
+
+<h4><strong>How Does Information Get to my <em>Browser</em>?</strong></h4>
+
+<p>Browsers follow a set of <strong>protocols</strong> (aka <em>rules</em>) to communicate with <strong>servers</strong> (like <em>storage areas</em>) that <em>serve</em> data and information to the web.</p>
+
+<p>The most common of these protocols is called <strong>HTTP</strong> (Hyper Text Transfer Protocol). Using HTTP, a browser (aka <strong>the client</strong>) requests information from your <strong>server</strong>. </p>
+
+<p>When you visit any web address (example: www.google.com) the <strong>client</strong> browser sends a request to the <strong>server</strong> to ask for the data and information that should be shown at that address. If the response the server sends back can be interpreted by the client, the client will use that information to show you information on the webpage!</p>
+
+<blockquote>
+  <p><strong>CONFUSING, right?! Let’s try an analogy</strong>:</p>
+
+  <p><em>In Real Life</em> <br>
+  You want to go out to eat. You choose a restaurant: Torchy’s Tacos.  </p>
+
+  <p>You arrive and you’re now a <em>client</em> at the taco shop! </p>
+
+  <p>You sit down and ask your <em>server</em> to bring you some water. She interprets your request and understands what you mean, so she brings you some water.</p>
+
+  <p>She brings you the water back, and you know what to do with that… you drink it!</p>
+
+  <p>You continue to make more requests: for tacos, for the check, for a refill. You understand what she means and she understand what you means, so the requests are successful! </p>
+
+  <p><em>On the WEB</em>:  <br>
+  Going the restaurant is like going to a web url: <code>www.torchys.com</code>.</p>
+
+  <p>The <em>browser</em> you’re using acts on your behalf as the <em>client</em> to make HTTP requests to an invisible <em>server</em>. </p>
+
+  <p>If the client and the server are speaking the same language and making valid requests, you’ll get the information you need!</p>
+</blockquote>
+
+<hr>
+
+<h3>Speaking the Languages of the Web</h3>
+
+<p>Your browser knows how to interpret three main types of text returned from a server - <strong>HTML</strong> (Hypertext Markup Language), <strong>CSS</strong> (Cascading Style Sheets) , and <strong>Javascript</strong>. These components are the building blocks of the web and, lucky for you, we’ll be learning to work with each today!</p>
+
+<p>Here’s some more information about each: </p>
+
+<ol>
+<li><p><strong>HTML</strong> - Provides the structure and content for your webpage. </p></li>
+<li><p><strong>CSS</strong> - Works in collaboration with HTML to change the way your elements look by changing sizes, colors, and placement on the page.</p></li>
+<li><p><strong>Javascript</strong> - Allows you to create interesting interactions on the page, like rotating content in a slide show, or changing a color when you slide an input bar!</p></li>
+</ol>
+
+<p>Web pages don’t start out pretty. They start out as simple text. A web developer then gradually adds layers of markup, styling and interactions to that text to produce the rich experience you get when working with applications on the internet.</p>
+
+<hr>
+
+<h3>So Let’s Code!</h3>
+
+<p>Enough talk -  Let’s get going!</p>
+
+<p>What you will need:  </p>
+
+<ol>
+<li><p>A text editor - we recommend <a href="https://atom.io/">Atom</a> or <a href="https://www.sublimetext.com/">Sublime Text</a>, which are both free </p></li>
+<li><p>A browser - we recommend <a href="https://www.google.com/chrome/browser/desktop/index.html">Google Chrome</a></p></li>
+</ol>
+
+<blockquote>
+  <p><strong>STOP!</strong> If you haven’t already, refer to the {{#link-to 'resources.installation'}}Emberitas Installation Guide{{/link-to}} to make sure you have all the software necessary for this workshop!</p>
+</blockquote>
+
+<hr>
+
+<h3>Step 1. Creating a File Structure</h3>
+
+<p>Open your text editor and create a new directory (folder) called “emberitas”.  </p>
+
+<p>Create a <code>palettes.html</code> file in the emberitas folder.</p>
+
+<p>Your <em>file tree</em> in your text editor should now look something like this:</p>
+
+
+
+<pre class="prettyprint"><code class=" hljs avrasm">    emberitas
+        palettes<span class="hljs-preprocessor">.html</span></code></pre>
+
+<blockquote>
+  <h4 id="activity"><strong>ACTIVITY</strong></h4>
+
+  <p>OPEN PALETTES.HTML IN YOUR BROWSER</p>
 
   <ol>
-  <li>The list view should be our landing page - the first page the user sees when they visit the application</li>
-  <li>The list view should have three sections: A heading, a way to navigate to the new palette form and a list of the saved palettes.</li>
-  <li>The list of palettes should be a preview of the colors and should show the RGB color value when you hover over an individual color.</li>
-  <li>Each palette preview should link you to the palette edit page.</li>
-  <li>Each palette will have up to five individual colors. <br>
-  <img src="https://github.com/lydiaguarino/emberitas-images/blob/master/list-view-wireframe.jpg?raw=true" alt="enter image description here" title=""></li>
-  </ol>
-
-  <h5 id="form-view-specs"><strong>Form View Specs</strong></h5>
-
-  <ol>
-  <li>The form should have six sections: A heading, a place to specify the palette name, a palette preview, a place to edit the individual colors in the palette and a form actions section with some buttons.</li>
-  <li>Clicking on a color in the palette preview should populate the edit color section.</li>
-  <li>The edit color section should let the user input the Red, Green and Blue component values of an RGB color code with text or with a slider input.</li>
-  <li>Changing the RGB values should automatically update the preview to show the new color.</li>
-  <li>The form should be able to be used to create a new palette or to edit an existing palette.</li>
-  <li>There should be three actions - Cancel, Delete and Save</li>
-  <li>Cancel should throw away any changes on the form and return the user to the list view.</li>
-  <li>Delete should completely delete the palette and return the user to the list view. Delete should be disabled if the user is creating a new palette.</li>
-  <li>Save should create a new palette or save the changes made to an existing palette and return the user to the list view. <br>
-  <img src="https://github.com/lydiaguarino/emberitas-images/blob/master/form-wireframe.jpg?raw=true" alt="enter image description here" title=""></li>
+  <li>Find palettes.html in your Finder or by searching for it on your computer.</li>
+  <li>To open, double-click. <br>
+  <ul><li>If that opens your browser, great! </li>
+  <li>If it opens in a text editor, right-click and choose ‘Open With’ to select your browser.</li></ul></li>
   </ol>
 </blockquote>
 
+<hr>
 
-
-<h4 id="comps">Comps</h4>
-
-<p>Now that we have our basic ideas nailed down, it’s time for some aesthetic polish. Conveniently, Chloe is a talented web designer and was able to turn our wireframe sketches into some Comprehensive Layouts, or “comps” that we will use to start coding and styling our application.</p>
-
-<blockquote>
-  <h5 id="final-comps-for-our-application"><strong>Final comps for our application</strong></h5>
-
-  <p><img src="https://github.com/lydiaguarino/emberitas-images/blob/master/comps.png?raw=true" alt="enter image description here" title="" style="max-width:100%"></p>
-
-  <h5 id="colors"><strong>Colors</strong></h5>
-
-  <p>dark gray <code>#1C1F24</code> <em>- this is called a color hexcode</em> <br>
-  light gray <code>#586073</code> <br>
-  red <code>rgb(217,33,32)</code> <em>- this is an RGB (red, green, blue) color code</em> <br>
-  orange <code>rgb(231,116,47)</code> <br>
-  yellow <code>rgb(223,165,58)</code> <br>
-  lime <code>rgb(177,190,78)</code> <br>
-  green <code>rgb(109,179,136)</code> <br>
-  light blue <code>rgb(70,131,193)</code> <br>
-  dark blue <code>rgb(63,78,161)</code> <br>
-  purple <code>rgb(120,28,129)</code> <br>
-  black <code>rgb(0,0,0)</code> <br>
-  white <code>rgb(238,238,238)</code></p>
-
-  <h5 id="special-fonts"><strong>Special Fonts</strong></h5>
-
-  <p>Google Fonts - <a href="https://www.google.com/fonts#UsePlace:use/Collection:Pacifico">Pacifico</a></p>
-
-  <h5 id="special-elements"><strong>Special Elements</strong></h5>
-
-  <p><a href="http://getbootstrap.com/2.3.2/scaffolding.html#gridSystem">Twitter Bootstrap Responsive Grid System</a> <br>
-  <a href="http://getbootstrap.com/2.3.2/components.html#buttonGroups">Twitter Bootstrap Button Groups</a></p>
-</blockquote>
-
-<div style="text-align:center">
-  <h1 id="color-palette-tutorial" style="text-align:center">Pause Here</h1>
-  <img src="https://github.com/lydiaguarino/emberitas-images/blob/master/Ember-Austin-Zoey-Half-sm.png?raw=true" alt="enter image description here" title="">
-</div>
-
-<h3 id="phase-2-coded-comps-html-css-intro-to-bootstrap">Phase 2 - <em>Coded Comps - HTML, CSS, Intro to Bootstrap</em></h3>
-
-
-
-<h4 id="marking-up-the-content-html">Marking up the content - HTML</h4>
-
-<p>The very first step in building our application is to convert Chloe’s awesome designs into code that our browser understands.</p>
-
-<p>Your browser is a piece of software on your computer or mobile device that lets you access content or use applications that are shared over the internet. Chrome, Firefox and Internet Explorer are examples of web browsers. Browsers follow a set of rules or <em>protocols</em> to communicate with servers where data and information is actually stored. </p>
-
-<p>The most common of these protocols is called HTTP or <em>Hyper Text Transfer Protocol</em>.   With HTTP, information is requested by the browser or <em>client</em> when you visit a URL (like Google.com) and a server (just another computer somewhere) responds with the requested information in the form of some text. That text is then interpreted by the browser and rendered to your screen. </p>
-
-<p>Your browser knows how to interpret three main types of text returned from a server- HTML, CSS and JavaScript</p>
-
-<p>A good way to think about the roles of each of these types is: <br>
-1. <strong>HTML</strong> - Provides the structure and semantic outline of a webpage <br>
-2. <strong>CSS</strong> - Works in collaboration with HTML to tell the browser how to style elements on the page <br>
-3. <strong>JS</strong> - Allows you to script interactions on the page like clicking a button or rotating content in a slide show</p>
-
-<blockquote>
-  <h5 id="exercise-3"><i class="icon-pencil"></i> Exercise 3</h5>
-
-  <p>Web pages don’t start out pretty. They start out as simple text. A web developer then gradually adds layers of markup, styling and interactions to that text to produce the rich experience you get when working with applications on the internet.</p>
-
-  <p>The first step in this conversion is to wrap the text-based content of our page in HTML <em>tags</em> which tell the browser the purpose of that text. </p>
-
-  <p><strong>Use the instructions below to outline the structure of our two pages using HTML.</strong></p>
-
-  <p>What you will need:  <br>
-  1. A text editor - we recommend <a href="https://atom.io/">Atom</a> or <a href="https://www.sublimetext.com/">Sublime Text</a>, which are both free <br>
-  2. A browser - we recommend <a href="https://www.google.com/chrome/browser/desktop/index.html">Google Chrome</a></p>
-
-  <p>Time Box It:  30min</p>
-</blockquote>
-
-
-
-<h6 id="step-1-getting-started"><strong>Step 1 - Getting Started</strong></h6>
-
-<p>Open your text editor and create a new directory (folder) called “emberitas”.  <br>
-Create the following empty files:</p>
-
-<pre class="prettyprint"><code class=" hljs avrasm">emberitas
-    palettes<span class="hljs-preprocessor">.html</span>
-    palette<span class="hljs-preprocessor">.html</span></code></pre>
-
-
-
-<h6 id="step-2-starter-structure"><strong>Step 2 - Starter Structure</strong></h6>
+<h3>Step 2. Understanding HTML Basics</h3>
 
 <p>HTML tags look something like this:</p>
 
-<pre class="prettyprint"><code class=" hljs xml"><span class="hljs-tag">&lt;<span class="hljs-title">tag</span>&gt;</span> Content <span class="hljs-tag">&lt;/<span class="hljs-title">tag</span>&gt;</span></code></pre>
+<p><code>&lt;tag&gt; Your Content Here &lt;/tag&gt;</code> </p>
 
-<p>Almost all HTML documents start with a similar basic structure. Copy the following starter code into each of your two new empty html files. Update the author meta tag to use your own name:</p>
+<p><code>&lt;tag&gt;</code> <em>opens</em> the tag. <code>&lt;/tag&gt;</code> (with a backslash before the tag name <em>closes</em> the tag. All of the information between the <em>open</em> and <em>closing</em> tag is the <em>content</em> of that tag.</p>
 
-<pre class="prettyprint"><code class=" hljs xml"><span class="hljs-comment">&lt;!-- this is an HTML comment. It is invisible. --&gt;</span>
-<span class="hljs-comment">&lt;!-- tell the browser this is an html document --&gt;</span>
-<span class="hljs-doctype">&lt;!doctype html&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-title">html</span> <span class="hljs-attribute">lang</span>=<span class="hljs-value">"en"</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-title">head</span>&gt;</span>
-      <span class="hljs-comment">&lt;!-- give the browser some info about this document --&gt;</span>
-      <span class="hljs-tag">&lt;<span class="hljs-title">meta</span> <span class="hljs-attribute">charset</span>=<span class="hljs-value">"utf-8"</span>&gt;</span>
-      <span class="hljs-comment">&lt;!-- standard settings for mobile devices --&gt;</span>
-      <span class="hljs-tag">&lt;<span class="hljs-title">meta</span> <span class="hljs-attribute">name</span>=<span class="hljs-value">"viewport"</span> <span class="hljs-attribute">content</span>=<span class="hljs-value">"width=device-width, initial-scale=1"</span>&gt;</span>
-      <span class="hljs-comment">&lt;!-- Displayed in the browser tab header --&gt;</span>
-      <span class="hljs-tag">&lt;<span class="hljs-title">title</span>&gt;</span>Emberitas Color Palette<span class="hljs-tag">&lt;/<span class="hljs-title">title</span>&gt;</span>
-      <span class="hljs-comment">&lt;!-- This is frequently used in search results --&gt;</span>
-      <span class="hljs-tag">&lt;<span class="hljs-title">meta</span> <span class="hljs-attribute">name</span>=<span class="hljs-value">"description"</span> <span class="hljs-attribute">content</span>=<span class="hljs-value">"Emberitas Practice App"</span>&gt;</span>
-      <span class="hljs-comment">&lt;!-- You are the author --&gt;</span>
-      <span class="hljs-tag">&lt;<span class="hljs-title">meta</span> <span class="hljs-attribute">name</span>=<span class="hljs-value">"author"</span> <span class="hljs-attribute">content</span>=<span class="hljs-value">"Lydia Guarino"</span>&gt;</span>
-    <span class="hljs-tag">&lt;/<span class="hljs-title">head</span>&gt;</span>
-
-    <span class="hljs-tag">&lt;<span class="hljs-title">body</span>&gt;</span>
-        <span class="hljs-comment">&lt;!-- This is where all of our code will go --&gt;</span>
-    <span class="hljs-tag">&lt;/<span class="hljs-title">body</span>&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-title">html</span>&gt;</span></code></pre>
+<p>There are tags for lots of different purposes, and each have different default behaviors and styles. You can also <em>nest</em> elements within one another to create a more complex document. For example:</p>
 
 
 
-<h6 id="step-3-html-tags"><strong>Step 3 - HTML Tags</strong></h6>
+<pre class="prettyprint"><code class=" hljs xml"><span class="hljs-tag">&lt;<span class="hljs-title">div</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">h1</span>&gt;</span> Welcome to my page <span class="hljs-tag">&lt;/<span class="hljs-title">h1</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">h2</span>&gt;</span> Reasons my page is cool:<span class="hljs-tag">&lt;/<span class="hljs-title">h2</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">ul</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-title">li</span>&gt;</span>I'm cool.<span class="hljs-tag">&lt;/<span class="hljs-title">li</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-title">li</span>&gt;</span>You're cool.<span class="hljs-tag">&lt;/<span class="hljs-title">li</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-title">ul</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span></code></pre>
 
-<p>We are now ready to add our basic layout content between our body tags. Notice how content can be wrapped in different levels of <strong>nested</strong> tags. There are <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element">a ton of tags</a> that the browser understands. Let’s focus on a few we will need for our application.</p>
+<p>In the above example, we have a <code>&lt;div&gt;</code> (<em>page division</em>) that includes an <code>&lt;h1&gt;</code> (<em>main header</em>) followed by an <code>&lt;h2&gt;</code>(<em>secondary header</em>), and a <code>&lt;ul&gt;</code> (unordered list – aka bullet points) that includes many <code>&lt;li&gt;</code> elements (<em>list items</em>).</p>
 
-<ul>
-<li><p><code>&lt;h1&gt;...&lt;/h1&gt;</code> <br>
-The most important headline on your page. <br>
-usually the page title.</p></li>
-<li><p><code>&lt;h2&gt;...&lt;/h2&gt;</code> <br>
-A subheading or the second most important headline on your page <br>
-usually a section title.</p></li>
-<li><p><code>&lt;button type="button"&gt;...&lt;/button&gt;</code> <br>
-A clickable button.</p></li>
-<li><p><code>&lt;a href="palette.html"&gt;...&lt;/a&gt;</code> <br>
-An link or <em>anchor</em> tag that allows you to wrap any element on the page and make it a clickable link. The href attribute specifies where the link should take the user. In this case, we want to link to another file in our current directory (folder) - but you can also use the href attribute to link the user to any URL.</p></li>
-<li><p><code>&lt;form&gt;...&lt;/form&gt;</code> <br>
-A special wrapper tag for content that will be part of a form (usually input tags).</p></li>
-<li><p><code>&lt;input type="text" placeholder="New Palette"&gt;</code> <br>
-A text input field.</p></li>
-<li><p><code>&lt;input type="range" step=1 min=0 max=255&gt;</code> <br>
-A slider or range input.</p></li>
-<li><p><code>&lt;input type="submit" value="Save"&gt;</code> <br>
-The button that controls submitting a form. The value attribute will be displayed as the button text.</p></li>
-<li><p><code>&lt;div&gt;...&lt;/div&gt;</code>  <br>
-The workhorse of the HTML tags. Use divs for your different site sections, sidebars, footers, etc. Divs are the primary way to group related elements together.</p></li>
-<li><p><code>&lt;span&gt;...&lt;/span&gt;</code> <br>
-Span tags allow you to group inline elements. Spans are useful for wrapping elements that might receive different CSS styling than their surroundings.</p></li>
-</ul>
+<h4>Check out our {{#link-to 'resources.basics.html-tags'}}html reference sheet {{/link-to}} for more about html tag options!</h4>
+
+<hr>
+
+<h3>Step 3. Adding Barebones HTML To Our Document</h3>
+
+<p>But before we jump into laying out the custom elements on our page, we need to add some barebones starter code to our html document.</p>
+
+<ol>
+<li>We include an explicit <code>&lt;!DOCTYPE html&gt;</code> tag (self-closing) to help the browser know how to interpret our document.</li>
+<li>We have a main <code>&lt;html&gt;&lt;/html&gt;</code> tag. All other tags on our page will be inside the content of the <code>&lt;html&gt;</code> tag.</li>
+<li>We’ll always start with a  <code>&lt;head&gt;</code> and <code>&lt;body&gt;</code> tag inside of our <code>&lt;html&gt;</code> tag. </li>
+</ol>
+
+<pre class="prettyprint"><code class="language-html hljs ">    <span class="hljs-comment">&lt;!-- this is an HTML comment. It is invisible. --&gt;</span>
+
+    <span class="hljs-comment">&lt;!-- tell the browser this is an HTML document --&gt;</span>
+    <span class="hljs-doctype">&lt;!DOCTYPE html&gt;</span>
+
+    <span class="hljs-tag">&lt;<span class="hljs-title">html</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-title">head</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-title">head</span>&gt;</span>
+
+        <span class="hljs-tag">&lt;<span class="hljs-title">body</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-title">body</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-title">html</span>&gt;</span></code></pre>
 
 <blockquote>
-  <p><strong>Using the tags listed above, take a first pass at building our two pages. To view your page, simply open it in your browser. They should look something like this:</strong></p>
+  <h4 id="activity-1"><strong>ACTIVITY</strong></h4>
+
+  <p>ADD THE BASIC HTML STRUCTURE TO PALETTES.HTML</p>
+
+  <ol>
+  <li>Indicate the doctype</li>
+  <li>Include an <code>html</code> tag with a <code>head</code> and <code>body</code> tag nested within it.</li>
+  </ol>
 </blockquote>
 
-<p>palettes.html <br>
-<img src="https://github.com/lydiaguarino/emberitas-images/blob/master/palettes-raw-html.png?raw=true" alt="enter image description here" title=""></p>
+<hr>
 
-<p>palette.html <br>
-<img src="https://github.com/lydiaguarino/emberitas-images/blob/master/palette-raw-html.png?raw=true" alt="enter image description here" title=""></p>
+<h3>Step 4. Adding Browser Instructions To The <code>&lt;head&gt;</code></h3>
 
-<h6 id="step-4-inline-styling"><strong>Step 4 - Inline Styling</strong></h6>
+<p>The <code>&lt;head&gt;</code> tag is mostly reserved for tags that give special instructions to our browser to tell our page how to behave, and to help us index our website on search engines. A typical <code>&lt;head&gt;</code> tag includes some metadata (data about data) and a required <code>&lt;title&gt;</code> tag.</p>
 
-<p>Adding inline CSS styles is a quick and easy way to add some fancy improvements to our HTML, like color. Let’s try making all of our color buttons…colorful!</p>
-
-<p>You can add a <em>style</em> attribute to any HTML element. This special attribute lets you add CSS styling directly to the element. Let’s try making one of our buttons red by specifying the background-color.</p>
-
-
-
-<pre class="prettyprint"><code class=" hljs xml"><span class="hljs-tag">&lt;<span class="hljs-title">button</span> <span class="hljs-attribute">type</span>=<span class="hljs-value">"button"</span> <span class="hljs-attribute">style</span>=<span class="hljs-value">"background-color:rgb(217,33,32)"</span>&gt;</span> 217,33,32 <span class="hljs-tag">&lt;/<span class="hljs-title">button</span>&gt;</span></code></pre>
+<pre class="prettyprint"><code class="language-html hljs "><span class="hljs-tag">&lt;<span class="hljs-title">head</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-title">meta</span> <span class="hljs-attribute">charset</span>=<span class="hljs-value">"UTF-8"</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-title">meta</span> <span class="hljs-attribute">name</span>=<span class="hljs-value">"description"</span> <span class="hljs-attribute">content</span>=<span class="hljs-value">"Emberitas Practice Application"</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-title">meta</span> <span class="hljs-attribute">name</span>=<span class="hljs-value">"author"</span> <span class="hljs-attribute">content</span>=<span class="hljs-value">"Lydia Guarino"</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-title">meta</span> <span class="hljs-attribute">name</span>=<span class="hljs-value">"viewport"</span> <span class="hljs-attribute">content</span>=<span class="hljs-value">"width=device-width, initial-scale=1.0"</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-title">title</span>&gt;</span>Emberitas Practice<span class="hljs-tag">&lt;/<span class="hljs-title">title</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-title">head</span>&gt;</span></code></pre>
 
 <blockquote>
-  <p><strong>Add style attributes and set the background-color on each of the buttons representing colors. They should look something like this:</strong></p>
+  <h4 id="activity-2"><strong>ACTIVITY</strong></h4>
+
+  <p><strong>COPY AND PASTE</strong> THE CODE WITHIN THE HEAD TAG INTO YOUR DOCUMENT.</p>
+
+  <ol>
+  <li>Change the meta author tag to have YOUR name.</li>
+  <li>Change the title and the meta description of the page to something descriptive for our color palette application.</li>
+  </ol>
+
+  <p>This code is pretty consistent between apps - no need to understand right now what each meta tag does (Google if you’re interested), and don’t risk a typo by typing it out. Just copy and paste into your doc… you can save this code and change what’s custom for any future projects you do, too.</p>
 </blockquote>
 
-<p>palette.html <br>
-<img src="https://github.com/lydiaguarino/emberitas-images/blob/master/palette-html-only.png?raw=true" alt="enter image description here" title=""></p>
+
+<hr>
+
+<h3>Step 5 - Laying Out The <code>&lt;body&gt;</code></h3>
+
+<p>Now that we’ve made these changes in the head of our document, we can refresh the file in our browser… but nothing much looks different. That’s because most of our changes were to invisible <em>metadata</em> that’s only useful for helping our browser interpret data. </p>
+
+<p>The really fun stuff - our headers, page divisions, and color palettes - will go in our <code>&lt;body&gt;</code></p>
+
+<p>The first thing we’ll do is add an <code>&lt;h1&gt;</code> to our body.</p>
+
+
+
+<pre class="prettyprint"><code class="language-html hljs ">    <span class="hljs-tag">&lt;<span class="hljs-title">body</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-title">h1</span>&gt;</span> Hello World! <span class="hljs-tag">&lt;/<span class="hljs-title">h1</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-title">body</span>&gt;</span></code></pre>
+
+<p>After adding this h1 tag, we can refresh the file in our browser and we should see:</p>
+
+
+
+<h1 id="hello-world">Hello World!</h1>
+
+<p>Cool, right?</p>
+
+<p>Let’s reference our mockup again:</p>
+
+<p><img src="https://raw.githubusercontent.com/bytheway875/emberitas-images/master/list-view-mockup.png" alt="list-view-mockup" title=""></p>
+
+<p>We can use this to start to layout our html in a logical manner. First, let’s get our header updated.</p>
 
 <blockquote>
-  <p>Take a break if you need one!</p>
+  <h4><strong>ACTIVITY</strong></h4>
+
+  <p>CHANGE THE <code>&lt;h1&gt;</code> TAG TO SHOW OUR COLOR PALETTES MAIN HEADER TITLE</p>
+
+  <ol>
+  <li>The <code>&lt;h1&gt;</code> header should say “Color Palettes” instead of Hello World.</li>
+  <li>Refresh your page to see your changes take effect.</li>
+  </ol>
 </blockquote>
 
-<h4 id="working-with-responsive-frameworks-and-libraries-intro-to-bootstrap">Working with responsive frameworks and libraries- intro to Bootstrap</h4>
+<p>Now, let’s continue to add the other necessary elements to our page. </p>
 
-<p>HTML is awesome. Inline styles - even MORE awesome, but I bet you are starting to realize that if you had a really complex application, it would get very tedious to have to individually style every single element on the page - and what if you wanted to change the way ALL the buttons looked in your entire application? It would get completely unmanageable. <strong>There must be a better way - and there is.</strong></p>
+<p>We can see in our mockup that we have two color palettes on our page, each with it’s own header and bar of colors. With html and css, there are always multiple ways to achieve the same goal - you just have to choose an approach. Our approach will be to create a <code>&lt;div&gt;</code> that contains an <code>&lt;h2&gt;</code> with the name of our palette and five(5) <code>&lt;button&gt;</code> tags that will hold each color in the palette.</p>
 
-<p>The fastest option? Use someone else’s styling! There are several libraries and responsive frameworks you can add to your project to give you a fast leg up on styling your application.</p>
+<blockquote>
+  <h4><strong>ACTIVITY</strong></h4>
+
+  <p>CREATE A <code>&lt;div&gt;</code> THAT INCLUDES STARTER HTML FOR A COLOR PALETTE </p>
+
+  <ol>
+  <li>There should be an outer <code>&lt;div&gt;</code> tag </li>
+  <li>There should be an <code>&lt;h2&gt;</code> tag where the contents is the name of your first color palette (Tropical)</li>
+  <li>There should be 5 empty <code>&lt;button&gt;</code> tags inside the div.</li>
+  <li>Then, create a second <code>&lt;div&gt;</code> with an <code>&lt;h2&gt;</code> and <code>&lt;button&gt;</code>s for the second color palette in our mockup.</li>
+  <li>Reload the page - you should now see something that looks like this: <br>
+  <img src="https://github.com/bytheway875/emberitas-images/blob/master/completely-unstyled.png?raw=true" alt="unstyled-html" title=""></li>
+  </ol>
+</blockquote>
+
+<hr>
+
+<h2>Let’s Take A Break</h2>
+
+<p>Great job! You’ve accomplished so much so far. Let’s take another break to keep your brain healthy and happy.</p>
+
+<p style="text-align: center"><img src="https://github.com/lydiaguarino/emberitas-images/blob/master/Ember-Austin-Zoey-Half-sm.png?raw=true" alt="enter image description here" title=""></p>
+
+<hr>
+
+
+
+<h2>Phase 3 - <em>Starting To Style</em></h2>
+
+<p>Looking at our final mockup versus our html document, you can tell that they share common elements. But it’s a far cry from the beautiful layout Chloe created for us. </p>
+
+<p>To change the appearance of our page, we’ll have to give our layout more detailed instructions.</p>
+
+<hr>
+
+<h3>Step 1: Inline Styles In HTML</h3>
+
+<p>Let’s take a look at one of the <code>&lt;div&gt;</code>s we just  created:</p>
+
+<pre class="prettyprint"><code class="language-html hljs ">    <span class="hljs-tag">&lt;<span class="hljs-title">div</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-title">h2</span>&gt;</span> Tropical <span class="hljs-tag">&lt;/<span class="hljs-title">h2</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-title">button</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-title">button</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-title">button</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-title">button</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-title">button</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-title">button</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-title">button</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-title">button</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-title">button</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-title">button</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span></code></pre>
+
+<p>We know that our mockup indicates that the background color of each button should be unique. But ours are all some boring gray color! We can give each button a specific color using the <code>style</code> <em>attribute</em> on our html tags.</p>
+
+<p>You can add a <code>style</code> attribute to almost any html element to customize its appearance. Try it on one of your buttons: </p>
+
+<p><code>&lt;button style="background-color: rgb(217,33,32)"&gt;</code> </p>
+
+<p>When you reload the page, you’ll notice that the button with the altered style attribute will have a different background color. Now, let’s use this concept to change ALL the colors of the buttons on our page, based on the color palette Chloe provided us with. </p>
+
+<blockquote>
+  <h4><strong>ACTIVITY</strong></h4>
+
+  <p>USING CHLOE’S COLOR PALETTE AND YOUR KNOWLEDGE OF STYLE TAGS, UPDATE THE BACKGROUND COLOR OF EACH BUTTON TO MATCH THE COLORS IN CHLOE’S LIST. (<strong>LINK TO COLOR PALETTE </strong> )</p>
+
+  <ol>
+  <li>All 10 button elements should have a style attribute and a custom color.</li>
+  <li>Work smart, not hard: Feel free to copy and paste the parts that are the same and change only what’s unique.</li>
+  </ol>
+  <p>When you're done, your page should look a little like this: </p>
+  <p><img src="https://github.com/bytheway875/emberitas-images/blob/master/without-background-color.png?raw=true" alt="colored-button"></p>
+</blockquote>
+
+<hr>
+
+<h3>Step 2: Sharing Styles Using CSS</h3>
+
+<p>I bet you are starting to realize that if you had a really complex application, it would get very tedious to have to individually style every single element on the page - and what if you wanted to change the way ALL the buttons looked in your entire application? It would get completely unmanageable. <strong>There must be a better way - and there is.</strong></p>
+
+<p>Once we start having <em>repeating</em> style instructions for elements, that’s a good sign that its time to add our friend <strong>CSS</strong> into the mix.</p>
+
+<p><strong>CSS</strong> (Cascading Style Sheet) allows us to organize our style instructions in a separate file by referencing their html tag names and other unique elements. Using CSS, we can apply the same style to multiple elements on the page. This results in cleaner html files and easier-to-read markup.</p>
+
+<p>To get started with <strong>CSS</strong>, we’ll have to add a new file called <code>style.css</code> to our file tree. Then we, link the stylesheet to our html page by adding a <em>stylesheet link tag</em> to the <code>&lt;head&gt;</code> of our html page.</p>
+
+
+
+<pre class="prettyprint"><code class="language-html hljs "><span class="hljs-tag">&lt;<span class="hljs-title">head</span>&gt;</span>
+  <span class="hljs-comment">&lt;!-- your current head code --&gt;</span>
+
+  <span class="hljs-comment">&lt;!-- stylesheet link tag --&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-title">link</span> <span class="hljs-attribute">rel</span>=<span class="hljs-value">"stylesheet"</span> <span class="hljs-attribute">href</span>=<span class="hljs-value">"style.css"</span>&gt;</span>
+
+<span class="hljs-tag">&lt;/<span class="hljs-title">head</span>&gt;</span></code></pre>
+
+<p>From there, we can use <em>css syntax</em> change the appearance of any element on our page. </p>
+
+<p>The syntax requires that you type the name of the element, and put all of our instructions inside of <em>curly braces</em>. You specify the name of the style attribute on the left, and the value on the right.</p>
+
+
+<pre class="prettyprint"><code class="language-css hljs "><span class="hljs-tag">tagName</span> <span class="hljs-rules">{
+    <span class="hljs-rule"><span class="hljs-attribute">attribute</span>:<span class="hljs-value"> value</span></span>;
+<span class="hljs-rule">}</span></span></code></pre>
+
+<p>Here’s a useful example of how we can use css to change the font color of the h1’s to red (using the attribute <em>color</em>) and the background color of the entire body (using the attribute <em>background-color</em>)</p>
+
+
+
+<pre class="prettyprint"><code class="language-css hljs "><span class="hljs-tag">h1</span> <span class="hljs-rules">{
+    <span class="hljs-rule"><span class="hljs-attribute">color</span>:<span class="hljs-value"> red</span></span>;
+<span class="hljs-rule">}</span></span>
+
+<span class="hljs-tag">body</span> <span class="hljs-rules">{
+    <span class="hljs-rule"><span class="hljs-attribute">background-color</span>:<span class="hljs-value"> blue</span></span>;
+<span class="hljs-rule">}</span></span></code></pre>
+
+<p>Now you try!</p>
+
+<blockquote>
+  <h4 id="activity-6">ACTIVITY</h4>
+
+  <p>CREATE A STYLE.CSS FILE AND USE IT TO CHANGE THE APPEARANCE OF ELEMENTS ON YOUR PAGE USING CHLOE’S COLOR PALETTE (<strong>LINK TO COLOR PALETTE HERE</strong>)</p>
+
+  <ol>
+  <li>Create a new file called <code>style.css</code> in your emberitas folder</li>
+  <li>Link your stylesheet in the <code>&lt;head&gt;</code> of your html document using <code>&lt;link rel="stylesheet" href="style.css"&gt;</code></li>
+  <li>In your style.css file: <br>
+  <ul><li>Change the background color of the entire page.</li>
+  <li>Change the font color of every h1 and h2.</li></ul></li>
+  </ol>
+</blockquote>
+
+<p>When we reload the page, we can see that now we’re even a little bit closer to Chloe’s design.</p>
+
+<hr>
+
+<h3>Step 3: Getting Professional With Google Fonts</h3>
+
+<p>One obvious difference between our current html page and our mockup is the font. We’re using boring old Times New Roman, but Chloe’s got a fun, cursive font called <em>Pacifico</em> she’d like us to use. </p>
+
+<p>The <a href="https://www.google.com/fonts">Google fonts site</a> has wonderful documentation on how to add a font to your project. Search for the font you want to use (Pacifico) and click the “+” button. Then, click the div at the bottom that appears for more information on how to apply your font.</p>
+
+<p>You should see a <code>&lt;link&gt;</code> tag generated that you can add to the <code>&lt;head&gt;</code> of your html file:</p>
+
+<pre class="prettyprint"><code class=" hljs xml"><span class="hljs-tag">&lt;<span class="hljs-title">head</span>&gt;</span>
+<span class="hljs-comment">&lt;!-- Your existing head content --&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">link</span> <span class="hljs-attribute">href</span>=<span class="hljs-value">"https://fonts.googleapis.com/css?family=Pacifico"</span> <span class="hljs-attribute">rel</span>=<span class="hljs-value">"stylesheet"</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">link</span> <span class="hljs-attribute">rel</span>=<span class="hljs-value">"stylesheet"</span> <span class="hljs-attribute">href</span>=<span class="hljs-value">"style.css"</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-title">head</span>&gt;</span></code></pre>
+
+<p>Linking to a stylesheet someone else created is called using an <em>external stylesheet</em>. The one important thing to keep in mind is that <strong>external stylesheets must be linked <em>before</em> your custom stylesheet</strong> so that their code loads before your code.</p>
+
+<p>After you’ve linked the new stylesheet, you can use the second snippet of code provided by Google in your stylesheet to apply the new font:</p>
+
+
+
+<pre class="prettyprint"><code class=" hljs css"><span class="hljs-tag">h1</span> <span class="hljs-rules">{
+    <span class="hljs-rule"><span class="hljs-attribute">font-family</span>:<span class="hljs-value"> <span class="hljs-string">'Pacifico'</span>, cursive</span></span>;
+<span class="hljs-rule">}</span></span></code></pre>
+
+<blockquote>
+  <h4 id="activity-7">ACTIVITY</h4>
+
+  <p>LINK A GOOGLE FONT TO YOUR HTML FILE AND CHANGE THE FONT FAMILY OF ALL HEADERS ON YOUR PAGE.</p>
+
+  <ol>
+  <li>Find the font you’d like to use on Google Fonts (Chloe recommends Pacifico, but you’re free to have some fun and select your own.)</li>
+  <li>In your html document, add the stylesheet <code>&lt;link&gt;</code> tag provided by Google Fonts to the <code>&lt;head&gt;</code> <br>
+  <ul><li>Make sure the Google <code>&lt;link&gt;</code> is <strong>before</strong> your <code>style.css</code> link so that you can access the font in your own file!</li></ul></li>
+  <li>In your CSS File,  change the font-family of your <code>h1</code>  tags to use the font you selected.</li>
+  </ol>
+</blockquote>
+
+<p style="text-align: center"><img src="https://raw.githubusercontent.com/bytheway875/emberitas-images/master/without-container.png" ></p>
+
+<hr>
+
+<h3>Step 4: Coding The Smart Way With Bootstrap</h3>
+
+<p>When we reload the page after applying our font, we can see that we’re, again, one step closer to our end product. But progress is slow. How about we speed things up a little by using an <em>external library</em>?</p>
+
+<p>Leveraging code that other people write is a great way to speed up the development process and create professional-quality apps much more quickly than we could do on our own!</p>
 
 <p><a href="http://getbootstrap.com/2.3.2/index.html">Twitter Bootstrap</a> is an incredibly popular <em>responsive framework</em>. Responsive frameworks provide advanced styling to help you to build applications that will look good on giant desktop monitors, laptop screens, tablets and smaller mobile devices, all without having to write totally different styling for each size screen.</p>
 
-<p>Most of these frameworks rely on a <a href="http://getbootstrap.com/2.3.2/scaffolding.html#gridSystem">grid system</a> to determine how elements should be displayed at different screen sizes. Bootstrap uses a 12 column grid. This means the main content of your page <em>(container)</em> is divided up into 12, invisible, equal-width vertical sections <em>(columns)</em>. Content is also grouped into horizontal sections using <em>rows</em>. You can then use this <em>grid</em> to specify how many columns an element should take up at various screen sizes. </p>
+<p>Twitter Bootstrap is an incredibly popular responsive framework. Responsive frameworks provide advanced styling to help you to build applications with reusable components and elements.</p>
 
-<p>Bootstrap uses an HTML tag attribute called a <strong>class</strong> to apply the grid and any component styling you might like to use.</p>
+<p>Bootstrap uses an HTML tag attribute called a <strong>class</strong> to apply it’s styles to your elements.</p>
 
-<p>The structure looks something like this:</p>
+<p>You can apply a class to an attribute like this:</p>
 
-<pre class="prettyprint"><code class=" hljs xml"><span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">'container'</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">'row'</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">'col-xs-12 col-sm-6 col-md-6 col-lg-4'</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">'col-xs-12 col-sm-6 col-md-6 col-lg-4'</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">'col-xs-12 col-sm-12 col-md-12 col-lg-4'</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
-    <span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">'row'</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">'col-xs-12 col-sm-6 col-md-6 col-lg-4'</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">'col-xs-12 col-sm-6 col-md-6 col-lg-4'</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">'col-xs-12 col-sm-12 col-md-12 col-lg-4'</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
-    <span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span></code></pre>
+<p><code>&lt;div class="container"&gt;&lt;/div&gt;</code></p>
 
-<p>Bootstrap groups screen sizes into four categories: xs, sm, md, lg - representing phones, tablets, standard laptop screens and much larger screens - respectively.</p>
+<p>Notice that our current implementation looks a bit… lopsided. Everything is pushed so far over to the left that our page looks unbalanced. While we can easily fix this on our own, by leveraging Bootstrap we can do it in just a couple of seconds, without writing any custom CSS code!</p>
 
-<p>In this example, each div takes up the <em>full width</em> of the screen on mobile devices, <em>half</em> the screen on tablets and laptop screens and a <em>third</em> of the screen on very large screens.</p>
+<p>To get started, let’s import the Bootstrap CSS code adding another stylesheet <code>&lt;link&gt;</code> to our <code>&lt;head&gt;</code></p>
 
-<blockquote>
-  <h5 id="exercise-4"><i class="icon-pencil"></i> Exercise 4</h5>
 
-  <p>In this exercise, we’ll be adding Twitter Bootstrap to our project and using the responsive grid and several <em>component classes</em> to pretty-up our application.</p>
 
-  <p><strong>Use the instructions below to add Bootstrap and build the styling foundation for our application.</strong></p>
+<pre class="prettyprint"><code class=" hljs xml"><span class="hljs-tag">&lt;<span class="hljs-title">head</span>&gt;</span>
+    <span class="hljs-comment">&lt;!-- Copy and paste this link into your head BEFORE your custom stylesheet (style.css) --&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">link</span> <span class="hljs-attribute">rel</span>=<span class="hljs-value">"stylesheet"</span> <span class="hljs-attribute">href</span>=<span class="hljs-value">"https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"</span> <span class="hljs-attribute">integrity</span>=<span class="hljs-value">"sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"</span> <span class="hljs-attribute">crossorigin</span>=<span class="hljs-value">"anonymous"</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-title">head</span>&gt;</span></code></pre>
 
-  <p>The Bootstrap <strong>component</strong> docs can be found <a href="http://getbootstrap.com/2.3.2/components.html">here</a>. <br>
-  The Bootstrap <strong>grid</strong> docs can be found <a href="http://getbootstrap.com/2.3.2/scaffolding.html#gridSystem">here</a>.</p>
+<p>Now we can start using all of Bootstraps cool features! Let’s leverage the <a href="http://getbootstrap.com/css/#overview-container">Bootstrap container</a>. It will wrap all of our elements and add some <em>margin</em> and <em>padding</em> to the page. </p>
 
-  <p>Time Box It:  15min</p>
-</blockquote>
 
-<h6 id="step-1-linking-a-stylesheet"><strong>Step 1 - Linking a stylesheet</strong></h6>
-
-<p>To start using Bootstrap, simply add the following link tag to the head of your html (a good spot would be after the author meta tag) on both pages:</p>
-
-<pre class="prettyprint"><code class=" hljs xml"><span class="hljs-tag">&lt;<span class="hljs-title">link</span> <span class="hljs-attribute">rel</span>=<span class="hljs-value">"stylesheet"</span> <span class="hljs-attribute">href</span>=<span class="hljs-value">"https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"</span> <span class="hljs-attribute">integrity</span>=<span class="hljs-value">"sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7"</span> <span class="hljs-attribute">crossorigin</span>=<span class="hljs-value">"anonymous"</span>&gt;</span></code></pre>
-
-<p>This special HTML tag tells your browser to request the bootstrap.min.css file from the Bootstrap servers and load it with your project when your page loads. </p>
-
-<p>If you refresh your browser window, you should already see some styling changes including a new font and some nicer-looking inputs and buttons.</p>
-
-<h6 id="step-2-organizing-content-with-divs-and-grid-classes"><strong>Step 2 - Organizing content with divs and grid classes</strong></h6>
-
-<p>Based on Chloe’s designs, we want the main content of our pages to be centered and we want it to automatically adjust to an appropriate width on different screen sizes. Chloe would like the content to take up the <strong>full width</strong> of the page on xs devices (This is a default! Yay!), about <strong>two-thirds</strong> of the page on sm devices and <strong>half</strong> the page on md and lg devices. </p>
-
-<p>To keep the content centered at various sizes, we will need to use some offset classes to help push the content into the middle columns.</p>
-
-<p>Our columns will work like this:</p>
-
-<pre class="prettyprint"><code class=" hljs brainfuck"><span class="hljs-comment">xs</span> <span class="hljs-comment">|</span><span class="hljs-literal">-</span><span class="hljs-literal">-</span><span class="hljs-literal">-</span><span class="hljs-literal">-</span><span class="hljs-literal">-</span><span class="hljs-literal">-</span><span class="hljs-literal">-</span><span class="hljs-literal">-</span><span class="hljs-literal">-</span><span class="hljs-literal">-</span><span class="hljs-literal">-</span><span class="hljs-literal">-</span><span class="hljs-comment">|</span> <span class="hljs-comment">12</span> <span class="hljs-comment">=</span> <span class="hljs-comment">12</span>           <span class="hljs-comment">(use</span> <span class="hljs-comment">all</span> <span class="hljs-comment">12</span> <span class="hljs-comment">cols)</span>
-<span class="hljs-comment">sm</span> <span class="hljs-literal">-</span><span class="hljs-literal">-</span><span class="hljs-comment">|</span><span class="hljs-literal">-</span><span class="hljs-literal">-</span><span class="hljs-literal">-</span><span class="hljs-literal">-</span><span class="hljs-literal">-</span><span class="hljs-literal">-</span><span class="hljs-literal">-</span><span class="hljs-literal">-</span><span class="hljs-comment">|</span><span class="hljs-literal">-</span><span class="hljs-literal">-</span> <span class="hljs-comment">2</span> <span class="hljs-literal">+</span> <span class="hljs-comment">8</span> <span class="hljs-literal">+</span> <span class="hljs-comment">2</span> <span class="hljs-comment">=</span> <span class="hljs-comment">12</span>    <span class="hljs-comment">(8</span> <span class="hljs-comment">cols</span> <span class="hljs-comment">offset</span> <span class="hljs-comment">by</span> <span class="hljs-comment">2)</span>
-<span class="hljs-comment">md</span> <span class="hljs-literal">-</span><span class="hljs-literal">-</span><span class="hljs-literal">-</span><span class="hljs-comment">|</span><span class="hljs-literal">-</span><span class="hljs-literal">-</span><span class="hljs-literal">-</span><span class="hljs-literal">-</span><span class="hljs-literal">-</span><span class="hljs-literal">-</span><span class="hljs-comment">|</span><span class="hljs-literal">-</span><span class="hljs-literal">-</span><span class="hljs-literal">-</span> <span class="hljs-comment">3</span> <span class="hljs-literal">+</span> <span class="hljs-comment">6</span> <span class="hljs-literal">+</span> <span class="hljs-comment">3</span> <span class="hljs-comment">=</span> <span class="hljs-comment">12</span>    <span class="hljs-comment">(6</span> <span class="hljs-comment">cols</span> <span class="hljs-comment">offset</span> <span class="hljs-comment">by</span> <span class="hljs-comment">3)</span>
-<span class="hljs-comment">lg</span> <span class="hljs-literal">-</span><span class="hljs-literal">-</span><span class="hljs-literal">-</span><span class="hljs-comment">|</span><span class="hljs-literal">-</span><span class="hljs-literal">-</span><span class="hljs-literal">-</span><span class="hljs-literal">-</span><span class="hljs-literal">-</span><span class="hljs-literal">-</span><span class="hljs-comment">|</span><span class="hljs-literal">-</span><span class="hljs-literal">-</span><span class="hljs-literal">-</span> <span class="hljs-comment">3</span> <span class="hljs-literal">+</span> <span class="hljs-comment">6</span> <span class="hljs-literal">+</span> <span class="hljs-comment">3</span> <span class="hljs-comment">=</span> <span class="hljs-comment">12</span>    <span class="hljs-comment">(6</span> <span class="hljs-comment">cols</span> <span class="hljs-comment">offset</span> <span class="hljs-comment">by</span> <span class="hljs-comment">3)</span></code></pre>
-
-<p>To achieve this, we simply wrap our existing page content in the following HTML div tags with some classes added that Bootstrap knows how to style:</p>
 
 <pre class="prettyprint"><code class=" hljs xml"><span class="hljs-tag">&lt;<span class="hljs-title">body</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">'container'</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">'row'</span>&gt;</span>
-            <span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">'col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3 '</span>&gt;</span>
-                <span class="hljs-comment">&lt;!-- The rest of our existing page content --&gt;</span>
+
+    <span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"container"</span>&gt;</span>
+        <span class="hljs-comment">&lt;!-- beginning of current body code --&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-title">div</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-title">h2</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-title">h2</span>&gt;</span>
+                ...
             <span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
-        <span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+        <span class="hljs-comment">&lt;!-- end of current body code --&gt;</span>
     <span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+
 <span class="hljs-tag">&lt;/<span class="hljs-title">body</span>&gt;</span></code></pre>
 
-<p>Once we’ve added these new classes, our content should be centered and we should be able to watch the content width adjust when we resize our browser window.</p>
-
 <blockquote>
-  <p><i class="icon-mobile"></i> If you want to get really fancy, you can right click anywhere in your Chrome browser window and choose “Inspect”. This will open up the developer inspector tool - a tool web developers use to gain more useful insights into what the code is doing under the hood.</p>
+  <h4 id="activity-8"><strong>ACTIVITY</strong></h4>
 
-  <p>Next to the “Elements” tab heading, there is a mobile device icon that will let you simulate what your page looks like on different standard device sizes.</p>
+  <p>ADD A BOOTSTRAP CONTAINER TO YOUR PAGE, AND USE THE BOOTSTRAP CLASS ‘BTN’ ON YOUR BUTTONS</p>
+
+  <ol>
+  <li>Add a <code>&lt;link&gt;</code> to the Bootstrap Stylesheets to your <code>&lt;head&gt;</code> <br>
+  <ul><li>Here’s the link: <code>&lt;link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"&gt;</code></li></ul></li>
+  <li>Add a div with class <code>container</code> that wraps ALL of the code that is currently in the <code>&lt;body&gt;</code> of your html.</li>
+  <li>Add a class named <code>btn</code> to each of your <code>&lt;button&gt;</code> elements. </li>
+  <li>Refresh the page - Your elements should no longer seem so cramped! And did you notice that those buttons look a LOT more modern now?</li>
+  </ol>
+
+  <p>We can’t cover <em>all</em> of Bootstrap’s awesome features in this course! Check out <a href="http://getbootstrap.com/css/">Bootstrap’s Documentation</a> to learn more!</p>
 </blockquote>
 
-<h6 id="step-3-adding-component-classes"><strong>Step 3 - Adding component classes</strong></h6>
+<p style="text-align:center"><img src="https://raw.githubusercontent.com/bytheway875/emberitas-images/master/bootstrap-buttons.png?raw=true"  alt="colored-button"></p>
 
-<p>When reviewing Chloe’s design, did you notice that she reused the same bar-like styling for all of the palette previews and for the buttons on our page?</p>
+<hr>
 
-<p>These <em>bars</em> are an example of a Bootstrap component. Components are similar to the grid, in that they are just combinations of classes applied to our HTML elements that Bootstrap knows how to style. You can find all kinds of useful component classes that Bootstrap includes in its <em>kit of parts</em>, <a href="http://getbootstrap.com/components/#btn-groups">here</a>.</p>
+<h3>Step 5 - Styling Our Palette Bars with Bootstrap</h3>
 
-<p>Reviewing the Bootstrap docs, it looks like the component we want to use is called a <strong>button group</strong>. We’ve already got our buttons added to our HTML code. Let’s try refactoring (or editing) the buttons to add a wrapper div and the Bootstrap classes that will give us that nice button bar styling:</p>
+<p>We’ve added a class named <code>btn</code> to each of our button elements, but they still don’t <em>quite</em> look like the mockup that Chloe gave us. Thankfully, a combination of a bootstrap element and some custom css can help us change all that!</p>
 
-<pre class="prettyprint"><code class=" hljs r">&lt;div class=<span class="hljs-string">"btn-group"</span>&gt;
-  &lt;button class=<span class="hljs-string">"btn"</span> type=<span class="hljs-string">"button"</span> style=<span class="hljs-string">"background-color:rgb(217,33,32)"</span>&gt;<span class="hljs-number">217</span>,<span class="hljs-number">33</span>,<span class="hljs-number">32</span>&lt;/button&gt;
-  &lt;button class=<span class="hljs-string">"btn"</span> type=<span class="hljs-string">"button"</span> style=<span class="hljs-string">"background-color:rgb(231,116,47)"</span>&gt;<span class="hljs-number">231</span>,<span class="hljs-number">116</span>,<span class="hljs-number">47</span>&lt;/button&gt;
-  <span class="hljs-keyword">...</span>
-&lt;/div&gt;</code></pre>
+<p>Hmm… Let’s see if we can find some Bootstrap Component that can help us out. Cue <a href="http://getbootstrap.com/components/#btn-groups">Bootstrap Button Groups</a>. Doesn’t this look a bit more like what we need?</p>
 
-<p>Another component class we’ll want to use is for <strong>styling text inputs</strong>. Add the <code>form-control</code> class to all of the <strong>text</strong> inputs on our form. Once you’ve successfully added the btn-group, btn and form-control classes, your pages should look something like this:</p>
+<p style="text-align:center"><img src="https://raw.githubusercontent.com/bytheway875/emberitas-images/master/bootstrap-doc.ong.png" width=500></p>
 
-<p><img src="https://github.com/lydiaguarino/emberitas-images/blob/master/bootstrap-button-groups.png?raw=true" alt="enter image description here" title=""></p>
+<p>According to the documentation, we can wrap our <code>&lt;button&gt;</code> tags in a <code>&lt;div&gt;</code> with the classes <code>"btn-group btn-group-lg btn-group-justified"</code> to make it look a little better:</p>
 
-<blockquote>
-  <p>Take a break if you need one!</p>
-</blockquote>
 
-<div style="text-align:center">
-  <h1 id="color-palette-tutorial" style="text-align:center">Pause Here</h1>
-  <img src="https://github.com/lydiaguarino/emberitas-images/blob/master/Ember-Austin-Zoey-Half-sm.png?raw=true" alt="enter image description here" title="">
-</div>
 
-<h4 id="styling-the-content-css">Styling the content - CSS</h4>
+<pre class="prettyprint"><code class="language-html hljs ">    <span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"btn-group"</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-title">button</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"btn"</span> <span class="hljs-attribute">style</span>=<span class="hljs-value">"background-color: rgb(217,33,32)"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-title">button</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-title">button</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"btn"</span> <span class="hljs-attribute">style</span>=<span class="hljs-value">"background-color: rgb(231,116,47)"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-title">button</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-title">button</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"btn"</span> <span class="hljs-attribute">style</span>=<span class="hljs-value">"background-color: rgb(223,165,58)"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-title">button</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-title">button</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"btn"</span> <span class="hljs-attribute">style</span>=<span class="hljs-value">"background-color: rgb(177,190,78)"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-title">button</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-title">button</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"btn"</span> <span class="hljs-attribute">style</span>=<span class="hljs-value">"background-color: rgb(109,179,136)"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-title">button</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span></code></pre>
 
-<p>Let’s take another look at Chloe’s designs:</p>
-
-<p><img src="https://github.com/lydiaguarino/emberitas-images/blob/master/comps.png?raw=true" alt="enter image description here" title="" style="max-width:100%"></p>
-
-<p>Bootstrap helped us position our content on the page and gave us some helpful component styling, but our pages still look pretty different from Chloe’s designs. </p>
-
-<p>We already know that we could go edit the styling for each element directly in our HTML using the style attribute, but that sounds pretty inefficient and incredibly difficult to maintain.  </p>
-
-<p>We learned in the last exercise that Bootstrap uses <em>classes</em> to apply styles to a bunch of elements all at once. As long as the element has the correct class, Bootstrap will correctly apply to appropriate styling. </p>
+<p>By adding the class <code>btn-group</code>, our buttons will now touch!</p>
 
 <blockquote>
-  <p>How does this work?</p>
+  <h4 id="activity-9"><strong>ACTIVITY</strong></h4>
 
-  <p>Remember that <code>&lt;link&gt;</code> tag we put in the head of our HTML documents? That link tag told our browser that we wanted to load some CSS or a “Cascading Style Sheet” along with our page. </p>
+  <p>ADD A DIV WITH THE CLASS OF <code>btn-group</code> AROUND EACH GROUP OF BUTTONS</p>
 
-  <p>That CSS document is a list of <em>selectors</em>, which can be HTML tags (like <code>&lt;h1&gt;</code>), classes (like <code>btn-group</code>) or a third type called an <code>id</code>, which is used for identifying and styling individual elements (the special snowflakes).  CSS then uses some special syntax to list out the style attributes that should be applied to any elements that match the selector.</p>
+  <ol>
+  <li>Each <code>&lt;button&gt;</code> must have the class of <code>btn</code>.</li>
+  <li>The <code>&lt;div&gt;</code> with class <code>btn-group</code> should open BEFORE the first of the five buttons and close AFTER the closing tag of the last button.</li>
+  </ol>
 </blockquote>
 
-<p>Structure:</p>
+<p>Thanks to Bootstrap, the hardest part is done! But the rest is up to us. We’ll need to customize the styles on our buttons a bit more before Chloe will be impressed. So let’s do it.</p>
 
-<pre class="prettyprint"><code class=" hljs handlebars"><span class="xml"><span class="css"><span class="hljs-attr_selector">[selector name]</span> <span class="hljs-rules">{
-    <span class="hljs-rule">[<span class="hljs-attribute">style attribute name] </span>:<span class="hljs-value"> [value]</span></span>;
-    <span class="hljs-rule">[<span class="hljs-attribute">style attribute name] </span>:<span class="hljs-value"> [value]</span></span>;
-    <span class="hljs-rule">[<span class="hljs-attribute">style attribute name] </span>:<span class="hljs-value"> [value]</span></span>;
-<span class="hljs-rule">}</span></span></span></span></code></pre>
+<p style="text-align:center"><img src="https://raw.githubusercontent.com/bytheway875/emberitas-images/master/cramped-buttons-wip.png?raw=true"  alt="colored-button"></p>
 
-<p>Example with a tag selector:</p>
+<hr>
 
-<pre class="prettyprint"><code class=" hljs css"><span class="hljs-tag">h1</span> <span class="hljs-rules">{
-  <span class="hljs-rule"><span class="hljs-attribute">font-family</span>:<span class="hljs-value"> <span class="hljs-string">'Pacifico'</span>, cursive</span></span>;
-  <span class="hljs-rule"><span class="hljs-attribute">font-size</span>:<span class="hljs-value"> <span class="hljs-number">70</span>px</span></span>;
-  <span class="hljs-rule"><span class="hljs-attribute">margin-top</span>:<span class="hljs-value"> <span class="hljs-number">50</span>px</span></span>;
-  <span class="hljs-rule"><span class="hljs-attribute">padding-bottom</span>:<span class="hljs-value"> <span class="hljs-number">20</span>px</span></span>;
-  <span class="hljs-rule"><span class="hljs-attribute">text-align</span>:<span class="hljs-value"> center</span></span>;
-<span class="hljs-rule">}</span></span></code></pre>
+<h3>Step 6 - Finishing Touches With Custom Classes</h3>
 
-<p>Example with a class selector (note the “.” at the beginning of the class name):</p>
+<p>Let’s review the mockups for our Color Palettes List View one more time. There are THREE big alterations we need to make to our palette buttons.</p>
 
-<pre class="prettyprint"><code class=" hljs css"><span class="hljs-class">.color-text-input</span> <span class="hljs-rules">{
-  <span class="hljs-rule"><span class="hljs-attribute">width</span>:<span class="hljs-value"> <span class="hljs-number">20</span>%</span></span>;
-  <span class="hljs-rule"><span class="hljs-attribute">margin</span>:<span class="hljs-value"> <span class="hljs-number">2</span>%</span></span>;
-  <span class="hljs-rule"><span class="hljs-attribute">display</span>:<span class="hljs-value"> inline-block</span></span>;
-<span class="hljs-rule">}</span></span></code></pre>
+<ol>
+<li>We need our palette to span the entire with of its container.</li>
+<li>We need to show the color code on hover.</li>
+<li>We need the height of the buttons to be a bit more robust.</li>
+</ol>
 
-<p>Example with an id selector (note the “#” at the beginning of the class name):</p>
+<p>Let’s start by giving our our buttons an explicit with using our own css class. We’ll start by adding a css class called <code>palette-btn</code> to each button element: <br>
+<code>&lt;button class="btn palette-btn" style="background-color: rgb(217,33,32)"&gt;&lt;/button&gt;</code></p>
 
-<pre class="prettyprint"><code class=" hljs css"><span class="hljs-id">#my-specific-element</span> <span class="hljs-rules">{
-  <span class="hljs-rule"><span class="hljs-attribute">background-color</span>:<span class="hljs-value"> <span class="hljs-hexcolor">#1C1F24</span></span></span>;
-  <span class="hljs-rule"><span class="hljs-attribute">color</span>:<span class="hljs-value"> <span class="hljs-hexcolor">#586073</span></span></span>;
-<span class="hljs-rule">}</span></span></code></pre>
+<p>And an additional class called <code>full-width-btn-group</code> to our <code>btn-group</code> div: <br>
+<code>&lt;div class="btn-group full-width-btn-group"&gt;&lt;/div&gt;</code></p>
 
-<blockquote>
-  <h5 id="exercise-5"><i class="icon-pencil"></i> Exercise 5</h5>
+<p>Then, we can modify our <code>style.css</code> to target all classes named <code>palette-btn</code>.</p>
 
-  <p>Time to get fancy! In this exercise we’ll be writing our own custom CSS to bring Chloe’s designs to life.</p>
 
-  <p>As a group, take a look at Chloe’s designs. What types of elements or patterns are repeated? Could those be grouped as a class? Start to make a list of the classes you think you might need.</p>
 
-  <p>To get you started, here is a comprehensive list of style attributes you will need to use to complete the styling for Chloe’s designs:</p>
-
-  <p><strong>Colors and Outlines:</strong> <br>
-  <code>background-color</code> <code>color</code>  <code>opacity</code> <code>border</code>    </p>
-
-  <p><strong>Fonts:</strong> <br>
-  <code>font-family</code> <code>font-size</code> <code>text-align</code></p>
-
-  <p><strong>Sizing:</strong> <br>
-  <code>width</code> <code>height</code></p>
-
-  <p><strong>Positioning:</strong> <br>
-  <code>margin-top</code> <code>margin-bottom</code> <code>padding-top</code> <code>padding-bottom</code> <code>display</code> <code>vertical-align</code></p>
-
-  <p><strong>Use the instructions below to link a new stylesheet and write some custom CSS</strong></p>
-
-  <p>Time Box It:  30min</p>
-</blockquote>
-
-
-
-<h6 id="step-1-adding-a-css-file-and-linking-it"><strong>Step 1 - Adding a CSS file and linking it</strong></h6>
-
-<p>Open your text editor and create a new file to your emberitas directory called “style.css” </p>
-
-<pre class="prettyprint"><code class=" hljs avrasm">emberitas
-    palettes<span class="hljs-preprocessor">.html</span>
-    palette<span class="hljs-preprocessor">.html</span>
-    style<span class="hljs-preprocessor">.css</span></code></pre>
-
-<p>In the head of each of your HTML files, add another link tag, this time linking our new style.css file. Note that this new link tag should be listed <em>beneath</em> the Bootstrap link tag. This will allow our custom styles to <em>override</em> any Bootstrap styles.</p>
-
-<pre class="prettyprint"><code class=" hljs xml"><span class="hljs-tag">&lt;<span class="hljs-title">link</span> <span class="hljs-attribute">rel</span>=<span class="hljs-value">"stylesheet"</span> <span class="hljs-attribute">href</span>=<span class="hljs-value">"styles.css"</span>&gt;</span></code></pre>
-
-<p>To test it out, let’s add some CSS to our new file and observe how it impacts our pages.</p>
-
-<p>Add the following to your style.css file:</p>
-
-
-
-<pre class="prettyprint"><code class=" hljs css">* <span class="hljs-rules">{
-    <span class="hljs-rule"><span class="hljs-attribute">border</span>:<span class="hljs-value"> <span class="hljs-number">1</span>px solid magenta</span></span>;
-<span class="hljs-rule">}</span></span></code></pre>
-
-<p>Save the file and refresh your browser window. Every element on your page should suddenly be outlined in pink! This is a helpful trick to get a quick glimpse at how your page is currently organized. The “*” is a wildcard selector that means “all the things”. </p>
-
-<p>You can also open the inspector again, by right clicking in your browser window and selecting inspect. The Elements tab will show you the HTML and also the styles being applied to items on the page. In the top left of the inspector window, there is a little arrow that will let you hover over elements on the page and view specific details about them.</p>
-
-<p>When you’ve had enough of the pink outline, simply remove that code from your CSS file.</p>
-
-
-
-<h6 id="step-2-adding-a-google-font"><strong>Step 2 - Adding a Google font</strong></h6>
-
-<p>Chloe is a typography nerd. She has specified a fancy font called ‘Pacifico’ that she would like for us to use for the page titles. She has chosen a Google font, which we can link in our HTML head, just like our other stylesheets! </p>
-
-<p>The <a href="https://www.google.com/fonts">Google fonts site</a> has wonderful documentation on how to add a font to your project. Simply search for the font you want to use and click “Add to Collection” for more instructions.</p>
-
-<pre class="prettyprint"><code class=" hljs rust">  &lt;link href=<span class="hljs-string">'https://fonts.googleapis.com/css?family=Pacifico'</span> rel=<span class="hljs-string">'stylesheet'</span> <span class="hljs-keyword">type</span>=<span class="hljs-string">'text/css'</span>&gt;</code></pre>
-
-<p>Let’s go ahead and apply our new font, along with some sizing and positioning attributes to the <code>h1</code> elements in our application:</p>
-
-<pre class="prettyprint"><code class=" hljs css"><span class="hljs-tag">h1</span> <span class="hljs-rules">{
-  <span class="hljs-rule"><span class="hljs-attribute">font-family</span>:<span class="hljs-value"> <span class="hljs-string">'Pacifico'</span>, cursive</span></span>;
-  <span class="hljs-rule"><span class="hljs-attribute">font-size</span>:<span class="hljs-value"> <span class="hljs-number">70</span>px</span></span>;
-  <span class="hljs-rule"><span class="hljs-attribute">margin-top</span>:<span class="hljs-value"> <span class="hljs-number">50</span>px</span></span>;
-  <span class="hljs-rule"><span class="hljs-attribute">padding-bottom</span>:<span class="hljs-value"> <span class="hljs-number">20</span>px</span></span>;
-  <span class="hljs-rule"><span class="hljs-attribute">text-align</span>:<span class="hljs-value"> center</span></span>;
-<span class="hljs-rule">}</span></span></code></pre>
-
-<h6 id="step-3-adding-smart-styling-defaults"><strong>Step 3 - Adding smart styling defaults</strong></h6>
-
-<p>The biggest difference between Chloe’s designs and our pages is that our pages are white, while Chloe has specified a dark color scheme for the majority of the application.</p>
-
-<p>CSS, or Cascading Style Sheets are particularly useful because the order in which the HTML selectors appear in your list of styles makes your styling <em>additive</em>. </p>
-
-<p>For this reason, you usually structure your CSS files from least specific to most specific selectors. This lets you create smart defaults. Elements wrapped by styled elements (child elements) will inherit from their wrapper (or parent) element.</p>
-
-<p>Additionally, any styles listed further down in your CSS file will override styles specified higher up in the file. This is how we are able to override the Bootstrap styles by linking our custom CSS file after the Bootstrap file.</p>
-
-<p>Let’s start our smart defaults by setting the color scheme on the entire <code>body</code> element:</p>
-
-
-
-<pre class="prettyprint"><code class=" hljs css"><span class="hljs-tag">body</span> <span class="hljs-rules">{
-  <span class="hljs-rule"><span class="hljs-attribute">background-color</span>:<span class="hljs-value"> <span class="hljs-hexcolor">#1C1F24</span></span></span>;
-  <span class="hljs-rule"><span class="hljs-attribute">color</span>:<span class="hljs-value"> <span class="hljs-hexcolor">#586073</span></span></span>;
-<span class="hljs-rule">}</span></span></code></pre>
-
-<p>Let’s also set a smart font-size default for all the <code>h2</code> tags in our application:</p>
-
-<pre class="prettyprint"><code class=" hljs css"><span class="hljs-tag">h2</span> <span class="hljs-rules">{
-  <span class="hljs-rule"><span class="hljs-attribute">font-size</span>:<span class="hljs-value"> <span class="hljs-number">18</span>px</span></span>;
-<span class="hljs-rule">}</span></span></code></pre>
-
-<p>Finally, we already know that our Bootstrap <code>.btn-group</code> elements are repeated throughout the app. Let’s add some smart overrides to start making our application look more uniform:</p>
-
-
-
-<pre class="prettyprint"><code class=" hljs css"><span class="hljs-class">.btn-group</span> <span class="hljs-rules">{
-  <span class="hljs-rule"><span class="hljs-attribute">width</span>:<span class="hljs-value"> <span class="hljs-number">100</span>%</span></span>;
-  <span class="hljs-rule"><span class="hljs-attribute">margin-bottom</span>:<span class="hljs-value"> <span class="hljs-number">12</span>px</span></span>;
-  <span class="hljs-rule"><span class="hljs-attribute">margin-top</span>:<span class="hljs-value"> <span class="hljs-number">12</span>px</span></span>;
-<span class="hljs-rule">}</span></span></code></pre>
-
-
-
-<h6 id="step-4-adding-custom-classes"><strong>Step 4 - Adding custom classes</strong></h6>
-
-<p>Things are starting to look pretty good! Let’s spend some time focusing on our palette preview button groups. It looks like we basically have two representations of a color palette - One with colors, and an empty one that doesn’t have any color blocks yet. Both are shaped the same, with five equally sized sections, but there are some slight differences in border styling.</p>
-
-<p>Let’s start by creating a new custom class called <code>color-palette</code> that we will apply to all the button groups we’re using as color-palette previews.</p>
-
-<pre class="prettyprint"><code class=" hljs r">&lt;a href=<span class="hljs-string">"palette.html"</span> class=<span class="hljs-string">"btn-group color-palette"</span>&gt;
-    &lt;button <span class="hljs-keyword">...</span> &gt;<span class="hljs-number">217</span>,<span class="hljs-number">33</span>,<span class="hljs-number">32</span>&lt;/button&gt;
-    &lt;button <span class="hljs-keyword">...</span>&gt;<span class="hljs-number">231</span>,<span class="hljs-number">116</span>,<span class="hljs-number">47</span>&lt;/button&gt;
-    &lt;button <span class="hljs-keyword">...</span>&gt;<span class="hljs-number">223</span>,<span class="hljs-number">165</span>,<span class="hljs-number">58</span>&lt;/button&gt;
-    &lt;button <span class="hljs-keyword">...</span>&gt;<span class="hljs-number">177</span>,<span class="hljs-number">190</span>,<span class="hljs-number">78</span>&lt;/button&gt;
-    &lt;button <span class="hljs-keyword">...</span>&gt;<span class="hljs-number">109</span>,<span class="hljs-number">179</span>,<span class="hljs-number">136</span>&lt;/button&gt;
-&lt;/a&gt;</code></pre>
-
-<p>We’ll also add the color-palette class to our empty color palette, but we’ll give that element an additional custom class called <code>.empty-palette</code></p>
-
-
-
-<pre class="prettyprint"><code class=" hljs fsharp">&lt;h2&gt;Add a Palette&lt;/h2&gt;
-&lt;a href=<span class="hljs-string">"palette.html"</span> <span class="hljs-keyword">class</span>=<span class="hljs-string">"btn-group color-palette empty-palette"</span>&gt;
-    &lt;button <span class="hljs-keyword">class</span>=<span class="hljs-string">"btn"</span> <span class="hljs-class"><span class="hljs-keyword">type</span>=</span><span class="hljs-string">"button"</span>&gt;&lt;/button&gt;
-    &lt;button <span class="hljs-keyword">class</span>=<span class="hljs-string">"btn"</span> <span class="hljs-class"><span class="hljs-keyword">type</span>=</span><span class="hljs-string">"button"</span>&gt;&lt;/button&gt;
-    &lt;button <span class="hljs-keyword">class</span>=<span class="hljs-string">"btn"</span> <span class="hljs-class"><span class="hljs-keyword">type</span>=</span><span class="hljs-string">"button"</span>&gt;&lt;/button&gt;
-    &lt;button <span class="hljs-keyword">class</span>=<span class="hljs-string">"btn"</span> <span class="hljs-class"><span class="hljs-keyword">type</span>=</span><span class="hljs-string">"button"</span>&gt;&lt;/button&gt;
-    &lt;button <span class="hljs-keyword">class</span>=<span class="hljs-string">"btn"</span> <span class="hljs-class"><span class="hljs-keyword">type</span>=</span><span class="hljs-string">"button"</span>&gt;&lt;/button&gt;
-&lt;/a&gt;</code></pre>
-
-<p>Now that we have custom classes add to our HTML, we can edit the styles that the elements will share.</p>
-
-<pre class="prettyprint"><code class=" hljs css"><span class="hljs-class">.color-palette</span> <span class="hljs-class">.btn</span> <span class="hljs-rules">{
-  <span class="hljs-rule"><span class="hljs-attribute">width</span>:<span class="hljs-value"> <span class="hljs-number">20</span>%</span></span>;
-  <span class="hljs-rule"><span class="hljs-attribute">height</span>:<span class="hljs-value"> <span class="hljs-number">50</span>px</span></span>;
-  <span class="hljs-rule"><span class="hljs-attribute">border</span>:<span class="hljs-value"> none</span></span>;
-  <span class="hljs-rule"><span class="hljs-attribute">font-size</span>:<span class="hljs-value"> <span class="hljs-number">10</span>px</span></span>;
-  <span class="hljs-rule"><span class="hljs-attribute">color</span>:<span class="hljs-value"> transparent</span></span>;
-<span class="hljs-rule">}</span></span></code></pre>
-
-<p>Hmmmmmm. That’s odd. There’s a second class listed in our selector!</p>
-
-<blockquote>
-  <p>CSS selectors can be chained. The notation above means “find all the elements with the <code>.color-palette</code> class and then drill down to all of the nested elements <em>inside</em> that element that have the <code>.btn</code> class and apply the following styles to those elements.</p>
-</blockquote>
-
-<p>Let’s take a look at one more example. Here, we’re using the same nested selector <code>.color-palette .btn</code>, but we’re adding one more layer of specificity using a <em>pseudo-class</em>, which is essentially a conditional class that gets applied when the user interacts with different elements on the page, such as hovering over an element.</p>
-
-
-
-<pre class="prettyprint"><code class=" hljs css"><span class="hljs-class">.color-palette</span> <span class="hljs-class">.btn</span><span class="hljs-pseudo">:hover</span>, <span class="hljs-class">.color-palette</span> <span class="hljs-class">.btn</span><span class="hljs-pseudo">:focus</span> <span class="hljs-rules">{
-  <span class="hljs-rule"><span class="hljs-attribute">color</span>:<span class="hljs-value"> <span class="hljs-hexcolor">#1C1F24</span></span></span>;
-  <span class="hljs-rule"><span class="hljs-attribute">border</span>:<span class="hljs-value"> <span class="hljs-number">2</span>px solid <span class="hljs-hexcolor">#1C1F24</span></span></span>;
-<span class="hljs-rule">}</span></span></code></pre>
-
-<p>You can apply the same style to several different selectors by separating them with a comma. Save and refresh your browser window. What happens when you hover over one of the color buttons now?</p>
-
-<p>Finally, let’s add the styling for our special empty-palette. Remember, order matters in your CSS file.</p>
-
-<pre class="prettyprint"><code class=" hljs css"><span class="hljs-class">.empty-palette</span> <span class="hljs-class">.btn</span> <span class="hljs-rules">{
-  <span class="hljs-rule"><span class="hljs-attribute">background-color</span>:<span class="hljs-value"> transparent</span></span>;
-  <span class="hljs-rule"><span class="hljs-attribute">border</span>:<span class="hljs-value"> <span class="hljs-number">1</span>px solid <span class="hljs-hexcolor">#586073</span></span></span>;
+<pre class="prettyprint"><code class="language-css hljs "><span class="hljs-comment">/* We must set an explicit width on the btn-group for this to work! */</span>
+<span class="hljs-class">.full-width-btn-group</span> <span class="hljs-rules">{
+    <span class="hljs-rule"><span class="hljs-attribute">width</span>:<span class="hljs-value"> <span class="hljs-number">100</span>%</span></span>;
 <span class="hljs-rule">}</span></span>
 
-<span class="hljs-class">.empty-palette</span><span class="hljs-pseudo">:hover</span> <span class="hljs-class">.btn</span> <span class="hljs-rules">{
-  <span class="hljs-rule"><span class="hljs-attribute">border</span>:<span class="hljs-value"> <span class="hljs-number">1</span>px solid white</span></span>;
+<span class="hljs-class">.palette-btn</span> <span class="hljs-rules">{
+    <span class="hljs-rule"><span class="hljs-attribute">height</span>:<span class="hljs-value"> <span class="hljs-number">75</span>px</span></span>;
+    <span class="hljs-rule"><span class="hljs-attribute">width</span>:<span class="hljs-value"> <span class="hljs-number">20</span>%</span></span>;
 <span class="hljs-rule">}</span></span></code></pre>
 
+<p>In css, we prepend a <code>.</code> to the name of our class to distinguish classes like <code>palette-btn</code> from tag names like <code>button</code>.  </p>
+
+<p>Now our button elements are taller (75px, to be specific) and wider (20% of the width of the <code>btn-group</code> div)</p>
+
 <blockquote>
-  <h5 id="challenge-time"><i class="icon-star"></i> Challenge Time!</h5>
+  <h4 id="activity-1-1"><strong>ACTIVITY 1</strong></h4>
 
-  <p>Use the following custom classes and style attributes to style the rest of the palette form:</p>
+  <p>MAKE YOUR BUTTONS 75px TALL AND SPAN 20% THE WIDTH OF THE <code>btn-group</code>. </p>
 
-  <p><strong>Custom classes and nested selectors</strong></p>
+  <ol>
+  <li>Add a class named <code>palette-btn</code> to each of your button elements.</li>
+  <li>Add a class named <code>full-width-btn-group</code> to each of your <code>btn-group</code> elements.</li>
+  <li>In your CSS: <br>
+  <ul><li>Give a width of 100% to <code>full-width-btn-group</code></li>
+  <li>Give a width of 20% and a height of 75px to <code>palette-btn</code></li></ul></li>
+  </ol>
 
-  <pre class="prettyprint"><code class=" hljs lasso"><span class="hljs-built_in">.</span>palette<span class="hljs-attribute">-name</span><span class="hljs-attribute">-input</span> {}
-<span class="hljs-built_in">.</span>preview<span class="hljs-attribute">-tile</span> {}
-<span class="hljs-built_in">.</span>color<span class="hljs-attribute">-input</span><span class="hljs-attribute">-group</span> {}
-<span class="hljs-built_in">.</span>color<span class="hljs-attribute">-input</span><span class="hljs-attribute">-label</span> {}
-<span class="hljs-built_in">.</span>color<span class="hljs-attribute">-text</span><span class="hljs-attribute">-input</span> {}
-<span class="hljs-built_in">.</span>color<span class="hljs-attribute">-input</span><span class="hljs-attribute">-group</span> <span class="hljs-built_in">.</span>color<span class="hljs-attribute">-range</span><span class="hljs-attribute">-input</span> {}
-<span class="hljs-built_in">.</span>fom<span class="hljs-attribute">-actions</span> <span class="hljs-built_in">.</span>btn {}
-<span class="hljs-built_in">.</span>form<span class="hljs-attribute">-actions</span> <span class="hljs-built_in">.</span>btn:hover {}</code></pre>
+  <h4 id="activity-2-1"><strong>ACTIVITY 2</strong></h4>
 
-  <p><strong>Style attributes and values</strong></p>
+  <p>STYLE YOUR H1</p>
 
-  <pre class="prettyprint"><code class=" hljs scss"><span class="hljs-attribute">width</span><span class="hljs-value">: <span class="hljs-number">10</span>%;</span>
-<span class="hljs-attribute">width</span><span class="hljs-value">: <span class="hljs-number">33.3</span>%;</span>
-<span class="hljs-attribute">width</span><span class="hljs-value">: <span class="hljs-number">20</span>%;</span>
-<span class="hljs-attribute">width</span><span class="hljs-value">: <span class="hljs-number">68</span>%;</span>
-<span class="hljs-attribute">width</span><span class="hljs-value">: <span class="hljs-number">100</span>%;</span>
-<span class="hljs-attribute">height</span><span class="hljs-value">: <span class="hljs-number">50</span>px;</span>
-<span class="hljs-attribute">margin</span><span class="hljs-value">: <span class="hljs-number">2</span>%;</span>
-<span class="hljs-attribute">margin-top</span><span class="hljs-value">: <span class="hljs-number">12</span>px;</span>
-<span class="hljs-attribute">margin-top</span><span class="hljs-value">: <span class="hljs-number">18</span>px;</span>
-<span class="hljs-attribute">margin-top</span><span class="hljs-value">: <span class="hljs-number">24</span>px;</span>
-<span class="hljs-attribute">margin-bottom</span><span class="hljs-value">: <span class="hljs-number">6</span>px;</span>
-<span class="hljs-attribute">margin-bottom</span><span class="hljs-value">: <span class="hljs-number">18</span>px;</span>
-<span class="hljs-attribute">margin-bottom</span><span class="hljs-value">: <span class="hljs-number">24</span>px;</span>
-<span class="hljs-attribute">padding</span><span class="hljs-value">: <span class="hljs-number">12</span>px;</span>
-<span class="hljs-attribute">color</span><span class="hljs-value">: white;</span>
-<span class="hljs-attribute">background-color</span><span class="hljs-value">: <span class="hljs-hexcolor">#586073</span>;</span>
-<span class="hljs-attribute">border</span><span class="hljs-value">: <span class="hljs-number">1</span>px solid <span class="hljs-hexcolor">#1C1F24</span>;</span>
-<span class="hljs-attribute">font-size</span><span class="hljs-value">: <span class="hljs-number">24</span>px;</span>
-<span class="hljs-attribute">vertical-align</span><span class="hljs-value">: middle;</span>
-<span class="hljs-attribute">display</span><span class="hljs-value">: inline-block;</span>
-<span class="hljs-attribute">opacity</span><span class="hljs-value">: .<span class="hljs-number">8</span>;</span></code></pre>
+  <p>Now that we know how to make elements bigger using pixels, let’s see if we can do the same for our font!</p>
+
+  <p>In <code>style.css</code>:</p>
+
+  <ol>
+  <li>Add a <code>font-size</code> attribute with a pixel value (ex <code>50px</code>) to make the font-size of your H1 larger.</li>
+  <li>Experiment with font sizes until it looks like a proper header.</li>
+  <li>Add an attribute called <code>text-align</code> with a value of <code>center</code> to center the header text within your container.</li>
+  <li>Add an attribute called <code>padding</code> with a value of <code>50px</code> to pad your H1 with extra space on the top, right, bottom, and left.</li>
+  </ol>
 </blockquote>
-<div style="text-align:center; margin-top: 100px;">
-{{#link-to 'resources.beginner.part-two'}}
-<img src="https://github.com/lydiaguarino/emberitas-images/blob/master/Ember-Austin-Zoey-Half-sm.png?raw=true" alt="enter image description here" title="">
-  <h2 style="text-align:center">Start Part Two</h2>
-{{/link-to}}
-</div>
+
+<p><img src="https://raw.githubusercontent.com/bytheway875/emberitas-images/master/with-centered-h1.png" style="text-align:center" ></p>
+
+<hr>
+
+<h3>Step 7 - Hover Interactions With CSS</h3>
+
+<p>Next, let’s add some <em>content</em> to our button tags. We know that we want to show our rgb color code on the button when we hover over it, but let’s run before we jump by simply adding the rgb color to the button content. </p>
+
+<p>Modify your buttons to include the rgb color like this:</p>
+
+<pre class="prettyprint"><code class=" hljs xml"><span class="hljs-tag">&lt;<span class="hljs-title">button</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"btn palette-btn"</span> <span class="hljs-attribute">style</span>=<span class="hljs-value">"background-color: rgb(217,33,32)"</span>&gt;</span>
+    rgb(217,33,32)
+<span class="hljs-tag">&lt;/<span class="hljs-title">button</span>&gt;</span></code></pre>
+
+<p>When you reload the page, you’ll see that our button now shows the hex code! But how can we alter this code to show <em>only</em> when a user <strong>hovers</strong> over the button? With more css selectors!</p>
+
+<p>CSS provides us with some <strong>pseudo-selectors</strong> that allow us to target elements when they’re in a certain state. We can target the <strong>hover state</strong> using this format:</p>
+
+<pre class="prettyprint"><code class=" hljs applescript">.palette-btn:hover {
+    /*attributes <span class="hljs-keyword">that</span> you want <span class="hljs-keyword">to</span> change <span class="hljs-function_start"><span class="hljs-keyword">on</span></span> hover*
+}</code></pre>
+
+<blockquote>
+  <h4 id="activity-10"><strong>ACTIVITY</strong></h4>
+
+  <p>USE THE HOVER PSEUDO-SELECTOR TO CHANGE THE BEHAVIOR OF <code>palette-btn</code> elements.</p>
+
+  <ol>
+  <li>Add a <code>color</code> attribute with the value of <code>transparent</code> to the existing <code>.palette-btn</code> styles in <code>styles.css</code> </li>
+  <li>Create a new ruleset for <code>.palette-btn:hover</code> in <code>styles.css</code> that has a <code>color</code> attribute with the value of <code>inherit</code> <br>
+  <ul><li><code>inherit</code> applies the color attribute of the parent object to the element.</li></ul></li>
+  </ol>
+</blockquote>
+
+<hr>
+
+<h3>Step 8 - Add a Link To Our New Color Page</h3>
+
+<p>There’s just <em>one last step</em> left until our mockup looks exactly like our coded palettes page - we need a link to our new palettes page.</p>
+
+<p>We can create links to other pages using an anchor tag:</p>
+
+<p><code>&lt;a href="new-palette.html"&gt;MAKE YOUR OWN PALETTE&lt;/a&gt;</code></p>
+
+<p>If we create a file called <code>new-palette.html</code>, we’ll see that we can use the new link on our page to navigate to the new-palette file.</p>
+
+<blockquote>
+  <h4 id="activity"><strong>ACTIVITY</strong></h4>
+
+  <p>STYLE YOUR LINK WITH BOOTSTRAP AND CUSTOM CLASSES</p>
+
+  <p><code>&lt;a&gt;</code> tags can be styled using the same Bootstrap classes that go on button elements. You can read more about your options in the <a href="https://getbootstrap.com/css/#buttons-options">Bootstrap Documentation</a>. </p>
+
+  <p>Our final code looks like this:</p>
+
+  <pre class="prettyprint"><code class="language-html hljs "><span class="hljs-comment">&lt;!-- palettes.html --&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"text-center"</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">a</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"btn btn-info link-to-new"</span> <span class="hljs-attribute">href</span>=<span class="hljs-value">"new-palette.html"</span>&gt;</span>Create Your Own Palette<span class="hljs-tag">&lt;/<span class="hljs-title">a</span>&gt;</span>
+   <span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span></code></pre>
+
+  <pre class="prettyprint"><code class="language-html hljs ">/* style.css */
+.link-to-new {
+    margin: 75px;
+    font-size: 25px;
+}</code></pre>
+</blockquote>
+
+<p>Wow! Good job. Now your app looks just like Chloe’s mockup!</p>
+
+<p style="text-align:center"><img src="https://raw.githubusercontent.com/bytheway875/emberitas-images/master/list-view-mockup.png" ></p>
+
+<hr>
+
+<h1 id="lets-take-a-break-2">Let’s Take A Break</h1>
+<p> What great work! You deserve a break. </p>
+
+<p style="text-align:center"><img  src="https://github.com/lydiaguarino/emberitas-images/blob/master/Ember-Austin-Zoey-Half-sm.png?raw=true" alt="zoey-austin" title=""></p>
+
+<hr>
+
+<h2 id="phase-4-a-quick-introduction-to-javascript">Phase 4: A Quick Introduction to Javascript</h2>
+
+<p>We promised some fun interactions using Javascript, so before we jump in to creating the html and CSS we’ll need for our second page, let’s try creating a simple interaction in pure Javascript.</p>
+
+<hr>
+
+<h3 id="step-1-creating-a-javascript-file">Step 1: Creating A Javascript File</h3>
+
+<p>For this, we’ll first need to create a javascript file called <code>script.js</code> and link it to our html document using a <code>`&lt;script&gt;</code> tag:</p>
+
+
+
+<pre class="prettyprint"><code class=" hljs d">&lt;<span class="hljs-keyword">body</span>&gt;
+    &lt;!-- All of your existing <span class="hljs-keyword">body</span> content <span class="hljs-keyword">is</span> here -&gt;
+    &lt;script src=<span class="hljs-string">"script.js"</span>&gt;&lt;/script&gt;
+&lt;/<span class="hljs-keyword">body</span>&gt;</code></pre>
+
+<p>We’re linking our Javascript at the end of the body so that it’s the <em>last thing</em> that loads on our page.</p>
+
+<blockquote>
+  <h4 id="activity-11"><strong>ACTIVITY</strong></h4>
+
+  <p>ADD A <code>script.js</code> FILE AND ADD A <code>&lt;script&gt;</code> tag to the end of your <code>&lt;body&gt;</code></p>
+
+  <ol>
+  <li>Create a file named <code>script.js</code> in your emberitas folder</li>
+  <li>Link the javascript file at the end of the <code>&lt;body&gt;</code> using <code>&lt;script src="script.js"&gt;&lt;/script&gt;</code></li>
+  </ol>
+</blockquote>
+
+<hr>
+
+<h3>Step 2: The Javascript Browser Console</h3>
+
+<p>Using Javascript, we want to change the background color of the page to match a color in our palette when we click on a <code>palette-btn</code>.</p>
+
+<p>To do this, we’ll need to use Javascript to:</p>
+
+<ol>
+<li>Find all of the <code>palette-btn</code> elements</li>
+<li>Tell the button to change the <code>background-color</code> of the <code>body</code> to match the <code>background-color</code> of the <code>palette-btn</code> element we clicked on.</li>
+</ol>
+
+<p>Let’s start by finding all of the elements with a class of <code>palette-btn</code>.</p>
+
+<p>In our Javascript file, we can use some built-in Javascript functions to create a <strong>statement</strong> that find elements in our html document, and assigns it to a <strong>variable</strong> named <em>paletteButtons</em>.</p>
+
+<pre class="prettyprint"><code class="language-javascript hljs "><span class="hljs-comment">// script.js</span>
+<span class="hljs-keyword">var</span> paletteButtons = document.getElementsByClassName(<span class="hljs-string">'palette-btn'</span>)</code></pre>
+
+<p><code>var paletteButtons =</code> creates a javascript <strong>variable</strong> named paletteButtons and sets it equal to the value on the right side of the equal sign.</p>
+
+<p>On the right side of our statement, we’re calling the JavaScript <strong>function</strong> <code>getElementsByClassName</code> on our html <code>document</code> and passing the function the name of our class as an <strong>argument</strong>.</p>
+
+<p>Now, a list of our <code>palette-btn</code>s is assigned to the variable <em>paletteButtons</em>.</p>
+
+<p>If you reload the page, you won’t see anything on your page change - that’s because we’re not telling our application to <em>do</em> anything with those elements. </p>
+
+<p>Luckily, we can access the value of the variable  <em>paletteButtons</em> directly in our browser.</p>
+
+<p>To do this, open up the Chrome Developer Tools. There are several ways to open the console: </p>
+  <ul>
+    <li>On Mac, press Control + Command + J at the same time.</li>
+    <li>On Windows, press Control + Shift + J simultaneously.</li>
+    <li>Or, use the Toolbar: View &gt; Developer &gt; Javascript Console</li>
+  </ul>
+
+
+<p>Type <code>paletteButtons</code> into the console, and press enter. Now you should see a list of all the elements with the class <code>palette-btn</code> on a new line, because we stored the list in a <strong>variable</strong> named paletteButtons.</p>
+
+<blockquote>
+  <h4 id="activity-12"><strong>ACTIVITY</strong></h4>
+
+  <p>USE THE JAVASCRIPT AND THE JAVASCRIPT CONSOLE TO FIND ALL ELEMENTS OF A CERTAIN CLASS. </p>
+
+  <p>Some classes to try:</p>
+
+  <ol>
+  <li><code>palette-btn</code></li>
+  <li><code>btn-group</code></li>
+  <li><code>btn</code></li>
+  </ol>
+</blockquote>
+
+<hr>
+
+<h3>Step 3: Listen for Click Events</h3>
+
+<p>The next thing we need to do is tell our application to do something when we click on <code>palette-btn</code> elements. In Javascript, this is called <strong>listening for click events</strong>. </p>
+
+<p>To do this, we can add an <strong>event listener</strong> to all of our <code>`palette-btn</code>s like this:</p>
+
+
+
+<pre class="prettyprint"><code class="language-javascript hljs "><span class="hljs-keyword">var</span> paletteButtons = document.getElementsByClassName(<span class="hljs-string">'palette-btn'</span>);
+
+<span class="hljs-keyword">for</span>(<span class="hljs-keyword">var</span> i = <span class="hljs-number">0</span>; i &lt; paletteButtons.length; i++) {
+    paletteButtons[i].addEventListener(<span class="hljs-string">'click'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span>{</span> alert(<span class="hljs-string">'You Clicked It!'</span>)});
+}</code></pre>
+
+<p>The code above creates a <strong>for loop</strong> that allows us to iterate through each element in our <em>paletteButtons</em> list. </p>
+
+<ul>
+<li><code>var i =</code> defines the variable we want access to within our loop.</li>
+<li><code>var i = 0</code> defines the original value of the variable.</li>
+<li><code>i &lt; paletteButtons.length</code> tells our code to continue running <em>while</em> the i is less than the length of our list. </li>
+<li><code>i++</code> adds 1 to our variable each time we go through the loop.</li>
+</ul>
+
+<p>Within our loop, we use the iterator variable from our loop (<code>i</code>) to add an eventListener to each element!</p>
+
+<ul>
+<li><code>paletteButtons[i]</code> allows us to access a specific element in the list, based on the value of <code>i</code> in the loop.</li>
+<li><code>addEventListener()</code> takes two arguments: <br>
+<ul><li>The first argument is the name of the event: “click”.</li>
+<li>The second argument is a <strong>function</strong> that will be executed when the browser hears our event!</li></ul></li>
+</ul>
+
+<blockquote>
+  <h4 id="activity-13"><strong>ACTIVITY</strong></h4>
+
+  <p>ADD THE JAVASCRIPT CODE ABOVE TO YOUR OWN JAVASCRIPT FILE AND EXECUTE THE CODE. </p>
+
+  <ol>
+  <li>What happens? What code is our function executing? </li>
+  </ol>
+</blockquote>
+
+<hr>
+
+<h3>Step 4: Changing The Background Color</h3>
+
+<p>We can tell that our code is doing <em>something</em> (which is 9/10’s of the battle), but it’s not doing the <em>right</em> thing. Instead of popping up an alert when we click on a <code>palette-btn</code>, we want to change the background color. </p>
+
+<p>Seems like a big change, but it actually only requires that we write one <strong>function</strong> with one line of code in it!</p>
+
+
+
+<pre class="prettyprint"><code class=" hljs javascript">
+<span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span>{</span>
+    <span class="hljs-keyword">return</span> document.body.style.backgroundColor = <span class="hljs-keyword">this</span>.style.backgroundColor
+}</code></pre>
+
+<p>The code above is a <strong>function</strong> - an executable snippet of code. When used as the second argument in <code>addEventListener</code>, we can get the backgroundColor of our element and use it to set the backgroundColor of the body!</p>
+
+<pre class="prettyprint"><code class=" hljs javascript"><span class="hljs-keyword">var</span> paletteButtons = document.getElementsByClassName(<span class="hljs-string">'palette-btn'</span>);
+
+<span class="hljs-keyword">for</span>(<span class="hljs-keyword">var</span> i = <span class="hljs-number">0</span>; i &lt; paletteButtons.length; i++) {
+    paletteButtons[i].addEventListener(<span class="hljs-string">'click'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span> {</span>
+      <span class="hljs-keyword">return</span> document.body.style.backgroundColor = paletteButtons[i].style.backgroundColor;
+    });
+}</code></pre>
+
+<blockquote>
+  <h4 id="activity-14"><strong>ACTIVITY</strong></h4>
+
+  <p>ADD THE CODE TO MAKE THE BACKGROUND COLOR OF YOUR APP CHANGE WHEN YOU CLICK A PALETTE BUTTON.</p>
+
+  <ol>
+  <li>Take a couple minutes to read through the code and explain to a friend what each part of the code does. If you can’t remember, look back at your notes!</li>
+  </ol>
+
+  <p>Getting the basics of Javascript under your belt is one of the <em>hardest</em> things for new developers to do - It’s WEIRD, and its HARD! If you’re intrigued and want to spend more time learning the basics, try the <a href="https://www.codecademy.com/learn/javascript">Learn Javascript Course on Codecademy</a>.</p>
+</blockquote>
+
+<p><img src="https://raw.githubusercontent.com/bytheway875/emberitas-images/master/change-bg-color-js.png"></p>
+
+<hr>
+
+<h2 id="phase-5-creating-our-create-page">Phase 5: Creating Our Create Page</h2>
+
+<p>Our New Color Palette page has more complicated interactions and components. But because <code>new-palette.html</code> uses many of the same design elements, we’re already halfway there!</p>
+
+<hr>
+
+<h3 >Step 1: Copying What We Need, Getting Rid Of What We Don’t</h3>
+
+
+
+<p>To get started, we can copy all of the code from <code>palettes.html</code> to <code>new-palettes.html</code>. We’ll keep what we need and get rid of the rest.</p>
+
+<blockquote>
+  <h4 id="activity-15">ACTIVITY</h4>
+
+  <p>COPY <code>palettes.html</code> into <code>new-palettes.html</code></p>
+
+  <ol>
+  <li>Copy all of the content from <code>palettes.html</code> into <code>new-palettes.html</code></li>
+  <li>Remove ALL of the tags that are nested inside the <code>&lt;body&gt;</code>.</li>
+  <li>Navigate to <code>new-palettes.html</code> by clicking the link to the page on <code>palettes.html</code> <br>
+  <ul><li>The content of your page new page will be blank, but the background color should match the background color on <code>palettes.html</code></li></ul></li>
+  </ol>
+</blockquote>
+
+<hr>
+
+<h3 >Step 2: Add Similar Elements</h3>
+
+<p>Let’s take a look at Chloe’s mockup for the New Color Palette Page again.</p>
+
+<p style="text-align:center"><img src="https://raw.githubusercontent.com/bytheway875/emberitas-images/master/new-palette-mockup.png"></p>
+
+<p>What elements do we have? What looks similar to what we’ve already done? What looks different? </p>
+
+<blockquote>
+  <h4 id="activity-16">ACTIVITY</h4>
+
+  <p>USING OUR <strong>html tag reference</strong> (add link here) AND CHLOE’S MOCKUP, ADD AS MANY HTML ELEMENTS AS YOU CAN. </p>
+
+  <ol>
+  <li>Create a <code>&lt;div&gt;</code> with class <code>container</code>, and nest the rest of your code inside of it.</li>
+  <li>Add an <code>&lt;h1&gt;</code></li>
+  <li>Add an <code>&lt;h2&gt;</code> for Palette Name, and an <code>&lt;input&gt;</code> tag to allow users to enter a palette name.</li>
+  <li>Add an <code>&lt;h2&gt;</code> for Palette Preview, and copy one <code>btn-group</code> from <code>palettes.html</code></li>
+  </ol>
+</blockquote>
+
+<hr>
+
+<h3>Step 3: Add New Elements</h3>
+
+<p>In order to make the rest of our page look like our mockup, we’ve got some work to do.</p>
+
+<p>If you’ve got the time, take a shot at creating new elements for the Edit Color Section. </p>
+
+<p>Alternatively, you can copy and paste the new elements from our {{#link-to 'resources.beginner.stylesheet'}}stylesheet{{/link-to}} and {{#link-to 'resources.beginner.new-palette-markup'}}new_palette.html markup{{/link-to}}. </p>
+
+
+<hr>
+<h1 id="finished-with-part-1">Finished With Part 1</h1>
+<hr>
+<p style="text-align: center"><small>Created by Lydia Guarino (2016), revised by Shannon Byrne (2017)</small></p>

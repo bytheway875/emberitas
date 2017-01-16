@@ -23,6 +23,13 @@ Router.map(function() {
     this.route('beginner', function() {
       this.route('part-one');
       this.route('part-two');
+      this.route('mockups-and-colors');
+      this.route('stylesheet');
+      this.route('new-palette-markup');
+    });
+
+    this.route('basics', function() {
+      this.route('html-tags');
     });
   });
 });
