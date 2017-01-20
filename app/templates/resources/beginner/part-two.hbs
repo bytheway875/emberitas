@@ -1,0 +1,1093 @@
+<h1 style="text-align: center">Emberitas Beginner Workshop - Part 2 - Color Palettes With Ember</h1>
+
+<p style="text-align:center"><img  src="https://github.com/lydiaguarino/emberitas-images/blob/master/Ember-Austin-Zoey-Half-sm.png?raw=true" alt="zoey-austin" title="">
+</p>
+
+<hr>
+
+<p>Ember is a front-end javascript framework. Now that we’ve covered the basics of html and css - and have some snazzy-looking mockups -  let’s learn how we can convert our static webpages to a dynamic web application with Ember.</p>
+
+<hr>
+
+
+
+<h2 id="introducing-the-terminal">Introducing the Terminal</h2>
+
+<p>To work effectively with Ember.js, developers use Ember’s CLI (command line interface). That means we’ll be using the command line (aka Terminal) to be creating our application, adding files, and using Ember Addons.</p>
+
+<p>Search for Terminal on your computer to get started.</p>
+
+<p style="width: 50%; margin: 0 auto;"><img src="https://github.com/bytheway875/emberitas-images/blob/master/terminal.png?raw=true" alt="terminal"></p>
+<hr>
+
+
+
+<h2 id="creating-your-ember-application">Creating Your Ember Application</h2>
+
+<p>In your terminal, initialize a new ember application by typing </p>
+
+<p><code>ember new color-palette</code></p>
+
+<p>Do some dancing while you wait for the application dependencies to install.</p>
+
+<p>–</p>
+
+<p>Next, change directory (cd) into your newly created ember project directory.</p>
+
+<p><code>cd color-palette</code></p>
+
+<p>To test that everything is working as expected, start your local server by running the following command from your command line:</p>
+
+<p><code>ember server</code></p>
+
+<p>Open your browser and navigate to the following URL, where your local server is currently running the ember application:</p>
+
+<p><code>http://localhost:4200</code></p>
+
+<p>If you see “Welcome to Ember” or a happy little Tomster hamster, congrats! You have successfully created an Ember application!</p>
+
+<p style="width: 50%; margin: 0 auto;"><img src="https://github.com/bytheway875/emberitas-images/blob/master/welcome-to-ember.png?raw=true" alt="welcome to ember"></p>
+<hr>
+
+<p>Now, open the <code>color-palette</code> folder in your Text Editor so that we have access to the code! </p>
+
+<p>You can see that a <em>lot</em> of files were created. These files provide configuration and a file structure that make it easy for us, as developers, to focus on writing the code we need to get our application working and on the internet super quickly. In this tutorial, we’ll primarily be focused on the files in the <code>app</code> folder.</p>
+
+<p style="text-align:center;"><img src="https://github.com/bytheway875/emberitas-images/blob/master/app-folder.png?raw=true" alt="terminal"></p>
+
+<hr>
+
+
+
+<h3 id="how-to-kill-your-server">How to kill your server</h3>
+
+<p>To avoid confusion, let’s kill our server for now by pressing <code>Control</code> and <code>C</code> keys (aka <code>Control + C</code>) at the same time (on Mac) from within our Terminal window.</p>
+
+<p>You will need to remember this command to stop your server if you need to restart it -- Turn it off and on again if you are seeing odd errors, or turn it off so that you can easily run other commands from the terminal.</p>
+
+<p>To restart your server, you’ll simply run <code>ember server</code> again.</p>
+
+<hr>
+
+
+
+<h2 >1: Generating Routes And Templates</h2>
+
+<p>In addition to helping us create new applications and start the server, Ember CLI provides commands to help us generate the <strong>file structure</strong> for our application. It even provides some starter code to get us going!</p>
+
+<hr>
+
+<h3 >Step 1: Creating Our Application Template</h3>
+
+<p>In order to replace that welcome message with our own content, we need to start by generating an application template. This application template will include shared html elements that you want to use across your entire application. </p>
+
+<p>Imagine, for example, that we had 100 pages in our application. Each page has the same nav bar on the top. If we were to create this application using <em>only</em> basic html documents, we’d need to add the nav bar code to <em>every page</em>. How awful! </p>
+
+<p>But with Ember, we can put the nav bar markup into our application template and it will render on <em>every page</em>.</p>
+
+<p>If we need it to get started, why doesn’t Ember just generate it when the app starts? Pretty sure its just so we can get practice running generator commands to create files!! </p>
+
+<p>In Your Terminal, run: </p>
+
+<p><code>ember generate template application</code></p>
+
+<p>Your file structure will now include a new file at <code>/app/templates/application.hbs</code></p>
+
+<hr>
+
+<h3 id="step-2-creating-our-custom-routes">Step 2: Creating Our Custom Routes</h3>
+
+<p>Each url we go to in our app maps to a location in our <strong>Ember Router</strong> and corresponds to an <strong>Ember Route</strong>. For example, in our static site we had two page:</p>
+
+<ul>
+<li>A list page, with a file called <code>palettes.html</code></li>
+<li>A new page,  with a file called <code>new-palette.html</code></li>
+</ul>
+
+<p>Using our ember route generator, we’ll create routes that render each of these files. Using Ember conventions, we want our routes to look like this:</p>
+
+<ul>
+<li>We can view our list page at <code>localhost:4000/palettes</code></li>
+<li>We can view our new page at <code>localhost:4000/palettes/new</code></li>
+</ul>
+
+<p>To generate these routes, run the following commands in your Terminal:</p>
+
+<p><code>ember generate route palettes</code> <br>
+<code>ember generate route palettes/new</code> <br>
+<code>ember g route palettes/index</code></p>
+
+<p>You’ll see some output on your terminal that looks like this:</p>
+
+
+
+<pre class="prettyprint"><code class=" hljs oxygene">
+installing route
+    <span class="hljs-keyword">create</span> app/routes/palettes.js
+    <span class="hljs-keyword">create</span> app/templates/palettes.hbs
+updating router
+    <span class="hljs-keyword">add</span> route palettes
+installing route-test
+    <span class="hljs-keyword">create</span> tests/<span class="hljs-keyword">unit</span>/routes/palettes-test.js</code></pre>
+
+<p>You can see that these generator commands created a bunch of files - a route, a template, and some test files. We also see that our <strong>router</strong> has been updated. And, in fact, we can see in our Text Editor that files have been created and updated.</p>
+
+
+
+<pre class="prettyprint"><code class=" hljs javascript"><span class="hljs-comment">// app/router.js</span>
+
+Router.map(<span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span> {</span>
+  <span class="hljs-keyword">this</span>.route(<span class="hljs-string">'palettes'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span> {</span>
+    <span class="hljs-keyword">this</span>.route(<span class="hljs-string">'new'</span>);
+  });
+});</code></pre>
+
+
+
+<pre class="prettyprint"><code class=" hljs cs"><span class="hljs-comment">// app/routes/palettes.js</span>
+
+import Ember <span class="hljs-keyword">from</span> <span class="hljs-string">'ember'</span>;
+
+export <span class="hljs-keyword">default</span> Ember.Route.extend({
+});
+</code></pre>
+
+
+
+<pre class="prettyprint"><code class="language-js hljs "><span class="hljs-comment">// app/routes/palettes/new.js</span>
+
+import Ember from <span class="hljs-string">'ember'</span>;
+
+export <span class="hljs-keyword">default</span> Ember.Route.extend({
+});</code></pre>
+
+
+
+<pre class="prettyprint"><code class="language-js hljs "><span class="hljs-comment">// app/routes/palettes/index.js</span>
+
+import Ember from <span class="hljs-string">'ember'</span>;
+
+export <span class="hljs-keyword">default</span> Ember.Route.extend({
+});</code></pre>
+
+<hr>
+
+<h4 id="explaining-the-index-route">Explaining The Index Route</h4>
+
+<p>If we only have <em>two</em> templates, why do we need <em>three</em> routes? </p>
+
+<p>Well, Ember assumes that we might want to have certain data and html content that is shared between every route with <code>palettes</code> in its name - and that’s what it expects us to put into <code>app/templates/palettes.hbs</code> and <code>app/templates/palettes.hbs</code></p>
+
+<p>When we want to render content on the list view (what Ember - and most frameworks -  call an <code>index</code>), and <em>only</em> on the list view, we need to put that code into <code>app/templates/palettes/index.hbs</code>.  </p>
+
+<p>The special <code>index</code> route that we’ve created does not create a new entry in our router – because of a little Ember magic, you can simply navigate to <code>localhost:4200/palettes/</code> and Ember knows that you’re looking for the index!</p>
+
+<blockquote>
+  <p>Test out this behavior by adding some text to all of your newly generated templates, starting your server, and navigating between <code>localhost:4200/palettes</code> and <code>localhost:4200/palettes/new</code>.</p>
+</blockquote>
+
+<hr>
+
+<h3>Step 3: Adding Bootstrap To Ember</h3>
+
+<p>Remember adding bootstrap to our static pages by adding the  tag in our HTML head? In an Ember application, we can use a special install command to import bootstrap directly into our project as an Ember Addon. There are a ton of awesome add-ons and libraries you can incorporate into your project, simply by running the install command with the library name.</p>
+
+<blockquote>
+  <p>There are Ember Addons for almost anything! You can search and learn about all available Ember Addons at <a href="http://www.emberobserver.com">Ember Observer</a></p>
+</blockquote>
+
+<p>To install bootstrap, run the following command:</p>
+
+<p><code>ember install ember-bootstrap</code></p>
+
+<p>Now you’ll have access to all of the same classes and components we used before, without linking anything to our html templates!</p>
+
+<hr>
+
+<h3>Step 4: Understanding HTMLBars Templates</h3>
+
+<p>Let’s get started by porting all of the hard work we’ve done into our Ember application. Don’t worry - we can reuse everything, it just goes in different places!</p>
+
+
+
+<h4>So where <em>do</em> we put everything?</h4>
+
+<p>If you look in your app folder only <em>one</em> <code>.html</code> file in the whole place! Since we know that Ember is supposed to help us organize our code in a logical way, where are we supposed to put all of our html?!</p>
+
+<p>Let’s take a look at the code that’s been generated for us in <code>app/index.html</code></p>
+
+<pre class="prettyprint"><code class=" hljs handlebars"><span class="xml"><span class="hljs-doctype">&lt;!DOCTYPE html&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">html</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-title">head</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">meta</span> <span class="hljs-attribute">charset</span>=<span class="hljs-value">"utf-8"</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">meta</span> <span class="hljs-attribute">http-equiv</span>=<span class="hljs-value">"X-UA-Compatible"</span> <span class="hljs-attribute">content</span>=<span class="hljs-value">"IE=edge"</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">title</span>&gt;</span>EmberitasBeginnerEmber<span class="hljs-tag">&lt;/<span class="hljs-title">title</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">meta</span> <span class="hljs-attribute">name</span>=<span class="hljs-value">"description"</span> <span class="hljs-attribute">content</span>=<span class="hljs-value">""</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">meta</span> <span class="hljs-attribute">name</span>=<span class="hljs-value">"viewport"</span> <span class="hljs-attribute">content</span>=<span class="hljs-value">"width=device-width, initial-scale=1"</span>&gt;</span>
+
+  </span><span class="hljs-expression">\{{<span class="hljs-variable">content-for</span> <span class="hljs-string">"head"</span>}}</span><span class="xml">
+
+    <span class="hljs-tag">&lt;<span class="hljs-title">link</span> <span class="hljs-attribute">rel</span>=<span class="hljs-value">"stylesheet"</span> <span class="hljs-attribute">href</span>=<span class="hljs-value">"assets/vendor.css"</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">link</span> <span class="hljs-attribute">rel</span>=<span class="hljs-value">"stylesheet"</span> <span class="hljs-attribute">href</span>=<span class="hljs-value">"assets/emberitas-beginner-ember.css"</span>&gt;</span>
+
+  </span><span class="hljs-expression">\{{<span class="hljs-variable">content-for</span> <span class="hljs-string">"head-footer"</span>}}</span><span class="xml">
+  <span class="hljs-tag">&lt;/<span class="hljs-title">head</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-title">body</span>&gt;</span>
+</span><span class="hljs-expression">\{{<span class="hljs-variable">content-for</span> <span class="hljs-string">"body"</span>}}</span><span class="xml">
+
+    <span class="hljs-tag">&lt;<span class="hljs-title">script</span> <span class="hljs-attribute">src</span>=<span class="hljs-value">"assets/vendor.js"</span>&gt;</span><span class="javascript"></span><span class="hljs-tag">&lt;/<span class="hljs-title">script</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">script</span> <span class="hljs-attribute">src</span>=<span class="hljs-value">"assets/emberitas-beginner-ember.js"</span>&gt;</span><span class="javascript"></span><span class="hljs-tag">&lt;/<span class="hljs-title">script</span>&gt;</span>
+
+  </span><span class="hljs-expression">\{{<span class="hljs-variable">content-for</span> <span class="hljs-string">"body-footer"</span>}}</span><span class="xml">
+  <span class="hljs-tag">&lt;/<span class="hljs-title">body</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-title">html</span>&gt;</span></span></code></pre>
+
+<p>We see all the elements the tags that we know are necessary, like <code>&lt;!DOCTYPE html&gt;, &lt;html&gt;, &lt;body&gt;, &lt;head&gt;.</code> We’ve also got <code>&lt;link&gt;</code> tags to css files and <code>&lt;script&gt;</code> tags for javascript files.</p>
+
+<p>Guess what? The content in this document applies to <strong>EVERY PAGE IN THIS APPLICATION</strong>. Isn’t that cool?!</p>
+
+
+
+<h4 id="and-what-are-these-hbs-files-for">And What Are These <code>.hbs</code> Files For?</h4>
+
+<p>You might notice that the template files generated have the extension <code>.hbs</code> instead of <code>.html</code>. </p>
+
+<p><code>.hbs</code> is an extension for Ember’s templating system called <strong>HTMLBars</strong>. </p>
+
+<p><strong>HTMLBars</strong> templates <em>extend</em> the functionality of normal html templates by allowing us to pass data to the templates and render it on our page inside of curly braces: <code>\{{dynamic-content}}</code>.</p>
+
+
+
+<h4 id="what-does-outlet-mean">What does <code>\{{outlet}}</code> mean?</h4>
+
+<p>Each <em>HTMLBars</em> file includes one line of markup:</p>
+
+
+
+<pre class="prettyprint"><code class=" hljs handlebars"><span class="xml"></span><span class="hljs-expression">\{{<span class="hljs-variable"><span class="hljs-keyword">outlet</span></span>}}</span><span class="xml"></span></code></pre>
+
+<p><code>\{{outlet}}</code> is an essential part of Ember’s concept of <strong>nested</strong> routes and templates. </p>
+
+<p>(<strong>ADD VISUAL REPRESENTATION OF EMBER NESTING HERE</strong>)</p>
+
+
+
+<pre class="prettyprint"><code class=" hljs haml">-<span class="ruby"> app/templates/application.hbs
+</span>    -<span class="ruby"> app/templates/palettes.hbs
+</span>        -<span class="ruby"> app/templates/palettes/index.hbs
+</span>        -<span class="ruby"> app/templates/palettes/new.hbs</span></code></pre>
+
+<p>The content in <code>app/palettes/index.hbs</code> will render into the <code>\{{outlet}}</code> in <code>app/palettes.hbs</code>, which renders into the <code>\{{outlet}}</code> in <code>app/application.hbs</code>.</p>
+
+<p>Shared content for our ENTIRE app goes into <code>application.hbs</code>. Shared content for ONLY our <code>palettes</code> routes goes into <code>palettes.hbs</code>. Custom content for just one page goes into the most specific templates!</p>
+
+<hr>
+
+<h3>Step 3: Porting Over Our HTML</h3>
+
+<p>Armed with this knowledge about shared and nested content, we can copy the necessary content from our existing <code>.html</code> files into Ember <code>.hbs</code> files.</p>
+
+
+
+<h4>app/templates/application.hbs</h4>
+
+<p>Look at our html files. Which content is shared between BOTH files?</p>
+
+<p>They both have <code>&lt;h1&gt;</code> and <code>&lt;h2&gt;</code> elements, but the contents of those elements depend on the page they’re on. That’s probably not a great fit.</p>
+
+<p>But we do have <em>one</em> shared element - our container div.</p>
+
+<p>Let’s update our application.hbs file to look like this:</p>
+
+
+<pre class="prettyprint"><code class=" hljs handlebars"><span class="xml"><span class="hljs-comment">&lt;!-- app/application.hbs --&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"container"</span>&gt;</span>
+    </span><span class="hljs-expression">\{{<span class="hljs-variable"><span class="hljs-keyword">outlet</span></span>}}</span><span class="xml">
+<span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>  </span></code></pre>
+
+
+
+<h4>app/templates/palettes.hbs</h4>
+
+<p>We don’t have any additional shared content, so let’s leave this file as it is – containing only a <code>\{{yeild}}.</code></p>
+
+
+
+<h4>app/templates/palettes/index.hbs</h4>
+
+<p>Since the  <code>&lt;!DOCTYPE&gt;, &lt;html&gt;, and &lt;head&gt;</code> are handled in <code>index.html</code> and our <code>&lt;div class="container"&gt;&lt;/div&gt;</code> is in <code>application.hbs</code>,  let’s copy all of the content nested <em>within</em> the container div in our old file <code>palettes.html</code> into our Ember template <code>app/templates/palettes/index.hbs</code>.</p>
+
+<p>You can leave the <code>\{{outlet}}</code> or paste over it - this is our deepest level of nesting, and we won’t be rendering anything into this outlet.</p>
+
+
+
+<h4>app/templates/palettes/new.hbs</h4>
+
+<p>The same goes here - copy all of the content <em>within</em> <code>&lt;div class="container"&gt;&lt;/div&gt;</code> in <code>new-palette.hbs</code> into our Ember template <code>app/templates/palettes/index.hbs</code>.</p>
+
+<p>You can leave the <code>\{{outlet}}</code> or paste over it - this is our deepest level of nesting, and we won’t be rendering anything into this outlet.</p>
+
+
+
+<h4 id="appstylesappcss">app/styles/app.css</h4>
+
+<p>Copy and paste everything from <code>style.css</code> in the old application into <code>app/styles/app.css</code> in our Ember application.</p>
+
+<p>Then, add this line to the top of your css file to import our Google Font: <br>
+<code>@import url(https://fonts.googleapis.com/css?family=Pacifico);</code></p>
+
+<blockquote>
+  <p>Check it out! Use <code>ember serve</code> to start your server. Navigate to <code>localhost:4200/palettes</code> to see your list view and <code>localhost:4200/palettes/new</code> to view your new page. Looks quite the same, no? Our links won’t work, but we’ll fix that soon enough!</p>
+
+  <p><em>If you see any errors, read the error for clues and try to fix your markup. Remember to “bump” the server using Ctrl + C, then run <code>ember serve</code> again - sometimes template errors drive Ember crazy.</em></p>
+</blockquote>
+
+<hr>
+
+<h4>Step 4: Changing Our Root Path</h4>
+
+<p>It’s a little annoying that we need to go to <code>localhost:4200/palettes</code> to see our index. It’s the main page of our application!</p>
+
+<p>Luckily, there’s an easy way to change this! The Ember Router allows us to customize the url of any of our routes! In our case, we want the <code>palettes</code> route to map right to <code>localhost:4200</code>. </p>
+
+<p>To do this, open <code>app/router.js</code></p>
+
+<p>Alter your route code to define a custom path for the palettes route:</p>
+
+
+
+<pre class="prettyprint"><code class=" hljs javascript">Router.map(<span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span> {</span>
+  <span class="hljs-keyword">this</span>.route(<span class="hljs-string">'palettes'</span>, { path: <span class="hljs-string">'/'</span> }, <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span> {</span>
+    <span class="hljs-keyword">this</span>.route(<span class="hljs-string">'new'</span>);
+  });
+});</code></pre>
+
+<p>When we return to our browser, we can navigate to <code>localhost:4200</code> and we’ll see our palettes index route! It also updates all child routes, so <code>localhost:4200/new</code> takes us to our new palette route.</p>
+
+<hr>
+
+<h1 id="lets-take-a-break">Let’s Take A Break</h1>
+
+<p>We’ve learned a LOT about Ember in a short period of time! Let’s take a breather.</p>
+
+<p style="width: 50%; margin: 20px auto;"><img src="https://github.com/lydiaguarino/emberitas-images/blob/master/Ember-Austin-Zoey-Half-sm.png?raw=true" alt="enter image description here" title=""></p>
+
+<hr>
+
+<h2>2: Adding Some Ember Magic</h2>
+
+<p>Now that we’ve achieved parity with our original html/css, we can use Ember to really make our application sing!</p>
+
+<hr>
+
+<h3>Step 1: Creating Internal Links with the \{{#link-to}} helper.</h3>
+
+<p>Ember creates single-page applications, which means that instead of the server sending us back an individual HTML page when we visit the application’s URL, it actually sends us back the entire application all packaged up together. This means that things like links work a little differently than they did with our static pages. The Ember Router knows how to interpret URLs associated with each of the internal Ember Routes, but we have to use some special <strong>HTMLbars helpers</strong> so that Ember can link between our internal pages.</p>
+
+<p>We’ll start by swapping out the  <code>&lt;a&gt;</code> tags we were previously using to link between our two views. We’ll replace the existing HTML tag a special <strong>HTMLBars helper</strong> called <code>\{{#link-to}}</code>.</p>
+
+<p><code>\{{#link-to}}</code> specifies that we are linking to an <em>internal</em> location within our Ember application. If you wanted to link to an external site (like www.google.com), you would still use the html <code>&lt;a&gt;</code> tag.</p>
+
+<blockquote>
+  <p>A quick note about Handlebars helpers - many of the helpers are special replacements for standard HTML tags. The link-to helper is one such helper. This means you can add things like the class attribute inside of the opening handlebars tag, just like you would with an HTML tag.</p>
+
+  <p>The major difference is that you will no longer have an href attribute on the link and will specify the internal route name in quotation marks instead.</p>
+
+  <p>Here is an example of the structure of a link-to helper: </p>
+
+<pre><code>\{{#link-to 'name-of-route' class='my-class'}}
+   Link Content
+\{{/link-to}}
+</code></pre>
+</blockquote>
+
+<p>Here are the two link-tos you will need and the naming conventions for the internal routes we’ll be using: </p>
+
+
+
+<pre class="prettyprint"><code class=" hljs handlebars"><span class="xml"></span><span class="hljs-expression">\{{<span class="hljs-begin-block">#link-to </span>'<span class="hljs-variable">palettes.new</span>'}}</span><span class="xml"></span><span class="hljs-expression">\{{<span class="hljs-end-block">/link-to</span>}}</span><span class="xml">
+</span><span class="hljs-expression">\{{<span class="hljs-begin-block">#link-to </span>'<span class="hljs-variable">palettes.index</span>'}}</span><span class="xml"></span><span class="hljs-expression">\{{<span class="hljs-end-block">/link-to</span>}}</span><span class="xml">
+</span></code></pre>
+
+<p>In your own code, use the <code>\{{#link-to}}</code> helper to replace all internal links. Make sure it has the same classes as your <code>&lt;a&gt;</code> tag had so that it retains your css styles!</p>
+
+<hr>
+
+<h3>Step 2: Introduction To Arrays and Objects</h3>
+
+<p>Working with dynamic content</p>
+
+<p>Up to this point, we’ve been working with static web pages, where all the content is written directly in our HTML.</p>
+
+<p>To make our application dynamic, we will need to start thinking about the items in our list and the information that is backing our form and edit views as dynamic data.</p>
+
+<p>To start converting the items displayed in our list to dynamic data, let’s take a look at how they could be represented as JavaScript Objects.</p>
+
+<p>JavaScript Objects are a way of describing an item by its traits. Let’s take a look at what some objects might look like for our palette list view.</p>
+
+<blockquote>
+  <p>This is a good time to talk about two very important structures in JavaScript - Arrays and Objects.</p>
+
+  <p>Arrays are ordered lists of items. They use the following syntax:  <br>
+  <code>[ thing-one, thing-two, thing-three ]</code></p>
+
+  <p>These ordered lists/arrays are incredibly useful when you want to represent a collection of things. Our list view will have a collection of palettes as its dynamic data and we’ll be using an array to represent it.</p>
+
+  <p>The second important structure is called an Object. Objects are data structures that allow you to describe an item by a list of traits. They are structured to include a series of key-value pairs where the key is the name of the trait.</p>
+
+  <p>They look something like this:  <br>
+  <code>{ name: 'Jane', age: 27, eyeColor: 'green' }</code></p>
+
+  <p>Each individual palette in our list can be represented as an object. Note that the value of a key in an object can essentially be any type of data structure, including another object or an array of objects.</p>
+</blockquote>
+
+<p>Now that we know a little bit about how objects and arrays look and work, we can think about how we might <em>model</em> the data we need for our application.</p>
+
+<hr>
+
+<h3>Step 3: Modeling Our Color Palette Data</h3>
+
+<p>When we want to pass data into our templates, we first need to think of the <em>attributes</em> each of the <em>objects</em> in our application will have. As an example, If I’m creating a blogging application, I might have a <em>post</em> with many <em>comments</em>. </p>
+
+<blockquote>
+  <p>Ask Yourself: What type of data might we need to store to contain information for a blog post?</p>
+</blockquote>
+
+<p>A blog post might contain a title, author, and the blog content. In object form, we would <em>model</em> our data like this:</p>
+
+
+
+<pre class="prettyprint"><code class=" hljs cs"><span class="hljs-comment">// A Javascript object that models our BLOG data.</span>
+{
+    title: <span class="hljs-string">'My First Blog Post'</span>,
+    author: <span class="hljs-string">'Katie Jones'</span>,
+    content: <span class="hljs-string">'This is my first blog post!'</span>
+}</code></pre>
+
+<p>If a blog post <em>has many comments</em>, we could add a new attribute called comments that stores a list (or <em>array</em>) of comments. </p>
+
+
+
+<pre class="prettyprint"><code class=" hljs livecodeserver">// The comments attribute <span class="hljs-operator">of</span> our blog model is <span class="hljs-operator">an</span> <span class="hljs-constant">empty</span> array - there are no comments yet!
+{
+    title:  <span class="hljs-string">'My First Blog Post'</span>,
+    author: <span class="hljs-string">'Katie Jones'</span>,
+    content: <span class="hljs-string">'This is my first blog post!'</span>,
+    comments: []
+}
+</code></pre>
+
+<p>A <em>comment</em> object will have its own attributes. </p>
+
+<blockquote>
+  <p>Ask Yourself: What kind of data might we need to store <em>comment</em> data?</p>
+</blockquote>
+
+<p>A comment is similar to a post, but perhaps without a title. We’ll simply track <em>author</em> and <em>content</em> for our comments. </p>
+
+
+
+<pre class="prettyprint"><code class=" hljs cs"><span class="hljs-comment">// A javascript object that models our COMMENT data.</span>
+
+{
+    author: <span class="hljs-string">'Samantha Lopez'</span>,
+    content: <span class="hljs-string">'What a great post! Thanks for sharing'</span>
+}</code></pre>
+
+<p>Let’s add this comment to our blog object to show that there is a <em>relationship</em> between Katie’s blog post and Samantha’s comment:</p>
+
+
+
+<pre class="prettyprint"><code class=" hljs css"><span class="hljs-rules">{
+    <span class="hljs-rule"><span class="hljs-attribute">title</span>:<span class="hljs-value">  <span class="hljs-string">'My First Blog Post'</span>,
+    author: <span class="hljs-string">'Katie Jones'</span>,
+    content: <span class="hljs-string">'This is my first blog post!'</span>,
+    comments: [ { author: <span class="hljs-string">'Samantha Lopez'</span>, content: <span class="hljs-string">'What a great post! Thanks for sharing'</span> </span></span></span>} ]
+}</code></pre>
+
+<p>If “Ben Jones” writes a new comment that says “Woah, you are insightful!”, that will become a second <em>comments object</em> inside of the posts array:</p>
+
+
+
+<pre class="prettyprint"><code class=" hljs css"><span class="hljs-rules">{
+    <span class="hljs-rule"><span class="hljs-attribute">title</span>:<span class="hljs-value">  <span class="hljs-string">'My First Blog Post'</span>,
+    author: <span class="hljs-string">'Katie Jones'</span>,
+    content: <span class="hljs-string">'This is my first blog post!'</span>,
+    comments: [
+        { author: <span class="hljs-string">'Samantha Lopez'</span>, content: <span class="hljs-string">'What a great post! Thanks for sharing'</span> </span></span></span>},
+        <span class="hljs-rules">{ <span class="hljs-rule"><span class="hljs-attribute">author</span>:<span class="hljs-value"> <span class="hljs-string">'Ben Jones'</span>, content: <span class="hljs-string">'Woah, you are insightful!'</span> </span></span></span>}
+    ]
+}</code></pre>
+
+<p>We would say now that our <em>blog has two comments</em>.</p>
+
+<p>Now, that we’ve modeled our <em>blog</em> and it’s relationship to <em>comments</em>, let’s think about what type of <em>data model</em> we need for our Color Palettes application.</p>
+
+<blockquote>
+  <p>Ask Yourself: What type of data model do we need to model our <em>palettes</em> and their <em>colors</em>.</p>
+</blockquote>
+
+<p>Our palettes store a <em>title</em> and <em>has many</em> colors - 5 to be exact. Each <em>color</em> has three attributes: it’s value for <em>red</em>, <em>green</em>, and <em>blue</em>. As a Javascript object, our tropical palette might be represented like this.</p>
+
+
+
+<pre class="prettyprint"><code class=" hljs css"><span class="hljs-rules">{
+    <span class="hljs-rule"><span class="hljs-attribute">title</span>:<span class="hljs-value"> <span class="hljs-string">'Tropical'</span>,
+    colors: [ { red: <span class="hljs-number">217</span>, green: <span class="hljs-number">33</span>, blue: <span class="hljs-number">32</span></span></span></span>},
+              <span class="hljs-rules">{ <span class="hljs-rule"><span class="hljs-attribute">red</span>:<span class="hljs-value"> <span class="hljs-number">231</span>, green: <span class="hljs-number">116</span>, blue: <span class="hljs-number">47</span></span></span></span>},
+              <span class="hljs-rules">{ <span class="hljs-rule"><span class="hljs-attribute">red</span>:<span class="hljs-value"> <span class="hljs-number">223</span>, green: <span class="hljs-number">165</span>, blue: <span class="hljs-number">58</span></span></span></span>},
+              <span class="hljs-rules">{ <span class="hljs-rule"><span class="hljs-attribute">red</span>:<span class="hljs-value"> <span class="hljs-number">177</span>, green: <span class="hljs-number">190</span>, blue: <span class="hljs-number">78</span></span></span></span>},
+              <span class="hljs-rules">{ <span class="hljs-rule"><span class="hljs-attribute">red</span>:<span class="hljs-value"> <span class="hljs-number">109</span>, green: <span class="hljs-number">179</span>, blue: <span class="hljs-number">136</span></span></span></span>}
+            ]
+}</code></pre>
+
+<p>In Ember, we’ll also add a unique <em>id</em> attribute to our our post to give Ember an easy way to distinguish one palette from the next:</p>
+
+
+
+<pre class="prettyprint"><code class=" hljs css"><span class="hljs-rules">{   <span class="hljs-rule"><span class="hljs-attribute">id</span>:<span class="hljs-value"> <span class="hljs-number">1</span>,
+    title: <span class="hljs-string">'Tropical'</span>,
+    colors: [ { red: <span class="hljs-number">217</span>, green: <span class="hljs-number">33</span>, blue: <span class="hljs-number">32</span></span></span></span>},
+              <span class="hljs-rules">{ <span class="hljs-rule"><span class="hljs-attribute">red</span>:<span class="hljs-value"> <span class="hljs-number">231</span>, green: <span class="hljs-number">116</span>, blue: <span class="hljs-number">47</span></span></span></span>},
+              <span class="hljs-rules">{ <span class="hljs-rule"><span class="hljs-attribute">red</span>:<span class="hljs-value"> <span class="hljs-number">223</span>, green: <span class="hljs-number">165</span>, blue: <span class="hljs-number">58</span></span></span></span>},
+              <span class="hljs-rules">{ <span class="hljs-rule"><span class="hljs-attribute">red</span>:<span class="hljs-value"> <span class="hljs-number">177</span>, green: <span class="hljs-number">190</span>, blue: <span class="hljs-number">78</span></span></span></span>},
+              <span class="hljs-rules">{ <span class="hljs-rule"><span class="hljs-attribute">red</span>:<span class="hljs-value"> <span class="hljs-number">109</span>, green: <span class="hljs-number">179</span>, blue: <span class="hljs-number">136</span></span></span></span>}
+            ]
+}</code></pre>
+
+<hr>
+
+<h3>Step 4: Telling Your Route About Your Models</h3>
+
+<p>Now that we’ve <em>modeled</em> our data, we need to make that data accessible to our <em>route</em>.</p>
+
+<p>Luckily, Ember provides us with a <em>method</em> to do this.</p>
+
+<p>Every route file allows us to load <em>model</em> data into our route by adding a function called <code>model()</code> to the route and <code>return</code>ing one or more <em>objects</em> that we’d like to make accessible in that route and its template.</p>
+
+<p>On our <code>palettes/index</code> route, we have <em>two</em> palettes: Tropical and Cool. That means our model will return an <em>array</em> of colors with two elements.</p>
+
+
+
+<pre class="prettyprint"><code class=" hljs coffeescript"><span class="hljs-regexp">/* app/routes/palettes/index.js */</span>
+
+<span class="hljs-reserved">import</span> Ember from <span class="hljs-string">'ember'</span>;
+
+<span class="hljs-reserved">export</span> <span class="hljs-reserved">default</span> Ember.Route.extend({
+  model() {
+    <span class="hljs-keyword">return</span> [
+      {
+        <span class="hljs-attribute">id</span>: <span class="hljs-number">1</span>,
+        <span class="hljs-attribute">name</span>: <span class="hljs-string">'Tropical'</span>,
+        <span class="hljs-attribute">colors</span>: [
+          { <span class="hljs-attribute">red</span>: <span class="hljs-number">217</span>, <span class="hljs-attribute">green</span>: <span class="hljs-number">33</span>, <span class="hljs-attribute">blue</span>: <span class="hljs-number">32</span>},
+          { <span class="hljs-attribute">red</span>: <span class="hljs-number">231</span>, <span class="hljs-attribute">green</span>: <span class="hljs-number">116</span>, <span class="hljs-attribute">blue</span>: <span class="hljs-number">47</span>},
+          { <span class="hljs-attribute">red</span>: <span class="hljs-number">223</span>, <span class="hljs-attribute">green</span>: <span class="hljs-number">165</span>, <span class="hljs-attribute">blue</span>: <span class="hljs-number">58</span>},
+          { <span class="hljs-attribute">red</span>: <span class="hljs-number">177</span>, <span class="hljs-attribute">green</span>: <span class="hljs-number">190</span>, <span class="hljs-attribute">blue</span>: <span class="hljs-number">78</span>},
+          { <span class="hljs-attribute">red</span>: <span class="hljs-number">109</span>, <span class="hljs-attribute">green</span>: <span class="hljs-number">179</span>, <span class="hljs-attribute">blue</span>: <span class="hljs-number">136</span>}
+        ]
+      },
+      {
+        <span class="hljs-attribute">id</span>: <span class="hljs-number">2</span>,
+        <span class="hljs-attribute">name</span>: <span class="hljs-string">'Cool'</span>,
+        <span class="hljs-attribute">colors</span>: [
+          { <span class="hljs-attribute">red</span>: <span class="hljs-number">70</span>, <span class="hljs-attribute">green</span>: <span class="hljs-number">131</span>, <span class="hljs-attribute">blue</span>: <span class="hljs-number">193</span>},
+          { <span class="hljs-attribute">red</span>: <span class="hljs-number">63</span>, <span class="hljs-attribute">green</span>: <span class="hljs-number">78</span>, <span class="hljs-attribute">blue</span>: <span class="hljs-number">161</span>},
+          { <span class="hljs-attribute">red</span>: <span class="hljs-number">120</span>, <span class="hljs-attribute">green</span>: <span class="hljs-number">28</span>, <span class="hljs-attribute">blue</span>: <span class="hljs-number">129</span>},
+          { <span class="hljs-attribute">red</span>: <span class="hljs-number">0</span>, <span class="hljs-attribute">green</span>: <span class="hljs-number">0</span>, <span class="hljs-attribute">blue</span>: <span class="hljs-number">0</span>},
+          { <span class="hljs-attribute">red</span>: <span class="hljs-number">255</span>, <span class="hljs-attribute">green</span>: <span class="hljs-number">255</span>, <span class="hljs-attribute">blue</span>: <span class="hljs-number">255</span>}
+        ]
+      }
+    ];
+  }
+});</code></pre>
+
+<hr>
+
+<h3>Step 5: Using our <code>model</code> data in our <code>template</code></h3>
+
+<p>We know that we can access dynamic content in our HTMLBars templates using the syntax <code>\{{dynamic-content-here}}</code>. We also know that that HTMLBars provides us with a number of helpers to assist us in working with and process our data (think about our experience with the <code>\{{link-to}}</code> helper.</p>
+
+<p>In Part 1 of our workshop, we used a <em>for loop</em> to iterate through data in Javascript. HTMLBars has its own syntax for iterating through data with the <code>\{{#each}}</code> helper:</p>
+
+
+
+<pre class="prettyprint"><code class=" hljs handlebars"><span class="xml"></span><span class="hljs-expression">\{{<span class="hljs-begin-block">#<span class="hljs-keyword">each</span> </span>[<span class="hljs-variable">array</span> <span class="hljs-variable">to</span> <span class="hljs-variable">loop</span> <span class="hljs-variable">over</span>] <span class="hljs-variable">as</span> |<span class="hljs-variable">item</span>|}}</span><span class="xml">
+    <span class="hljs-tag">&lt;<span class="hljs-title">div</span>&gt;</span>Repeated content for each </span><span class="hljs-expression">\{{<span class="hljs-variable">item</span>}}</span><span class="xml"><span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+</span><span class="hljs-expression">\{{<span class="hljs-end-block">/<span class="hljs-keyword">each</span></span>}}</span><span class="xml"></span></code></pre>
+
+<blockquote>
+  <p>The “|” characters in the opening each tag are called pipes - I like to think of them as creating a little chute that drops the variable name you want to use for an individual item into the nested block - kind of like one of the portal pipes in Super Mario. You can reference your element inside the content of the loop using whatever variable name you put inside of the loop!</p>
+</blockquote>
+
+<p>First, let’s update our <code>palettes/index</code> template to use the <code>\{{#each}}</code> helper. We’ll start by pulling data from our model to get the title of each palette.</p>
+
+
+
+<pre class="prettyprint"><code class=" hljs handlebars"><span class="xml"><span class="hljs-comment">&lt;!-- app/templates/palettes/index.hbs --&gt;</span>
+
+</span><span class="hljs-expression">\{{<span class="hljs-begin-block">#<span class="hljs-keyword">each</span> model as </span>|<span class="hljs-variable">palette</span>|}}</span><span class="xml">
+    <span class="hljs-tag">&lt;<span class="hljs-title">h2</span>&gt;</span> </span><span class="hljs-expression">\{{<span class="hljs-variable">palette.name</span>}}</span><span class="xml"> <span class="hljs-tag">&lt;/<span class="hljs-title">h2</span>&gt;</span>
+  </span><span class="hljs-expression">\{{<span class="hljs-end-block">/<span class="hljs-keyword">each</span> </span>}}</span><span class="xml"></span></code></pre>
+
+<p>If we add this code somewhere on our index page, we’ll see “Tropical” and “Cool” as <code>&lt;h2&gt;</code>s.</p>
+
+<p>Now for the more complicated part. Because our palette <em>has many</em> colors, we’ll need to loop through each of our colors <em>inside</em> of our current loop:</p>
+
+
+
+<pre class="prettyprint"><code class=" hljs handlebars"><span class="xml"></span><span class="hljs-expression">\{{<span class="hljs-begin-block">#<span class="hljs-keyword">each</span> model as </span>|<span class="hljs-variable">palette</span>|}}</span><span class="xml">
+    <span class="hljs-tag">&lt;<span class="hljs-title">h2</span>&gt;</span> </span><span class="hljs-expression">\{{<span class="hljs-variable">palette.name</span>}}</span><span class="xml"> <span class="hljs-tag">&lt;/<span class="hljs-title">h2</span>&gt;</span>
+  </span><span class="hljs-expression">\{{<span class="hljs-begin-block">#<span class="hljs-keyword">each</span> palette.colors as </span>|<span class="hljs-variable">color</span>|}}</span><span class="xml">
+        Content using </span><span class="hljs-expression">\{{<span class="hljs-variable">color</span>}}</span><span class="xml"> goes here.
+    </span><span class="hljs-expression">\{{<span class="hljs-end-block">/<span class="hljs-keyword">each</span></span>}}</span><span class="xml">
+</span><span class="hljs-expression">\{{<span class="hljs-end-block">/<span class="hljs-keyword">each</span></span>}}</span><span class="xml">   </span></code></pre>
+
+<blockquote>
+  <p>As we start to nest loops and content, you can see how important it is to <em>indent</em> our code properly! The closing tag for the loop should always be at the same level of indentation as the opening tag. If copy and pasting is messing with your indentation, you can highlight a block of code and press Tab to indent a whole section at once – it saves a lot of time!</p>
+</blockquote>
+
+<p>Now, we just need to use our existing code as a guide for using the <em>loop</em> to create our 5-element button groups.</p>
+
+<p>The <code>btn-group</code> div goes <em>inside</em> our palette loop but <em>outside</em> our color loop. That’s because we only want ONE <code>btn-group</code> for each palette.</p>
+
+
+
+<pre class="prettyprint"><code class=" hljs handlebars"><span class="xml"></span><span class="hljs-expression">\{{<span class="hljs-begin-block">#<span class="hljs-keyword">each</span> model as </span>|<span class="hljs-variable">palette</span>|}}</span><span class="xml">
+    <span class="hljs-tag">&lt;<span class="hljs-title">h2</span>&gt;</span> </span><span class="hljs-expression">\{{<span class="hljs-variable">palette.name</span>}}</span><span class="xml"> <span class="hljs-tag">&lt;/<span class="hljs-title">h2</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"btn-group"</span>&gt;</span>
+  </span><span class="hljs-expression">\{{<span class="hljs-begin-block">#<span class="hljs-keyword">each</span> palette.colors as </span>|<span class="hljs-variable">color</span>|}}</span><span class="xml">
+            Content using </span><span class="hljs-expression">\{{<span class="hljs-variable">color</span>}}</span><span class="xml"> goes here.
+        </span><span class="hljs-expression">\{{<span class="hljs-end-block">/<span class="hljs-keyword">each</span></span>}}</span><span class="xml">
+    <span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+</span><span class="hljs-expression">\{{<span class="hljs-end-block">/<span class="hljs-keyword">each</span></span>}}</span><span class="xml">   </span></code></pre>
+
+<p>Within the color loop, we can copy <em>one</em> button element – looping through each color object will create five buttons! To use our <em>dynamic content</em> from the color object, we can replace the red, green, and blue values each time they appear with the corresponding color attribute: <code>\{{color.red}}</code>, <code>\{{color.green}}</code>, or <code>\{{color.blue}}</code> </p>
+
+
+
+<pre class="prettyprint"><code class=" hljs handlebars"><span class="xml"></span><span class="hljs-expression">\{{<span class="hljs-begin-block">#<span class="hljs-keyword">each</span> model as </span>|<span class="hljs-variable">palette</span>|}}</span><span class="xml">
+    <span class="hljs-tag">&lt;<span class="hljs-title">h2</span>&gt;</span> </span><span class="hljs-expression">\{{<span class="hljs-variable">palette.name</span>}}</span><span class="xml"> <span class="hljs-tag">&lt;/<span class="hljs-title">h2</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"btn-group"</span>&gt;</span>
+  </span><span class="hljs-expression">\
+    \{{<span class="hljs-begin-block">#<span class="hljs-keyword">each</span> palette.colors as </span>|<span class="hljs-variable">color</span>|}}</span><span class="xml">
+                <span class="hljs-tag">&lt;<span class="hljs-title">button</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"btn palette-btn"</span> <span class="hljs-attribute">style</span>=<span class="hljs-value">"background-color: rgb(</span></span></span><span class="hljs-expression">\{{<span class="hljs-variable">color.red</span>}}</span><span class="xml"><span class="hljs-tag"><span class="hljs-value">,</span></span></span><span class="hljs-expression">\{{<span class="hljs-variable">color.green</span>}}</span><span class="xml"><span class="hljs-tag"><span class="hljs-value">,</span></span></span><span class="hljs-expression">\{{<span class="hljs-variable">color.blue</span>}}</span><span class="xml"><span class="hljs-tag"><span class="hljs-value">)"</span>&gt;</span>
+                    rgb(</span><span class="hljs-expression">\{{<span class="hljs-variable">color.red</span>}}</span><span class="xml">, </span><span class="hljs-expression">\{{<span class="hljs-variable">color.green</span>}}</span><span class="xml">, </span><span class="hljs-expression">\{{<span class="hljs-variable">color.blue</span>}}</span><span class="xml">)
+                <span class="hljs-tag">&lt;/<span class="hljs-title">button</span>&gt;</span>
+        </span><span class="hljs-expression">\{{<span class="hljs-end-block">/<span class="hljs-keyword">each</span></span>}}</span><span class="xml">
+    <span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+</span><span class="hljs-expression">\{{<span class="hljs-end-block">/<span class="hljs-keyword">each</span></span>}}</span><span class="xml">   </span></code></pre>
+
+<p>Using this code, our site <em>looks</em> the same, but it’s now using our model data instead of the static data we’d <em>hard coded</em> into the template! </p>
+
+<p>If you’ve now got four palettes, feel free to delete the <em>hard coded</em> data that we ported over - we don’t need to double up!</p>
+
+<blockquote>
+  <p>If it looks the same, why bother? Well, it’s no big deal to <em>hard code</em> two palettes into our app. But what if we were dealing with thousands of palettes?</p>
+
+  <p>Using our model data and a loop, we can easily add a new element to our model in routes/palettes/index.js to create new palettes. Then, if someone asks us to change the design of our application for each palette, we only have to alter the template code in one place instead of 1000!</p>
+</blockquote>
+
+<blockquote>
+  <p>Before we continue, try adding a third palette to our model data in <code>routes/palettes/index.js</code>!</p>
+</blockquote>
+
+<hr>
+
+<h1 id="take-a-break">Take A Break!</h1>
+
+<p>Stretch your legs! We’ve got more to accomplish after a short break.</p>
+
+<p style="text-align:center"><img src="https://github.com/lydiaguarino/emberitas-images/blob/master/Ember-Austin-Zoey-Half-sm.png?raw=true" alt="enter image description here" title=""></p>
+
+<hr>
+
+<h2>3: Getting Started With New Palettes Template</h2>
+
+<p>We’ve neglected our sliders for too long! Now it’s time to create a color palette using our sliders. Let’s start by creating our model. We’ll need to create a new palette with some <em>default</em> values for our data.</p>
+
+<hr>
+
+<h3>Step 3: Adding <em>Default</em> Data for a New Palette</h3>
+
+<p>Our palettes/new route will need an empty palette so that we can access the palette as our <em>model</em> and manipulate the values of our palette name and palette colors.</p>
+
+
+
+<pre class="prettyprint"><code class=" hljs xml"><span class="hljs-comment">&lt;!-- app/templates/palettes/new.hbs --&gt;</span>
+import Ember from 'ember';
+
+export default Ember.Route.extend({
+  model() {
+    return {
+      id: null,
+      name: 'My New Palette',
+      colors: [
+        {red: 0, blue: 0, green: 0},
+        {red: 0, blue: 0, green: 0},
+        {red: 0, blue: 0, green: 0},
+        {red: 0, blue: 0, green: 0},
+        {red: 0, blue: 0, green: 0}
+      ]
+    };
+  }
+});</code></pre>
+
+<p>We set the id to <em>null</em> to indicate that our palette is new and <em>unpersisted</em>. By default, we’ll set the name of the palette to be “New Palette”, and the values of red, blue, and green to be 0 for each palette color.</p>
+
+<hr>
+
+<h3>Step 2: Using Our Model in the New Route</h3>
+
+<p>There’s one notable distinction between our <code>palettes/index</code> model and our <code>palettes/new</code> model:</p>
+
+<ul>
+<li>The <code>palettes/index</code> model contains an array (list) of <em>many</em> palettes.</li>
+<li>The <code>palettes/new</code> model contains just <em>one</em> palette.</li>
+</ul>
+
+<p>We still have access to the <code>\{{model}}</code> in our template, but now we don’t have to <em>loop</em> through the model to get each palette. The <code>model</code> <em>is</em> our new palette.</p>
+
+<p>To test this out, let’s replace our <em>static</em> <code>&lt;h1&gt;New Palette&lt;/h1&gt;</code> content with the name of our palette:</p>
+
+<p><code>&lt;h1&gt;\{{model.name}}&lt;/h1&gt;</code></p>
+
+<hr>
+
+<h3>Step 3: Using Two-Way Bindings</h3>
+
+<p>When we change the name of our palette in our palette input, it’d be cool if it <em>also</em> changed the value of our <code>&lt;h1&gt;</code>. We can accomplish this using <strong>two-way bindings</strong> - allowing changes to the data in our template to directly change the data on our model.</p>
+
+<blockquote>
+  <p>An important side note: <br>
+  Two-way bindings are incredibly powerful and make for some super flashy party tricks that we’ll be taking advantage of in this tutorial. However, it can lead to some strange and dangerous side-effects when you allow your users to <em>directly</em> modify your data from the template.</p>
+
+  <p>That’s why there’s been a shift in recent years to focus more on one-way bindings. One-way bindings require a bit more code to keep things in sync - and we won’t be focusing on them in this workshop. However, it’s important to note that one-way bindings offers developers more control, and protects against unintended data alterations! </p>
+</blockquote>
+
+
+
+<h4>Guess and Check</h4>
+
+<p>First, let’s update our <code>&lt;input&gt;</code> html tag to have a default value of <code>\{{model.name}}</code></p>
+
+
+
+<pre class="prettyprint"><code class=" hljs handlebars"><span class="xml"><span class="hljs-comment">&lt;!-- app/templates/palettes/new.hbs --&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-title">h2</span>&gt;</span> Palette Name <span class="hljs-tag">&lt;/<span class="hljs-title">h2</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">input</span> <span class="hljs-attribute">type</span>=<span class="hljs-value">"text"</span> <span class="hljs-attribute">value</span>=</span></span><span class="hljs-expression">\{{<span class="hljs-variable">model.name</span>}}</span><span class="xml"><span class="hljs-tag"> <span class="hljs-attribute">class</span>=<span class="hljs-value">"full-width"</span>&gt;</span>
+</span></code></pre>
+
+<p>IF this solution <em>binds</em> the value of input to <code>model.name</code>, we should see the value of our <code>&lt;h1&gt;</code> change when we update our <code>&lt;input&gt;</code> … but we don’t.</p>
+
+<p>Instead, we see that the input populates our original value of <code>model.name</code>, but updates to the input value are not <em>bound</em> to the model.</p>
+
+<p>To <em>bind</em> the values, we need to use HTMLBars <code>\{{input}}</code> helper.</p>
+
+
+
+<h4 id="using-the-input-helper">Using the <code>\{{input}}</code> Helper</h4>
+
+<p>So let’s take a different approach.</p>
+
+<p>Replace the native HTML <code>&lt;input&gt;</code> tag with the <code>\{{input}}</code> helper.  <br>
+- We don’t need the <code>#</code> or a closing tag because input is a <em>self-closing</em> input tag, and a <em>self-closing</em> helper.  <br>
+- We can also remove the bars around model.name, since all the content is now inside the outer <code>\{{input}}</code> helper.</p>
+
+
+
+<pre class="prettyprint"><code class=" hljs handlebars"><span class="xml"><span class="hljs-comment">&lt;!-- app/templates/palettes/new.hbs --&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-title">h2</span>&gt;</span> Palette Name <span class="hljs-tag">&lt;/<span class="hljs-title">h2</span>&gt;</span>
+</span><span class="hljs-expression">\{{<span class="hljs-variable">input</span> <span class="hljs-variable">type</span>=<span class="hljs-string">"text"</span> <span class="hljs-variable">value</span>=<span class="hljs-variable">model.name</span> <span class="hljs-variable">class</span>=<span class="hljs-string">"full-width"</span>}}</span><span class="xml">
+</span></code></pre>
+
+<p>When we reload the page now, we can see that every change to our input is <em>bound</em> to the value of <code>model.name</code>, and changes the value of model.name in our <code>&lt;h1&gt;</code>!</p>
+
+<p style="text-align: center"><img src="https://raw.githubusercontent.com/bytheway875/emberitas-images/master/model-name-two-way-binding.gif" alt="two way bindings"></p>
+
+<hr>
+
+<h3>Step 4: Using Our Color Model Data In Our Template</h3>
+
+<p>Two way bindings are pretty cool, right? Our next major goal is to use two-way binding to allow us to change the values of each of our colors. But before we do that, we’ll have to make sure that our template is actually <em>using</em> our model’s colors.</p>
+
+<p>To do this, we can <em>loop</em> through each of our colors to create the preview <code>btn-group</code>. Remember that we no longer need a <em>nested</em> loop because we’ve only got one palette in this model!</p>
+
+
+
+<pre class="prettyprint"><code class=" hljs handlebars"><span class="xml"><span class="hljs-comment">&lt;!-- app/templates/palettes/new.hbs --&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">h2</span>&gt;</span> Palette Preview <span class="hljs-tag">&lt;/<span class="hljs-title">h2</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"btn-group"</span>&gt;</span>
+    </span><span class="hljs-expression">\{{<span class="hljs-begin-block">#<span class="hljs-keyword">each</span> model.colors as </span>|<span class="hljs-variable">color</span>|}}</span><span class="xml">
+        <span class="hljs-tag">&lt;<span class="hljs-title">button</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"btn palette-btn"</span> <span class="hljs-attribute">style</span>=<span class="hljs-value">"background-color: rgb(</span></span></span><span class="hljs-expression">\{{<span class="hljs-variable">color.red</span>}}</span><span class="xml"><span class="hljs-tag"><span class="hljs-value">,</span></span></span><span class="hljs-expression">\{{<span class="hljs-variable">color.green</span>}}</span><span class="xml"><span class="hljs-tag"><span class="hljs-value">,</span></span></span><span class="hljs-expression">\{{<span class="hljs-variable">color.blue</span>}}</span><span class="xml"><span class="hljs-tag"><span class="hljs-value">)"</span>&gt;</span>
+            rgb(</span><span class="hljs-expression">\{{<span class="hljs-variable">color.red</span>}}</span><span class="xml">, </span><span class="hljs-expression">\{{<span class="hljs-variable">color.green</span>}}</span><span class="xml">, </span><span class="hljs-expression">\{{<span class="hljs-variable">color.blue</span>}}</span><span class="xml">)
+        <span class="hljs-tag">&lt;/<span class="hljs-title">button</span>&gt;</span>
+    </span><span class="hljs-expression">\{{<span class="hljs-end-block">/<span class="hljs-keyword">each</span></span>}}</span><span class="xml">
+<span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>  </span></code></pre>
+
+<p>Because our defaults for each color are set to 0, all of our palette colors are black. That’s fine, but perhaps a little boring.</p>
+
+<p>Let’s see if we can inspire our users with some ideas by creating <em>random</em> colors when the page loads.</p>
+
+
+
+<h3>Step 5: Randomizing Our Colors with Javascript</h3>
+
+<p>In addition to the provided hooks like <code>model()</code> that we have access to in our route, we can also create our own Javascript functions in Ember files. </p>
+
+<p>At the bottom of our <code>routes/palettes/new.js</code> file, add the following code:</p>
+
+
+
+<pre class="prettyprint"><code class="language-javascript hljs "><span class="hljs-comment">// generates a random number between 0 and 255</span>
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">randomColorCode</span><span class="hljs-params">()</span>{</span>
+  <span class="hljs-keyword">return</span> <span class="hljs-built_in">Math</span>.floor(<span class="hljs-built_in">Math</span>.random() * <span class="hljs-number">256</span>)
+}</code></pre>
+
+<blockquote>
+  <p>Let’s break this function down:</p>
+
+  <p>Our goal for this function is to return a randomized number between 0 and 255 - all of the numbers that can help us create a valid color code.</p>
+
+  <p>Unfortunately for us, Math.random() can_not_ give us a random whole number. Instead it provides us with a random decimal between 0 and 1, non inclusive (meaning it will never be exactly 0 <em>or</em> 1. You can try this out on your JS console (open with Shift + Cmd + J in your browser), if you’d like.</p>
+
+  <pre class="prettyprint"><code class=" hljs javascript"><span class="hljs-built_in">Math</span>.random()
+&gt; <span class="hljs-number">0.7783799542252514</span>
+<span class="hljs-built_in">Math</span>.random()
+&gt; <span class="hljs-number">0.9741590788087762</span>
+<span class="hljs-built_in">Math</span>.random()
+&gt; <span class="hljs-number">0.9829033966227918</span></code></pre>
+
+  <p>But we can make this work for us: if we want a number between 0 and 255, we can multiply the result by 255!</p>
+
+  <pre class="prettyprint"><code class=" hljs javascript"><span class="hljs-built_in">Math</span>.random() * <span class="hljs-number">255</span>
+&gt; <span class="hljs-number">6.736442896799143</span>
+<span class="hljs-built_in">Math</span>.random() * <span class="hljs-number">255</span>
+&gt; <span class="hljs-number">11.965483741205391</span>
+<span class="hljs-built_in">Math</span>.random() * <span class="hljs-number">255</span>
+&gt; <span class="hljs-number">221.45935611977828</span></code></pre>
+
+  <p>The result is still a decimal, though, and rgb values must be integers. So we can wrap the whole statement in a call to <code>Math.floor()</code> to round <em>down</em> to the nearest whole number:</p>
+
+  <pre class="prettyprint"><code class=" hljs javascript"><span class="hljs-built_in">Math</span>.floor(<span class="hljs-built_in">Math</span>.random() * <span class="hljs-number">255</span>)
+&gt; <span class="hljs-number">218</span>
+<span class="hljs-built_in">Math</span>.floor(<span class="hljs-built_in">Math</span>.random() * <span class="hljs-number">255</span>)
+&gt; <span class="hljs-number">91</span>
+<span class="hljs-built_in">Math</span>.floor(<span class="hljs-built_in">Math</span>.random() * <span class="hljs-number">255</span>)
+&gt; <span class="hljs-number">146</span></code></pre>
+</blockquote>
+
+<p>Now, we can <em>call</em> our method in our <code>app/palettes/new.js</code> file wherever we need it. We’ll use it to replace all of our color values with random numbers!</p>
+
+
+
+<pre class="prettyprint"><code class=" hljs javascript"><span class="hljs-comment">// app/routes/palettes/new.js</span>
+import Ember from <span class="hljs-string">'ember'</span>;
+
+export <span class="hljs-keyword">default</span> Ember.Route.extend({
+  model() {
+    <span class="hljs-keyword">return</span> {
+      id: <span class="hljs-literal">null</span>,
+      name: <span class="hljs-string">'My New Palette'</span>,
+      colors: [
+        {red: randomColorCode(), blue: randomColorCode(), green: randomColorCode()},
+        {red: randomColorCode(), blue: randomColorCode(), green: randomColorCode()},
+        {red: randomColorCode(), blue: randomColorCode(), green: randomColorCode()},
+        {red: randomColorCode(), blue: randomColorCode(), green: randomColorCode()},
+        {red: randomColorCode(), blue: randomColorCode(), green: randomColorCode()}
+      ]
+    };
+  }
+});
+
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">randomColorCode</span><span class="hljs-params">()</span>{</span>
+  <span class="hljs-keyword">return</span> <span class="hljs-built_in">Math</span>.floor(<span class="hljs-built_in">Math</span>.random() * <span class="hljs-number">256</span>)
+}</code></pre>
+
+Try reloading the page a couple of times. Now, your users will see a new suggested color palette each time the page is reloaded.
+
+<p style="width: 50%; margin: 20px auto;"><img src="https://raw.githubusercontent.com/bytheway875/emberitas-images/master/random-colors-gif.gif"></p>
+
+<hr>
+
+<h1 >Let’s Take A Break!</h1>
+
+<p>You deserve another quick break… but don’t forget to come back!</p>
+
+<p style="text-align:center"><img src="https://github.com/lydiaguarino/emberitas-images/blob/master/Ember-Austin-Zoey-Half-sm.png?raw=true" alt="enter image description here" title=""></p>
+
+<hr>
+
+<h2>4: Working With Ember Controllers</h2>
+
+<p>So far, we’ve been working with only routes and templates. The Ember <strong>route</strong> deals with loading the appropriate data and handling any logic for permissions to access the route’s url (i.e. a route could check to see if a user is an admin, and bounce them back to a public area if they’re not!)</p>
+
+<p>Our color edit form on our “palettes/new“` route has all sorts of buttons and inputs that <em>promise</em> to do something really cool, but have no function at the moment.  To <em>control</em> these interactions, we’re going to need a new type of file: a <strong>controller</strong>. </p>
+
+<p>In this workshop, we’ll use the controller to handle any actions the user triggers within the user interface - such as clicking buttons or modifying a form.</p>
+
+<blockquote>
+  <p>An important note: <br>
+  Ember provides three appropriate places to handle actions - controllers, routes and components. The nuance of deciding which one of these is best for your use case is outside the scope of this workshop. But it is important to know that you have options and can research each of these further. For now, we’ll focus on handling actions at the controller layer.</p>
+</blockquote>
+
+<hr>
+
+<h3 >Step 1: Generating A Controller</h3>
+
+<p>To get started, we’ll generate a controller for <code>palettes/new</code>.</p>
+
+<p><code>ember g controller palettes/new</code></p>
+
+
+
+<pre class="prettyprint"><code class=" hljs oxygene">installing controller
+  <span class="hljs-keyword">create</span> app/controllers/palettes/<span class="hljs-keyword">new</span>.js
+installing controller-test
+  <span class="hljs-keyword">create</span> tests/<span class="hljs-keyword">unit</span>/controllers/palettes/<span class="hljs-keyword">new</span>-test.js</code></pre>
+
+<hr>
+
+<h3 >Step 2: Creating our first <code>\{{action}}</code></h3>
+
+<p>In our form, we want to be able to modify individual colors. The first step is for us to provide the user with a means of selecting the color they want to set or adjust.</p>
+
+<p>When the user clicks on a color, we want to populate that color in the edit form, and bind any changes made to the selected color. </p>
+
+<p>To do this, we can use a combination of a template helper <code>\{{action}}</code>, an attribute called <code>focusColor</code>,  a function in our controller to handle changing the focus color.</p>
+
+
+
+<pre class="prettyprint"><code class=" hljs coffeescript"><span class="hljs-regexp">/* app/controllers/palettes/new.js */</span>
+<span class="hljs-reserved">import</span> Ember from <span class="hljs-string">'ember'</span>;
+
+<span class="hljs-reserved">export</span> <span class="hljs-reserved">default</span> Ember.Controller.extend({
+  <span class="hljs-attribute">focusColor</span>: <span class="hljs-literal">null</span>,
+  <span class="hljs-attribute">actions</span>: {
+    setFocusColor(color) {
+      <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'setting focus color'</span>);
+      <span class="hljs-keyword">this</span>.set(<span class="hljs-string">'focusColor'</span>, color);
+    }
+  }
+});</code></pre>
+
+<p><code>focusColor</code> is an attribute on our controller, and we can access it directly in our template using <code>\{{focusColor}}</code>. Our focusColor will be a color object, so we can call all the color methods on it: <code>\{{focusColor.red}}</code>, <code>\{{focusColor.green}}</code>, and <code>\{{focusColor.blue}}</code>. </p>
+
+<blockquote>
+  <p>A distinction between <strong>controller attributes</strong> and <strong>model attributes</strong> is that we expect to <em>persist</em> model data to a data base while controller data is usually <em>ephemeral</em> (temporary). We don’t need to <em>save</em> the focusColor forever - we just need it to inform our actions while we’re interacting with the template.</p>
+</blockquote>
+
+<p><code>actions</code> is a special attribute on controllers that contains an object with many functions. The functions inside of the actions object are accessible from the template that corresponds to our controller.</p>
+
+<p>Now, we need to <em>bind</em> our setColorAction to our color buttons by adding this code to our <code>&lt;button&gt;</code> tag:</p>
+
+<p><code>\{{action 'setFocusColor' color}}</code></p>
+
+
+
+<pre class="prettyprint"><code class=" hljs handlebars"><span class="xml"><span class="hljs-comment">&lt;!-- app/templates/-palette-form.hbs --&gt;</span>
+...
+<span class="hljs-tag">&lt;<span class="hljs-title">h2</span>&gt;</span>Palette Preview<span class="hljs-tag">&lt;/<span class="hljs-title">h2</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"btn-group"</span>&gt;</span>
+    </span><span class="hljs-expression">\{{<span class="hljs-begin-block">#<span class="hljs-keyword">each</span> model.colors as </span>|<span class="hljs-variable">color</span>|}}</span><span class="xml">
+      <span class="hljs-tag">&lt;<span class="hljs-title">button</span> </span></span><span class="hljs-expression">\{{<span class="hljs-variable"><span class="hljs-keyword">action</span></span> '<span class="hljs-variable">setFocusColor</span>' <span class="hljs-variable">color</span>}}</span><span class="xml"><span class="hljs-tag"> <span class="hljs-attribute">class</span>=<span class="hljs-value">"btn palette-btn"</span> <span class="hljs-attribute">style</span>=<span class="hljs-value">"background-color: rgb(</span></span></span><span class="hljs-expression">\{{<span class="hljs-variable">color.red</span>}}</span><span class="xml"><span class="hljs-tag"><span class="hljs-value">,</span></span></span><span class="hljs-expression">\{{<span class="hljs-variable">color.green</span>}}</span><span class="xml"><span class="hljs-tag"><span class="hljs-value">,</span></span></span><span class="hljs-expression">\{{<span class="hljs-variable">color.blue</span>}}</span><span class="xml"><span class="hljs-tag"><span class="hljs-value">)"</span>&gt;</span>
+      rgb(</span><span class="hljs-expression">\{{<span class="hljs-variable">color.red</span>}}</span><span class="xml">, </span><span class="hljs-expression">\{{<span class="hljs-variable">color.green</span>}}</span><span class="xml">, </span><span class="hljs-expression">\{{<span class="hljs-variable">color.blue</span>}}</span><span class="xml">)
+    <span class="hljs-tag">&lt;/<span class="hljs-title">button</span>&gt;</span>
+    </span><span class="hljs-expression">\{{<span class="hljs-end-block">/<span class="hljs-keyword">each</span></span>}}</span><span class="xml">
+  <span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+...</span></code></pre>
+
+<blockquote>
+  <p>Notes on the <code>\{{action}}</code> helper:</p>
+
+  <ul>
+  <li>We can pass <em>parameters</em> to an action by adding them to the actions helper after the name of the action. In this example, we pass the current <em>color</em> in our loop to the function so that we can set it as our focus color.</li>
+  <li>The name of our action should be in quotations, or we’ll get an error. <br>
+  <ul><li>You can bind actions to almost any element. Here, the action is triggered on a button. But you could achieve a similar effect by binding an action to a <code>&lt;div&gt;</code>, an <code>&lt;input&gt;</code> or even a <code>&lt;p&gt;</code> tag.</li></ul></li>
+  </ul>
+</blockquote>
+
+<p>Visually, there’s nothing in our application that changes when we click a button… yet (we’ll be working to use focusColor in our template in the next step.) However, if we add a <code>console.log('setting focus color')</code> to the body of our <code>setFocusColor()</code> function, we can open the console and see that “setting focus color” prints to the console each time we click a button!</p>
+
+<hr>
+
+<h3>Step 3: Using focusColor In Our Template</h3>
+
+<p>When we click a button, we want to be able to populate our focusColor in our preview bar, and populate the values for red, blue, and green into our range and input.</p>
+
+<p>Remember back to when we used the <code>\{{input}}</code> helper to bind the palette’s name to an input? And how we used the <code>color.blue</code>, <code>color.red</code>, and <code>color.green</code> to set the background color of our color buttons? Let’s try doing the same with using our focus color attributes.</p>
+
+<blockquote>
+  <p>Using what we’ve learned in this workshop:</p>
+
+  <ol>
+  <li>Set the background color of the preview bar to use the red, green, and blue values from focus color.</li>
+  <li>Bind the values for each slider and input to the corresponding color value using the <code>\{{input}}</code> helper.</li>
+  </ol>
+</blockquote>
+
+<p>Does your code look a little something like this?</p>
+
+
+
+<pre class="prettyprint"><code class=" hljs handlebars"><span class="xml"><span class="hljs-tag">&lt;<span class="hljs-title">h2</span>&gt;</span> Edit Color <span class="hljs-tag">&lt;/<span class="hljs-title">h2</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"btn-group"</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-title">button</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"btn palette-btn full-width"</span> <span class="hljs-attribute">style</span>=<span class="hljs-value">"background-color: rgb(</span></span></span><span class="hljs-expression">\{{<span class="hljs-variable">focusColor.red</span>}}</span><span class="xml"><span class="hljs-tag"><span class="hljs-value">, </span></span></span><span class="hljs-expression">\{{<span class="hljs-variable">focusColor.green</span>}}</span><span class="xml"><span class="hljs-tag"><span class="hljs-value">, </span></span></span><span class="hljs-expression">\{{<span class="hljs-variable">focusColor.blue</span>}}</span><span class="xml"><span class="hljs-tag"><span class="hljs-value">)"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-title">button</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"color-picker"</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"color-letter"</span>&gt;</span>R<span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+  </span><span class="hljs-expression">\{{<span class="hljs-variable">input</span> <span class="hljs-variable">type</span>=<span class="hljs-string">"text"</span> <span class="hljs-variable">class</span>=<span class="hljs-string">"color-number"</span> <span class="hljs-variable">maxlength</span>=<span class="hljs-string">"3"</span> <span class="hljs-variable">value</span>=<span class="hljs-variable">focusColor.red</span>}}</span><span class="xml">
+  </span><span class="hljs-expression">\{{<span class="hljs-variable">input</span> <span class="hljs-variable">type</span>=<span class="hljs-string">"range"</span> <span class="hljs-variable">class</span>=<span class="hljs-string">"color-slider"</span>  <span class="hljs-variable">min</span>=<span class="hljs-string">"0"</span> <span class="hljs-variable">max</span>=<span class="hljs-string">"255"</span> <span class="hljs-variable">step</span>=<span class="hljs-string">"1"</span> <span class="hljs-variable">value</span>=<span class="hljs-variable">focusColor.red</span>}}</span><span class="xml">
+<span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"color-picker"</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"color-letter"</span>&gt;</span>G<span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+  </span><span class="hljs-expression">\{{<span class="hljs-variable">input</span> <span class="hljs-variable">type</span>=<span class="hljs-string">"text"</span> <span class="hljs-variable">class</span>=<span class="hljs-string">"color-number"</span> <span class="hljs-variable">maxlength</span>=<span class="hljs-string">"3"</span> <span class="hljs-variable">value</span>=<span class="hljs-variable">focusColor.green</span>}}</span><span class="xml">
+  </span><span class="hljs-expression">\{{<span class="hljs-variable">input</span> <span class="hljs-variable">type</span>=<span class="hljs-string">"range"</span> <span class="hljs-variable">class</span>=<span class="hljs-string">"color-slider"</span> <span class="hljs-variable">min</span>=<span class="hljs-string">"0"</span> <span class="hljs-variable">max</span>=<span class="hljs-string">"255"</span> <span class="hljs-variable">step</span>=<span class="hljs-string">"1"</span> <span class="hljs-variable">value</span>=<span class="hljs-variable">focusColor.green</span>}}</span><span class="xml">
+<span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"color-picker"</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"color-letter"</span>&gt;</span>B<span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+  </span><span class="hljs-expression">\{{<span class="hljs-variable">input</span> <span class="hljs-variable">type</span>=<span class="hljs-string">"text"</span> <span class="hljs-variable">class</span>=<span class="hljs-string">"color-number"</span> <span class="hljs-variable">maxlength</span>=<span class="hljs-string">"3"</span> <span class="hljs-variable">value</span>=<span class="hljs-variable">focusColor.blue</span>}}</span><span class="xml">
+  </span><span class="hljs-expression">\{{<span class="hljs-variable">input</span> <span class="hljs-variable">type</span>=<span class="hljs-string">"range"</span> <span class="hljs-variable">class</span>=<span class="hljs-string">"color-slider"</span> <span class="hljs-variable">min</span>=<span class="hljs-string">"0"</span> <span class="hljs-variable">max</span>=<span class="hljs-string">"255"</span> <span class="hljs-variable">step</span>=<span class="hljs-string">"1"</span> <span class="hljs-variable">value</span>=<span class="hljs-variable">focusColor.blue</span>}}</span><span class="xml">
+<span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span></span></code></pre>
+
+<p>Now you should be able to click a color and alter its value using either the slider or text input, and see the results of your changes in the browser!</p>
+
+<p style="margin: 20px auto; width: 50%;"><img src="https://raw.githubusercontent.com/bytheway875/emberitas-images/master/edit-color.gif"></p>
+<hr>
+
+<h2>5: Getting Your App on the Web</h2>
+
+<p>Now we’ve got all of the features and functionality Chloe wanted! That means we’ve completed the MVP (minimum viable product), and we’re ready to push our app to the web and share it with others!</p>
+
+<p>App deployment used to be a complex, arduous task. Thankfully, things have changed.</p>
+
+<p>Our good friends at Pagefront have built a platform to quickly and painlessly deploy your Ember App with just two terminal commands:</p>
+
+
+
+<pre class="prettyprint"><code class=" hljs fix"><span class="hljs-attribute"> ember install ember-pagefront --app</span>=<span class="hljs-string">YOUR_APP_NAME
+ ember deploy production</span></code></pre>
+
+<p>Decide what to call your app, and replace <code>YOUR_APP_NAME</code> with a unique name to identify your app. It should include <em>no spaces</em>, and must be significantly unique (if someone else has used that app name, you’ll get an error).</p>
+
+<hr>
+
+<h1 id="wrapping-up">Wrapping Up</h1>
+
+<p>You’ve got an app on the web – that means you’re OFFICIALLY a web developer! Congratulations!</p>
+
+<p>Today, you’ve learned the basics of HTML, CSS, and Javascript using Ember.js, and brought it all together to create a stellar website that you can share with family and friends.</p>
+
+<p>We’ve only just grazed the surface of what you can do with Javascript and Ember.js – we didn’t even get around to discussing computed properties, persisting our data to databases, fetching our data <em>from</em> databases, or nesting complicated templates. (Can’t learn it all in one day!)</p>
+
+<p>If you’re interested in learning more about any of the technologies we’ve used today, check out our <em>{{#link-to 'resources'}}Emberitas Resources{{/link-to}}</em> for additional learning resources. </p>
+
+<p>Thanks for joining us!</p>
+
+<hr>
+<p style="text-align: center"><small>Created by Lydia Guarino (2016), revised by Shannon Byrne (2017).</small></p>
